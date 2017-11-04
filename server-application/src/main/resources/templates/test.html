@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<title th:text="${test.name}"></title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
+		
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></link>
+		
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="  crossorigin="anonymous"></script>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" th:href="${prefixCSS + css}" th:each="css: ${pageExtraCSS}"/>
+	</head>
+	<body>
+		<div class="container">
+			<div id="c_test">
+				<div class="testTitle">
+					<input type="text" th:value="${test.name}"></input>
+				</div>
+				<hr></hr>
+				<div class="row" th:each="question,iterationStatus: ${test.questions}">
+					<div class="c_question">
+						<span class="q_num badge"><p th:text="${iterationStatus.count}"></p></span>
+						<textarea th:text="${question.statement}"></textarea>
+						<table class="table c_answers">
+							<tbody>
+								<tr class="bg-info" th:each="answer: ${question.answers}">
+									<td ><textarea th:text="${answer.answer}"></textarea></td>
+									<td th:if="${answer.right}">
+										<input type="checkbox" checked="checked"></input>
+									</td>
+									<td  th:unless="${answer.right}">
+										<input type="checkbox"></input>
+									</td>
+									<td > <span class="text-danger glyphicon glyphicon-remove"></span> </td>
+								</tr>
+								<tr>
+									<td colspan="3"> <button class="btn"><span class="glyphicon glyphicon-plus-sign"></span> Add new answer </button></td>						
+								</tr>
+							</tbody>
+						</table>
+						<hr></hr>
+					</div>
+					<div class="c_del">
+						<span class="glyphicon glyphicon-trash"></span>	
+					</div>
+				</div>
+				<div class="row">
+					<button class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Add new question</button>
+				</div>
+			</div>
+			<button type="button" class="btn_save btn btn-block btn-lg btn-success">Save</button>
+		</div>
+	</body>
+</html>

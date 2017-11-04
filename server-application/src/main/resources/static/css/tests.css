@@ -1,0 +1,49 @@
+.c_question{
+	width: 90%;
+    float: left;
+    flex: 5;
+}
+.c_del{
+	flex: 1;
+}
+
+textarea{
+	width: 100%;
+	margin: 0px;
+}
+
+.c_answers{
+	width: 100%;
+}
+
+.c_del{
+	width: 10%;
+    float: left;
+}
+
+hr{
+	clear:both;
+}
+
+.glyphicon-trash{
+	font-size: x-large;
+}
+.testTitle > input{
+	width: 100%;
+	font-size: xx-large;
+	margin-top: 2%;
+}
+
+.row{
+	display: flex;
+	margin-left: 1%;
+}
+
+.q_num > p{
+	margin: 0px;
+	font-size: medium;
+}
+
+.btn_save{
+	margin: 2% 0%;
+}
