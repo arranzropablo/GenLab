@@ -1,36 +1,21 @@
 package com.genlab.serverapplication.models;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class TestAnswer {
 	
+	//RequiredArgsConstructor hace un constructor para los atributos anotados como @NonNull (es el constructor que tenias)
+	
 	private long id;
+	@NonNull
 	private String answer;
+	@NonNull
 	private boolean right;
-	
-	
-	public TestAnswer(String answer, boolean right) {
-		super();
-		this.answer = answer;
-		this.right = right;
-	}
-		
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getAnswer() {
-		return answer;
-	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-	public boolean isRight() {
-		return right;
-	}
-	public void setRight(boolean right) {
-		this.right = right;
-	}
 	
 }

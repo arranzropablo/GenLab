@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Calculation Tools</title>
+	</head>
+	<body>
+		<div layout:fragment="content" class="container">
+			<!-- Este div con el titulo y la lista, se va a usar en varias subsecciones la clase asiqe meter en un css general -->
+			<div>
+				<h2>Calculation Tools</h2>
+				<table>
+					<!-- Se recuperan las calculationTools para la sección que estemos -->
+					<tr th:each="calculationTool : ${calculationTools}">
+						<td th:text="${calculationTool.name}"></td>
+						<td><a href="#" class="text-danger fa fa-times"></a></td>
+					</tr>
+				</table>
+			</div>
+			<!-- Aqui el main content -->
+			<div>
+				<!-- En el th_value este tendría que ir el nombre de la calculation tool actual -->
+				<input type="text" name="calculationToolName" value="TestCross Dominance" th:value="Sustituir" />
+				<!-- Aqui habría que meter un fragmento (hacer una carpeta con los fragmentos de las calculation tools) porque 
+					 cada una se construye de una manera, necesita unos campos etc... -->
+					 
+				<button type="button" class="btn btn-success">Calculate</button>
+				<button type="button" class="btn btn-danger">Clean</button>
+				<button type="button" class="btn btn-primary">Save</button>
+				
+			</div>
+		</div>
+	</body>
+</html>

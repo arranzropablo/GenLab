@@ -1,19 +1,13 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>Tests</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
-		
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"></link>
-		
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-		<script  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="  crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div class="container">
+		<div layout:fragment="content" class="container">
 			<h1>Tests</h1>
 			<table id="testsTable" class="table table-striped">
 				<thead class="thead-dark">
@@ -30,8 +24,8 @@
 						<td th:text="${test.name}"></td>
 						<td th:text="${test.date}"></td>
 						<td th:text="${test.questions.size()}"></td>
-						<td> <span class="text-success glyphicon glyphicon-pencil"></span> </td>
-						<td> <span class="text-danger glyphicon glyphicon-remove"></span> </td>
+						<td> <a href="#" class="text-success fa fa-pencil"></a> </td>
+						<td> <a href="#" class="text-danger fa fa-times"></a> </td>
 					</tr>
 				</tbody>
 			</table>
