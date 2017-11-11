@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Calculation Tools</title>
+	    <link rel="stylesheet" href="../static/css/home.css" th:href="@{/css/home.css}" type="text/css"/>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<div class="mainContentHome">
+				<h2>Name: <input type="text" name="sectionName" value="Section Name" th:value="Sustituir"/></h2>
+				<ul>
+					<li><h2><a th:href="@{/calculationtools}">Calculation Tools</a></h2></li>
+					<li><h2><a th:href="@{/theory}">Theory</a></h2></li>
+					<li><h2><a th:href="@{/problems}">Problems</a></h2></li>
+					<li><h2><a th:href="@{/tests}">Tests</a></h2></li>
+					<li><h2><a th:href="@{/recommendedbooks}">Recommended Books</a></h2></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

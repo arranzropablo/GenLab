@@ -82,6 +82,9 @@ public class TestsController {
 		listQ2.add(question2);
 		Test test2 = new Test("Test2", listQ2);
 		
+		test1.setId(0);
+		test2.setId(1);
+		
 		tests = new ArrayList<Test>();
 		tests.add(test1);
 		tests.add(test2);
@@ -93,7 +96,7 @@ public class TestsController {
 	/**
 	 * Mostrar la página de un test por ID
 	 * **/
-	@RequestMapping(value = "tests/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/tests/{id}", method=RequestMethod.GET)
 	public String oneTest(@PathVariable("id") long id, HttpServletRequest request, Model model) {
 		if(id > tests.size()-1) {
 			return "redirect:/tests";

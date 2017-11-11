@@ -5,22 +5,28 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>Calculation Tools</title>
+	    <link rel="stylesheet" href="../static/css/calculationTools.css" th:href="@{/css/calculationTools.css}" type="text/css"/>
 	</head>
 	<body>
-		<div layout:fragment="content" class="container">
-			<!-- Este div con el titulo y la lista, se va a usar en varias subsecciones la clase asiqe meter en un css general -->
-			<div>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+			  <!-- Esto no deberá apuntar a home, sino a la seccion donde este.. pero no se ahora mismo donde irá eso -->
+			  <a class="breadcrumb-item" th:href="@{/home}">Home</a>
+			  <span class="breadcrumb-item active">Calculation Tools</span>
+			</nav>
+			<div class="nameAndListSection">
 				<h2>Calculation Tools</h2>
 				<table>
 					<!-- Se recuperan las calculationTools para la sección que estemos -->
 					<tr th:each="calculationTool : ${calculationTools}">
-						<td th:text="${calculationTool.name}"></td>
-						<td><a href="#" class="text-danger fa fa-times"></a></td>
+						<td>
+							<a th:text="${calculationTool.name}" href="#"></a>
+						</td>
 					</tr>
 				</table>
 			</div>
 			<!-- Aqui el main content -->
-			<div>
+			<div class="mainContentCalcTool">
 				<!-- En el th_value este tendría que ir el nombre de la calculation tool actual -->
 				<input type="text" name="calculationToolName" value="TestCross Dominance" th:value="Sustituir" />
 				<!-- Aqui habría que meter un fragmento (hacer una carpeta con los fragmentos de las calculation tools) porque 

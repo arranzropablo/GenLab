@@ -7,28 +7,34 @@
 		<title>Tests</title>
 	</head>
 	<body>
-		<div layout:fragment="content" class="container">
-			<h1>Tests</h1>
-			<table id="testsTable" class="table table-striped">
-				<thead class="thead-dark">
-					<tr>
-						<th>Name</th>
-						<th>Date</th>
-						<th>No. Questions</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="test : ${tests}">
-						<td th:text="${test.name}"></td>
-						<td th:text="${test.date}"></td>
-						<td th:text="${test.questions.size()}"></td>
-						<td> <a href="#" class="text-success fa fa-pencil"></a> </td>
-						<td> <a href="#" class="text-danger fa fa-times"></a> </td>
-					</tr>
-				</tbody>
-			</table>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+				<a class="breadcrumb-item" th:href="@{/home}">Home</a>
+				<span class="breadcrumb-item active">Tests</span>
+			</nav>
+			<div class="container">
+				<h1>Tests</h1>
+				<table id="testsTable" class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Name</th>
+							<th>Date</th>
+							<th>No. Questions</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="test : ${tests}">
+							<td th:text="${test.name}"></td>
+							<td th:text="${test.date}"></td>
+							<td th:text="${test.questions.size()}"></td>
+							<td> <a href="#" class="text-success fa fa-pencil"></a> </td>
+							<td> <a href="#" class="text-danger fa fa-times"></a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>

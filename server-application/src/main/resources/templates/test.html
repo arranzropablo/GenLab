@@ -7,44 +7,51 @@
 		<link rel="stylesheet" type="text/css" th:href="${prefixCSS + css}" th:each="css: ${pageExtraCSS}"/>
 	</head>
 	<body>
-		<div layout:fragment="content" class="container">
-			<div id="c_test">
-				<div class="testTitle">
-					<input type="text" th:value="${test.name}"></input>
-				</div>
-				<hr></hr>
-				<div class="row" th:each="question,iterationStatus: ${test.questions}">
-					<div class="c_question">
-						<span class="q_num badge"><p th:text="${iterationStatus.count}"></p></span>
-						<textarea th:text="${question.statement}"></textarea>
-						<table class="table c_answers">
-							<tbody>
-								<tr class="bg-info" th:each="answer: ${question.answers}">
-									<td ><textarea th:text="${answer.answer}"></textarea></td>
-									<td th:if="${answer.right}">
-										<input type="checkbox" checked="checked"></input>
-									</td>
-									<td  th:unless="${answer.right}">
-										<input type="checkbox"></input>
-									</td>
-									<td > <span class="text-danger fa fa-times"></span> </td>
-								</tr>
-								<tr>
-									<td colspan="3"> <button class="btn"><span class="fa fa-plus-circle"></span> Add new answer </button></td>						
-								</tr>
-							</tbody>
-						</table>
-						<hr></hr>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+				<a class="breadcrumb-item" th:href="@{/home}">Home</a>
+				<a class="breadcrumb-item" th:href="@{/tests}">Tests</a>
+				<span class="breadcrumb-item active" th:text="${test.name}"></span>
+			</nav>
+			<div class="container">
+				<div id="c_test">
+					<div class="testTitle">
+						<input type="text" th:value="${test.name}"></input>
 					</div>
-					<div class="c_del">
-						<span class="fa fa-trash"></span>	
+					<hr></hr>
+					<div class="row" th:each="question,iterationStatus: ${test.questions}">
+						<div class="c_question">
+							<span class="q_num badge"><p th:text="${iterationStatus.count}"></p></span>
+							<textarea th:text="${question.statement}"></textarea>
+							<table class="table c_answers">
+								<tbody>
+									<tr class="bg-info" th:each="answer: ${question.answers}">
+										<td ><textarea th:text="${answer.answer}"></textarea></td>
+										<td th:if="${answer.right}">
+											<input type="checkbox" checked="checked"></input>
+										</td>
+										<td  th:unless="${answer.right}">
+											<input type="checkbox"></input>
+										</td>
+										<td > <span class="text-danger fa fa-times"></span> </td>
+									</tr>
+									<tr>
+										<td colspan="3"> <button class="btn"><span class="fa fa-plus-circle"></span> Add new answer </button></td>						
+									</tr>
+								</tbody>
+							</table>
+							<hr></hr>
+						</div>
+						<div class="c_del">
+							<span class="fa fa-trash"></span>	
+						</div>
+					</div>
+					<div class="row">
+						<button class="btn btn-primary"><span class="fa fa-plus-circle"></span> Add new question</button>
 					</div>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary"><span class="fa fa-plus-circle"></span> Add new question</button>
-				</div>
+				<button type="button" class="btn_save btn btn-block btn-lg btn-success">Save</button>
 			</div>
-			<button type="button" class="btn_save btn btn-block btn-lg btn-success">Save</button>
 		</div>
 	</body>
 </html>
