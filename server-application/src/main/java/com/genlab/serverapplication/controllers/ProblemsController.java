@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.genlab.serverapplication.models.Problem;
-import com.genlab.serverapplication.models.Test;
 
 @Controller
 public class ProblemsController {
