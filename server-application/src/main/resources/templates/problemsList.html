@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Problems: Genlab</title>
+	    <!--<link rel="stylesheet" href="../static/css/calculationTools.css" th:href="@{/css/calculationTools.css}" type="text/css"/>-->
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+			  <!-- Esto no deberá apuntar a home, sino a la seccion donde este.. pero no se ahora mismo donde irá eso -->
+			  <a class="breadcrumb-item" th:href="@{/home}">Home</a>
+			  <span class="breadcrumb-item active">Problems</span>
+			</nav>
+			<div class="container">
+				<h2>Problems</h2>
+				<table id="problemsTable" class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Id</th>
+							<th>Title</th>
+							<th>Date</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+
+					<!-- Se recuperan los problemas para la sección que estemos -->
+					<tbody>
+						<tr th:each="problem : ${problems}">
+							<td th:text="${problem.id}"></td>
+							<td th:text="${problem.title}"></td>
+							<td th:text="${problem.date}"></td>
+							<td> <a th:href="@{/problems/}+${problem.id}" class="text-success fa fa-pencil"></a> </td>
+							<td> <a href="#" class="text-danger fa fa-times"></a> </td>
+						</tr>
+						<tr>
+							<td colspan="5"> 
+								<a href="#" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new problem </a>
+							</td>						
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
