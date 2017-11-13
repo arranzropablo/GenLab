@@ -29,7 +29,7 @@ public class ProblemsController {
 		problems.add(new Problem(3, "Laboratorio", f.format(new Date())));
 	}
 	@RequestMapping(value = "/problems", method=RequestMethod.GET)
-	public String getLoginList(HttpServletRequest request, Model model) {
+	public String getProblemsList(HttpServletRequest request, Model model) {
 		
 		this.initialize();
 		model.addAttribute("problems",problems);
