@@ -25,13 +25,12 @@
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  
-	  <!-- Aqui hay que poner las diferentes secciones, como son fijas no merece la pena hacer un for -->
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li th:each="link : ${linkSectionProperties.links}" class="nav-item">
 	        <a class="nav-link" th:href="'/home' + ${link.link}" 
 	        					th:text="${link.title}"
-	        					th:style="${(#httpServletRequest.getServletPath() == '/home' + link.link) ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}"></a>
+	        					th:style="${(#httpServletRequest.getServletPath() == '/home' + link.link || '/' + session.currentSection.toString().toLowerCase() == link.link) ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}"></a>
 	      </li>
 	    </ul>
 	  </div>
