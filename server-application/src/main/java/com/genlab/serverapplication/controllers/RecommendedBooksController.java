@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.genlab.serverapplication.models.Book;
 
 @Controller
-@RequestMapping("recommendedbooks")
+@RequestMapping("/recommendedbooks")
 public class RecommendedBooksController {
 	
 	@GetMapping("")
