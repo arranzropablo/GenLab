@@ -28,20 +28,10 @@
 	  <!-- Aqui hay que poner las diferentes secciones, como son fijas no merece la pena hacer un for -->
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Two Loci <span class="sr-only">(current)</span></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">One Locus</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Linkage</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Epistasia</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Polyhybrid</a>
+	      <li th:each="link : ${linkSectionProperties.links}" class="nav-item">
+	        <a class="nav-link" th:href="'/home' + ${link.link}" 
+	        					th:text="${link.title}"
+	        					th:style="${(#httpServletRequest.getServletPath() == '/home' + link.link) ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}"></a>
 	      </li>
 	    </ul>
 	  </div>

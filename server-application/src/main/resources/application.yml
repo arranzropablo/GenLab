@@ -5,3 +5,21 @@ security:
 spring:
   thymeleaf:
     cache: false
+    
+genlab:
+  sections:
+    links[0]:
+      link: /twoloci
+      title: Two Loci
+    links[1]:
+      link: /onelocus
+      title: One Locus
+    links[2]:
+      link: /linkage
+      title: Linkage
+    links[3]:
+      link: /epistasia
+      title: Epistasia
+    links[4]:
+      link: /polyhybrid
+      title: Polyhybrid

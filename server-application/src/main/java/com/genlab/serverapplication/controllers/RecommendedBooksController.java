@@ -3,6 +3,8 @@ package com.genlab.serverapplication.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,7 @@ import com.genlab.serverapplication.models.Book;
 public class RecommendedBooksController {
 	
 	@GetMapping("")
-	public String getBookList(Model model) {
+	public String getBookList(Model model, HttpSession session) {
 		
 		List<Book> books = new ArrayList<>();
 		books.add(Book.builder().name("Fahrenheit 451").id(1).isbn("123123123").link("www.google.es").author("pablo").build());

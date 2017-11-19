@@ -1,24 +1,25 @@
 package com.genlab.serverapplication.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/home")
 public class HomeController {
 	
-	//@GetMapping("/{sectionName}")
-	@GetMapping("")
-	public String getHome(HttpServletRequest request, Model model) {
-		//esto lo qe va a hacer es qe va a devolver siempre home pero dependiendo de la sectionName que le llegue (name o id)
-		//va a activar y desactivar distinas cosas del menú y el default del input va a cambiar por el nombre de la sección en la q esta
-		//también van a cambiar los href, todo eso se mete en el model y qe lo coja desde thymeleaf
-		
-		//de lo qe se trata es de qe todo esto sea sin cambiar la url (quizas se puede incluso sin recargar la pagina)
+	@GetMapping(value={"/home", "/"})
+	public String getHome(HttpSession session, HttpServletRequest request) {
+		return "redirect:/home/twoloci";
+	}
+	
+	@GetMapping("/home/{sectionName}")
+	public String getHome(@PathVariable("sectionName") String sectionName, RedirectAttributes redirecAttributes, HttpSession session, HttpServletRequest request) {
+		//los enlaces van a ser siempre los mismos lo unico que ten la session tenemos en qe seccion estamos para luego al hacer las consultas pasarlo
+		//SectionsMapping s = (SectionsMapping)session.getAttribute("currentSection");
 		return "home";
 	}
 }
