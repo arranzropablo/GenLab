@@ -20,22 +20,18 @@
 					<!-- Se recuperan las calculationTools para la sección que estemos -->
 					<tr th:each="calculationTool : ${calculationTools}">
 						<td>
-							<a th:text="${calculationTool.name}" href="#"></a>
+							<a class="CTButton" th:text="${calculationTool.name}" th:href="'/calculationtools/' + ${calculationTool.id}"></a>
 						</td>
 					</tr>
 				</table>
 			</div>
 			<!-- Aqui el main content -->
-			<div class="mainContentCalcTool">
-				<!-- En el th_value este tendría que ir el nombre de la calculation tool actual -->
-				<input type="text" name="calculationToolName" value="TestCross Dominance" th:value="Sustituir" />
-				<!-- Aqui habría que meter un fragmento (hacer una carpeta con los fragmentos de las calculation tools) porque 
-					 cada una se construye de una manera, necesita unos campos etc... -->
-					 
+			<div class="mainContentCalcTool" >
+				<div id="calcToolFrag" th:include="fragments/CTFragments :: 00">
+				</div>	 
 				<button type="button" class="btn btn-success">Calculate</button>
 				<button type="button" class="btn btn-danger">Clean</button>
 				<button type="button" class="btn btn-primary">Save</button>
-				
 			</div>
 		</div>
 	</body>

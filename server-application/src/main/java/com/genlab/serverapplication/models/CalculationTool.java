@@ -14,5 +14,6 @@ import lombok.Setter;
 public class CalculationTool {
 	
 	private String name;
+	private int id;
 
 }

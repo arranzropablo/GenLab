@@ -38,14 +38,14 @@ public class RecommendedBooksController {
 	}
 	
 	@GetMapping("/edit/{id}")
-	public String getEditBook(Model model, @PathVariable int id) {
+	public String getEditBook(Model model, @PathVariable("id") int id) {
 		Book b = Book.builder().name("Fahrenheit 451").id(1).isbn("123123123").link("www.google.es").author("pablo").build();
 		model.addAttribute("book", b);
 		return "bookEdit";
 	}
 	
 	@PostMapping("/edit/{id}")
-	public String postEditBook(Model model, @PathVariable int id, @ModelAttribute Book book) {
+	public String postEditBook(Model model, @PathVariable("id") int id, @ModelAttribute Book book) {
 		
 		return "bookEdit";
 	}
