@@ -14,5 +14,5 @@ import lombok.Setter;
 public class Problem {
 	private int id;
 	private String title;
-	private String date;
+	private String content;
 }

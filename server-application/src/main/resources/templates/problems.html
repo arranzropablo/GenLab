@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Problems: Genlab</title>
+	    <link rel="stylesheet" href="../static/css/theory.css" th:href="@{/css/theory.css}" type="text/css"/>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+			  <!-- Esto no deberá apuntar a home, sino a la seccion donde este.. pero no se ahora mismo donde irá eso -->
+			  <a class="breadcrumb-item" th:href="@{/home}">Home</a>
+			  <span class="breadcrumb-item active">Problems</span>
+			</nav>
+			<div class="theory-container">
+				<div id="theory-list">
+					<h2>Problems list</h2>
+					<!--<ul class="list-style" th:each="theory : ${theory_list}">
+						<li><a href="#" th:text="${theory.title}"></a></li>
+					</ul>-->
+					<table>
+						<tr th:each="problem : ${problem_list}">
+							<td th:text="${problem.title}"></td>
+							<td class="left-cell"><a th:href="@{/problem/}+${problem.id}" class="text-success fa fa-pencil"></a> </td>
+						</tr>
+						<tr>
+							<td> <a href="/problem/newProblem" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Problem </a></td>		
+						</tr>
+					</table>
+				</div>
+				<div id="theory-fragment">
+					<h3>Title</h3>
+					<input class="theory-elements" type="text" name="theory-title" th:value="${actual_problem.title}"/>
+					<h3 class="theory-elements" type="text">Content</h3>
+					<textarea class="theory-elements" type="text" rows="10" cols="60" name="theory-content" th:text="${actual_problem.content}"></textarea>
+					<button type="button" class="btn_save btn btn-block btn-lg btn-success theory-elements">Save</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
