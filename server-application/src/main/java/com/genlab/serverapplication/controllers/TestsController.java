@@ -20,6 +20,7 @@ import com.genlab.serverapplication.models.TestQuestion;
 public class TestsController {
 	
 	private List<Test> tests;
+	private int cont=0;
 	
 	/**
 	 * Determinamos los atributos que vamos a utilizar
@@ -40,13 +41,7 @@ public class TestsController {
 		model.addAttribute("pageExtraCSS", listaCSS);
 	}
 	
-	/**
-	 * Mostrar la página de resumen de tests
-	 * **/
-	@RequestMapping(value="/tests", method=RequestMethod.GET)
-	public String allTests(HttpServletRequest request, Model model) {
-		
-		añadirCSSalModelo(model);
+	private void initializeTests() {
 		
 		TestAnswer answer11 = new TestAnswer("abc", true);
 		TestAnswer answer12 = new TestAnswer("def", false);
@@ -87,8 +82,21 @@ public class TestsController {
 		
 		tests = new ArrayList<Test>();
 		tests.add(test1);
+		cont++;
 		tests.add(test2);
+		cont++;
+	}
+	
+	/**
+	 * Mostrar la página de resumen de tests
+	 * **/
+	@RequestMapping(value="/tests", method=RequestMethod.GET)
+	public String allTests(HttpServletRequest request, Model model) {
 		
+		añadirCSSalModelo(model);
+		if(cont==0) {
+			initializeTests();
+		}
 		model.addAttribute("tests",tests);		
 		return "tests";
 	}
@@ -103,6 +111,36 @@ public class TestsController {
 		}else {
 			añadirCSSalModelo(model);
 			Test t = tests.get((int) id);
+			model.addAttribute("test",t);		
+			return "test";
+		}
+	}
+	
+	/**
+	 * Añadir un Test
+	 * **/
+	@RequestMapping(value = "/tests/newTest", method=RequestMethod.GET)
+	public String addTest(HttpServletRequest request, Model model) {
+		añadirCSSalModelo(model);
+		Test t = new Test("New Test"+(cont+1), new ArrayList<TestQuestion>());
+		t.setId(cont);
+		tests.add(t);
+		cont++;
+		model.addAttribute("tests",tests);
+		return "tests";
+	}
+	
+	/**
+	 * Añadir una pregunta
+	 * */
+	@RequestMapping(value = "/tests/{id}/newQ", method=RequestMethod.GET)
+	public String addQuestion(@PathVariable("id") long id, HttpServletRequest request, Model model) {
+		if(id > tests.size()-1) {
+			return "redirect:/tests";
+		}else {
+			añadirCSSalModelo(model);
+			Test t = tests.get((int) id);
+			t.getQuestions().add(new TestQuestion("", new ArrayList<TestAnswer>()));
 			model.addAttribute("test",t);		
 			return "test";
 		}
