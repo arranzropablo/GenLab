@@ -15,9 +15,26 @@ import com.genlab.serverapplication.models.CalculationTool;
 @RequestMapping("/calculationtools")
 public class CalculationToolsController {
 
+//	@GetMapping("")
+//	public String getCalculationTool(Model model) {
+//		//se carga primero el 00 y luego por javascript pide fragmentos
+//		List<CalculationTool> calculationTools = new ArrayList<>();
+//		calculationTools.add(CalculationTool.builder().name("Testcross Dominance").id(0).build());
+//		calculationTools.add(CalculationTool.builder().name("F2 Dominance").id(1).build());
+//		
+//		model.addAttribute("calculationTools", calculationTools);
+//		
+//		return "calculationTools";
+//	}
+	
 	@GetMapping("")
 	public String getCalculationTool(Model model) {
-		//se carga primero el 00 y luego por javascript pide fragmentos
+		return "redirect:/calculationtools/10";
+	}
+	
+	@GetMapping("/{id}")
+	public String getCalculationTool(@PathVariable("id") int id, Model model) {
+		
 		List<CalculationTool> calculationTools = new ArrayList<>();
 		calculationTools.add(CalculationTool.builder().name("Testcross Dominance").id(0).build());
 		calculationTools.add(CalculationTool.builder().name("F2 Dominance").id(1).build());
@@ -27,21 +44,4 @@ public class CalculationToolsController {
 		return "calculationTools";
 	}
 	
-//	@GetMapping("")
-//	public String getCalculationTool(Model model) {
-//		return "redirect:/calculationtools/0";
-//	}
-//	
-//	@GetMapping("/{id}")
-//	public String getCalculationTool(@PathVariable("id") int id, Model model) {
-//		
-//		List<CalculationTool> calculationTools = new ArrayList<>();
-//		calculationTools.add(CalculationTool.builder().name("Testcross Dominance").id(0).build());
-//		calculationTools.add(CalculationTool.builder().name("F2 Dominance").id(1).build());
-//		
-//		model.addAttribute("calculationTools", calculationTools);
-//		
-//		return "ctList";
-//	}
-//	
 }

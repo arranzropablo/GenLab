@@ -29,7 +29,36 @@
 
 <!-- ONE LOCUS -->
 <div th:fragment="10">
-	<input type="text" name="calculationToolName" value="Testcross" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-3">Types</label>
+				<label class="col-3" for="observedCapitalA">A</label>
+				<label class="col-3" for="observedLowerCasea">a</label>
+				<label class="col-3">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-3">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalA" id="observedCapitalA"/>
+				<input class="col-2" type="text" name="observedLowerCasea" id="observedLowerCasea"/>
+				<label class="col-3" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-4" th:text="${expectedValue}"></label>
+				<label class="col-4" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+			
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> (df = 1) =</label>
+				<label class="col-4" th:text="chiValue"></label>
+			</div>
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
 <div th:fragment="11">
 	<input type="text" name="calculationToolName" value="F2 Dominance" th:value="Sustituir" />

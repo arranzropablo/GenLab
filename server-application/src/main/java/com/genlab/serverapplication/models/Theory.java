@@ -1,7 +1,5 @@
 package com.genlab.serverapplication.models;
 
-import com.genlab.serverapplication.models.Problem.ProblemBuilder;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

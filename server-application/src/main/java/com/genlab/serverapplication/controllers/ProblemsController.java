@@ -1,8 +1,6 @@
 package com.genlab.serverapplication.controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.genlab.serverapplication.models.Problem;
-import com.genlab.serverapplication.models.Theory;
 
 @Controller
 public class ProblemsController {

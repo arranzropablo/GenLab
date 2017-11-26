@@ -14,6 +14,7 @@ import com.genlab.serverapplication.models.Theory;
 
 @Controller
 public class TheoryController {
+	
 	private ArrayList<Theory> theory_list;
 	private Theory actual_theory;
 	
