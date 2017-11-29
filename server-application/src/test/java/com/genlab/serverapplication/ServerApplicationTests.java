@@ -11,7 +11,6 @@ public class ServerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		
 	}
 
 }
