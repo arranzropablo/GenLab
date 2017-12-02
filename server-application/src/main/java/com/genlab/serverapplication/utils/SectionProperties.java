@@ -1,12 +1,11 @@
 package com.genlab.serverapplication.utils;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Getter

@@ -1,8 +1,8 @@
 package com.genlab.serverapplication.services;
 
-import java.util.List;
-
 import com.genlab.serverapplication.models.Theory;
+
+import java.util.List;
 
 public interface TheoryService {
 	

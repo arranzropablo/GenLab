@@ -1,12 +1,12 @@
 package com.genlab.serverapplication.models;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter

@@ -1,13 +1,12 @@
 package com.genlab.serverapplication.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.genlab.serverapplication.models.Theory;
+import com.genlab.serverapplication.repositories.TheoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.genlab.serverapplication.models.Theory;
-import com.genlab.serverapplication.repositories.TheoryRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TheoryServiceImpl implements TheoryService {

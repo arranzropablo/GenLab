@@ -1,12 +1,11 @@
 package com.genlab.serverapplication.config;
 
+import com.genlab.serverapplication.interceptor.CurrentSectionInterceptor;
+import com.genlab.serverapplication.interceptor.MenuInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import com.genlab.serverapplication.interceptor.CurrentSectionInterceptor;
-import com.genlab.serverapplication.interceptor.MenuInterceptor;
 
 @Configuration
 public class GenLabConfig extends WebMvcConfigurerAdapter{

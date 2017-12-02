@@ -1,13 +1,12 @@
 package com.genlab.serverapplication.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import com.genlab.serverapplication.models.SectionsMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.genlab.serverapplication.models.SectionsMapping;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class CurrentSectionInterceptor extends HandlerInterceptorAdapter {
 	
