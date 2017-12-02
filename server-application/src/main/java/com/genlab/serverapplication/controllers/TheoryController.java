@@ -46,7 +46,7 @@ public class TheoryController {
 	
 	@RequestMapping(value = "/theory/newTheory", method=RequestMethod.GET)
 	public String newTheory(HttpServletRequest request, Model model) {
-		actual_theory = new Theory(1, "New Theory", "");
+		actual_theory = new Theory(Integer.toUnsignedLong(cont), "New Theory", "");
 		
 		model.addAttribute("theory_list", service.getAllTheory());
 		model.addAttribute("actual_theory", actual_theory);
@@ -57,14 +57,16 @@ public class TheoryController {
 	@RequestMapping(value = "/theory/saveTheory", method=RequestMethod.POST)
 	public String saveTheory(@RequestParam("theory-title") String title, @RequestParam("theory-content") String content, @RequestParam("theory-id") Integer id, HttpServletRequest request, Model model) {
 		int ident = id;
+		Theory th;
 		if(service.existsTheory((long)ident)) {
-			Theory th = new Theory(ident, title, content);
+			th = service.getTheory(ident);
+			th.setTitle(title);
+			th.setContent(content);
 		}else {
-			Theory th = new Theory(Integer.toUnsignedLong(cont), title, content);
-			service.saveTheory(th);
+			th = new Theory(Integer.toUnsignedLong(cont), title, content);
 			actual_theory = th;
 		}
-		
+		service.saveTheory(th);
 		return "redirect:/theory";
 	}
 	

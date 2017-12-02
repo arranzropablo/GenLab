@@ -23,9 +23,6 @@
 			<div class="theory-container">
 				<div id="theory-list">
 					<h2>Theory list</h2>
-					<!--<ul class="list-style" th:each="theory : ${theory_list}">
-						<li><a href="#" th:text="${theory.title}"></a></li>
-					</ul>-->
 					<table>
 						<tr th:each="theory : ${theory_list}">
 							<td th:text="${theory.title}"></td>
@@ -51,7 +48,7 @@
 				      $('#summernote').summernote({
 				        placeholder: 'Insert the theory',
 				        tabsize: 2,
-				        height: 500
+				        height: 400
 				      });
 				    </script>
 				</div>
