@@ -1,19 +1,18 @@
 package com.genlab.serverapplication.services;
 
-import com.genlab.serverapplication.models.Theory;
-
 import java.util.List;
+
+import com.genlab.serverapplication.models.Theory;
 
 public interface TheoryService {
 	
 	public List<Theory> getAllTheory();
 	
-	public Theory getTheory(long id);
+	public Theory getTheory(int id);
 	
-	public void saveTheory(Theory t);
+	public int saveTheory(Theory t);
 	
-	public void deleteTheory(long id);
+	public void deleteTheory(int id);
 	
-	public boolean existsTheory(long id);
-	
+	public List<Theory> getTheoryBySection(int sectionid);
 }

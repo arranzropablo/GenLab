@@ -1,12 +1,13 @@
 package com.genlab.serverapplication.interceptor;
 
-import com.genlab.serverapplication.utils.SectionProperties;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.genlab.serverapplication.utils.SectionProperties;
 
 public class MenuInterceptor extends HandlerInterceptorAdapter{
 	

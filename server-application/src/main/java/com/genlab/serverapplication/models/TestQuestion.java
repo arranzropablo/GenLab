@@ -1,11 +1,11 @@
 package com.genlab.serverapplication.models;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter

@@ -1,9 +1,9 @@
 package com.genlab.serverapplication.services.ctservice;
 
-import com.genlab.serverapplication.viewobjects.CTResult;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import com.genlab.serverapplication.viewobjects.CTResult;
 
 public class CTOneLocus {
 

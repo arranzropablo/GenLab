@@ -1,12 +1,12 @@
 package com.genlab.serverapplication.services;
 
-import com.genlab.serverapplication.models.Theory;
-import com.genlab.serverapplication.repositories.TheoryRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.genlab.serverapplication.models.Theory;
+import com.genlab.serverapplication.repositories.TheoryRepository;
 
 @Service
 public class TheoryServiceImpl implements TheoryService {
@@ -15,24 +15,23 @@ public class TheoryServiceImpl implements TheoryService {
 	private TheoryRepository theoryRepository;
 	
 	public List<Theory> getAllTheory() {
-		List<Theory> theories = new ArrayList<Theory>();
-		theoryRepository.findAll().forEach(theories::add);
-		return theories;
+		return (List<Theory>) theoryRepository.findAll();
 	}
 	
-	public Theory getTheory(long id) {
+	public Theory getTheory(int id) {
 		return theoryRepository.findOne(id);
 	}
 	
-	public void saveTheory(Theory t) {
-		theoryRepository.save(t);
+	public int saveTheory(Theory t) {
+		return theoryRepository.save(t).getId();
 	}
 	
-	public void deleteTheory(long id) {
+	public List<Theory> getTheoryBySection(int sectionid){
+		return theoryRepository.findBySectionid(sectionid);
+	}
+	
+	public void deleteTheory(int id) {
 		theoryRepository.delete(id);
 	}
 	
-	public boolean existsTheory(long id) {
-		return theoryRepository.exists(id);
-	}
 }

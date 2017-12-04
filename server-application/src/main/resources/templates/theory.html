@@ -25,23 +25,22 @@
 					<h2>Theory list</h2>
 					<table>
 						<tr th:each="theory : ${theory_list}">
-							<td th:text="${theory.title}"></td>
-							<td class="left-cell"><a th:href="@{/theory/}+${theory.id}" class="text-success fa fa-pencil"></a> </td>
+							<td th:text="${theory.titulo}"></td>
+							<td class="left-cell"><a th:href="@{/theory/detail/}+${theory.id}" class="text-success fa fa-pencil"></a> </td>
 						</tr>
 						<tr>
-							<td> <a href="/theory/newTheory" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Theory </a></td>		
+							<td> <a href="/theory/new" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Theory </a></td>		
 						</tr>
 					</table>
 				</div>
 				<div id="theory-fragment">
-					<form action="/theory/saveTheory" method="post">
+					<form th:action="@{/theory/save/} + ${actual_theory.id}" method="post">
 						<h3>Title</h3>
-						<input class="theory-elements" type="text" name="theory-title" id="theory-title" th:value="${actual_theory.title}"/>
+						<input class="theory-elements" type="text" name="theory-title" id="theory-title" th:value="${actual_theory.titulo}"/>
 						<h3 class="theory-elements" type="text">Content</h3>
-						<textarea class="theory-elements" type="text" rows="10" cols="60" id="summernote" name="theory-content" th:text="${actual_theory.content}"></textarea>    
+						<textarea class="theory-elements" type="text" rows="10" cols="60" id="summernote" name="theory-content" th:text="${actual_theory.contenido}"></textarea>    
 						<!-- <textarea class="theory-elements" type="text" rows="10" cols="60" name="theory-content" id="theory-content" th:text="${actual_theory.content}"></textarea> -->
 						<hr></hr>
-						<input type="hidden" name="theory-id" th:value="${actual_theory.id}"></input>
 						<button type="submit" class="btn_save btn btn-block btn-lg btn-success theory-elements">Save</button>
 					</form>
 					<script>
