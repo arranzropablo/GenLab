@@ -16,6 +16,7 @@ public class Book {
 	private int id;
 	private String name;
 	private String author;
+	private String editorial;
 	private String isbn;
 	private String link;
 	

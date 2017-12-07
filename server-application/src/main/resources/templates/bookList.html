@@ -29,6 +29,7 @@
 						<tr th:each="book : ${books}">
 							<td th:text="${book.name}"></td>
 							<td th:text="${book.author}"></td>
+							<td th:text="${book.editorial}"></td>
 							<td th:text="${book.isbn}"></td>
 							<td><a th:text="${book.link}" th:href="'http://' + ${book.link}"></a></td>
 							<td> <a th:href="@{/recommendedbooks/edit/}+${book.id}" class="text-success fa fa-pencil"></a> </td>
