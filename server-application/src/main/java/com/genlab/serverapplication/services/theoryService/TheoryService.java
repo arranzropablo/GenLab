@@ -1,4 +1,4 @@
-package com.genlab.serverapplication.services;
+package com.genlab.serverapplication.services.theoryService;
 
 import java.util.List;
 

@@ -22,19 +22,19 @@
 					</ul>-->
 					<table>
 						<tr th:each="problem : ${problem_list}">
-							<td th:text="${problem.title}"></td>
-							<td class="left-cell"><a th:href="@{/problem/}+${problem.id}" class="text-success fa fa-pencil"></a> </td>
+							<td th:text="${problem.nombre}"></td>
+							<td class="left-cell"><a th:href="@{/problems/problem/}+${problem.id}" class="text-success fa fa-pencil"></a> </td>
 						</tr>
 						<tr>
-							<td> <a href="/problem/newProblem" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Problem </a></td>		
+							<td> <a href="/problems/new" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Problem </a></td>		
 						</tr>
 					</table>
 				</div>
 				<div id="theory-fragment">
 					<h3>Title</h3>
-					<input class="theory-elements" type="text" name="theory-title" th:value="${actual_problem.title}"/>
+					<input class="theory-elements" type="text" name="theory-title" th:value="${actual_problem.nombre}"/>
 					<h3 class="theory-elements" type="text">Content</h3>
-					<textarea class="theory-elements" type="text" rows="10" cols="60" name="theory-content" th:text="${actual_problem.content}"></textarea>
+					<textarea class="theory-elements" type="text" rows="10" cols="60" name="theory-content" th:text="${actual_problem.contenido}"></textarea>
 					<button type="button" class="btn_save btn btn-block btn-lg btn-success theory-elements">Save</button>
 				</div>
 			</div>

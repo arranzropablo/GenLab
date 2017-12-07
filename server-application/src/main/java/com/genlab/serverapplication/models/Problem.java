@@ -1,5 +1,13 @@
 package com.genlab.serverapplication.models;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,8 +19,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Problem {
+@Entity
+public class Problem implements Serializable{
+
+	private static final long serialVersionUID = -8746073094244213452L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String title;
-	private String content;
+	@Column
+	private int sectionid;
+	@Column
+	private String nombre;
+	@Column
+	private String contenido;
 }
