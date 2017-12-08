@@ -24,42 +24,48 @@
 			</nav>
 			<div class="container">
 				<div id="c_test">
-					<div class="testTitle">
-						<input type="text" th:value="${test.name}"></input>
-					</div>
-					<hr></hr>
-					<div class="row" th:each="question,iterationStatus: ${test.questions}">
-						<div class="c_question">
-							<span class="q_num badge"><p th:text="${iterationStatus.count}"></p></span>
-							<textarea th:text="${question.statement}"></textarea>
-							<table class="table c_answers">
-								<tbody>
-									<tr class="bg-info" th:each="answer: ${question.answers}">
-										<td ><textarea th:text="${answer.answer}"></textarea></td>
-										<td th:if="${answer.right}">
-											<input type="checkbox" checked="checked"></input>
-										</td>
-										<td  th:unless="${answer.right}">
-											<input type="checkbox"></input>
-										</td>
-										<td > <span class="text-danger fa fa-times"></span> </td>
-									</tr>
-									<tr>
-										<td colspan="3"> <a class="btn btn-default"><span class="fa fa-plus-circle"></span> Add new answer </a></td>						
-									</tr>
-								</tbody>
-							</table>
-							<hr></hr>
+					<form action="#" th:action="@{/tests/}+${test.id}+@{/save}" th:object="${test}" method="post">
+						<div class="testTitle">
+							<input th:field="*{name}" type="text" th:value="${test.name}"></input>
 						</div>
-						<div class="c_del">
-							<span class="fa fa-trash"></span>	
+						<hr></hr>
+						<div class="row" th:each="question,iterationStatus: ${test.questions}">
+							<div class="c_question">
+								<input id="id" th:field="*{questions[__${iterationStatus.count-1}__].id}" th:value="${question.id}" type="hidden"/>
+								<span class="q_num badge"><p th:text="${iterationStatus.count}"></p></span>
+								<textarea th:field="*{questions[__${iterationStatus.count-1}__].statement}" th:text="${question.statement}"></textarea>
+								<table class="table c_answers">
+									<tbody>
+										<tr class="bg-info" th:each="answer,status: ${question.answers}">
+											<input id="id" th:field="*{questions[__${iterationStatus.count-1}__].answers[__${status.index}__].id}" th:value="${answer.id}" type="hidden"/>
+											<td><textarea th:field="*{questions[__${iterationStatus.count-1}__].answers[__${status.index}__].answer}" th:text="${answer.answer}"></textarea></td>
+											<td th:if="${answer.right}">
+												<input th:field="*{questions[__${iterationStatus.count-1}__].answers[__${status.index}__].right}" type="checkbox" checked="checked"></input>
+											</td>
+											<td th:unless="${answer.right}">
+												<input th:field="*{questions[__${iterationStatus.count-1}__].answers[__${status.index}__].right}" type="checkbox"></input>
+											</td>
+											<td> 
+												<a th:href="@{/tests/}+${test.id}+@{/}+${question.id}+@{/}+${answer.id}+@{/delete}" class="btn btn-default"> <span class="text-danger fa fa-times"></span> </a> 
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3"> <a th:href="@{/tests/}+${test.id}+@{/}+${question.id}+@{/newA}" class="btn btn-default"><span class="fa fa-plus-circle"></span> Add new answer </a></td>						
+										</tr>
+									</tbody>
+								</table>
+								<hr></hr>
+							</div>
+							<div class="c_del">
+								<a th:href="@{/tests/}+${test.id}+@{/}+${question.id}+@{/delete}" class="btn btn-default"><span class="fa fa-trash"></span></a>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<a th:href="@{/tests/}+${test.id}+@{/newQ}" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Add new question</a>
-					</div>
+						<div class="row">
+							<a th:href="@{/tests/}+${test.id}+@{/newQ}" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Add new question</a>
+						</div>
+						<button class="btn_save btn btn-block btn-lg btn-success" type="submit">Save</button>
+					</form>
 				</div>
-				<button type="button" class="btn_save btn btn-block btn-lg btn-success">Save</button>
 			</div>
 		</div>
 	</body>

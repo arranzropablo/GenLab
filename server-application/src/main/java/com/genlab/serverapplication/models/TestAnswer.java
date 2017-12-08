@@ -1,21 +1,48 @@
 package com.genlab.serverapplication.models;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+@Builder
 @Getter
 @Setter
+@AllArgsConstructor
 @RequiredArgsConstructor
-public class TestAnswer {
+@NoArgsConstructor
+@Entity
+@Table(name="answers")
+public class TestAnswer implements Serializable{
 	
-	//RequiredArgsConstructor hace un constructor para los atributos anotados como @NonNull (es el constructor que tenias)
+	private static final long serialVersionUID = -1210639934795172773L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
-	private long id;
+	@Column(name="texto")
 	@NonNull
 	private String answer;
+	
+	@Column(name="correcta")
 	@NonNull
 	private boolean right;
+	
+	@ManyToOne(targetEntity = TestQuestion.class)
+	private TestQuestion pregunta;
 	
 }
