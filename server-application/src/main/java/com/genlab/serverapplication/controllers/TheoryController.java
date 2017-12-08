@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.genlab.serverapplication.models.SectionsMapping;
 import com.genlab.serverapplication.models.Theory;
-import com.genlab.serverapplication.services.TheoryServiceImpl;
+import com.genlab.serverapplication.services.theoryService.TheoryServiceImpl;
 
 @Controller
 @RequestMapping("/theory")

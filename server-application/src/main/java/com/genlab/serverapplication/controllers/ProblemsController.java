@@ -1,54 +1,80 @@
 package com.genlab.serverapplication.controllers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.genlab.serverapplication.models.Problem;
+import com.genlab.serverapplication.models.SectionsMapping;
+import com.genlab.serverapplication.services.problemsService.ProblemsService;
 
 @Controller
+@RequestMapping("/problems")
 public class ProblemsController {
-	private ArrayList<Problem> problem_list;
-	private Problem actual_problem;
 	
-	@RequestMapping(value = "/problems", method=RequestMethod.GET)
-	public String getTheory(HttpServletRequest request, Model model) {
-		problem_list = new ArrayList<Problem> ();
+	@Autowired
+	private ProblemsService service;
+	
+	@GetMapping("")
+	public String getProblems(HttpServletRequest request, Model model, HttpSession session) {
+		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
 		
-		this.actual_problem = new Problem();
-		problem_list.add(new Problem(1, "Demasiados genes", "Esto es el contenido de demasiados genes"));
-		this.problem_list.add(new Problem(2, "Problema 2", "Contenido del problema 2"));
+		Problem actual_problem;
+		if(problem_list.size() > 0) {
+			actual_problem = problem_list.get(0);
+		}
+		else {
+			return "redirect:/problems/new";
+		}
 		
-		model.addAttribute("problem_list", this.problem_list);
-		model.addAttribute("actual_problem", this.actual_problem);
+		model.addAttribute("problem_list", problem_list);
+		model.addAttribute("actual_problem", actual_problem);
 		
 		return "problems";
 	}
 	
-	@RequestMapping(value = "/problem/newProblem", method=RequestMethod.GET)
-	public String newTheory(HttpServletRequest request, Model model) {
-		actual_problem = new Problem(1, "New Problem", "");
+	@GetMapping("/new")
+	public String newProblem(HttpServletRequest request, Model model, HttpSession session) {
+		Problem actual_problem = Problem.builder().id(-1).build();
+		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
 		
-		model.addAttribute("problem_list", this.problem_list);
-		model.addAttribute("actual_problem", this.actual_problem);
+		model.addAttribute("problem_list", problem_list);
+		model.addAttribute("actual_problem", actual_problem);
+		
+		return "problems";
+	}
+
+	@GetMapping("/problem/{id}")
+	public String changeProblem(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
+		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
+		Problem actual_problem = service.getProblem(id);
+		
+		model.addAttribute("problem_list", problem_list);
+		model.addAttribute("actual_problem", actual_problem);
 		
 		return "problems";
 	}
 	
-	@RequestMapping(value = "/problem/{id}", method=RequestMethod.GET)
-	public String changeTheory(@PathVariable("id") long id, HttpServletRequest request, Model model) {
-		actual_problem = this.problem_list.get((int) id - 1);
-		
-		model.addAttribute("problem_list", this.problem_list);
-		model.addAttribute("actual_problem", this.actual_problem);
-		
-		return "problems";
+	@PostMapping("/save/{id}")
+	public String saveProblem(@RequestParam("problem-title") String nombre, @PathVariable("id") int id, @RequestParam("problem-content") String content, HttpServletRequest request, Model model, HttpSession session) {
+		Problem newProblem = Problem.builder().nombre(nombre).contenido(content).sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).build();
+		if(id > 0) {
+			newProblem.setId(id);
+		}
+		int nuevoID = service.saveProblem(newProblem);
+		return "redirect:/theory/detail/"+nuevoID;
 	}
+	
+	
 
 }
