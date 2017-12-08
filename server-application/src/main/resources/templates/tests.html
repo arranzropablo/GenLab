@@ -30,7 +30,7 @@
 							<td th:text="${test.date}"></td>
 							<td th:text="${test.questions.size()}"></td>
 							<td> <a th:href="@{/tests/}+${test.id}" class="text-success fa fa-pencil"></a> </td>
-							<td> <a href="#" class="text-danger fa fa-times"></a> </td>
+							<td> <a th:href="@{/tests/}+${test.id}+@{/delete}" class="text-danger fa fa-times"></a> </td>
 						</tr>
 						<tr>
 							<td colspan="5"> <a th:href="@{/tests/newTest}" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Test </a></td>						
