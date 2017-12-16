@@ -14,25 +14,28 @@
 			  <a class="breadcrumb-item" th:href="@{/home}">Home</a>
 			  <span class="breadcrumb-item active">Calculation Tools</span>
 			</nav>
-			<div class="nameAndListSection">
-				<h2>Calculation Tools</h2>
-				<table>
-					<!-- Se recuperan las calculationTools para la sección que estemos -->
-					<tr th:each="calculationTool : ${calculationTools}">
-						<td>
-							<a class="CTButton" th:text="${calculationTool.name}" th:href="'/calculationtools/' + ${calculationTool.id}"></a>
-						</td>
-					</tr>
-				</table>
+			<div class="main-container">
+				<div class="side-list">
+					<h2>Calculation Tools</h2>
+					<table>
+						<!-- Se recuperan las calculationTools para la sección que estemos -->
+						<tr th:each="calculationTool : ${calculationTools}">
+							<td>
+								<a class="CTButton" th:text="${calculationTool.name}" th:href="'/calculationtools/' + ${calculationTool.id}"></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!-- Aqui el main content -->
+				<div class="main-content-fragment" >
+					<div id="calcToolFrag" th:include="fragments/CTFragments :: 10">
+					</div>	 
+					<button type="button" class="btn btn-success">Calculate</button>
+					<button type="button" class="btn btn-danger">Clean</button>
+					<button type="button" class="btn btn-primary">Save</button>
+				</div>
 			</div>
-			<!-- Aqui el main content -->
-			<div class="mainContentCalcTool" >
-				<div id="calcToolFrag" th:include="fragments/CTFragments :: 10">
-				</div>	 
-				<button type="button" class="btn btn-success">Calculate</button>
-				<button type="button" class="btn btn-danger">Clean</button>
-				<button type="button" class="btn btn-primary">Save</button>
-			</div>
+
 		</div>
 	</body>
 </html>

@@ -5,23 +5,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<title>Theory: Genlab</title>
-	    <link rel="stylesheet" href="../static/css/theory.css" th:href="@{/css/theory.css}" type="text/css"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"/>
-	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 	    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.css" rel="stylesheet"/>
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote-bs4.js"></script>
 	</head>
 	<body>
 		<div layout:fragment="content">
 			<nav class="breadcrumb">
-			  <!-- Esto no deberá apuntar a home, sino a la seccion donde este.. pero no se ahora mismo donde irá eso -->
 			  <a class="breadcrumb-item" th:href="@{/home}">Home</a>
 			  <span class="breadcrumb-item active">Theory</span>
 			</nav>
-			<div class="theory-container">
-				<div id="theory-list">
+			<div class="main-container">
+				<div class="side-list">
 					<h2>Theory list</h2>
 					<table>
 						<tr th:each="theory : ${theory_list}">
@@ -33,15 +27,14 @@
 						</tr>
 					</table>
 				</div>
-				<div id="theory-fragment">
+				<div class="main-content-fragment">
 					<form th:action="@{/theory/save/} + ${actual_theory.id}" method="post">
 						<h3>Title</h3>
-						<input class="theory-elements" type="text" name="theory-title" id="theory-title" th:value="${actual_theory.titulo}"/>
-						<h3 class="theory-elements" type="text">Content</h3>
-						<textarea class="theory-elements" type="text" rows="10" cols="60" id="summernote" name="theory-content" th:text="${actual_theory.contenido}"></textarea>    
-						<!-- <textarea class="theory-elements" type="text" rows="10" cols="60" name="theory-content" id="theory-content" th:text="${actual_theory.content}"></textarea> -->
+						<input class="editor-elements" type="text" name="theory-title" id="theory-title" th:value="${actual_theory.titulo}"/>
+						<h3 class="editor-elements" type="text">Content</h3>
+						<textarea class="editor-elements" type="text" rows="10" cols="60" id="summernote" name="theory-content" th:text="${actual_theory.contenido}"></textarea>    
 						<hr></hr>
-						<button type="submit" class="btn_save btn btn-block btn-lg btn-success theory-elements">Save</button>
+						<button type="submit" class="btn_save btn btn-block btn-lg btn-success editor-elements">Save</button>
 					</form>
 					<script>
 				      $('#summernote').summernote({
