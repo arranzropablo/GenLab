@@ -6,7 +6,7 @@
 	<groupId>com.genlab</groupId>
 	<artifactId>server-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>server-application</name>
 	<description>Genetic app project</description>
@@ -74,6 +74,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>genlab</finalName>
 		<plugins>
 			<plugin>
                 <groupId>org.springframework.boot</groupId>
