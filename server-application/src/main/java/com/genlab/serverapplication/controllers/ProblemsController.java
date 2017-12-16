@@ -29,52 +29,42 @@ public class ProblemsController {
 	public String getProblems(HttpServletRequest request, Model model, HttpSession session) {
 		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
 		
-		Problem actual_problem;
 		if(problem_list.size() > 0) {
-			actual_problem = problem_list.get(0);
+			model.addAttribute("actual_problem", problem_list.get(0));
 		}
 		else {
 			return "redirect:/problems/new";
 		}
 		
 		model.addAttribute("problem_list", problem_list);
-		model.addAttribute("actual_problem", actual_problem);
 		
 		return "problems";
 	}
 	
 	@GetMapping("/new")
 	public String newProblem(HttpServletRequest request, Model model, HttpSession session) {
-		Problem actual_problem = Problem.builder().id(-1).build();
-		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
-		
+		List<Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
 		model.addAttribute("problem_list", problem_list);
-		model.addAttribute("actual_problem", actual_problem);
-		
-		return "problems";
-	}
-
-	@GetMapping("/problem/{id}")
-	public String changeProblem(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
-		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
-		Problem actual_problem = service.getProblem(id);
-		
-		model.addAttribute("problem_list", problem_list);
-		model.addAttribute("actual_problem", actual_problem);
+		model.addAttribute("actual_problem", Problem.builder().id(-1).build());
 		
 		return "problems";
 	}
 	
 	@PostMapping("/save/{id}")
-	public String saveProblem(@RequestParam("problem-title") String nombre, @PathVariable("id") int id, @RequestParam("problem-content") String content, HttpServletRequest request, Model model, HttpSession session) {
+	public String saveProblem(@RequestParam("problem-name") String nombre, @PathVariable("id") int id, @RequestParam("problem-content") String content, HttpServletRequest request, Model model, HttpSession session) {
 		Problem newProblem = Problem.builder().nombre(nombre).contenido(content).sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).build();
 		if(id > 0) {
 			newProblem.setId(id);
 		}
 		int nuevoID = service.saveProblem(newProblem);
-		return "redirect:/theory/detail/"+nuevoID;
+		return "redirect:/problems/detail/"+nuevoID;
 	}
-	
-	
+
+	@GetMapping("/detail/{id}")
+	public String changeProblem(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
+		model.addAttribute("problem_list", service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId()));
+		model.addAttribute("actual_problem", service.getProblem(id));
+		return "problems";
+	}
 
 }
