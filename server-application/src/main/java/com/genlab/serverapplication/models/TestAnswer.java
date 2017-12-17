@@ -22,7 +22,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="answers")
@@ -34,13 +33,11 @@ public class TestAnswer implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="texto")
-	@NonNull
-	private String answer;
+	@Column
+	private String texto;
 	
-	@Column(name="correcta")
-	@NonNull
-	private boolean right;
+	@Column
+	private boolean correcta;
 	
 	@ManyToOne(targetEntity = TestQuestion.class)
 	private TestQuestion pregunta;

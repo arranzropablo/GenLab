@@ -1,4 +1,4 @@
-package com.genlab.serverapplication.services;
+package com.genlab.serverapplication.services.testsService;
 
 import java.util.List;
 import com.genlab.serverapplication.models.TestQuestion;
@@ -11,7 +11,7 @@ public interface TestQuestionService {
 	
 	public TestQuestion getQuestion(int id);
 	
-	public int saveQuestion(TestQuestion t);
+	public TestQuestion saveQuestion(TestQuestion t);
 	
 	public void deleteQuestion(int id);
 	

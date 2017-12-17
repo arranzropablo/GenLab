@@ -62,9 +62,14 @@ public class ProblemsController {
 
 	@GetMapping("/detail/{id}")
 	public String changeProblem(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
-		model.addAttribute("problem_list", service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId()));
-		model.addAttribute("actual_problem", service.getProblem(id));
-		return "problems";
+		if(service.existsProblem(id)) {
+			model.addAttribute("problem_list", service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId()));
+			model.addAttribute("actual_problem", service.getProblem(id));
+			return "problems";
+		}else {
+			return "redirect:/problems";
+		}
+
 	}
 
 }

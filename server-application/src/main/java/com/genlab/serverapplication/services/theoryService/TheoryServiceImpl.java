@@ -34,4 +34,8 @@ public class TheoryServiceImpl implements TheoryService {
 		theoryRepository.delete(id);
 	}
 	
+	public boolean existsTheory(int id) {
+		return theoryRepository.exists(id);
+	}
+	
 }

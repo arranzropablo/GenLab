@@ -1,4 +1,4 @@
-package com.genlab.serverapplication.services;
+package com.genlab.serverapplication.services.testsService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

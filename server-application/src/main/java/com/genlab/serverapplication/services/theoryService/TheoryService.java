@@ -15,4 +15,7 @@ public interface TheoryService {
 	public void deleteTheory(int id);
 	
 	public List<Theory> getTheoryBySection(int sectionid);
+	
+	public boolean existsTheory(int id);
+	
 }

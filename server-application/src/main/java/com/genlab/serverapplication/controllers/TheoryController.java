@@ -63,8 +63,12 @@ public class TheoryController {
 	
 	@GetMapping("/detail/{id}")
 	public String changeTheory(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
-		model.addAttribute("theory_list", service.getTheoryBySection(((SectionsMapping)session.getAttribute("currentSection")).getId()));
-		model.addAttribute("actual_theory", service.getTheory(id));
-		return "theory";
+		if(service.existsTheory(id)) {
+			model.addAttribute("theory_list", service.getTheoryBySection(((SectionsMapping)session.getAttribute("currentSection")).getId()));
+			model.addAttribute("actual_theory", service.getTheory(id));
+			return "theory";
+		}else {
+			return "redirect:/theory";
+		}
 	}
 }

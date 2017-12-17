@@ -20,6 +20,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Wither;
 
 @Builder
 @Getter
@@ -27,6 +28,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Wither
 @Table(name="tests")
 public class Test implements Serializable{
 	
@@ -38,27 +40,9 @@ public class Test implements Serializable{
 	@Column
 	private int sectionid;
 	@Column(name="titulo")
-	private String name;
-	@Column(name="fecha")
-	private String date;
-	//
-	//private CalculationTool calculation;
-	//
+	private String titulo;
+
 	@OneToMany(targetEntity=TestQuestion.class, mappedBy="test", cascade=CascadeType.ALL)
 	private List<TestQuestion> questions;
-	
-	
-	public Test(String name, ArrayList<TestQuestion> questions, int sectionId) {
-		super();
-		this.name = name;
-		this.sectionid= sectionId;
-		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-		this.date = f.format(new Date());
-		this.questions = questions;
-	}
-	
-	public void setDate(Date date) {
-		SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-		this.date = f.format(date);
-	}
+
 }

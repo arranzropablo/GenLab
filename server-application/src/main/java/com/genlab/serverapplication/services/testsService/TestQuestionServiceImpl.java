@@ -1,4 +1,4 @@
-package com.genlab.serverapplication.services;
+package com.genlab.serverapplication.services.testsService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,8 @@ public class TestQuestionServiceImpl implements TestQuestionService{
 		return testQuestionRepository.findOne(id);
 	}
 	
-	public int saveQuestion(TestQuestion t) {
-		return testQuestionRepository.save(t).getId();
+	public TestQuestion saveQuestion(TestQuestion t) {
+		return testQuestionRepository.save(t);
 	}
 	
 	public void deleteQuestion(int id) {

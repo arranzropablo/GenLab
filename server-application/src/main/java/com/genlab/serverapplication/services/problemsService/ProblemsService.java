@@ -14,4 +14,7 @@ public interface ProblemsService {
 	public void deleteProblem(int id);
 	
 	public List<Problem> getProblemsBySection(int sectionid);
+	
+	public boolean existsProblem(int id);
+	
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,55 +15,35 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.genlab.serverapplication.models.SectionsMapping;
 import com.genlab.serverapplication.models.Test;
 import com.genlab.serverapplication.models.TestAnswer;
 import com.genlab.serverapplication.models.TestQuestion;
-import com.genlab.serverapplication.services.TestAnswerServiceImpl;
-import com.genlab.serverapplication.services.TestQuestionServiceImpl;
-import com.genlab.serverapplication.services.TestServiceImpl;
+import com.genlab.serverapplication.services.testsService.TestAnswerService;
+import com.genlab.serverapplication.services.testsService.TestQuestionService;
+import com.genlab.serverapplication.services.testsService.TestQuestionServiceImpl;
+import com.genlab.serverapplication.services.testsService.TestService;
+import com.genlab.serverapplication.services.testsService.TestServiceImpl;
 
 @Controller
 @RequestMapping("/tests")
 public class TestsController {
 	
 	@Autowired
-	private TestServiceImpl serviceT;
-	@Autowired
-	private TestQuestionServiceImpl serviceQ;
-	@Autowired
-	private TestAnswerServiceImpl serviceA;
+	private TestService testService;
 	
+	private TestQuestionService testQuestionService;
 	
-	private Test testTemp;
-	/**
-	 * Determinamos los atributos que vamos a utilizar
-	 * */
-	@ModelAttribute
-	public void addAttributes(Model m) {
-		m.addAttribute("prefixCSS", "/css/");
-		m.addAttribute("prefix", "../static/");
-		m.addAttribute("base", "../");
-	}
-	
-	/**
-	 * Añadimos los documentos CSS que necesitamos
-	 * */
-	public static void añadirCSSalModelo(Model model) {
-		List<String> listaCSS = new ArrayList<String>();
-		listaCSS.add("tests.css");
-		model.addAttribute("pageExtraCSS", listaCSS);
-	}
-	
+	private TestAnswerService testAnswerService;
 	
 	/**
 	 * Mostrar la página de resumen de tests
 	 * **/
 	@GetMapping("")
 	public String allTests(HttpServletRequest request, Model model, HttpSession session) {
-		List<Test> test_list = serviceT.getTestBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
-		añadirCSSalModelo(model);
+		List<Test> test_list = testService.getTestBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
 		model.addAttribute("tests",test_list);		
 		return "tests";
 	}
@@ -72,15 +51,16 @@ public class TestsController {
 	/**
 	 * Mostrar la página de un test por ID
 	 * **/
-	@GetMapping("/{id}")
-	public String oneTest(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
-		if(serviceT.existsTest(id)) {
-			añadirCSSalModelo(model);
-			Test t = serviceT.getTest(id);
-			testTemp = t;
-			model.addAttribute("test",t);	
+	@GetMapping("/detail/{id}")
+	public String oneTest(@PathVariable("id") int id, HttpServletRequest request, @ModelAttribute("currentTest") Test currentTest, Model model) {
+		if(currentTest != null && currentTest.getTitulo() != null) {			
+			model.addAttribute("test", currentTest);	
 			return "test";
-		}else {
+		} else if(testService.existsTest(id)) {
+			Test retrievedTest = testService.getTest(id);
+			model.addAttribute("test", retrievedTest);	
+			return "test";
+		} else {
 			return "redirect:/tests";
 		}
 	}
@@ -88,114 +68,96 @@ public class TestsController {
 	/**
 	 * Añadir un Test
 	 * **/
-	@GetMapping("/newTest")
-	@Transactional
+	@GetMapping("/new")
 	public String addTest(HttpServletRequest request, Model model, HttpSession session) {
-		añadirCSSalModelo(model);
-		Test t = new Test("New Test", new ArrayList<TestQuestion>(),((SectionsMapping)session.getAttribute("currentSection")).getId());
-		serviceT.saveTest(t);
-		return "redirect:/tests";
-	}
-	
-	/**
-	 * Borra un test por ID
-	 * **/
-	@GetMapping("/{id}/delete")
-	public String deleteTest(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
-		if(serviceT.existsTest(id)) {
-			serviceT.deleteTest(id);
-			return "redirect:/tests";
-		}else {
-			return "redirect:/tests";
-		}
+		Test newTest = Test.builder().titulo("New Test").questions(new ArrayList<TestQuestion>()).sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).build();
+		session.setAttribute("currentTest", newTest);
+		model.addAttribute("test", newTest);
+		return "test";
 	}
 	
 	/**
 	 * Añadir una pregunta
-	 * */
-	@GetMapping("/{id}/newQ")
-	@Transactional
-	public String addQuestion(@PathVariable("id") int id, HttpServletRequest request, Model model) {
-		if(serviceT.existsTest(id)) {
-			Test t = serviceT.getTest(id);
-			TestQuestion q = new TestQuestion("New Question", new ArrayList<TestAnswer>());
-			q.setTest(t);
-			serviceQ.saveQuestion(q);	
-			return "redirect:/tests/"+id;
-		}else {
-			return "redirect:/tests";
+	 * 
+	 */
+	@PostMapping(path="/save", params= {"questionAdd"})
+	public String addQuestion(@ModelAttribute("test") Test test, Model model, RedirectAttributes redirect) {
+		TestQuestion question = TestQuestion.builder().answers(new ArrayList<TestAnswer>()).texto("Nueva Pregunta").build();
+		if(test.getQuestions() == null) {
+			test.setQuestions(new ArrayList<TestQuestion>());
 		}
-	}
-	
-	/**
-	 * Borra una pregunta
-	 * */
-	@GetMapping("/{id}/{qId}/delete")
-	@Transactional
-	public String deleteQuestion(@PathVariable("id") int id, @PathVariable("qId") int qId, HttpServletRequest request, Model model) {
-		if(serviceT.existsTest(id)) {
-			if(serviceQ.existsQuestion(qId)) {
-				serviceQ.deleteQuestion(qId);	
-				return "redirect:/tests/"+id;
-			}
-		}
-		return "redirect:/tests";
+		test.getQuestions().add(question);
+		redirect.addFlashAttribute("currentTest", test);
+		return "redirect:/tests/detail/" + test.getId();
 	}
 	
 	/**
 	 * Añadir una respuesta a una pregunta
 	 * */
-	@GetMapping("/{id}/{qId}/newA")
-	@Transactional
-	public String addAnswer(@PathVariable("id") int id, @PathVariable("qId") int qId, HttpServletRequest request, Model model) {
-		if(serviceT.existsTest(id)) {
-			TestQuestion q = serviceQ.getQuestion(qId);
-			TestAnswer a = new TestAnswer("New Answer", false);
-			a.setPregunta(q);
-			serviceA.saveAnswer(a);
-			return "redirect:/tests/"+id;
-		}else {
-			return "redirect:/tests";
+	@PostMapping(path="/save", params= {"answerAdd"})
+	public String addAnswer(@RequestParam("questionPos") int questionPos, @ModelAttribute("test") Test test, Model model, RedirectAttributes redirect) {
+		//quitar el ID del path save en general
+		TestAnswer answer = TestAnswer.builder().correcta(false).texto("Nueva Respuesta").build();
+		TestQuestion testQ = test.getQuestions().get(questionPos);
+		if(testQ.getAnswers() == null) {
+			testQ.setAnswers(new ArrayList<TestAnswer>());
 		}
+		testQ.getAnswers().add(answer);
+		redirect.addFlashAttribute("currentTest", test);
+		return "redirect:/tests/detail/" + test.getId();
+	}
+	
+//	/**
+//	 * Guardar información del formulario de Test
+//	 * */
+//	@PostMapping("/save")
+//	public String saveTest(@ModelAttribute("test") Test test) {
+//		//hacer validaciones de que haya al menos una pregunta y una respuesta??
+//		Test testToSave = Test.builder().sectionid(test.getSectionid()).titulo(test.getTitulo()).id(test.getId()).build();
+//		int savedTest = testService.saveTest(testToSave);
+//		for(TestQuestion question : test.getQuestions()) {
+//			TestQuestion questionToSave = TestQuestion.builder().test(test.withId(savedTest)).id(question.getId()).texto(question.getTexto()).build();
+//			//estoy teniendo problemas con algo qe es null... no se lo que es :(
+//			//en vez de manytoone y onetomany lo qe voy a hacer es poner la columna directamente y al coger hago 3 consultas y ya esta
+//			TestQuestion savedQuestion = testQuestionService.saveQuestion(questionToSave);
+//			for(TestAnswer answer : question.getAnswers()) {
+//				TestAnswer answerToSave = TestAnswer.builder().correcta(answer.isCorrecta()).texto(answer.getTexto()).pregunta(savedQuestion).build();
+//				testAnswerService.saveAnswer(answerToSave);
+//			}
+//		}
+//		return "redirect:/tests";
+//	}
+	
+	
+	//PARA BORRAR NO ES POR EL ID PORQUE NO QUEREMOS HACERLO SOBRE LA BD, ES POR LA POS COMO ANTES, A N OSER QE SEA BORRAR EL TEST ENTONCES SI DE LA BD
+//	/**
+//	 * Borra un test por ID
+//	 * **/
+//	@GetMapping("/delete/{id}")
+//	public String deleteTest(@PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session) {
+//		if(testService.existsTest(id)) {
+//			testService.deleteTest(id);
+//		}
+//		return "redirect:/tests";
+//	}
+	/**
+	 * Borra una pregunta
+	 */
+	@PostMapping(path="/save", params= {"questionDel"})
+	public String deleteQuestion(@RequestParam("questionPos") int pos, @ModelAttribute("test") Test test, RedirectAttributes redirect) {
+		test.getQuestions().remove(pos);
+		redirect.addFlashAttribute("currentTest", test);
+		return "redirect:/tests/detail/" + test.getId();
 	}
 	
 	/**
 	 * Eliminar una respuesta de una pregunta
 	 * */
-	@GetMapping("/{id}/{qId}/{aId}/delete")
-	@Transactional
-	public String deleteAnswer(@PathVariable("id") int id, @PathVariable("qId") int qId,@PathVariable("aId") int aId, HttpServletRequest request, Model model) {
-		if(serviceT.existsTest(id)) {
-			if(serviceQ.existsQuestion(qId)) {
-				if(serviceA.existsAnswer(aId)) {
-					serviceA.deleteAnswer(aId);	
-					return "redirect:/tests/"+id;
-				}
-			}
-		}
-		return "redirect:/tests";
-	}
-	
-	/**
-	 * Guardar información del formulario de Test
-	 * */
-	@PostMapping("/{id}/save")
-	@Transactional
-	public String saveTest(@PathVariable("id") int id, @ModelAttribute Test test) {
-		if(serviceT.existsTest(id)) {
-			Test t = serviceT.getTest(id);
-			for(TestQuestion q: test.getQuestions()) {
-				q.setTest(t);
-				for(TestAnswer a: q.getAnswers()) {
-					a.setPregunta(q);
-				}
-			}
-			t.setName(test.getName());
-			t.setQuestions(test.getQuestions());
-			serviceT.saveTest(t);
-			return "redirect:/tests";
-		}
-		return "redirect:/tests";
+	@PostMapping(path="/save", params= {"answerDel"})
+	public String deleteAnswer(@RequestParam("questionPos") int questionPos, @RequestParam("answerPos") int answerPos, @ModelAttribute("test") Test test, RedirectAttributes redirect) {
+		test.getQuestions().get(questionPos).getAnswers().remove(answerPos);
+		redirect.addFlashAttribute("currentTest", test);
+		return "redirect:/tests/detail/" + test.getId();
 	}
 	
 }

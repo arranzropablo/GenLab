@@ -33,5 +33,9 @@ public class ProblemsServiceImpl implements ProblemsService{
 	public List<Problem> getProblemsBySection(int sectionid) {
 		return problemsRepository.findBySectionid(sectionid);
 	}
-
+	
+	public boolean existsProblem(int id) {
+		return problemsRepository.exists(id);
+	}
+	
 }
