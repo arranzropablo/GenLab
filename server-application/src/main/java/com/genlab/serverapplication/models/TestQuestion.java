@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,15 +19,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="questions")
@@ -40,14 +37,15 @@ public class TestQuestion implements Serializable{
 	private int id;
 	
 	@Column(name="texto")
-	@NonNull
 	private String texto;
 	
-	@OneToMany(targetEntity=TestAnswer.class, mappedBy="pregunta", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="pregunta", fetch=FetchType.EAGER)
 	private List<TestAnswer> answers;	
 	
-	@ManyToOne(targetEntity=Test.class)
-	@JoinColumn(name="test_id", nullable=false)
+	//@ManyToOne(targetEntity=Test.class)
+	//@JoinColumn(name="test_id", nullable=false)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="test_id")
 	private Test test;
 	
 }
