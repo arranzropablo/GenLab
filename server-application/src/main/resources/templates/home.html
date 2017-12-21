@@ -10,7 +10,7 @@
 	<body>
 		<div layout:fragment="content">
 			<div class="mainContentHome">
-				<h2>Name: <input type="text" name="sectionName" value="Section Name" th:value="Sustituir"/></h2>
+				<h2 th:text="${currentSection.text}">Section name</h2>
 				<ul>
 					<li><a th:href="@{/calculationtools}">Calculation Tools</a></li>
 					<li><a th:href="@{/theory}">Theory</a></li>
