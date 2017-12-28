@@ -1114,64 +1114,1442 @@
 </div>
 
 <!-- LINKAGE -->
+<!--Testcross: AaBb x aabb-->
 <div th:fragment="20">
-	<input type="text" name="calculationToolName" value="Two loci / Testcross" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalB">AB</label>
+				<label class="col-2" for="observedCapitalALowerb">Ab</label>
+				<label class="col-2" for="observedLoweraCapitalB">aB</label>
+				<label class="col-2" for="observedLoweraLowerb">ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalB" id="observedCapitalACapitalB"/>
+				<input class="col-2" type="text" name="observedCapitalALowerb" id="observedCapitalALowerb"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalB" id="observedLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraLowerb" id="observedLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp. Ind.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp. Con.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">A</label>
+				<label class="col-4">a</label>
+				<label class="col-4">Total</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">B</label>
+				<label class="col-4">b</label>
+				<label class="col-4">Total</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> A,a (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> B,b (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Indep. (df = 3) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Lin. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Con. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Lod score Z =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">RF (r) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Distance (cM) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Phase =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--F2 Dominance: AaBb x AaBb-->
 <div th:fragment="21">
-	<input type="text" name="calculationToolName" value="Two loci / F2 Dominance" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalB">AB</label>
+				<label class="col-2" for="observedCapitalALowerb">Ab</label>
+				<label class="col-2" for="observedLoweraCapitalB">aB</label>
+				<label class="col-2" for="observedLoweraLowerb">ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalB" id="observedCapitalACapitalB"/>
+				<input class="col-2" type="text" name="observedCapitalALowerb" id="observedCapitalALowerb"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalB" id="observedLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraLowerb" id="observedLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp. Ind.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp. Con.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">A</label>
+				<label class="col-4">a</label>
+				<label class="col-4">Total</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">B</label>
+				<label class="col-4">b</label>
+				<label class="col-4">Total</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> A,a (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> B,b (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Indep. (df = 3) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Link. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Con. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">RF (r) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Distance (cM) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Phase =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--F2 Codominance: A1A2B1B2 x A1A2B1B2-->
 <div th:fragment="22">
-	<input type="text" name="calculationToolName" value="Two loci / F2 Codominance" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedA1A1B1B1">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2" for="observedA1A1B1B2">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2" for="observedA1A1B2B2">A<sub>1</sub>A<sub>1</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-2" for="observedA1A2B1B1">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2" for="observedA1A2B1B2">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2" for="observedA1A2B2B2">A<sub>1</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-2" for="observedA2A2B1B1">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2" for="observedA2A2B1B2">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2" for="observedA2A2B2B2">A<sub>2</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedA1A1B1B1" id="observedA1A1B1B1"/>
+				<input class="col-2" type="text" name="observedA1A1B1B2" id="observedA1A1B1B2"/>
+				<input class="col-2" type="text" name="observedA1A1B2B2" id="observedA1A1B2B2"/>
+				<input class="col-2" type="text" name="observedA1A2B1B1" id="observedA1A2B1B1"/>
+				<input class="col-2" type="text" name="observedA1A2B1B2" id="observedA1A2B1B2"/>
+				<input class="col-2" type="text" name="observedA1A2B2B2" id="observedA1A2B2B2"/>
+				<input class="col-2" type="text" name="observedA2A2B1B1" id="observedA2A2B1B1"/>
+				<input class="col-2" type="text" name="observedA2A2B1B2" id="observedA2A2B1B2"/>
+				<input class="col-2" type="text" name="observedA2A2B2B2" id="observedA2A2B2B2"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">A<sub>1</sub>A<sub>1</sub></label>
+				<label class="col-4">A<sub>1</sub>A<sub>2</sub></label>
+				<label class="col-4">A<sub>2</sub>A<sub>2</sub></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-4">B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-4">B<sub>2</sub>B<sub>2</sub></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> A<sub>1</sub>,A<sub>2</sub> (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> B<sub>1</sub>,B<sub>2</sub> (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 3) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Link. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Con. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">RF (r) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Distance (cM) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Phase =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Three points: AaBbCc x aabbcc-->
 <div th:fragment="23">
-	<input type="text" name="calculationToolName" value="Three loci / Testcross" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalBCapitalC">ABC</label>
+				<label class="col-2" for="observedLoweraLowerbLowerc">abc</label>
+				<label class="col-2" for="observedCapitalACapitalBLowerc">ABc</label>
+				<label class="col-2" for="observedLoweraLowerbCapitalC">abC</label>
+				<label class="col-2" for="observedLoweraCapitalBCapitalC">aBC</label>
+				<label class="col-2" for="observedCapitalALowerbLowerc">Abc</label>
+				<label class="col-2" for="observedCapitalALowerbCapitalC">AbC</label>
+				<label class="col-2" for="observedLoweraCapitalBLowerc">aBc</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalBCapitalC" id="observedCapitalACapitalBCapitalC"/>
+				<input class="col-2" type="text" name="observedLoweraLowerbLowerc" id="observedLoweraLowerbLowerc"/>
+				<input class="col-2" type="text" name="observedCapitalACapitalBLowerc" id="observedCapitalACapitalBLowerc"/>
+				<input class="col-2" type="text" name="observedLoweraLowerbCapitalC" id="observedLoweraLowerbCapitalC"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalBCapitalC" id="observedLoweraCapitalBCapitalC"/>
+				<input class="col-2" type="text" name="observedCapitalALowerbLowerc" id="observedCapitalALowerbLowerc"/>
+				<input class="col-2" type="text" name="observedCapitalALowerbCapitalC" id="observedCapitalALowerbCapitalC"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalBLowerc" id="observedLoweraCapitalBLowerc"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">A</label>
+				<label class="col-4">a</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">B</label>
+				<label class="col-4">b</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">C</label>
+				<label class="col-4">c</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Dominant</label>
+				<label class="col-4">Recessive</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Expected</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">AB</label>
+				<label class="col-4">Ab</label>
+				<label class="col-4">aB</label>
+				<label class="col-4">ab</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Exp. Ind.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Exp. Con.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">AC</label>
+				<label class="col-4">Ac</label>
+				<label class="col-4">aC</label>
+				<label class="col-4">ac</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Exp. Ind.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Exp. Con.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">BC</label>
+				<label class="col-4">Bc</label>
+				<label class="col-4">bC</label>
+				<label class="col-4">bc</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Observed</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Exp. Ind.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Exp. Con.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+
+			<div class="row">
+				<label class="col-4">X2 Cont</label>
+				<label class="col-4">Lod Z</label>
+				<label class="col-4">RF</label>
+				<label class="col-4">Dist (cM)</label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">A,a-B,b</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">A,a-C,c</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">B,b-C,c</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Centre</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Phase</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Phase</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Coefficient of coincidence (c) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">Interference (1-c) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Testcross: AaBb x aabb-->
 <div th:fragment="24">
-	<input type="text" name="calculationToolName" value="Direct method / Testcross" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="recombinationFrequency">Recombination frequency</label>
+				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="recombinationFrequency" id="recombinationFrequency"/>
+				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">Repulsion Ab/aB</label>
+				<label class="col-2">Coupling AB/ab</label>
+			</div>
+			<div class="row">
+				<label class="col-2">AB</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Ab</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">aB</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">ab</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--F2 Dominance: AaBb x AaBb-->
 <div th:fragment="25">
-	<input type="text" name="calculationToolName" value="Direct method / F2 Dominance" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="recombinationFrequency">Recombination frequency</label>
+				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="recombinationFrequency" id="recombinationFrequency"/>
+				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">Repulsion Ab/aB</label>
+				<label class="col-2">Coupling AB/ab</label>
+			</div>
+			<div class="row">
+				<label class="col-2">AB</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Ab</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">aB</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">ab</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--F2 Codominance A1A2B1B2 x A1A2B1B2-->
 <div th:fragment="26">
-	<input type="text" name="calculationToolName" value="Direct method / F2 Codominance" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="recombinationFrequency">Recombination frequency</label>
+				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="recombinationFrequency" id="recombinationFrequency"/>
+				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">Repulsion</label>
+				<label class="col-2">Coupling</label>
+			</div>
+			<div class="row">
+				<label class="col-2">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>1</sub>A<sub>1</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>1</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">A<sub>2</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Three points AaBbCc x aabbcc-->
 <div th:fragment="27">
-	<input type="text" name="calculationToolName" value="Direct method / Testcross 3 Loci" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="recombinationFrequencyr1">Recombination frequency r<sub>1</sub></label>
+				<label class="col-2" for="recombinationFrequencyr2">Recombination frequency r<sub>2</sub></label>
+				<label class="col-2" for="coefficientOfCoincidence">Coefficient of coincidence</label>
+				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="recombinationFrequencyr1" id="recombinationFrequencyr1"/>
+				<input class="col-2" type="text" name="recombinationFrequencyr2" id="recombinationFrequencyr2"/>
+				<input class="col-2" type="text" name="coefficientOfCoincidence" id="coefficientOfCoincidence"/>
+				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Interference =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Recombination frequency r =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">ABC/abc</label>
+				<label class="col-2">ABc/abC</label>
+				<label class="col-2">Abc/aBC</label>
+				<label class="col-2">AbC/aBc</label>
+			</div>
+			<div class="row">
+				<label class="col-2">ABC</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">aBC</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">AbC</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">abc</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">ABc</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">aBc</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Abc</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">abC</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<hr/>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
 
 <!-- EPISTASIA -->
+<!--Without modification 9:3:3:1-->
 <div th:fragment="30">
-	<input type="text" name="calculationToolName" value="Without modification" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalB">AB</label>
+				<label class="col-2" for="observedCapitalALowerb">Ab</label>
+				<label class="col-2" for="observedLoweraCapitalB">aB</label>
+				<label class="col-2" for="observedLoweraLowerb">ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalB" id="observedCapitalACapitalB"/>
+				<input class="col-2" type="text" name="observedCapitalALowerb" id="observedCapitalALowerb"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalB" id="observedLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraLowerb" id="observedLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> A,a (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> B,b (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 3) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Con. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Simple recesive 9:3:4-->
 <div th:fragment="31">
-	<input type="text" name="calculationToolName" value="Single recessive" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalB">AB</label>
+				<label class="col-2" for="observedCapitalALowerb">Ab</label>
+				<label class="col-2" for="observedLoweraCapitalBAndLoweraLowerb">aB+ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalB" id="observedCapitalACapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalB" id="observedLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalBAndLoweraLowerb" id="observedLoweraCapitalBAndLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 2) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Simple dominant 12:3:1-->
 <div th:fragment="32">
-	<input type="text" name="calculationToolName" value="Single dominant" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalBAndCapitalALowerb">AB+Ab</label>
+				<label class="col-2" for="observedLoweraCapitalB">aB</label>
+				<label class="col-2" for="observedLoweraLowerb">ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalBAndCapitalALowerb" id="observedCapitalACapitalBAndCapitalALowerb"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalB" id="observedLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraLowerb" id="observedLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 2) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Segregation 9:6:1-->
 <div th:fragment="33">
-	<input type="text" name="calculationToolName" value="Segregation 9:6:1" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalB">AB</label>
+				<label class="col-2" for="observedCapitalALowerbAndLoweraCapitalB">Ab+aB</label>
+				<label class="col-2" for="observedLoweraLowerb">ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalB" id="observedCapitalACapitalB"/>
+				<input class="col-2" type="text" name="observedCapitalALowerbAndLoweraCapitalB" id="observedCapitalALowerbAndLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraLowerb" id="observedLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 2) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Double Recessive 9:7-->
 <div th:fragment="34">
-	<input type="text" name="calculationToolName" value="Double Recessive" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalB">AB</label>
+				<label class="col-2" for="observedCapitalALowerbAndLoweraCapitalBAndLoweraLowerb">Ab+aB+ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalB" id="observedCapitalACapitalB"/>
+				<input class="col-2" type="text" name="observedCapitalALowerbAndLoweraCapitalBAndLoweraLowerb" id="observedCapitalALowerbAndLoweraCapitalBAndLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Double dominant 15:1-->
 <div th:fragment="35">
-	<input type="text" name="calculationToolName" value="Double Dominant" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalBAndCapitalALowerbAndLoweraCapitalB">AB+Ab+aB</label>
+				<label class="col-2" for="observedLoweraLowerb">ab</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalBAndCapitalALowerbAndLoweraCapitalB" id="observedCapitalACapitalBAndCapitalALowerbAndLoweraCapitalB"/>
+				<input class="col-2" type="text" name="observedLoweraLowerb" id="observedLoweraLowerb"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Double dominant-recessive 13:3-->
 <div th:fragment="36">
-	<input type="text" name="calculationToolName" value="Double Dominant-Recessive" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedCapitalACapitalBAndCapitalALowerbAndLoweraLowerb">AB+Ab+ab</label>
+				<label class="col-2" for="observedLoweraCapitalB">aB</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedCapitalACapitalBAndCapitalALowerbAndLoweraLowerb" id="observedCapitalACapitalBAndCapitalALowerbAndLoweraLowerb"/>
+				<input class="col-2" type="text" name="observedLoweraCapitalB" id="observedLoweraCapitalB"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 1) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Segregation 6:3:3:4-->
 <div th:fragment="37">
-	<input type="text" name="calculationToolName" value="Segregation 6:3:3:4" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observed6">6</label>
+				<label class="col-2" for="observedFirst3">3</label>
+				<label class="col-2" for="observedSecond3">3</label>
+				<label class="col-2" for="observed4">4</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observed6" id="observed6"/>
+				<input class="col-2" type="text" name="observedFirst3" id="observedFirst3"/>
+				<input class="col-2" type="text" name="observedSecond3" id="observedSecond3"/>
+				<input class="col-2" type="text" name="observed4" id="observed4"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 3) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+<!--Segregation 10:3:3-->
 <div th:fragment="38">
-	<input type="text" name="calculationToolName" value="Segregation 10:3:3" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observed10">Types 10 (AB+ab)</label>
+				<label class="col-2" for="observed3CapitalALowerb">3 Ab</label>
+				<label class="col-2" for="observed3LoweraCapitalB">3 aB</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observed10" id="observed10"/>
+				<input class="col-2" type="text" name="observed3CapitalALowerb" id="observed3CapitalALowerb"/>
+				<input class="col-2" type="text" name="observed3LoweraCapitalB" id="observed3LoweraCapitalB"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Exp.</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">X<sup>2</sup> Ind. (df = 2) =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
 
 <!-- POLYHYBRID -->
 <div th:fragment="40">
-	<input type="text" name="calculationToolName" value="Polyhybrid" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedn">n</label>
+				<label class="col-2" for="observedh">h</label>
+				<label class="col-2" for="observedLowerd">d</label>
+				<label class="col-2" for="observedLowerr">r</label>
+				<label class="col-2" for="observedCapitalD">D</label>
+				<label class="col-2" for="observedCapitalR">R</label>
+				<label class="col-2" for="observedCapitalT">T</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Observed</label>
+				<input class="col-2" type="text" name="observedn" id="observedn"/>
+				<input class="col-2" type="text" name="observedh" id="observedh"/>
+				<input class="col-2" type="text" name="observedLowerd" id="observedLowerd"/>
+				<input class="col-2" type="text" name="observedLowerr" id="observedLowerr"/>
+				<input class="col-2" type="text" name="observedCapitalD" id="observedCapitalD"/>
+				<input class="col-2" type="text" name="observedCapitalR" id="observedCapitalR"/>
+				<input class="col-2" type="text" name="observedCapitalT" id="observedCapitalT"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">Different gametes</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Different genotypes</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Homozygous genotypes</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Heterozygous genotypes</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">FORMULA: n!/(d!h!r!)</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">FORMULA: (1/4)^d (1/2)^h (1/4)^r</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Frequency</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Total</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-2">n!/(D!R!)</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">(3/4)^D (1/4)^R</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Frequency</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Total</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
+
+
 <div th:fragment="41">
-	<input type="text" name="calculationToolName" value="Multiple Alleles" th:value="Sustituir" />
+	<form>
+		<div class="container">
+			<!-- Enviar por ajax -->
+			<div class="row">
+				<label class="col-2" for="observedLocus1">Locus 1</label>
+				<label class="col-2" for="observedLocus2">Locus 2</label>
+				<label class="col-2" for="observedLocus3">Locus 3</label>
+				<label class="col-2" for="observedLocus4">Locus 4</label>
+				<label class="col-2" for="observedLocus5">Locus 5</label>
+				<label class="col-2">Total</label>
+			</div>
+			<div class="row">
+				<label class="col-2">Number of alleles</label>
+				<input class="col-2" type="text" name="observedLocus1" id="observedLocus1"/>
+				<input class="col-2" type="text" name="observedLocus2" id="observedLocus2"/>
+				<input class="col-2" type="text" name="observedLocus3" id="observedLocus3"/>
+				<input class="col-2" type="text" name="observedLocus4" id="observedLocus4"/>
+				<input class="col-2" type="text" name="observedLocus5" id="observedLocus5"/>
+				<label class="col-2" th:text="${totalObserved}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<!--Aqui podriamos poner un hint, esto qe haces hover y te sale un texto-->
+				<label class="col-2">NG</label>
+				<label class="col-2">HM</label>
+				<label class="col-2">HT</label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Locus 1 =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Locus 2 =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Locus 3 =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+			<div class="row">
+				<label class="col-2">Locus 4 =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<div class="row">
+				<label class="col-2">Locus 5 =</label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${expectedValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row">
+				<label class="col-4">Genotypes =</label>
+				<label class="col-4" th:text="${chiValue}"></label>
+			</div>
+
+			<hr/>
+
+			<div class="row" th:text="${theory}">
+			</div>
+		</div>
+	</form>
 </div>
