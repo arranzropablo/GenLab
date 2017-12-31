@@ -10,6 +10,6 @@ import lombok.Data;
 public class CTResult {
 	
 	private Map<String , Double> expectedValues;
-	private double value;
+	private Map<String, Double> values;
 	
 }
