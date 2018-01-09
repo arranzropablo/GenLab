@@ -44,21 +44,22 @@ public class TestsController {
 	@GetMapping("")
 	public String allTests(HttpServletRequest request, Model model, HttpSession session) {
 		List<Test> test_list = testService.getTestBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
-		model.addAttribute("tests",test_list);		
+		model.addAttribute("tests",test_list);
+		session.setAttribute("listAnswersDeleted", new ArrayList<Integer>());
+		session.setAttribute("listQuestionsDeleted", new ArrayList<Integer>());
 		return "tests";
 	}
-	
+
+	//en uno nuevo borrar algo va a dar fallo xq aun no esta en la bd
 	/**
 	 * Mostrar la página de un test por ID
 	 * **/
 	@GetMapping("/detail/{id}")
 	public String oneTest(@PathVariable("id") int id, HttpServletRequest request, @ModelAttribute("currentTest") Test currentTest, Model model, HttpSession session) {
-		if(currentTest != null && currentTest.getTitulo() != null) {			
+		if(currentTest != null && currentTest.getTitulo() != null) {
 			model.addAttribute("test", currentTest);	
 			return "test";
 		} else if(testService.existsTest(id)) {
-			session.setAttribute("listQuestionsDeleted", new ArrayList<Integer>());
-			session.setAttribute("listAnswersDeleted", new ArrayList<Integer>());
 			Test retrievedTest = testService.getTest(id);
 			model.addAttribute("test", retrievedTest);	
 			return "test";
@@ -121,13 +122,17 @@ public class TestsController {
 		//para borrar preguntas y respuestas se guardan en una lista y luego se hace un for sobre ellas al darle a save
 
 		for(int answerId : listAnswersDeleted) {
-			testAnswerService.deleteAnswer(answerId);
+			if(testAnswerService.existsAnswer(answerId)) {
+				testAnswerService.deleteAnswer(answerId);
+			}
 		}
-		
+
 		for(int questionId : listQuestionsDeleted) {
-			testQuestionService.deleteQuestion(questionId);
+			if(testQuestionService.existsQuestion(questionId)) {
+				testQuestionService.deleteQuestion(questionId);
+			}
 		}
-		
+
 		Test testToSave = Test.builder().sectionid(test.getSectionid()).titulo(test.getTitulo()).id(test.getId()).build();
 		int savedTest = testService.saveTest(testToSave);
 		if(test.getQuestions() != null) {
@@ -136,7 +141,7 @@ public class TestsController {
 				TestQuestion savedQuestion = testQuestionService.saveQuestion(questionToSave);
 				if(question.getAnswers() != null) {
 					for(TestAnswer answer : question.getAnswers()) {
-						TestAnswer answerToSave = TestAnswer.builder().correcta(answer.isCorrecta()).texto(answer.getTexto()).pregunta(savedQuestion).build();
+						TestAnswer answerToSave = TestAnswer.builder().correcta(answer.isCorrecta()).id(answer.getId()).texto(answer.getTexto()).pregunta(savedQuestion).build();
 						testAnswerService.saveAnswer(answerToSave);
 					}
 				}

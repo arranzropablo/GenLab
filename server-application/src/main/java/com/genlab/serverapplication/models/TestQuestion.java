@@ -39,7 +39,7 @@ public class TestQuestion implements Serializable{
 	@Column(name="texto")
 	private String texto;
 	
-	@OneToMany(mappedBy="pregunta", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="pregunta", fetch=FetchType.LAZY)
 	private List<TestAnswer> answers;	
 	
 	//@ManyToOne(targetEntity=Test.class)

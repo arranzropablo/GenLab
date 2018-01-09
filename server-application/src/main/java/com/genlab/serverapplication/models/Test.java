@@ -42,7 +42,7 @@ public class Test implements Serializable{
 	@Column(name="titulo")
 	private String titulo;
 
-	@OneToMany(mappedBy="test", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="test", fetch=FetchType.LAZY)
 	//	@OneToMany(targetEntity=TestQuestion.class, mappedBy="test", cascade=CascadeType.ALL)
 	private List<TestQuestion> questions;
 

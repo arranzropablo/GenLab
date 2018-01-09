@@ -31,8 +31,6 @@ public class RecommendedBooksController {
 	public String getBookList(HttpServletRequest request, Model model, HttpSession session) {
 		
 		List <Book> books = service.getBooksBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
-		//books.add(Book.builder().name("Fahrenheit 451").id(1).isbn("123123123").link("www.google.es").author("pablo").build());
-		
 		model.addAttribute("books", books);
 		
 		return "bookList";
@@ -51,19 +49,24 @@ public class RecommendedBooksController {
 			model.addAttribute("book", b);
 			return "bookEdit";
 		}
-		//Book b = Book.builder().name("Fahrenheit 451").id(1).isbn("123123123").link("www.google.es").author("pablo").build();
-		//model.addAttribute("book", b);
 		return "redirect:/recommendedbooks";
 	}
 	
 	@PostMapping("/save/{id}")
-	public String postSaveBook(@RequestParam("bookName") String name, @PathVariable("id") int id, @RequestParam("bookAuthor") String author, @RequestParam("bookEditorial") String editorial, @RequestParam("bookIsbn") String isbn, @RequestParam("bookLink") String link, HttpServletRequest request, Model model, HttpSession session ) {
-		Book newBook = Book.builder().name(name).author(author).sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).editorial(editorial).isbn(isbn).link(link).build();
+	public String postSaveBook(@ModelAttribute("book") Book book, @PathVariable("id") int id, HttpServletRequest request, Model model, HttpSession session ) {
+		Book newBook = Book.builder().name(book.getName()).author(book.getAuthor()).sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).editorial(book.getEditorial()).isbn(book.getIsbn()).link(book.getLink()).build();
 		if(id > 0) {
 			newBook.setId(id);
 		}
 		int nuevoID = service.saveBook(newBook);
 		return "redirect:/recommendedbooks";
 	}
-	
+
+	@GetMapping("/delete/{id}")
+	public String deleteBook(HttpServletRequest request, Model model, @PathVariable("id") int id) {
+		if(service.existsBook(id)) {
+			service.deleteBook(id);
+		}
+		return "redirect:/recommendedbooks";
+	}
 }

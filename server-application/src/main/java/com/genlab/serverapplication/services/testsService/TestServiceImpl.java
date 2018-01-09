@@ -18,7 +18,7 @@ public class TestServiceImpl implements TestService{
 		return (List<Test>) testRepository.findAll();
 	}
 	
-	public 	Test getTest(int id) {
+	public Test getTest(int id) {
 		return testRepository.findOne(id);
 	}
 	
