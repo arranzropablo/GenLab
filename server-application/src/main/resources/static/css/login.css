@@ -77,3 +77,22 @@ td {
 	color:white;
 	background-color: darkgray;
 }
+
+#registerLink{
+	text-decoration: none;
+	color: silver;
+	font-weight: bold;
+	margin-left: 15px;
+	float: right;
+}
+
+#registerLink:hover{
+	color: white;
+}
+
+#msgError{
+	color: darkorange;
+}
+#msgRegister{
+	color: lightblue;
+}
