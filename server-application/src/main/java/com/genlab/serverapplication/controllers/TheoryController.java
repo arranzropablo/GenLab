@@ -27,10 +27,8 @@ public class TheoryController {
 		
 	@GetMapping("")
 	public String getTheory(HttpServletRequest request, Model model, HttpSession session) {
-
 		List<Theory> theory_list = service.getTheoryBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
-		
-		
+
 		if(theory_list.size() > 0) {
 			model.addAttribute("actual_theory", theory_list.get(0));
 		} else {

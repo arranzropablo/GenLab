@@ -1,5 +1,7 @@
-package com.genlab.serverapplication;
+package com.genlab.serverapplication.config;
 
+import com.genlab.serverapplication.services.userService.UserService;
+import com.genlab.serverapplication.services.userService.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,12 +20,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/loginPage","/login","/img/**","/css/**","/js/**","/register","/registerUser").permitAll()
+				.antMatchers("/login","/img/**","/css/**","/js/**").permitAll()
 				.antMatchers("/","/home/**").hasRole("USER")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-				.loginPage("/loginPage")
+				.loginPage("/login")
 				.loginProcessingUrl("/login")
 				.defaultSuccessUrl("/home")
 				.usernameParameter("email")
@@ -32,13 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.logoutUrl("/logout")
-				.logoutSuccessUrl("/loginPage")
+				.logoutSuccessUrl("/login")
 				.permitAll();
-	}
-	
-	@Bean
-	public GenlabUserDetailsService springDataUserDetailsService() {
-		return new GenlabUserDetailsService();
 	}
 
 	@Bean
