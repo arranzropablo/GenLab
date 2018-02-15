@@ -1,23 +1,23 @@
 package com.genlab.serverapplication.controllers;
 
+import com.genlab.serverapplication.models.Book;
 import com.genlab.serverapplication.models.Problem;
 import com.genlab.serverapplication.models.SectionsMapping;
 import com.genlab.serverapplication.models.Theory;
+import com.genlab.serverapplication.services.bookService.BookService;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 //TODO me da miedo que al llamar a la API me redirija a /home/twoloci aunque creo qe eso es cosa
 //TODO del controlador pero hay qe hacer pruebas de que la API no redirija a sitios raros
-@Controller("/api/v1")
+@Controller
+@RequestMapping("/api/v1")
 public class RestController {
 
     @Autowired
@@ -25,6 +25,9 @@ public class RestController {
 
     @Autowired
     private TheoryService theoryService;
+
+    @Autowired
+    private BookService bookService;
 
     @GetMapping("/problems")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
@@ -42,5 +45,11 @@ public class RestController {
     public @ResponseBody Theory getTheory(@PathVariable("id") int id){
         return theoryService.getTheory(id);
     }
+
+    @GetMapping("/books")
+    public @ResponseBody List<Book> getBooks(@RequestParam("sectionid") int section){
+        return bookService.getBooksBySection(section);
+    }
+
 
 }
