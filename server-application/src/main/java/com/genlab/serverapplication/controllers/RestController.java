@@ -30,6 +30,7 @@ public class RestController {
     private BookService bookService;
 
     @GetMapping("/problems")
+    @CrossOrigin(origins = "*")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
         //hay qe hacer una prueba a enviar un string desde el cliente a ver qe hace cuando no pueda castearlo a int, la solucion sería que fuera un object
         //hacer tambien una prueba de pasarle una seccion qe no exista a ver si devuelve vacio
