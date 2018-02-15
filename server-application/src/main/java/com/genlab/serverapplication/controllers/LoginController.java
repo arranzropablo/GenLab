@@ -23,7 +23,7 @@ public class LoginController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@GetMapping("/login/")
+	@GetMapping("/login")
 	public String getLoginList(@RequestParam(required=false, name="error")String error, HttpServletRequest request, Model model,HttpSession session,Principal principal) {
 	    if(error != null) {
 			model.addAttribute("msgError", "Error al introducir las credenciales");
