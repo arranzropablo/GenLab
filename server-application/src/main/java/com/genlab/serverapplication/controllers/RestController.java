@@ -4,10 +4,14 @@ import com.genlab.serverapplication.models.Book;
 import com.genlab.serverapplication.models.Problem;
 import com.genlab.serverapplication.models.SectionsMapping;
 import com.genlab.serverapplication.models.Theory;
+import com.genlab.serverapplication.models.User;
 import com.genlab.serverapplication.services.bookService.BookService;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
+import com.genlab.serverapplication.services.userService.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +32,20 @@ public class RestController {
 
     @Autowired
     private BookService bookService;
-
+    
+    @Autowired
+    private UserService userService;
+    
+    @PostMapping("/login")
+    public @ResponseBody boolean loginUser(@RequestParam("user") String user, @RequestParam("password") String pass){
+    	User u = userService.getUser(user);
+    	if(u != null) {
+    		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    		return encoder.matches(pass, u.getPassword());
+    	}
+        return false;
+    }
+    
     @GetMapping("/problems")
     @CrossOrigin(origins = "*")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
