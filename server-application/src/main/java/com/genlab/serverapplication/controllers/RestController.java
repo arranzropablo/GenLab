@@ -1,23 +1,21 @@
 package com.genlab.serverapplication.controllers;
 
-import com.genlab.serverapplication.models.Book;
-import com.genlab.serverapplication.models.Problem;
-import com.genlab.serverapplication.models.SectionsMapping;
-import com.genlab.serverapplication.models.Theory;
+import com.genlab.serverapplication.models.*;
 import com.genlab.serverapplication.services.bookService.BookService;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
+import com.genlab.serverapplication.services.testsService.TestService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//TODO me da miedo que al llamar a la API me redirija a /home/twoloci aunque creo qe eso es cosa
-//TODO del controlador pero hay qe hacer pruebas de que la API no redirija a sitios raros
 @Controller
 @RequestMapping("/api/v1")
+@CrossOrigin
 public class RestController {
 
     @Autowired
@@ -29,11 +27,11 @@ public class RestController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private TestService testService;
+
     @GetMapping("/problems")
-    @CrossOrigin(origins = "*")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
-        //hay qe hacer una prueba a enviar un string desde el cliente a ver qe hace cuando no pueda castearlo a int, la solucion sería que fuera un object
-        //hacer tambien una prueba de pasarle una seccion qe no exista a ver si devuelve vacio
         return problemsService.getProblemsBySection(section);
     }
 
@@ -42,8 +40,8 @@ public class RestController {
         return theoryService.getTheoryBySection(section).stream().map(Theory::getTitulo).collect(Collectors.toList());
     }
 
-    @GetMapping("/theory/:id")
-    public @ResponseBody Theory getTheory(@PathVariable("id") int id){
+    @GetMapping("/theory")
+    public @ResponseBody Theory getTheory(@RequestParam("id") int id){
         return theoryService.getTheory(id);
     }
 
@@ -52,5 +50,21 @@ public class RestController {
         return bookService.getBooksBySection(section);
     }
 
+    @GetMapping("/tests")
+    public @ResponseBody List<Test> getTests(@RequestParam("sectionid") int section){
+        return testService.getTestBySection(section);
+    }
+
+    @GetMapping("/tests/detail")
+    public @ResponseBody Test getTest(@RequestParam("id") int id){
+        Test testToReturn = testService.getTest(id);
+        testToReturn.getQuestions().forEach(question -> {
+            question.setTest(null);
+            question.getAnswers().forEach(answer -> {
+                answer.setPregunta(null);
+            });
+        });
+        return testToReturn;
+    }
 
 }
