@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,7 @@ public class LoginController {
 		return "login";
 	}
 	
-	@PostMapping("/register")
+	/*@PostMapping("/register")
 	public String registerPage(@RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("repassword") String repassword, HttpSession session, RedirectAttributes redirect) {
 		if(password.equals(repassword)) {
 			User u = User.builder().email(email).password(passwordEncoder.encode(password)).roles("USER").build();
@@ -49,5 +50,5 @@ public class LoginController {
 			redirect.addFlashAttribute("registrado", "Las contraseñas no coinciden.");
 		}
 		return "redirect:/login";
-	}
+	}*/
 }
