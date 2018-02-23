@@ -408,4 +408,131 @@ public class CTTwoLoci {
         return null;
     }
 
+    public CTResult f2coDom4dom(int obsA1A3B, int obsA1A3b, int obsA1A4B, int obsA1A4b, int obsA2A3B, int obsA2A3b, int obsA2A4B, int obsA2A4b) {
+        //Cosas que haríamos en el controlador:
+        //Validar que sea <5000 en el controlador con lo de @Valid y/o BindingResult (creo qe es lo segundo por ser primitivo) https://stackoverflow.com/questions/24767164/spring-mvc-with-hibernate-validator-to-validate-single-basic-type
+        //Validar que sea > 5
+        //Sumar para poner total en el propio controlador
+        //Con lo que se devuelva de aquí poner "The locus is/isn't segregating correctly" y en Agree un YES o NO
+        int totalobs = obsA1A3B + obsA1A3b + obsA1A4B + obsA1A4b + obsA2A3B + obsA2A3b + obsA2A4B + obsA2A4b,
+                totalA1A3 = obsA1A3B + obsA1A3b,
+                totalA1A4 = obsA1A4B + obsA1A4b,
+                totalA2A3 = obsA2A3B + obsA2A3b,
+                totalA2A4 = obsA2A4B + obsA2A4b,
+                totalA1A2A3A4 = totalA1A3 + totalA1A4 + totalA2A3 + totalA2A4,
+                totalB = obsA1A3B + obsA1A4B + obsA2A3B + obsA2A4B,
+                totalb = obsA1A3b + obsA1A4b + obsA2A3b + obsA2A4b;
+
+        Map<String, Double> expValues = new HashMap<>();
+        expValues.put("A1A3", (double) totalobs / 4);
+        expValues.put("A1A4", (double) totalobs / 4);
+        expValues.put("A2A3", (double) totalobs /4);
+        expValues.put("A2A4", (double) totalobs /4);
+        expValues.put("B", (double) totalobs * 3/4);
+        expValues.put("b", (double) totalobs /4);
+
+        double chiA1A2A3A4 = (Math.pow(totalA1A3 - totalobs /4, 2)/ (totalobs /4)) + (Math.pow(totalA1A4 - totalobs / 4, 2)/ (totalobs /4)) + (Math.pow(totalA2A3 - totalobs * 2/4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalA2A4 - totalobs * 2/4, 2) / (totalobs * 2 / 4));
+        double chiBb = (Math.pow(totalB - totalobs * 3/4, 2)/ (totalobs * 3/4)) + (Math.pow(totalb - totalobs / 4, 2)/ (totalobs /4));
+
+        if(chiA1A2A3A4 < 7.82 && chiBb < 3.84) {
+            double expectedIndA1A3B = totalobs * 3 / 16,
+                    expectedIndA1A3b = totalobs * 1 / 16,
+                    expectedIndA1A4B = totalobs * 3 / 16,
+                    expectedIndA1A4b = totalobs * 1 / 16,
+                    expectedIndA2A3B = totalobs * 3 / 16,
+                    expectedIndA2A3b = totalobs * 1 / 16,
+                    expectedIndA2A4B = totalobs * 3 / 16,
+                    expectedIndA2A4b = totalobs * 1 / 16;
+
+            expValues.put("expectedIndA1A3B", expectedIndA1A3B);
+            expValues.put("expectedIndA1A3b", expectedIndA1A3b);
+            expValues.put("expectedIndA1A4B", expectedIndA1A4B);
+            expValues.put("expectedIndA1A4b", expectedIndA1A4b);
+            expValues.put("expectedIndA2A3B", expectedIndA2A3B);
+            expValues.put("expectedIndA2A3b", expectedIndA2A3b);
+            expValues.put("expectedIndA2A4B", expectedIndA2A4B);
+            expValues.put("expectedIndA2A4b", expectedIndA2A4b);
+
+            if (expectedIndA1A3B < 5 || expectedIndA1A3b < 5 || expectedIndA1A4B < 5 || expectedIndA1A4b < 5 || expectedIndA2A3B < 5 || expectedIndA2A3b < 5 || expectedIndA2A4B < 5 || expectedIndA2A4b < 5) {
+                //warning y borrar
+            } else {
+                double chiInd = (Math.pow(obsA1A3B - expectedIndA1A3B, 2) / expectedIndA1A3B) + (Math.pow(obsA1A3b - expectedIndA1A3b, 2) / expectedIndA1A3b) + (Math.pow(obsA1A4B - expectedIndA1A4B, 2) / expectedIndA1A4B) + (Math.pow(obsA1A4b - expectedIndA1A4b, 2) / expectedIndA1A4b) + (Math.pow(obsA2A3B - expectedIndA2A3B, 2) / expectedIndA2A3B) + (Math.pow(obsA2A3b - expectedIndA2A3b, 2) / expectedIndA2A3b) + (Math.pow(obsA2A4B - expectedIndA2A4B, 2) / expectedIndA2A4B) + (Math.pow(obsA2A4b - expectedIndA2A4b, 2) / expectedIndA2A4b);
+                if (chiInd > 14.07) {
+                    double expectedContA1A3B = totalA1A3 * totalB / totalobs,
+                            expectedContA1A3b = totalA1A3 * totalb / totalobs,
+                            expectedContA1A4B = totalA1A4 * totalB / totalobs,
+                            expectedContA1A4b = totalA1A4 * totalb / totalobs,
+                            expectedContA2A3B = totalA2A3 * totalB / totalobs,
+                            expectedContA2A3b = totalA2A3 * totalb / totalobs,
+                            expectedContA2A4B = totalA2A4 * totalB / totalobs,
+                            expectedContA2A4b = totalA2A4 * totalb / totalobs;
+
+                    expValues.put("contA1A3B", expectedContA1A3B);
+                    expValues.put("contA1A3b", expectedContA1A3b);
+                    expValues.put("contA1A4B", expectedContA1A4B);
+                    expValues.put("contA1A4b", expectedContA1A4b);
+                    expValues.put("contA2A3B", expectedContA2A3B);
+                    expValues.put("contA2A3b", expectedContA2A3b);
+                    expValues.put("contA2A4B", expectedContA2A4B);
+                    expValues.put("contA2A4b", expectedContA2A4b);
+
+                    if (expectedContA1A3B < 5 || expectedContA1A3b < 5 || expectedContA1A4B < 5 || expectedContA1A4b < 5 || expectedContA2A3B < 5 || expectedContA2A3b < 5 || expectedContA2A4B < 5 || expectedContA2A4b < 5){
+                        //warning y clean
+                    } else {
+                        if ((expectedContA1A3B >= 5 && expectedContA1A3B <= 10) || (expectedContA1A3b >= 5 && expectedContA1A3b <= 10) || (expectedContA1A4B >= 5 && expectedContA1A4B <= 10) || (expectedContA1A4b >= 5 && expectedContA1A4b <= 10) || (expectedContA2A3B >= 5 && expectedContA2A3B <= 10) || (expectedContA2A3b >= 5 && expectedContA2A3b <= 10) || (expectedContA2A4B >= 5 && expectedContA2A4B <= 10) || (expectedContA2A4b >= 5 && expectedContA2A4b <= 10)) {
+                            //warning
+                            chiInd = (Math.pow((obsA1A3B - expectedIndA1A3B) - 0.5, 2) / expectedIndA1A3B) + (Math.pow((obsA1A3b - expectedIndA1A3b) - 0.5, 2) / expectedIndA1A3b) + (Math.pow((obsA1A4B - expectedIndA1A4B) - 0.5, 2) / expectedIndA1A4B) + (Math.pow((obsA1A4b - expectedIndA1A4b) - 0.5, 2) / expectedIndA1A4b) + (Math.pow((obsA2A3B - expectedIndA2A3B) - 0.5, 2) / expectedIndA2A3B) + (Math.pow((obsA2A3b - expectedIndA2A3b) - 0.5, 2) / expectedIndA2A3b) + (Math.pow((obsA2A4B - expectedIndA2A4B) - 0.5, 2) / expectedIndA2A4B) + (Math.pow((obsA2A4b - expectedIndA2A4b) - 0.5, 2) / expectedIndA2A4b);
+                        } else {
+                            //esto ya esta calculado arriba???
+                            chiInd = (Math.pow(obsA1A3B - expectedIndA1A3B, 2) / expectedIndA1A3B) + (Math.pow(obsA1A3b - expectedIndA1A3b, 2) / expectedIndA1A3b) + (Math.pow(obsA1A4B - expectedIndA1A4B, 2) / expectedIndA1A4B) + (Math.pow(obsA1A4b - expectedIndA1A4b, 2) / expectedIndA1A4b) + (Math.pow(obsA2A3B - expectedIndA2A3B, 2) / expectedIndA2A3B) + (Math.pow(obsA2A3b - expectedIndA2A3b, 2) / expectedIndA2A3b) + (Math.pow(obsA2A4B - expectedIndA2A4B, 2) / expectedIndA2A4B) + (Math.pow(obsA2A4b - expectedIndA2A4b, 2) / expectedIndA2A4b);
+                            if (chiInd > 14.07) {
+                                if (expectedContA1A3B < 5 || expectedContA1A3b < 5 || expectedContA1A4B < 5 || expectedContA1A4b < 5 || expectedContA2A3B < 5 || expectedContA2A3b < 5 || expectedContA2A4B < 5 || expectedContA2A4b < 5){
+                                    //warning y clean (esto no esta repetido??!?!?!?!?)
+                                } else {
+                                    chiInd = (Math.pow((obsA1A3B - expectedIndA1A3B) - 0.5, 2) / expectedIndA1A3B) + (Math.pow((obsA1A3b - expectedIndA1A3b) - 0.5, 2) / expectedIndA1A3b) + (Math.pow((obsA1A4B - expectedIndA1A4B) - 0.5, 2) / expectedIndA1A4B) + (Math.pow((obsA1A4b - expectedIndA1A4b) - 0.5, 2) / expectedIndA1A4b) + (Math.pow((obsA2A3B - expectedIndA2A3B) - 0.5, 2) / expectedIndA2A3B) + (Math.pow((obsA2A3b - expectedIndA2A3b) - 0.5, 2) / expectedIndA2A3b) + (Math.pow((obsA2A4B - expectedIndA2A4B) - 0.5, 2) / expectedIndA2A4B) + (Math.pow((obsA2A4b - expectedIndA2A4b) - 0.5, 2) / expectedIndA2A4b);
+                                }
+                            } else {
+                                //limpiar to lo de cont
+                            }
+                        }
+                        double chiCont = (Math.pow(obsA1A3B - expectedContA1A3B, 2) / expectedContA1A3B) + (Math.pow(obsA1A3b - expectedContA1A3b, 2) / expectedContA1A3b) + (Math.pow(obsA1A4B - expectedContA1A4B, 2) / expectedContA1A4B) + (Math.pow(obsA1A4b - expectedContA1A4b, 2) / expectedContA1A4b) + (Math.pow(obsA2A3B - expectedContA2A3B, 2) / expectedContA2A3B) + (Math.pow(obsA2A3b - expectedContA2A3b, 2) / expectedContA2A3b) + (Math.pow(obsA2A4B - expectedContA2A4B, 2) / expectedContA2A4B) + (Math.pow(obsA2A4b - expectedContA2A4b, 2) / expectedContA2A4b);
+                    }
+                } else {
+                    //limpiar to lo de cont
+                }
+
+            }
+        } else {
+            double expectedContA1A3B = totalA1A3 * totalB / totalobs,
+                    expectedContA1A3b = totalA1A3 * totalb / totalobs,
+                    expectedContA1A4B = totalA1A4 * totalB / totalobs,
+                    expectedContA1A4b = totalA1A4 * totalb / totalobs,
+                    expectedContA2A3B = totalA2A3 * totalB / totalobs,
+                    expectedContA2A3b = totalA2A3 * totalb / totalobs,
+                    expectedContA2A4B = totalA2A4 * totalB / totalobs,
+                    expectedContA2A4b = totalA2A4 * totalb / totalobs;
+
+            expValues.put("contA1A3B", expectedContA1A3B);
+            expValues.put("contA1A3b", expectedContA1A3b);
+            expValues.put("contA1A4B", expectedContA1A4B);
+            expValues.put("contA1A4b", expectedContA1A4b);
+            expValues.put("contA2A3B", expectedContA2A3B);
+            expValues.put("contA2A3b", expectedContA2A3b);
+            expValues.put("contA2A4B", expectedContA2A4B);
+            expValues.put("contA2A4b", expectedContA2A4b);
+
+            if (expectedContA1A3B < 5 || expectedContA1A3b < 5 || expectedContA1A4B < 5 || expectedContA1A4b < 5 || expectedContA2A3B < 5 || expectedContA2A3b < 5 || expectedContA2A4B < 5 || expectedContA2A4b < 5){
+                //warning y clean
+            } else{
+                if ((expectedContA1A3B >= 5 && expectedContA1A3B <= 10) || (expectedContA1A3b >= 5 && expectedContA1A3b <= 10) || (expectedContA1A4B >= 5 && expectedContA1A4B <= 10) || (expectedContA1A4b >= 5 && expectedContA1A4b <= 10) || (expectedContA2A3B >= 5 && expectedContA2A3B <= 10) || (expectedContA2A3b >= 5 && expectedContA2A3b <= 10) || (expectedContA2A4B >= 5 && expectedContA2A4B <= 10) || (expectedContA2A4b >= 5 && expectedContA2A4b <= 10)) {
+                    //warning
+                    double chiCont = (Math.pow((obsA1A3B - expectedContA1A3B) - 0.5, 2) / expectedContA1A3B) + (Math.pow((obsA1A3b - expectedContA1A3b) - 0.5, 2) / expectedContA1A3b) + (Math.pow((obsA1A4B - expectedContA1A4B) - 0.5, 2) / expectedContA1A4B) + (Math.pow((obsA1A4b - expectedContA1A4b) - 0.5, 2) / expectedContA1A4b) + (Math.pow((obsA2A3B - expectedContA2A3B) - 0.5, 2) / expectedContA2A3B) + (Math.pow((obsA2A3b - expectedContA2A3b) - 0.5, 2) / expectedContA2A3b) + (Math.pow((obsA2A4B - expectedContA2A4B) - 0.5, 2) / expectedContA2A4B) + (Math.pow((obsA2A4b - expectedContA2A4b) - 0.5, 2) / expectedContA2A4b);
+                } else {
+                    double chiCont = (Math.pow(obsA1A3B - expectedContA1A3B, 2) / expectedContA1A3B) + (Math.pow(obsA1A3b - expectedContA1A3b, 2) / expectedContA1A3b) + (Math.pow(obsA1A4B - expectedContA1A4B, 2) / expectedContA1A4B) + (Math.pow(obsA1A4b - expectedContA1A4b, 2) / expectedContA1A4b) + (Math.pow(obsA2A3B - expectedContA2A3B, 2) / expectedContA2A3B) + (Math.pow(obsA2A3b - expectedContA2A3b, 2) / expectedContA2A3b) + (Math.pow(obsA2A4B - expectedContA2A4B, 2) / expectedContA2A4B) + (Math.pow(obsA2A4b - expectedContA2A4b, 2) / expectedContA2A4b);
+                }
+            }
+        }
+        return null;
+    }
+
 }
