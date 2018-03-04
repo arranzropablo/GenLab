@@ -20,7 +20,6 @@ public class CTLinkageImp implements CTLinkage{
 		}
 	}
 
-	/* TESTCROSS 2 LOCI */
 	public CTResult testcross2Loci(int obsAB, int obsAb, int obsaB, int obsab) {
 		Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();

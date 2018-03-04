@@ -2,6 +2,9 @@ package com.genlab.serverapplication.controllers;
 
 import com.genlab.serverapplication.models.*;
 import com.genlab.serverapplication.services.bookService.BookService;
+import com.genlab.serverapplication.services.ctservice.Linkage.CTLinkage;
+import com.genlab.serverapplication.services.ctservice.Onelocus.CTOneLocus;
+import com.genlab.serverapplication.services.ctservice.Polyhybrid.CTPolyHybrid;
 import com.genlab.serverapplication.services.ctservice.Twoloci.CTTwoLoci;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
 import com.genlab.serverapplication.services.testsService.TestService;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +37,15 @@ public class RestController {
 
     @Autowired
     private CTTwoLoci twoLociService;
+
+    @Autowired
+    private CTOneLocus oneLocusService;
+
+    @Autowired
+    private CTLinkage linkageService;
+
+    @Autowired
+    private CTPolyHybrid polyhybridService;
 
     @GetMapping("/problems")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
@@ -78,8 +91,216 @@ public class RestController {
     }
 
     @GetMapping("/calctool")
-    public @ResponseBody CTResult getResult(@RequestParam("AB") int AB, @RequestParam("Ab") int Ab, @RequestParam("aB") int aB, @RequestParam("ab") int ab){
-        return twoLociService.testcross(AB, Ab, aB, ab);
+    public @ResponseBody CTResult getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values){
+        switch(CTid.toCharArray()[0]){
+            case 0:
+                switch (CTid.toCharArray()[1]){
+                    case 0:
+                        twoLociService.testcross(values.get("AB"),
+                                                    values.get("Ab"),
+                                                    values.get("aB"),
+                                                    values.get("ab"));
+                        break;
+                    case 1:
+                        twoLociService.f2Dominance(values.get("AB"),
+                                                    values.get("Ab"),
+                                                    values.get("aB"),
+                                                    values.get("ab"));
+                        break;
+                    case 2:
+                        twoLociService.f2coDominance(values.get("A1A1B1B1"),
+                                                        values.get("A1A1B1B2"),
+                                                        values.get("A1A1B2B2"),
+                                                        values.get("A1A2B1B1"),
+                                                        values.get("A1A2B1B2"),
+                                                        values.get("A1A2B2B2"),
+                                                        values.get("A2A2B1B1"),
+                                                        values.get("A2A2B1B2"),
+                                                        values.get("A2A2B2B2"));
+                        break;
+                    case 3:
+                        twoLociService.f2coDom2dom(values.get("A1A1B"),
+                                                    values.get("A1A2B"),
+                                                    values.get("A2A2B"),
+                                                    values.get("A1A1b"),
+                                                    values.get("A1A2b"),
+                                                    values.get("A2A2b"));
+                        break;
+                    case 4:
+                        twoLociService.f2coDom4dom(values.get("A1A3B"),
+                                                    values.get("A1A3b"),
+                                                    values.get("A1A4B"),
+                                                    values.get("A1A4b"),
+                                                    values.get("A2A3B"),
+                                                    values.get("A2A3b"),
+                                                    values.get("A2A4B"),
+                                                    values.get("A2A4b"));
+                        break;
+                    case 5:
+                        twoLociService.f2TestcrossDom(values.get("AB"),
+                                                        values.get("Ab"),
+                                                        values.get("aB"),
+                                                        values.get("ab"));
+                        break;
+                    case 6:
+                        twoLociService.f2Testcross2Dom(values.get("A1A1B"),
+                                                        values.get("A1A2B"),
+                                                        values.get("A2A2B"),
+                                                        values.get("A1A1b"),
+                                                        values.get("A1A2b"),
+                                                        values.get("A2A2b"));
+                        break;
+                    case 7:
+                        twoLociService.f2Testcross4Dom(values.get("A1A3B"),
+                                                        values.get("A1A3b"),
+                                                        values.get("A1A4B"),
+                                                        values.get("A1A4b"),
+                                                        values.get("A2A3B"),
+                                                        values.get("A2A3b"),
+                                                        values.get("A2A4B"),
+                                                        values.get("A2A4b"));
+                        break;
+                }
+                break;
+            case 1:
+                switch (CTid.toCharArray()[1]){
+                    case 0:
+                        oneLocusService.testcross(values.get("A"),
+                                                    values.get("a"));
+                        break;
+                    case 1:
+                        oneLocusService.f2Dominance(values.get("A"),
+                                                    values.get("a"));
+                        break;
+                    case 2:
+                        oneLocusService.f2CoDominance(values.get("AA"),
+                                                        values.get("Aa"),
+                                                        values.get("aa"));
+                        break;
+                    case 3:
+                        oneLocusService.coDominance3Alleles(values.get("A1A1"),
+                                                            values.get("A1A2"),
+                                                            values.get("A1A3"),
+                                                            values.get("A2A3"));
+                        break;
+                    case 4:
+                        oneLocusService.coDominance4Alleles(values.get("A1A3"),
+                                                            values.get("A1A4"),
+                                                            values.get("A2A3"),
+                                                            values.get("A2A4"));
+                        break;
+                    case 5:
+                        oneLocusService.lethalGenes(values.get("AA"),
+                                                    values.get("Aa"));
+                        break;
+                }
+                break;
+            case 2:
+                switch (CTid.toCharArray()[1]){
+                    case 0:
+                        linkageService.testcross2Loci(values.get("AB"),
+                                                        values.get("Ab"),
+                                                        values.get("aB"),
+                                                        values.get("ab"));
+                        break;
+                    case 1:
+                        linkageService.f22LociDominance(values.get("AB"),
+                                                        values.get("Ab"),
+                                                        values.get("aB"),
+                                                        values.get("ab"));
+                        break;
+                    case 2:
+                        linkageService.f22LociCodominance(values.get("AABB"),
+                                                            values.get("AABb"),
+                                                            values.get("AAbb"),
+                                                            values.get("AaBB"),
+                                                            values.get("AaBb"),
+                                                            values.get("Aabb"),
+                                                            values.get("aaBB"),
+                                                            values.get("aaBb"),
+                                                            values.get("aabb"));
+                        break;
+                    case 3:
+                        linkageService.testcross3Loci(values.get("ABC"),
+                                                        values.get("abc"),
+                                                        values.get("ABc"),
+                                                        values.get("abC"),
+                                                        values.get("aBC"),
+                                                        values.get("Abc"),
+                                                        values.get("AbC"),
+                                                        values.get("aBc"));
+                        break;
+                    case 4:
+                        linkageService.testcrossDM(values.get("r1"),
+                                                    values.get("r2"),
+                                                    values.get("cOc"),
+                                                    values.get("tOs"));
+                        break;
+                    case 5:
+                        linkageService.dominanceDM(values.get("r1"),
+                                                    values.get("tOs"));
+                        break;
+                    case 6:
+                        linkageService.codominanceDM(values.get("r1"),
+                                                        values.get("tOs"));
+                        break;
+                    case 7:
+                        linkageService.testcross3Loci(values.get("ABC"),
+                                                        values.get("abc"),
+                                                        values.get("ABc"),
+                                                        values.get("abC"),
+                                                        values.get("aBC"),
+                                                        values.get("Abc"),
+                                                        values.get("AbC"),
+                                                        values.get("aBc"));
+                        break;
+                }
+                break;
+            case 3:
+                switch (CTid.toCharArray()[1]){
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                }
+                break;
+            case 4:
+                switch (CTid.toCharArray()[1]){
+                    case 0:
+                        polyhybridService.polyhybrid(values.get("n"),
+                                                        values.get("h"),
+                                                        values.get("d"),
+                                                        values.get("r"),
+                                                        values.get("D"),
+                                                        values.get("R"),
+                                                        values.get("T"));
+                        break;
+                    case 1:
+                        polyhybridService.multiplealleles(values.get("locus1"),
+                                                            values.get("locus2"),
+                                                            values.get("locus3"),
+                                                            values.get("locus4"),
+                                                            values.get("locus5"));
+                        break;
+                }
+                break;
+
+        }
+        return CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();
     }
 
 }
