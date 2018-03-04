@@ -10,114 +10,181 @@ import org.springframework.stereotype.Service;
 public class CTOneLocusImp implements CTOneLocus{
 
 	public CTResult testcross(int obsA, int obsa) {
-		//Cosas que haríamos en el controlador:
-		//Validar que sea <5000 en el controlador con lo de @Valid y/o BindingResult (creo qe es lo segundo por ser primitivo) https://stackoverflow.com/questions/24767164/spring-mvc-with-hibernate-validator-to-validate-single-basic-type
-		//Validar que sea > 5
-		//Sumar para poner total en el propio controlador
-		//Con lo que se devuelva de aquí poner "The locus is/isn't segregating correctly" y en Agree un YES o NO
-		double expectedValue = (obsA + obsa) / 2, chi; //TODO Comprobar que se guarda con decimales
-		Map<String, Double> expValues = new HashMap<>();
-		expValues.put("expectedglobal", expectedValue);
-		CTResult result = CTResult.builder().expectedValues(expValues).build();
-		if(expectedValue > 10) {
-			chi = (Math.pow(obsA - expectedValue, 2) + Math.pow(obsa - expectedValue, 2))/expectedValue;
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		String result = "";
+		if(obsA > 5000 || obsa > 5000){
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
-			chi = (Math.pow((obsA - expectedValue) - 0.5, 2) + Math.pow((obsa - expectedValue) - 0.5, 2))/expectedValue;
+			double expectedValue = (obsA + obsa) / 2, chi;
+			expectedValues.put("expA", expectedValue);
+			expectedValues.put("expa", expectedValue);
+
+			if (expectedValue < 5) {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+ 			} else if (expectedValue > 10) {
+				chi = (Math.pow(obsA - expectedValue, 2) + Math.pow(obsa - expectedValue, 2)) / expectedValue;
+			} else {
+				chi = (Math.pow((obsA - expectedValue) - 0.5, 2) + Math.pow((obsa - expectedValue) - 0.5, 2)) / expectedValue;
+			}
+			resultValues.put("chi", chi);
+			agree.put("chi", (chi > 3.841 ? "No" : "Yes"));
+			result = (chi > 3.841 ? "This locus is not segregating correctly" : "This locus is segregating correctly");
 		}
-		result.getValues().put("chi", chi);
-		return result;
+		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
-	public CTResult f2Dominance(int obsCapitalA, int obsLowerCasea) {
-		//Cosas que haríamos en el controlador:
-		//Validar que sea <5000 en el controlador con lo de @Valid y/o BindingResult (creo qe es lo segundo por ser primitivo) https://stackoverflow.com/questions/24767164/spring-mvc-with-hibernate-validator-to-validate-single-basic-type
-		//Validar que sea > 5
-		//Sumar para poner total en el propio controlador
-		//Con lo que se devuelva de aquí poner "The locus is/isn't segregating correctly" y en Agree un YES o NO
-		double expectedValueCapitalA = (obsCapitalA + obsLowerCasea) *(3/4);
-		double expectedValueLowerCaseA = (obsCapitalA + obsLowerCasea) /4;
-		double chi; //TODO Comprobar que se guarda con decimales
-		Map<String, Double> expValues = new HashMap<>();
-		expValues.put("a", expectedValueLowerCaseA);
-		expValues.put("A", expectedValueCapitalA);
-		CTResult result = CTResult.builder().expectedValues(expValues).build();
-		if(expectedValueLowerCaseA > 10 || expectedValueCapitalA > 10) {
-			chi = (Math.pow((obsCapitalA - expectedValueCapitalA), 2)/expectedValueCapitalA) + (Math.pow(obsLowerCasea - expectedValueLowerCaseA, 2)/expectedValueLowerCaseA);
+	public CTResult f2Dominance(int obsA, int obsa) {
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		String result = "";
+		if(obsA > 5000 || obsa > 5000){
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
-			chi = (Math.pow((obsCapitalA - expectedValueCapitalA) - 0.5, 2)/expectedValueCapitalA) + (Math.pow((obsLowerCasea - expectedValueLowerCaseA)-0.5, 2)/expectedValueLowerCaseA);
+			double expectedValueA = (obsA + obsa) * (3 / 4);
+			double expectedValuea = (obsA + obsa) / 4;
+			double chi;
+			Map<String, Double> expValues = new HashMap<>();
+			expValues.put("a", expectedValueA);
+			expValues.put("A", expectedValueA);
+
+			if (expectedValueA < 5 || expectedValuea < 5) {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+			} else if (expectedValueA > 10 || expectedValueA > 10) {
+				chi = (Math.pow((obsA - expectedValueA), 2) / expectedValueA) + (Math.pow(obsa - expectedValueA, 2) / expectedValueA);
+			} else {
+				chi = (Math.pow((obsA - expectedValueA) - 0.5, 2) / expectedValueA) + (Math.pow((obsa - expectedValueA) - 0.5, 2) / expectedValueA);
+			}
+			resultValues.put("chi", chi);
+			agree.put("chi", (chi > 3.841 ? "No" : "Yes"));
+			result = (chi > 3.841 ? "This locus is not segregating correctly" : "This locus is segregating correctly");
 		}
-		result.getValues().put("chi", chi);
-		return result;
+		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
 	public CTResult f2CoDominance(int obsAA, int obsAa, int obsaa) {
-		int total = obsAA + obsAa + obsaa;
-		double expectedValueAA = total/4;
-		double expectedValueAa = total/2;
-		double expectedValueaa = total/4;
-		double chi;
-		Map<String, Double> expValues = new HashMap<>();
-		expValues.put("AA", expectedValueAA);
-		expValues.put("Aa", expectedValueAa);
-		expValues.put("aa", expectedValueaa);
-		CTResult result = CTResult.builder().expectedValues(expValues).build();
-		if(expectedValueAA>10 || expectedValueAa>10 || expectedValueaa>10) {
-			chi = (Math.pow((obsAA - expectedValueAA), 2)/expectedValueAA) + (Math.pow(obsAa - expectedValueAa, 2)/expectedValueAa)+ (Math.pow(obsaa - expectedValueaa, 2)/expectedValueaa);
-		}else {
-			chi = (Math.pow((obsAA - expectedValueAA)-0.5, 2)/expectedValueAA) + (Math.pow(obsAa - expectedValueAa-0.5, 2)/expectedValueAa)+ (Math.pow(obsaa - expectedValueaa-0.5, 2)/expectedValueaa);
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		String result = "";
+		if(obsAA > 5000 || obsAa > 5000 || obsaa > 5000){
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
+		} else {
+			int total = obsAA + obsAa + obsaa;
+			double expectedValueAA = total / 4;
+			double expectedValueAa = total / 2;
+			double expectedValueaa = total / 4;
+			double chi;
+			expectedValues.put("AA", expectedValueAA);
+			expectedValues.put("Aa", expectedValueAa);
+			expectedValues.put("aa", expectedValueaa);
+
+			if (expectedValueAA < 5 || expectedValueAa < 5 || expectedValueaa < 5) {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+			} else if (expectedValueAA > 10 || expectedValueAa > 10 || expectedValueaa > 10) {
+				chi = (Math.pow((obsAA - expectedValueAA), 2) / expectedValueAA) + (Math.pow(obsAa - expectedValueAa, 2) / expectedValueAa) + (Math.pow(obsaa - expectedValueaa, 2) / expectedValueaa);
+			} else {
+				chi = (Math.pow((obsAA - expectedValueAA) - 0.5, 2) / expectedValueAA) + (Math.pow(obsAa - expectedValueAa - 0.5, 2) / expectedValueAa) + (Math.pow(obsaa - expectedValueaa - 0.5, 2) / expectedValueaa);
+			}
+			resultValues.put("chi", chi);
+			agree.put("chi", (chi > 5.991 ? "No" : "Yes"));
+			result = (chi > 5.991 ? "This locus is not segregating correctly" : "This locus is segregating correctly");
 		}
-		result.getValues().put("chi", chi);
-		return result;
+		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
 	public CTResult coDominance3Alleles(int obsA1A1, int obsA1A2, int obsA1A3, int obsA2A3) {
-		int total = obsA1A1 + obsA1A2 + obsA1A3+ obsA2A3;
-		double expectedValue = total/4;
-		double chi;
-		Map<String, Double> expValues = new HashMap<>();
-		expValues.put("expectedglobal", expectedValue);
-		CTResult result = CTResult.builder().expectedValues(expValues).build();
-		if(expectedValue>10) {
-			chi = (Math.pow((obsA1A1 - expectedValue), 2)/expectedValue) + (Math.pow((obsA1A2 - expectedValue), 2)/expectedValue)+ (Math.pow((obsA1A3 - expectedValue), 2)/expectedValue)+ (Math.pow((obsA2A3 - expectedValue), 2)/expectedValue);
-		}else {
-			chi = (Math.pow((obsA1A1 - expectedValue)-0.5, 2)/expectedValue) + (Math.pow((obsA1A2 - expectedValue)-0.5, 2)/expectedValue)+ (Math.pow((obsA1A3 - expectedValue)-0.5, 2)/expectedValue)+ (Math.pow((obsA2A3 - expectedValue)-0.5, 2)/expectedValue);
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		String result = "";
+
+		if(obsA1A1 > 5000 || obsA1A2 > 5000 || obsA1A3 > 5000 || obsA2A3 > 5000){
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
+		} else {
+			int total = obsA1A1 + obsA1A2 + obsA1A3 + obsA2A3;
+			double expectedValue = total / 4;
+			double chi;
+			expectedValues.put("expectedA1A1", expectedValue);
+			expectedValues.put("expectedA1A2", expectedValue);
+			expectedValues.put("expectedA1A3", expectedValue);
+			expectedValues.put("expectedA2A3", expectedValue);
+
+			if (expectedValue < 5) {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+			} else if (expectedValue > 10) {
+				chi = (Math.pow((obsA1A1 - expectedValue), 2) / expectedValue) + (Math.pow((obsA1A2 - expectedValue), 2) / expectedValue) + (Math.pow((obsA1A3 - expectedValue), 2) / expectedValue) + (Math.pow((obsA2A3 - expectedValue), 2) / expectedValue);
+			} else {
+				chi = (Math.pow((obsA1A1 - expectedValue) - 0.5, 2) / expectedValue) + (Math.pow((obsA1A2 - expectedValue) - 0.5, 2) / expectedValue) + (Math.pow((obsA1A3 - expectedValue) - 0.5, 2) / expectedValue) + (Math.pow((obsA2A3 - expectedValue) - 0.5, 2) / expectedValue);
+			}
+			resultValues.put("chi", chi);
+			agree.put("chi", (chi > 7.815 ? "No" : "Yes"));
+			result = (chi > 7.815 ? "This locus is not segregating correctly" : "This locus is segregating correctly");
 		}
-		result.getValues().put("chi", chi);
-		return result;
+		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
 	public CTResult coDominance4Alleles(int obsA1A3, int obsA1A4, int obsA2A3, int obsA2A4) {
-		int total = obsA1A3 + obsA1A4 + obsA2A3+ obsA2A4;
-		double expectedvalue = total/4;
-		double chi;
-		Map<String, Double> expValues = new HashMap<>();
-		expValues.put("expectedglobal", expectedvalue);
-		CTResult result = CTResult.builder().expectedValues(expValues).build();
-		if(expectedvalue>10) {
-			chi = (Math.pow((obsA1A3 - expectedvalue), 2)/expectedvalue) + (Math.pow((obsA1A4 - expectedvalue), 2)/expectedvalue)+ (Math.pow((obsA2A3 - expectedvalue), 2)/expectedvalue)+ (Math.pow((obsA2A4 - expectedvalue), 2)/expectedvalue);
-		}else {
-			chi = (Math.pow((obsA1A3 - expectedvalue)-0.5, 2)/expectedvalue) + (Math.pow((obsA1A4 - expectedvalue)-0.5, 2)/expectedvalue)+ (Math.pow((obsA2A3 - expectedvalue)-0.5, 2)/expectedvalue)+ (Math.pow((obsA2A4 - expectedvalue)-0.5, 2)/expectedvalue);
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		String result = "";
+
+		if(obsA2A4 > 5000 || obsA1A4 > 5000 || obsA1A3 > 5000 || obsA2A3 > 5000){
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
+		} else {
+			int total = obsA1A3 + obsA1A4 + obsA2A3 + obsA2A4;
+			double expectedValue = total / 4;
+			double chi;
+			expectedValues.put("expectedA2A4", expectedValue);
+			expectedValues.put("expectedA2A3", expectedValue);
+			expectedValues.put("expectedA1A3", expectedValue);
+			expectedValues.put("expectedA1A4", expectedValue);
+
+			if (expectedValue < 5) {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+			} else if (expectedValue > 10) {
+				chi = (Math.pow((obsA1A3 - expectedValue), 2) / expectedValue) + (Math.pow((obsA1A4 - expectedValue), 2) / expectedValue) + (Math.pow((obsA2A3 - expectedValue), 2) / expectedValue) + (Math.pow((obsA2A4 - expectedValue), 2) / expectedValue);
+			} else {
+				chi = (Math.pow((obsA1A3 - expectedValue) - 0.5, 2) / expectedValue) + (Math.pow((obsA1A4 - expectedValue) - 0.5, 2) / expectedValue) + (Math.pow((obsA2A3 - expectedValue) - 0.5, 2) / expectedValue) + (Math.pow((obsA2A4 - expectedValue) - 0.5, 2) / expectedValue);
+			}
+			resultValues.put("chi", chi);
+			agree.put("chi", (chi > 7.815 ? "No" : "Yes"));
+			result = (chi > 7.815 ? "This locus is not segregating correctly" : "This locus is segregating correctly");
 		}
-		result.getValues().put("chi", chi);
-		return result;
+		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
 	public CTResult lethalGenes(int obsAA, int obsAa) {
-		int total = obsAA + obsAa;
-		double expectedValueAA = total/3;
-		double expectedValueAa = total*(2/3);
-		double chi;
-		Map<String, Double> expValues = new HashMap<>();
-		expValues.put("AA", expectedValueAA);
-		expValues.put("Aa", expectedValueAa);
-		CTResult result = CTResult.builder().expectedValues(expValues).build();
-		if(expectedValueAA>10 || expectedValueAa>10) {
-			chi = (Math.pow((obsAA - expectedValueAA), 2)/expectedValueAA) + (Math.pow((obsAa - expectedValueAa), 2)/expectedValueAa);
-		}else {
-			chi = (Math.pow((obsAA - expectedValueAA)-0.5, 2)/expectedValueAA) + (Math.pow((obsAa - expectedValueAa)-0.5, 2)/expectedValueAa);
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		String result = "";
+
+		if(obsAA > 5000 || obsAa > 5000){
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
+		} else {
+			int total = obsAA + obsAa;
+			double expectedValueAA = total / 3;
+			double expectedValueAa = total * (2 / 3);
+			double chi;
+			expectedValues.put("AA", expectedValueAA);
+			expectedValues.put("Aa", expectedValueAa);
+
+			if (expectedValueAA < 5 || expectedValueAa < 5) {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+			} else if (expectedValueAA > 10 || expectedValueAa > 10) {
+				chi = (Math.pow((obsAA - expectedValueAA), 2) / expectedValueAA) + (Math.pow((obsAa - expectedValueAa), 2) / expectedValueAa);
+			} else {
+				chi = (Math.pow((obsAA - expectedValueAA) - 0.5, 2) / expectedValueAA) + (Math.pow((obsAa - expectedValueAa) - 0.5, 2) / expectedValueAa);
+			}
+			resultValues.put("chi", chi);
+			agree.put("chi", (chi > 3.841 ? "No" : "Yes"));
+			result = (chi > 3.841 ? "This locus is not segregating correctly" : "This locus is segregating correctly");
 		}
-		result.getValues().put("chi", chi);
-		return result;
+		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
 }

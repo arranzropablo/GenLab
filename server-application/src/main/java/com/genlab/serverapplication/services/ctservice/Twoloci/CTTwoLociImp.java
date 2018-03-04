@@ -23,11 +23,17 @@ public class CTTwoLociImp implements CTTwoLoci{
             double expectedAlelos = totalobs / 2;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA", totalA / 2);
-            expValues.put("expB", totalB / 2);
-            expValues.put("expa", totala / 2);
-            expValues.put("expb", totalb / 2);
-            expValues.put("total", totalobs);
+            expValues.put("expA", expectedAlelos);
+            expValues.put("expB", expectedAlelos);
+            expValues.put("expa", expectedAlelos);
+            expValues.put("expb", expectedAlelos);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA", totalA);
+            observedValues.put("obsB", totalB);
+            observedValues.put("obsa", totala);
+            observedValues.put("obsb", totalb);
+            observedValues.put("total", totalobs);
 
             double chiAa = (Math.pow(totalA - expectedAlelos, 2)/expectedAlelos) + (Math.pow(totala - expectedAlelos, 2)/expectedAlelos);
             double chiBb = (Math.pow(totalB - expectedAlelos, 2)/expectedAlelos) + (Math.pow(totalb - expectedAlelos, 2)/expectedAlelos);
@@ -55,8 +61,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 } else {
                     double chiInd = (Math.pow(obsAB - expectedInd, 2)/expectedInd) + (Math.pow(obsaB - expectedInd, 2)/expectedInd) + (Math.pow(obsAb - expectedInd, 2)/expectedInd) + (Math.pow(obsab - expectedInd, 2)/expectedInd);
@@ -81,8 +88,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         } else {
                             double chiCont = (Math.pow(obsAB - expectedContAB, 2)/expectedContAB) + (Math.pow(obsaB - expectedContaB, 2)/expectedContaB) + (Math.pow(obsAb - expectedContAb, 2)/expectedContAb) + (Math.pow(obsab - expectedContab, 2)/expectedContab);
@@ -91,8 +99,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -116,8 +125,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 } else {
                     double chiCont = (Math.pow(obsAB - expectedContAB, 2)/expectedContAB) + (Math.pow(obsaB - expectedContaB, 2)/expectedContaB) + (Math.pow(obsAb - expectedContAb, 2)/expectedContAb) + (Math.pow(obsab - expectedContab, 2)/expectedContab);
@@ -126,8 +136,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("X^2 of Aa and/or Bb aren´t segregating correctly. In this occasions we use X2 of contingency")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 }
             }
@@ -150,7 +161,13 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expB", totalobs * 3 / 4);
             expValues.put("expa", totalobs / 4);
             expValues.put("expb", totalobs / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA", totalA);
+            observedValues.put("obsB", totalB);
+            observedValues.put("obsa", totala);
+            observedValues.put("obsb", totalb);
+            observedValues.put("total", totalobs);
 
             double chiAa = (Math.pow(totalA - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totala - totalobs / 4, 2) / (totalobs / 4));
             double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
@@ -184,8 +201,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 } else {
                     double chiInd = (Math.pow(obsAB - expectedIndAB, 2) / expectedIndAB) + (Math.pow(obsaB - expectedIndAb, 2) / expectedIndAb) + (Math.pow(obsAb - expectedIndaB, 2) / expectedIndaB) + (Math.pow(obsab - expectedIndab, 2) / expectedIndab);
@@ -209,8 +227,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         } else {
                             double chiCont = (Math.pow(obsAB - expectedContAB, 2) / expectedContAB) + (Math.pow(obsaB - expectedContaB, 2) / expectedContaB) + (Math.pow(obsAb - expectedContAb, 2) / expectedContAb) + (Math.pow(obsab - expectedContab, 2) / expectedContab);
@@ -219,8 +238,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -243,8 +263,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 } else {
                     double chiCont = (Math.pow(obsAB - expectedContAB, 2) / expectedContAB) + (Math.pow(obsaB - expectedContaB, 2) / expectedContaB) + (Math.pow(obsAb - expectedContAb, 2) / expectedContAb) + (Math.pow(obsab - expectedContab, 2) / expectedContab);
@@ -253,8 +274,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("The locus A,a and/or  the locus B,b are not segregating correctly. In this case we use X^2 of contingency")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 }
             }
@@ -281,7 +303,15 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expB1", totalobs / 4);
             expValues.put("expB2", totalobs / 4);
             expValues.put("expB1B2", totalobs * 2 / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA1", totalA1);
+            observedValues.put("obsA2", totalA2);
+            observedValues.put("obsA1A2", totalA1A2);
+            observedValues.put("obsB1", totalB1);
+            observedValues.put("obsB2", totalB2);
+            observedValues.put("obsB1B2", totalB1B2);
+            observedValues.put("total", totalobs);
 
             double chiA = (Math.pow(totalA1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
             double chiB = (Math.pow(totalB1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalB2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalB1B2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
@@ -350,8 +380,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             } else {
                                 chiInd = (Math.pow(obsA1A1B1B1 - expectedIndA1B1, 2) / expectedIndA1B1) + (Math.pow(obsA1A1B2B2 - expectedIndA1B2, 2) / expectedIndA1B2) + (Math.pow(obsA1A1B1B2 - expectedIndA1B1B2, 2) / expectedIndA1B1B2) + (Math.pow(obsA2A2B1B1 - expectedIndA2B1, 2) / expectedIndA2B1) + (Math.pow(obsA2A2B2B2 - expectedIndA2B2, 2) / expectedIndA2B2) + (Math.pow(obsA2A2B1B2 - expectedIndA2B1B2, 2) / expectedIndA2B1B2) + (Math.pow(obsA1A2B1B1 - expectedIndA1A2B1, 2) / expectedIndA1A2B1) + (Math.pow(obsA1A2B2B2 - expectedIndA1A2B2, 2) / expectedIndA1A2B2) + (Math.pow(obsA1A2B1B2 - expectedIndA1A2B1B2, 2) / expectedIndA1A2B1B2);
@@ -367,8 +398,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                                 .cleanInputs(false)
                                                 .expectedValues(expValues)
-                                                .chiValues(chiValues)
+                                                .resultValues(chiValues)
                                                 .agree(agree)
+                                                .observed(observedValues)
                                                 .build();
                                     }
                                 }
@@ -379,8 +411,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -415,8 +448,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 } else {
                     double chiCont = (Math.pow(obsA1A1B1B1 - expectedContA1B1, 2) / expectedContA1B1) + (Math.pow(obsA1A1B2B2 - expectedContA1B2, 2) / expectedContA1B2) + (Math.pow(obsA1A1B1B2 - expectedContA1B1B2, 2) / expectedContA1B1B2) + (Math.pow(obsA2A2B1B1 - expectedContA2B1, 2) / expectedContA2B1) + (Math.pow(obsA2A2B2B2 - expectedContA2B2, 2) / expectedContA2B2) + (Math.pow(obsA2A2B1B2 - expectedContA2B1B2, 2) / expectedContA2B1B2) + (Math.pow(obsA1A2B1B1 - expectedContA1A2B1, 2) / expectedContA1A2B1) + (Math.pow(obsA1A2B2B2 - expectedContA1A2B2, 2) / expectedContA1A2B2) + (Math.pow(obsA1A2B1B2 - expectedContA1A2B1B2, 2) / expectedContA1A2B1B2);
@@ -425,8 +459,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("X^2 of the loci A and/or loci B aren´t segregating correctly. In this occasions we use X^2 of Contingency.")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 }
             }
@@ -451,7 +486,14 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expA1A2", totalobs * 2 / 4);
             expValues.put("expB", totalobs * 3 / 4);
             expValues.put("expb", totalobs / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA1", totalA1);
+            observedValues.put("obsA2", totalA2);
+            observedValues.put("obsA1A2", totalA1A2);
+            observedValues.put("obsB1", totalB);
+            observedValues.put("obsB2", totalb);
+            observedValues.put("total", totalobs);
 
             double chiA1A2 = (Math.pow(totalA1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
             double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
@@ -509,8 +551,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             } else {
                                 chiInd = (Math.pow(obsA1A1B - expectedIndA1B, 2) / expectedIndA1B) + (Math.pow(obsA1A1b - expectedIndA1b, 2) / expectedIndA1b) + (Math.pow(obsA2A2B - expectedIndA2B, 2) / expectedIndA2B) + (Math.pow(obsA2A2b - expectedIndA2b, 2) / expectedIndA2b) + (Math.pow(obsA1A2B - expectedIndA1A2B, 2) / expectedIndA1A2B) + (Math.pow(obsA1A2b - expectedIndA1A2b, 2) / expectedIndA1A2b);
@@ -526,8 +569,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                                 .cleanInputs(false)
                                                 .expectedValues(expValues)
-                                                .chiValues(chiValues)
+                                                .resultValues(chiValues)
                                                 .agree(agree)
+                                                .observed(observedValues)
                                                 .build();
                                     }
                                 }
@@ -538,8 +582,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -570,8 +615,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     } else {
                         double chiCont = (Math.pow(obsA1A1B - expectedContA1B, 2) / expectedContA1B) + (Math.pow(obsA1A1b - expectedContA1b, 2) / expectedContA1b) + (Math.pow(obsA2A2B - expectedContA2B, 2) / expectedContA2B) + (Math.pow(obsA2A2b - expectedContA2b, 2) / expectedContA2b) + (Math.pow(obsA1A2B - expectedContA1A2B, 2) / expectedContA1A2B) + (Math.pow(obsA1A2b - expectedContA1A2b, 2) / expectedContA1A2b);
@@ -580,8 +626,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("X^2 of the loci A and/or loci B aren´t segregating correctly. In this occasions we use X^2 of Contingency.")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     }
                 }
@@ -610,7 +657,16 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expA2A4", totalobs / 4);
             expValues.put("expB", totalobs * 3 / 4);
             expValues.put("expb", totalobs / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA1A3", totalA1A3);
+            observedValues.put("obsA1A4", totalA1A4);
+            observedValues.put("obsA2A3", totalA2A3);
+            observedValues.put("obsA2A4", totalA2A4);
+            observedValues.put("obsA1A2A3A4", totalA1A2A3A4);
+            observedValues.put("obsB", totalB);
+            observedValues.put("obsb", totalb);
+            observedValues.put("total", totalobs);
 
             double chiA1A2A3A4 = (Math.pow(totalA1A3 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A4 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2A3 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalA2A4 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
             double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
@@ -676,8 +732,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             } else {
                                 chiInd = (Math.pow(obsA1A3B - expectedIndA1A3B, 2) / expectedIndA1A3B) + (Math.pow(obsA1A3b - expectedIndA1A3b, 2) / expectedIndA1A3b) + (Math.pow(obsA1A4B - expectedIndA1A4B, 2) / expectedIndA1A4B) + (Math.pow(obsA1A4b - expectedIndA1A4b, 2) / expectedIndA1A4b) + (Math.pow(obsA2A3B - expectedIndA2A3B, 2) / expectedIndA2A3B) + (Math.pow(obsA2A3b - expectedIndA2A3b, 2) / expectedIndA2A3b) + (Math.pow(obsA2A4B - expectedIndA2A4B, 2) / expectedIndA2A4B) + (Math.pow(obsA2A4b - expectedIndA2A4b, 2) / expectedIndA2A4b);
@@ -693,8 +750,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                                 .cleanInputs(false)
                                                 .expectedValues(expValues)
-                                                .chiValues(chiValues)
+                                                .resultValues(chiValues)
                                                 .agree(agree)
+                                                .observed(observedValues)
                                                 .build();
                                     }
                                 }
@@ -705,8 +763,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -740,8 +799,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     } else {
                         double chiCont = (Math.pow(obsA1A3B - expectedContA1A3B, 2) / expectedContA1A3B) + (Math.pow(obsA1A3b - expectedContA1A3b, 2) / expectedContA1A3b) + (Math.pow(obsA1A4B - expectedContA1A4B, 2) / expectedContA1A4B) + (Math.pow(obsA1A4b - expectedContA1A4b, 2) / expectedContA1A4b) + (Math.pow(obsA2A3B - expectedContA2A3B, 2) / expectedContA2A3B) + (Math.pow(obsA2A3b - expectedContA2A3b, 2) / expectedContA2A3b) + (Math.pow(obsA2A4B - expectedContA2A4B, 2) / expectedContA2A4B) + (Math.pow(obsA2A4b - expectedContA2A4b, 2) / expectedContA2A4b);
@@ -750,8 +810,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("X^2 of the loci A and/or loci B aren´t segregating correctly. In this occasions we use X^2 of Contingency.")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     }
                 }
@@ -777,7 +838,15 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expa", totalobs / 4);
             expValues.put("expB", totalobs * 2 / 4);
             expValues.put("expb", totalobs * 2 / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA", totalA);
+            observedValues.put("obsa", totala);
+            observedValues.put("obsAa", totalAa);
+            observedValues.put("obsB", totalB);
+            observedValues.put("obsb", totalb);
+            observedValues.put("obsBb", totalBb);
+            observedValues.put("total", totalobs);
 
             double chiAa = (Math.pow(totalA - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totala - totalobs / 4, 2) / (totalobs / 4));
             double chiBb = (Math.pow(totalB - totalobs * 2 / 4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalb - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
@@ -809,8 +878,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                     return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                             .cleanInputs(false)
                             .expectedValues(expValues)
-                            .chiValues(chiValues)
+                            .resultValues(chiValues)
                             .agree(agree)
+                            .observed(observedValues)
                             .build();
                 } else {
                     double chiInd = (Math.pow(obsAB - expectedIndAB, 2) / expectedIndAB) + (Math.pow(obsAb - expectedIndAb, 2) / expectedIndAb) + (Math.pow(obsaB - expectedIndaB, 2) / expectedIndaB) + (Math.pow(obsab - expectedIndab, 2) / expectedIndab);
@@ -837,8 +907,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             } else {
                                 double chiCont = (Math.pow(obsAB - expectedContAB, 2) / expectedContAB) + (Math.pow(obsAb - expectedContAb, 2) / expectedContAb) + (Math.pow(obsaB - expectedContaB, 2) / expectedContaB) + (Math.pow(obsab - expectedContab, 2) / expectedContab);
@@ -847,8 +918,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder()
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             }
                         }
@@ -875,8 +947,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     } else {
                         double chiCont = (Math.pow(obsAB - expectedContAB, 2) / expectedContAB) + (Math.pow(obsAb - expectedContAb, 2) / expectedContAb) + (Math.pow(obsaB - expectedContaB, 2) / expectedContaB) + (Math.pow(obsab - expectedContab, 2) / expectedContab);
@@ -885,8 +958,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("The locus A, a and/or locus B,b Bb are not segregating correctly. In this case we use X2 of Contingency")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     }
                 }
@@ -912,7 +986,14 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expA1A2", totalobs * 2 / 4);
             expValues.put("expB", totalobs * 2 / 4);
             expValues.put("expb", totalobs * 2 / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA1", totalA1);
+            observedValues.put("obsA2", totalA2);
+            observedValues.put("obsA1A2", totalA1A2);
+            observedValues.put("obsB", totalB);
+            observedValues.put("obsb", totalb);
+            observedValues.put("total", totalobs);
 
             double chiA1A2 = (Math.pow(totalA1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
             double chiBb = (Math.pow(totalB - totalobs * 2 / 4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalb - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
@@ -969,8 +1050,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             } else {
                                 chiInd = (Math.pow(obsA1A1B - expectedIndA1B, 2) / expectedIndA1B) + (Math.pow(obsA1A1b - expectedIndA1b, 2) / expectedIndA1b) + (Math.pow(obsA2A2B - expectedIndA2B, 2) / expectedIndA2B) + (Math.pow(obsA2A2b - expectedIndA2b, 2) / expectedIndA2b) + (Math.pow(obsA1A2B - expectedIndA1A2B, 2) / expectedIndA1A2B) + (Math.pow(obsA1A2b - expectedIndA1A2b, 2) / expectedIndA1A2b);
@@ -984,8 +1066,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                                 .cleanInputs(false)
                                                 .expectedValues(expValues)
-                                                .chiValues(chiValues)
+                                                .resultValues(chiValues)
                                                 .agree(agree)
+                                                .observed(observedValues)
                                                 .build();
                                     }
                                 }
@@ -996,8 +1079,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -1027,8 +1111,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     } else {
                         double chiCont = (Math.pow(obsA1A1B - expectedContA1B, 2) / expectedContA1B) + (Math.pow(obsA1A1b - expectedContA1b, 2) / expectedContA1b) + (Math.pow(obsA2A2B - expectedContA2B, 2) / expectedContA2B) + (Math.pow(obsA2A2b - expectedContA2b, 2) / expectedContA2b) + (Math.pow(obsA1A2B - expectedContA1A2B, 2) / expectedContA1A2B) + (Math.pow(obsA1A2b - expectedContA1A2b, 2) / expectedContA1A2b);
@@ -1037,8 +1122,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("X^2 of the loci A and/or loci B aren´t segregating correctly. In this occasions we use X^2 of Contingency.")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     }
                 }
@@ -1067,7 +1153,16 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expA2A4", totalobs * 1 / 4);
             expValues.put("expB", totalobs * 2 / 4);
             expValues.put("expb", totalobs * 2 / 4);
-            expValues.put("total", totalobs);
+
+            Map<String, Double> observedValues = new HashMap<>();
+            observedValues.put("obsA1A3", totalA1A3);
+            observedValues.put("obsA1A4", totalA1A4);
+            observedValues.put("obsA2A3", totalA2A3);
+            observedValues.put("obsA2A4", totalA2A4);
+            observedValues.put("obsA", totalA);
+            observedValues.put("obsB", totalB);
+            observedValues.put("obsb", totalb);
+            observedValues.put("total", totalobs);
 
             double chiA1A2A3A4 = (Math.pow(totalA1A3 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A4 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2A3 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2A4 - totalobs / 4, 2) / (totalobs / 4));
             double chiBb = (Math.pow(totalB - totalobs / 2, 2) / (totalobs / 2)) + (Math.pow(totalb - totalobs / 2, 2) / (totalobs / 2));
@@ -1132,8 +1227,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                 return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                         .cleanInputs(false)
                                         .expectedValues(expValues)
-                                        .chiValues(chiValues)
+                                        .resultValues(chiValues)
                                         .agree(agree)
+                                        .observed(observedValues)
                                         .build();
                             } else {
                                 chiInd = (Math.pow(obsA1A3B - expectedIndA1A3B, 2) / expectedIndA1A3B) + (Math.pow(obsA1A3b - expectedIndA1A3b, 2) / expectedIndA1A3b) + (Math.pow(obsA2A3B - expectedIndA2A3B, 2) / expectedIndA2A3B) + (Math.pow(obsA2A3b - expectedIndA2A3b, 2) / expectedIndA2A3b) + (Math.pow(obsA1A4B - expectedIndA1A4B, 2) / expectedIndA1A4B) + (Math.pow(obsA1A4b - expectedIndA1A4b, 2) / expectedIndA1A4b) + (Math.pow(obsA2A4B - expectedIndA2A4B, 2) / expectedIndA2A4B) + (Math.pow(obsA2A4b - expectedIndA2A4b, 2) / expectedIndA2A4b);
@@ -1147,8 +1243,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                                 .cleanInputs(false)
                                                 .expectedValues(expValues)
-                                                .chiValues(chiValues)
+                                                .resultValues(chiValues)
                                                 .agree(agree)
+                                                .observed(observedValues)
                                                 .build();
                                     }
                                 }
@@ -1159,8 +1256,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                             return CTResult.builder()
                                     .cleanInputs(false)
                                     .expectedValues(expValues)
-                                    .chiValues(chiValues)
+                                    .resultValues(chiValues)
                                     .agree(agree)
+                                    .observed(observedValues)
                                     .build();
                         }
                     }
@@ -1194,8 +1292,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("An expected value is between 5 and 10")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     } else {
                         double chiCont = (Math.pow(obsA1A3B - expectedContA1A3B, 2) / expectedContA1A3B) + (Math.pow(obsA1A3b - expectedContA1A3b, 2) / expectedContA1A3b) + (Math.pow(obsA1A4B - expectedContA1A4B, 2) / expectedContA1A4B) + (Math.pow(obsA1A4b - expectedContA1A4b, 2) / expectedContA1A4b) + (Math.pow(obsA2A3B - expectedContA2A3B, 2) / expectedContA2A3B) + (Math.pow(obsA2A3b - expectedContA2A3b, 2) / expectedContA2A3b) + (Math.pow(obsA2A4B - expectedContA2A4B, 2) / expectedContA2A4B) + (Math.pow(obsA2A4b - expectedContA2A4b, 2) / expectedContA2A4b);
@@ -1204,8 +1303,9 @@ public class CTTwoLociImp implements CTTwoLoci{
                         return CTResult.builder().feedbackMessage("X^2 of the loci A and/or loci B aren´t segregating correctly. In this occasions we use X^2 of Contingency.")
                                 .cleanInputs(false)
                                 .expectedValues(expValues)
-                                .chiValues(chiValues)
+                                .resultValues(chiValues)
                                 .agree(agree)
+                                .observed(observedValues)
                                 .build();
                     }
                 }

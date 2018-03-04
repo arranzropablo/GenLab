@@ -22,11 +22,11 @@ public class CTLinkageImp implements CTLinkage{
 
 	/* TESTCROSS 2 LOCI */
 	public CTResult testcross2Loci(int obsAB, int obsAb, int obsaB, int obsab) {
-		Map<String, String> agreeV = new HashMap<>();
+		Map<String, String> agree = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		Map<String, Double> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
 		String result = "";
 		if (obsAB <= 1000 && obsAb <= 1000 && obsaB <= 1000 && obsab <= 1000) {
 			int total = obsAB + obsAb + obsaB + obsab;
@@ -34,21 +34,21 @@ public class CTLinkageImp implements CTLinkage{
 			int obsa = obsaB + obsab;
 			int obsB = obsAB + obsaB;
 			int obsb = obsAb + obsab;
-			observed.put("obsA", (double) obsA);
-			observed.put("obsa", (double) obsa);
-			observed.put("obsB", (double) obsB);
-			observed.put("obsb", (double) obsb);
-			observed.put("total", (double) total);
+			observedValues.put("obsA", (double) obsA);
+			observedValues.put("obsa", (double) obsa);
+			observedValues.put("obsB", (double) obsB);
+			observedValues.put("obsb", (double) obsb);
+			observedValues.put("total", (double) total);
 			double expA = total / 2;
 			double expa = total / 2;
 			double expB = total / 2;
 			double expb = total / 2;
-			expected.put("expA", expA);
-			expected.put("expa", expa);
-			expected.put("expB", expB);
-			expected.put("expb", expb);
+			expectedValues.put("expA", expA);
+			expectedValues.put("expa", expa);
+			expectedValues.put("expB", expB);
+			expectedValues.put("expb", expb);
 			if (expA >= 5 && expa >= 5 && expB >= 5 && expb >= 5) {
-				double chiA, chiB, chiInde, chiCon = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
+				double chiA, chiB, chiInd, chiCon = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
 						expConaB = 0, expConab = 0;
 
 				if ((expA <= 10 && expA >= 5) || (expa <= 10 && expa >= 5)) {
@@ -56,74 +56,58 @@ public class CTLinkageImp implements CTLinkage{
 				} else {
 					chiA = Math.pow((obsA - expA), 2) / expA + Math.pow((obsa - expa), 2) / expa;
 				}
-				values.put("chiA", chiA);
-				if (chiA >= 3.841) {
-					agreeV.put("agreeChiA", "NO");
-				} else {
-					agreeV.put("agreeChiA", "YES");
-				}
+				resultValues.put("chiA", chiA);
+				agree.put("chiA", (chiA > 3.841 ? "No" : "Yes"));
 				////////////////////
 				if ((expB <= 10 && expB >= 5) || (expb <= 10 && expb >= 5)) {
 					chiB = Math.pow((obsB - expB) - 0.5, 2) / expB + Math.pow((obsb - expb) - 0.5, 2) / expb;
 				} else {
 					chiB = Math.pow((obsB - expB), 2) / expB + Math.pow((obsb - expb), 2) / expb;
 				}
-				values.put("chiB", chiB);
-				if (chiB >= 3.841) {
-					agreeV.put("agreeChiB", "NO");
-				} else {
-					agreeV.put("agreeChiB", "YES");
-				}
+				resultValues.put("chiB", chiB);
+				agree.put("chiB", (chiB > 3.841 ? "No" : "Yes"));
 				////////////////////
 				if (chiA <= 3.841 && chiB <= 3.841) {
 					expInAB = total / 4;
 					expInAb = total / 4;
 					expInaB = total / 4;
 					expInab = total / 4;
-					expected.put("expInAB", expInAB);
-					expected.put("expInAb", expInAb);
-					expected.put("expInaB", expInaB);
-					expected.put("expInab", expInab);
+					expectedValues.put("expectedIndAB", expInAB);
+					expectedValues.put("expectedIndAb", expInAb);
+					expectedValues.put("expectedIndaB", expInaB);
+					expectedValues.put("expectedIndab", expInab);
 					if (expInAB < 5 || expInAb < 5 || expInaB < 5 || expInab < 5) {
-
+						return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 					} else {
 						if (chiA < 3.84 && chiB < 3.84) {
 							if ((expInAB <= 10 && expInAB >= 5) || (expInAb <= 10 && expInAb >= 5)
 									|| (expInaB <= 10 && expInaB >= 5) || (expInab <= 10 && expInab >= 5)) {
-								chiInde = Math.pow((obsAB - expInAB) - 0.5, 2) / expInAB
+								chiInd = Math.pow((obsAB - expInAB) - 0.5, 2) / expInAB
 										+ Math.pow((obsAb - expInAb) - 0.5, 2) / expInAb
 										+ Math.pow((obsaB - expInaB) - 0.5, 2) / expInaB
 										+ Math.pow((obsab - expInab) - 0.5, 2) / expInab;
 							} else {
-								chiInde = Math.pow((obsAB - expInAB), 2) / expInAB
+								chiInd = Math.pow((obsAB - expInAB), 2) / expInAB
 										+ Math.pow((obsAb - expInAb), 2) / expInAb
 										+ Math.pow((obsaB - expInaB), 2) / expInaB
 										+ Math.pow((obsab - expInab), 2) / expInab;
 							}
-							values.put("chiInde", chiInde);
+							resultValues.put("chiInd", chiInd);
+							agree.put("chiInd", (chiInd > 7.82 ? "No" : "Yes"));
 
-							if (chiInde >= 7.82) {
-								agreeV.put("agreeChiInde", "NO");
-							} else {
-								agreeV.put("agreeChiInde", "YES");
-								result = "The loci A,a and B,b are independent";
-							}
-							double chiLink = chiInde - (chiA + chiB);
-							values.put("chiLink", chiLink);
-							if (chiLink >= 3.841) {
-								agreeV.put("agreeChiLink", "NO");
-							} else {
-								agreeV.put("agreeChiLink", "YES");
-							}
+							double chiLink = chiInd - (chiA + chiB);
+							resultValues.put("chiLink", chiLink);
+							agree.put("chiInd", (chiInd > 3.841 ? "No" : "Yes"));
+							if (chiInd < 7.82) { result = "The loci A,a and B,b are independent"; }
 						}
 						expConAB = (obsA * obsB) / total;
 						expConAb = (obsA * obsb) / total;
 						expConaB = (obsa * obsB) / total;
 						expConab = (obsa * obsb) / total;
-						expected.put("expConAB", expConAB);
-						expected.put("expConAb", expConAb);
-						expected.put("expConaB", expConaB);
-						expected.put("expConab", expConab);
+						expectedValues.put("expConAB", expConAB);
+						expectedValues.put("expConAb", expConAb);
+						expectedValues.put("expConaB", expConaB);
+						expectedValues.put("expConab", expConab);
 						if (expConAB >= 5 && expConAb >= 5 && expConaB >= 5 && expConab >= 5) {
 							if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 									|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
@@ -137,12 +121,8 @@ public class CTLinkageImp implements CTLinkage{
 										+ Math.pow((obsaB - expConaB), 2) / expConaB
 										+ Math.pow((obsab - expConab), 2) / expConab;
 							}
-							values.put("chiCon", chiCon);
-							if (chiCon >= 3.841) {
-								agreeV.put("agreeChiCon", "NO");
-							} else {
-								agreeV.put("agreeChiCon", "YES");
-							}
+							resultValues.put("chiCon", chiCon);
+							agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
 							if (chiCon < 3.841) {
 								result = "The loci A,a and B,b are independent";
 							} else {
@@ -160,21 +140,23 @@ public class CTLinkageImp implements CTLinkage{
 								lodZ = Math.log((((Math.pow(1 - rf, (obsAB + obsab))) * (Math.pow(rf, (obsAb + obsaB)))
 										/ Math.pow(0.5, total))) / Math.log(10));
 								result = "The loci A,a and B,b are linked";
-								values.put("rf", rf);
-								values.put("distance", distance);
-								values.put("lodZ", lodZ);
+								resultValues.put("rf", rf);
+								resultValues.put("distance", distance);
+								resultValues.put("lodZ", lodZ);
 							}
-						} 
+						} else {
+							return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
+						}
 					}
 				} else {
 					expConAB = (obsA * obsB) / total;
 					expConAb = (obsA * obsb) / total;
 					expConaB = (obsa * obsB) / total;
 					expConab = (obsa * obsb) / total;
-					expected.put("expConAB", expConAB);
-					expected.put("expConAb", expConAb);
-					expected.put("expConaB", expConaB);
-					expected.put("expConab", expConab);
+					expectedValues.put("expConAB", expConAB);
+					expectedValues.put("expConAb", expConAb);
+					expectedValues.put("expConaB", expConaB);
+					expectedValues.put("expConab", expConab);
 					if (expConAB >=  5 && expConAb >=  5 && expConaB >=  5 && expConab >=5) {
 						if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 								|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
@@ -188,12 +170,9 @@ public class CTLinkageImp implements CTLinkage{
 									+ Math.pow((obsaB - expConaB), 2) / expConaB
 									+ Math.pow((obsab - expConab), 2) / expConab;
 						}
-						values.put("chiCon", chiCon);
-						if (chiCon >= 3.841) {
-							agreeV.put("agreeChiCon", "NO");
-						} else {
-							agreeV.put("agreeChiCon", "YES");
-						}
+						resultValues.put("chiCon", chiCon);
+						agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
+
 						if (chiCon < 3.841) {
 							result = "The loci A,a and B,b are independent";
 						} else {
@@ -211,25 +190,37 @@ public class CTLinkageImp implements CTLinkage{
 							lodZ = Math.log((((Math.pow(1 - rf, (obsAB + obsab))) * (Math.pow(rf, (obsAb + obsaB)))
 									/ Math.pow(0.5, total))) / Math.log(10));
 							result = "The loci A,a and B,b are linked";
-							values.put("rf", rf);
-							values.put("distance", distance);
-							values.put("lodZ", lodZ);
+							resultValues.put("rf", rf);
+							resultValues.put("distance", distance);
+							resultValues.put("lodZ", lodZ);
 						}
+					} else {
+						return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 					}
 				}
+			} else {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 			}
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 1000").build();
 		}
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.expectedValues(expectedValues)
+				.resultValues(resultValues)
+				.result(result)
+				.agree(agree)
+				.observed(observedValues)
+				.phase(phases)
+				.build();
 	}
 
 	public CTResult f22LociDominance(int obsAB, int obsAb, int obsaB, int obsab) {
-		Map<String, String> agreeV = new HashMap<>();
+		Map<String, String> agree = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		Map<String, Double> observedValues = new HashMap<>();
 		String result = "";
 		if (obsAB < 1000 && obsAb < 1000 && obsaB < 1000 && obsab < 1000) {
 			int total = obsAB + obsAb + obsaB + obsab;
@@ -237,19 +228,19 @@ public class CTLinkageImp implements CTLinkage{
 			int obsa = obsaB + obsab;
 			int obsB = obsAB + obsaB;
 			int obsb = obsAb + obsab;
-			observed.put("obsA", (double) obsA);
-			observed.put("obsa", (double) obsa);
-			observed.put("obsB", (double) obsB);
-			observed.put("obsb", (double) obsb);
-			observed.put("total", (double) total);
+			observedValues.put("obsA", (double) obsA);
+			observedValues.put("obsa", (double) obsa);
+			observedValues.put("obsB", (double) obsB);
+			observedValues.put("obsb", (double) obsb);
+			observedValues.put("total", (double) total);
 			double expA = total * (3 / 4);
 			double expa = total / 4;
 			double expB = total * (3 / 4);
 			double expb = total / 4;
-			expected.put("expA", expA);
-			expected.put("expa", expa);
-			expected.put("expB", expB);
-			expected.put("expb", expb);
+			expectedValues.put("expA", expA);
+			expectedValues.put("expa", expa);
+			expectedValues.put("expB", expB);
+			expectedValues.put("expb", expb);
 			if (expA >= 5 && expa >= 5 && expB >= 5 && expb >= 5) {
 				double chiA, chiB, chiInde, chiCon = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
 						expConaB = 0, expConab = 0;
@@ -259,34 +250,28 @@ public class CTLinkageImp implements CTLinkage{
 				} else {
 					chiA = Math.pow((obsA - expA), 2) / expA + Math.pow((obsa - expa), 2) / expa;
 				}
-				values.put("chiA", chiA);
-				if (chiA >= 3.841) {
-					agreeV.put("agreeChiA", "NO");
-				} else {
-					agreeV.put("agreeChiA", "YES");
-				}
+				resultValues.put("chiA", chiA);
+				agree.put("chiA", (chiA > 3.841 ? "No" : "Yes"));
+
 				////////////////////
 				if ((expB <= 10 && expB >= 5) || (expb <= 10 && expb >= 5)) {
 					chiB = Math.pow((obsB - expB) - 0.5, 2) / expB + Math.pow((obsb - expb) - 0.5, 2) / expb;
 				} else {
 					chiB = Math.pow((obsB - expB), 2) / expB + Math.pow((obsb - expb), 2) / expb;
 				}
-				values.put("chiB", chiB);
-				if (chiB >= 3.841) {
-					agreeV.put("agreeChiB", "NO");
-				} else {
-					agreeV.put("agreeChiB", "YES");
-				}
+				resultValues.put("chiB", chiB);
+				agree.put("chiB", (chiB > 3.841 ? "No" : "Yes"));
+
 				////////////////////
 				if (chiA <= 3.84 && chiB <= 3.84) {
 					expInAB = total * (9 / 16);
 					expInAb = total * (3 / 16);
 					expInaB = total * (3 / 16);
 					expInab = total * (1 / 16);
-					expected.put("expInAB", expInAB);
-					expected.put("expInAb", expInAb);
-					expected.put("expInaB", expInaB);
-					expected.put("expInab", expInab);
+					expectedValues.put("expIndAB", expInAB);
+					expectedValues.put("expIndAb", expInAb);
+					expectedValues.put("expIndaB", expInaB);
+					expectedValues.put("expIndab", expInab);
 					if (expInAB >=  5 && expInAb >=  5 && expInaB >=  5 && expInab >= 5) {
 						if ((expInAB <= 10 && expInAB >= 5) || (expInAb <= 10 && expInAb >= 5)
 								|| (expInaB <= 10 && expInaB >= 5) || (expInab <= 10 && expInab >= 5)) {
@@ -300,29 +285,23 @@ public class CTLinkageImp implements CTLinkage{
 									+ Math.pow((obsaB - expInaB), 2) / expInaB
 									+ Math.pow((obsab - expInab), 2) / expInab;
 						}
-						values.put("chiInde", chiInde);
-
-						if (chiInde >= 7.82) {
-							agreeV.put("agreeChiInde", "NO");
-						} else {
-							agreeV.put("agreeChiInde", "YES");
+						resultValues.put("chiInd", chiInde);
+						agree.put("chiInd", (chiInde > 7.82 ? "No" : "Yes"));
+						if(chiInde < 7.82){
 							result = "The loci A,a and B,b are independent";
 						}
 						double chiLink = chiInde - (chiA + chiB);
-						values.put("chiLink", chiLink);
-						if (chiLink >= 3.841) {
-							agreeV.put("agreeChiLink", "NO");
-						} else {
-							agreeV.put("agreeChiLink", "YES");
-						}
+						resultValues.put("chiLink", chiLink);
+						agree.put("chiLink", (chiInde > 3.841 ? "No" : "Yes"));
+
 						expConAB = (obsA * obsB) / total;
 						expConAb = (obsA * obsb) / total;
 						expConaB = (obsa * obsB) / total;
 						expConab = (obsa * obsb) / total;
-						expected.put("expConAB", expConAB);
-						expected.put("expConAb", expConAb);
-						expected.put("expConaB", expConaB);
-						expected.put("expConab", expConab);
+						expectedValues.put("expConAB", expConAB);
+						expectedValues.put("expConAb", expConAb);
+						expectedValues.put("expConaB", expConaB);
+						expectedValues.put("expConab", expConab);
 						if (expConAB >=  5 && expConAb >=  5 && expConaB >=  5 && expConab >= 5) {
 							if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 									|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
@@ -336,12 +315,9 @@ public class CTLinkageImp implements CTLinkage{
 										+ Math.pow((obsaB - expConaB), 2) / expConaB
 										+ Math.pow((obsab - expConab), 2) / expConab;
 							}
-							values.put("chiCon", chiCon);
-							if (chiCon >= 3.841) {
-								agreeV.put("agreeChiCon", "NO");
-							} else {
-								agreeV.put("agreeChiCon", "YES");
-							}
+							resultValues.put("chiCon", chiCon);
+							agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
+
 							if (chiCon < 3.841) {
 								result = "The loci A,a and B,b are independent";
 							}
@@ -354,8 +330,8 @@ public class CTLinkageImp implements CTLinkage{
 											(2 * obsAb + ((2 * obsaB) + obsab)) - obsAB, obsab * 2);
 								}
 								distance = rf * 100;
-								values.put("rf", rf);
-								values.put("distance", distance);
+								resultValues.put("rf", rf);
+								resultValues.put("distance", distance);
 								result = "The loci A,a and B,b are linked";
 							}
 							if (chiCon >= 3.841 && obsab > expConab) {
@@ -367,21 +343,25 @@ public class CTLinkageImp implements CTLinkage{
 											obsab * 2);
 								}
 								distance = rf * 100;
-								values.put("rf", rf);
-								values.put("distance", distance);
+								resultValues.put("rf", rf);
+								resultValues.put("distance", distance);
 								result = "The loci A,a and B,b are linked";
 							}
+						} else {
+							return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 						}
+					} else {
+						return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 					}
 				} else {
 					expConAB = (obsA * obsB) / total;
 					expConAb = (obsA * obsb) / total;
 					expConaB = (obsa * obsB) / total;
 					expConab = (obsa * obsb) / total;
-					expected.put("expConAB", expConAB);
-					expected.put("expConAb", expConAb);
-					expected.put("expConaB", expConaB);
-					expected.put("expConab", expConab);
+					expectedValues.put("expConAB", expConAB);
+					expectedValues.put("expConAb", expConAb);
+					expectedValues.put("expConaB", expConaB);
+					expectedValues.put("expConab", expConab);
 					if (expConAB >=  5 && expConAb >=  5 && expConaB >=  5 && expConab >= 5) {
 						if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 								|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
@@ -395,12 +375,9 @@ public class CTLinkageImp implements CTLinkage{
 									+ Math.pow((obsaB - expConaB), 2) / expConaB
 									+ Math.pow((obsab - expConab), 2) / expConab;
 						}
-						values.put("chiCon", chiCon);
-						if (chiCon >= 3.841) {
-							agreeV.put("agreeChiCon", "NO");
-						} else {
-							agreeV.put("agreeChiCon", "YES");
-						}
+						resultValues.put("chiCon", chiCon);
+						agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
+
 						if (chiCon < 3.841) {
 							result = "The loci A,a and B,b are independent";
 						}
@@ -413,8 +390,8 @@ public class CTLinkageImp implements CTLinkage{
 										obsab * 2);
 							}
 							distance = rf * 100;
-							values.put("rf", rf);
-							values.put("distance", distance);
+							resultValues.put("rf", rf);
+							resultValues.put("distance", distance);
 							result = "The loci A,a and B,b are linked";
 						}
 						if (chiCon >= 3.841 && obsab > expConab) {
@@ -426,63 +403,71 @@ public class CTLinkageImp implements CTLinkage{
 										obsab * 2);
 							}
 							distance = rf * 100;
-							values.put("rf", rf);
-							values.put("distance", distance);
+							resultValues.put("rf", rf);
+							resultValues.put("distance", distance);
 							result = "The loci A,a and B,b are linked";
 						}
 					}
 				}
+			} else {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 			}
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 1000").build();
 		}
-
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.expectedValues(expectedValues)
+				.resultValues(resultValues)
+				.result(result)
+				.agree(agree)
+				.observed(observedValues)
+				.phase(phases)
+				.build();
 	}
 
 	public CTResult f22LociCodominance(int obsAABB, int obsAABb, int obsAAbb, int obsAaBB, int obsAaBb, int obsAabb,
 			int obsaaBB, int obsaaBb, int obsaabb) {
-		Map<String, String> agreeV = new HashMap<>();
+		Map<String, String> agree = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		Map<String, Double> observedValues = new HashMap<>();
 		String result = "";
-		/* if (obsAB < 1000 && obsAb < 1000 && obsaB < 1000 && obsab < 1000) { */
-		int total = obsAABB + obsAABb + obsAAbb + obsAaBB + obsAaBb + obsAabb + obsaaBB + obsaaBb + obsaabb;
-		int obsA1 = obsAABB + obsAABb + obsAAbb;
-		int obsA1A2 = obsAaBB + obsAaBb + obsAabb;
-		int obsA2 = obsaaBB + obsaaBb + obsaabb;
-		int expA1 = total / 4;
-		int expA1A2 = total / 2;
-		int expA2 = total / 4;
-		int obsB1 = obsAABB + obsAaBB + obsaaBB;
-		int obsB1B2 = obsAABb + obsAaBb + obsaaBb;
-		int obsB2 = obsAAbb + obsAabb + obsaabb;
-		int expB1 = total / 4;
-		int expB1B2 = total / 2;
-		int expB2 = total / 4;
-
-		observed.put("total", (double) total);
-		observed.put("obsA1", (double) obsA1);
-		observed.put("obsA1A2", (double) obsA1A2);
-		observed.put("obsA2", (double) obsA2);
-		expected.put("expA1", (double) expA1);
-		expected.put("expA1A2", (double) expA1A2);
-		expected.put("expA2", (double) expA2);
-		observed.put("obsB1", (double) obsB1);
-		observed.put("obsB1B2", (double) obsB1B2);
-		observed.put("obsB2", (double) obsB2);
-		expected.put("expB1", (double) expB1);
-		expected.put("expB1B2", (double) expB1B2);
-		expected.put("expB2", (double) expB2);
-
-		double chiA, chiB, chiInde, chiCon, chiLink, expInA1B1, expInA1B1B2, expInA1B2, expInA2B1, expInA2B1B2,
-				expInA2B2, expInA1A2B1, expInA1A2B2, expInA1A2B1B2, expConA1B1, expConA1B1B2, expConA1B2, expConA2B1,
-				expConA2B1B2, expConA2B2, expConA1A2B1, expConA1A2B2, expConA1A2B1B2, rf, distance;
-
 		if (obsAABB <= 1000 && obsAABb <= 1000 && obsAAbb <= 1000 && obsAaBB <= 1000 && obsAaBb <= 1000
 				&& obsAabb <= 1000 && obsaaBB <= 1000 && obsaaBb <= 1000 && obsaabb <= 1000) {
+			int total = obsAABB + obsAABb + obsAAbb + obsAaBB + obsAaBb + obsAabb + obsaaBB + obsaaBb + obsaabb;
+			int obsA1 = obsAABB + obsAABb + obsAAbb;
+			int obsA1A2 = obsAaBB + obsAaBb + obsAabb;
+			int obsA2 = obsaaBB + obsaaBb + obsaabb;
+			int expA1 = total / 4;
+			int expA1A2 = total / 2;
+			int expA2 = total / 4;
+			int obsB1 = obsAABB + obsAaBB + obsaaBB;
+			int obsB1B2 = obsAABb + obsAaBb + obsaaBb;
+			int obsB2 = obsAAbb + obsAabb + obsaabb;
+			int expB1 = total / 4;
+			int expB1B2 = total / 2;
+			int expB2 = total / 4;
+
+			observedValues.put("total", (double) total);
+			observedValues.put("obsA1", (double) obsA1);
+			observedValues.put("obsA1A2", (double) obsA1A2);
+			observedValues.put("obsA2", (double) obsA2);
+			expectedValues.put("expA1", (double) expA1);
+			expectedValues.put("expA1A2", (double) expA1A2);
+			expectedValues.put("expA2", (double) expA2);
+			observedValues.put("obsB1", (double) obsB1);
+			observedValues.put("obsB1B2", (double) obsB1B2);
+			observedValues.put("obsB2", (double) obsB2);
+			expectedValues.put("expB1", (double) expB1);
+			expectedValues.put("expB1B2", (double) expB1B2);
+			expectedValues.put("expB2", (double) expB2);
+
+			double chiA, chiB, chiInde, chiCon, chiLink, expInA1B1, expInA1B1B2, expInA1B2, expInA2B1, expInA2B1B2,
+					expInA2B2, expInA1A2B1, expInA1A2B2, expInA1A2B1B2, expConA1B1, expConA1B1B2, expConA1B2, expConA2B1,
+					expConA2B1B2, expConA2B2, expConA1A2B1, expConA1A2B2, expConA1A2B1B2, rf, distance;
+
 			if ((expA1 <= 10 && expA1 >= 5) || (expA1A2 <= 10 && expA1A2 >= 5) || (expA2 <= 10 && expA2 >= 5)) {
 				chiA = Math.pow((obsA1 - expA1) - 0.5, 2) / expA1 + Math.pow((obsA2 - expA2) - 0.5, 2) / expA2
 						+ Math.pow((obsA1A2 - expA1A2) - 0.5, 2) / expA1A2;
@@ -490,12 +475,8 @@ public class CTLinkageImp implements CTLinkage{
 				chiA = Math.pow((obsA1 - expA1), 2) / expA1 + Math.pow((obsA2 - expA2), 2) / expA2
 						+ Math.pow((obsA1A2 - expA1A2), 2) / expA1A2;
 			}
-			values.put("chiA", chiA);
-			if (chiA > 5.99) {
-				agreeV.put("agreeChiA", "NO");
-			} else {
-				agreeV.put("agreeChiA", "YES");
-			}
+			resultValues.put("chiA", chiA);
+			agree.put("chiA", (chiA > 5.99 ? "No" : "Yes"));
 
 			if ((expB1 <= 10 && expB1 >= 5) || (expB1B2 <= 10 && expB1B2 >= 5) || (expB2 <= 10 && expB2 >= 5)) {
 				chiB = Math.pow((obsB1 - expB1) - 0.5, 2) / expB1 + Math.pow((obsB2 - expB2) - 0.5, 2) / expB2
@@ -504,12 +485,8 @@ public class CTLinkageImp implements CTLinkage{
 				chiB = Math.pow((obsB1 - expB1), 2) / expB1 + Math.pow((obsB2 - expB2), 2) / expB2
 						+ Math.pow((obsB1B2 - expB1B2), 2) / expB1B2;
 			}
-			values.put("chiB", chiB);
-			if (chiB > 5.99) {
-				agreeV.put("agreeChiB", "NO");
-			} else {
-				agreeV.put("agreeChiB", "YES");
-			}
+			resultValues.put("chiB", chiB);
+			agree.put("chiB", (chiB > 5.99 ? "No" : "Yes"));
 
 			if (chiA < 5.99 && chiB < 5.99) {
 				expInA1B1 = (1 / 16) * total;
@@ -521,15 +498,15 @@ public class CTLinkageImp implements CTLinkage{
 				expInA1A2B1 = (2 / 16) * total;
 				expInA1A2B2 = (2 / 16) * total;
 				expInA1A2B1B2 = (2 / 16) * total;
-				values.put("expInA1B1", expInA1B1);
-				values.put("expInA1B1B2", expInA1B1B2);
-				values.put("expInA1B2", expInA1B2);
-				values.put("expInA2B1", expInA2B1);
-				values.put("expInA2B1B2", expInA2B1B2);
-				values.put("expInA2B2", expInA2B2);
-				values.put("expInA1A2B1", expInA1A2B1);
-				values.put("expInA1A2B2", expInA1A2B2);
-				values.put("expInA1A2B1B2", expInA1A2B1B2);
+				resultValues.put("expIndA1B1", expInA1B1);
+				resultValues.put("expIndA1B1B2", expInA1B1B2);
+				resultValues.put("expIndA1B2", expInA1B2);
+				resultValues.put("expIndA2B1", expInA2B1);
+				resultValues.put("expIndA2B1B2", expInA2B1B2);
+				resultValues.put("expIndA2B2", expInA2B2);
+				resultValues.put("expIndA1A2B1", expInA1A2B1);
+				resultValues.put("expIndA1A2B2", expInA1A2B2);
+				resultValues.put("expIndA1A2B1B2", expInA1A2B1B2);
 				if (expInA1B1 >= 5 && expInA1B1B2 >= 5 && expInA1B2 >= 5 && expInA2B1 >= 5 && expInA2B1B2 >= 5
 						&& expInA2B2 >= 5 && expInA1A2B1 >= 5 && expInA1A2B2 >= 5 && expInA1A2B1B2 >= 5) {
 					if ((expInA1B1 <= 10 && expInA1B1 >= 5) || (expInA1B1B2 <= 10 && expInA1B1B2 >= 5)
@@ -557,19 +534,11 @@ public class CTLinkageImp implements CTLinkage{
 								+ Math.pow((obsAabb - expInA1A2B2), 2) / expInA1A2B2
 								+ Math.pow((obsAaBb - expInA1A2B1B2), 2) / expInA1A2B1B2;
 					}
-					values.put("chiInde", chiInde);
+					resultValues.put("chiInd", chiInde);
+					agree.put("chiInd", (chiInde > 15.51 ? "No" : "Yes"));
 
-					if (chiInde > 15.51) {
-						agreeV.put("agreeChiInde", "NO");
-					} else {
-						agreeV.put("agreeChiInde", "YES");
-					}
 					chiLink = chiInde - (chiA + chiB);
-					if (chiLink > 9.49) {
-						agreeV.put("agreeChiLink", "NO");
-					} else {
-						agreeV.put("agreeChiLink", "YES");
-					}
+					agree.put("chiLink", (chiLink > 9.49 ? "No" : "Yes"));
 
 					if (chiInde < 15.51) {
 						result = "The loci A₁A₂ and B₁B₂ are independent";
@@ -583,15 +552,15 @@ public class CTLinkageImp implements CTLinkage{
 					expConA1A2B1 = (obsA1A2 * obsB1) / total;
 					expConA1A2B2 = (obsA1A2 * obsB2) / total;
 					expConA1A2B1B2 = (obsA1A2 * obsB1B2) / total;
-					values.put("expConA1B1", expConA1B1);
-					values.put("expConA1B1B2", expConA1B1B2);
-					values.put("expConA1B2", expConA1B2);
-					values.put("expConA2B1", expConA2B1);
-					values.put("expConA2B1B2", expConA2B1B2);
-					values.put("expConA2B2", expConA2B2);
-					values.put("expConA1A2B1", expConA1A2B1);
-					values.put("expConA1A2B2", expConA1A2B2);
-					values.put("expConA1A2B1B2", expConA1A2B1B2);
+					resultValues.put("expConA1B1", expConA1B1);
+					resultValues.put("expConA1B1B2", expConA1B1B2);
+					resultValues.put("expConA1B2", expConA1B2);
+					resultValues.put("expConA2B1", expConA2B1);
+					resultValues.put("expConA2B1B2", expConA2B1B2);
+					resultValues.put("expConA2B2", expConA2B2);
+					resultValues.put("expConA1A2B1", expConA1A2B1);
+					resultValues.put("expConA1A2B2", expConA1A2B2);
+					resultValues.put("expConA1A2B1B2", expConA1A2B1B2);
 					if ((expConA1B1 <= 10 && expConA1B1 >= 5) || (expConA1B1B2 <= 10 && expConA1B1B2 >= 5)
 							|| (expConA1B2 <= 10 && expConA1B2 >= 5) || (expConA2B1 <= 10 && expConA2B1 >= 5)
 							|| (expConA2B1B2 <= 10 && expConA2B1B2 >= 5) || (expConA2B2 <= 10 && expConA2B2 >= 5)
@@ -618,11 +587,8 @@ public class CTLinkageImp implements CTLinkage{
 								+ Math.pow((obsAaBb - expConA1A2B1B2), 2) / expConA1A2B1B2;
 					}
 
-					if (chiCon > 9.49) {
-						agreeV.put("agreeChiCon", "NO");
-					} else {
-						agreeV.put("agreeChiCon", "YES");
-					}
+					resultValues.put("chiCon", chiCon);
+					agree.put("chiCon", (chiCon > 9.49 ? "No" : "Yes"));
 
 					if (chiCon < 9.49) {
 						result = "The loci A₁A₂ and B₁B₂ are independent";
@@ -638,9 +604,11 @@ public class CTLinkageImp implements CTLinkage{
 						}
 						distance = rf * 100;
 						result = "The loci A,A₂ and B₁B₂ are linked";
-						values.put("rf", rf);
-						values.put("distance", distance);
+						resultValues.put("rf", rf);
+						resultValues.put("distance", distance);
 					}
+				} else {
+					return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 				}
 			} else {
 				expConA1B1 = (obsA1 * obsB1) / total;
@@ -652,15 +620,15 @@ public class CTLinkageImp implements CTLinkage{
 				expConA1A2B1 = (obsA1A2 * obsB1) / total;
 				expConA1A2B2 = (obsA1A2 * obsB2) / total;
 				expConA1A2B1B2 = (obsA1A2 * obsB1B2) / total;
-				values.put("expConA1B1", expConA1B1);
-				values.put("expConA1B1B2", expConA1B1B2);
-				values.put("expConA1B2", expConA1B2);
-				values.put("expConA2B1", expConA2B1);
-				values.put("expConA2B1B2", expConA2B1B2);
-				values.put("expConA2B2", expConA2B2);
-				values.put("expConA1A2B1", expConA1A2B1);
-				values.put("expConA1A2B2", expConA1A2B2);
-				values.put("expConA1A2B1B2", expConA1A2B1B2);
+				resultValues.put("expConA1B1", expConA1B1);
+				resultValues.put("expConA1B1B2", expConA1B1B2);
+				resultValues.put("expConA1B2", expConA1B2);
+				resultValues.put("expConA2B1", expConA2B1);
+				resultValues.put("expConA2B1B2", expConA2B1B2);
+				resultValues.put("expConA2B2", expConA2B2);
+				resultValues.put("expConA1A2B1", expConA1A2B1);
+				resultValues.put("expConA1A2B2", expConA1A2B2);
+				resultValues.put("expConA1A2B1B2", expConA1A2B1B2);
 				if ((expConA1B1 <= 10 && expConA1B1 >= 5) || (expConA1B1B2 <= 10 && expConA1B1B2 >= 5)
 						|| (expConA1B2 <= 10 && expConA1B2 >= 5) || (expConA2B1 <= 10 && expConA2B1 >= 5)
 						|| (expConA2B1B2 <= 10 && expConA2B1B2 >= 5) || (expConA2B2 <= 10 && expConA2B2 >= 5)
@@ -687,11 +655,8 @@ public class CTLinkageImp implements CTLinkage{
 							+ Math.pow((obsAaBb - expConA1A2B1B2), 2) / expConA1A2B1B2;
 				}
 
-				if (chiCon > 9.49) {
-					agreeV.put("agreeChiCon", "NO");
-				} else {
-					agreeV.put("agreeChiCon", "YES");
-				}
+				resultValues.put("chiCon", chiCon);
+				agree.put("chiCon", (chiCon > 9.49 ? "No" : "Yes"));
 
 				if (chiCon < 9.49) {
 					result = "The loci A₁A₂ and B₁B₂ are independent";
@@ -707,24 +672,31 @@ public class CTLinkageImp implements CTLinkage{
 					}
 					distance = rf * 100;
 					result = "The loci A,A₂ and B₁B₂ are linked";
-					values.put("rf", rf);
-					values.put("distance", distance);
+					resultValues.put("rf", rf);
+					resultValues.put("distance", distance);
 				}
 			}
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 1000").build();
 		}
-
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.expectedValues(expectedValues)
+				.resultValues(resultValues)
+				.result(result)
+				.agree(agree)
+				.observed(observedValues)
+				.phase(phases)
+				.build();
 	}
 
 	public CTResult testcross3Loci(int obsABC, int obsabc, int obsABc, int obsabC, int obsaBC, int obsAbc, int obsAbC,
 			int obsaBc) {
-		Map<String, String> agreeV = new HashMap<>();
+		Map<String, String> agree = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
+		Map<String, Double> resultValues = new HashMap<>();
+		Map<String, Double> expectedValues = new HashMap<>();
+		Map<String, Double> observedValues = new HashMap<>();
 		String result = "";
 		if (obsABC <= 1000 && obsabc <= 1000 && obsABc <= 1000 && obsabC <= 1000 && obsaBC <= 1000 && obsAbc <= 1000
 				&& obsAbC <= 1000 && obsaBc <= 1000) {
@@ -747,29 +719,29 @@ public class CTLinkageImp implements CTLinkage{
 			int obsBc = obsaBc + obsABc;
 			int obsbC = obsabC + obsAbC;
 			int obsbc = obsabc + obsAbc;
-			observed.put("obsA", (double) obsA);
-			observed.put("obsa", (double) obsa);
-			observed.put("obsB", (double) obsB);
-			observed.put("obsb", (double) obsb);
-			observed.put("obsC", (double) obsC);
-			observed.put("obsc", (double) obsc);
-			observed.put("total", (double) total);
-			observed.put("obsAB", (double) obsAB);
-			observed.put("obsAb", (double) obsAb);
-			observed.put("obsaB", (double) obsaB);
-			observed.put("obsab", (double) obsab);
-			observed.put("obsAC", (double) obsAC);
-			observed.put("obsAc", (double) obsAc);
-			observed.put("obsaC", (double) obsaC);
-			observed.put("obsac", (double) obsac);
-			observed.put("obsBC", (double) obsBC);
-			observed.put("obsBc", (double) obsBc);
-			observed.put("obsbC", (double) obsbC);
-			observed.put("obsbc", (double) obsbc);
+			observedValues.put("obsA", (double) obsA);
+			observedValues.put("obsa", (double) obsa);
+			observedValues.put("obsB", (double) obsB);
+			observedValues.put("obsb", (double) obsb);
+			observedValues.put("obsC", (double) obsC);
+			observedValues.put("obsc", (double) obsc);
+			observedValues.put("total", (double) total);
+			observedValues.put("obsAB", (double) obsAB);
+			observedValues.put("obsAb", (double) obsAb);
+			observedValues.put("obsaB", (double) obsaB);
+			observedValues.put("obsab", (double) obsab);
+			observedValues.put("obsAC", (double) obsAC);
+			observedValues.put("obsAc", (double) obsAc);
+			observedValues.put("obsaC", (double) obsaC);
+			observedValues.put("obsac", (double) obsac);
+			observedValues.put("obsBC", (double) obsBC);
+			observedValues.put("obsBc", (double) obsBc);
+			observedValues.put("obsbC", (double) obsbC);
+			observedValues.put("obsbc", (double) obsbc);
 			double expDo = total / 2;
 			double expRe = total / 2;
-			expected.put("expDo", expDo);
-			expected.put("expRe", expRe);
+			expectedValues.put("expDo", expDo);
+			expectedValues.put("expRe", expRe);
 			if (expDo >= 5 && expRe >= 5) {
 				double chiA, chiB, chiC, chiInde, chiAB = 0, chiAC = 0, chiBC = 0, expInAB, expInAb, expInaB, expInab,
 						expInAC, expInAc, expInaC, expInac, expInBC, expInbC, expInBc, expInbc, expConAB = 0,
@@ -786,24 +758,13 @@ public class CTLinkageImp implements CTLinkage{
 					chiB = Math.pow((obsB - expDo), 2) / expDo + Math.pow((obsb - expRe), 2) / expRe;
 					chiC = Math.pow((obsC - expDo), 2) / expDo + Math.pow((obsc - expRe), 2) / expRe;
 				}
-				values.put("chiA", chiA);
-				values.put("chiB", chiB);
-				values.put("chiC", chiC);
-				if (chiA >= 3.841) {
-					agreeV.put("agreeChiA", "NO");
-				} else {
-					agreeV.put("agreeChiA", "YES");
-				}
-				if (chiB >= 3.841) {
-					agreeV.put("agreeChiB", "NO");
-				} else {
-					agreeV.put("agreeChiB", "YES");
-				}
-				if (chiC >= 3.841) {
-					agreeV.put("agreeChiC", "NO");
-				} else {
-					agreeV.put("agreeChiC", "YES");
-				}
+				resultValues.put("chiA", chiA);
+				resultValues.put("chiB", chiB);
+				resultValues.put("chiC", chiC);
+				agree.put("chiA", (chiA > 3.841 ? "No" : "Yes"));
+				agree.put("chiB", (chiB > 3.841 ? "No" : "Yes"));
+				agree.put("chiC", (chiC > 3.841 ? "No" : "Yes"));
+
 				////////////////////
 				expInAB = total / 4;
 				expInAb = total / 4;
@@ -817,18 +778,18 @@ public class CTLinkageImp implements CTLinkage{
 				expInBc = total / 4;
 				expInbc = total / 4;
 				expInbC = total / 4;
-				values.put("expInAB", expInAB);
-				values.put("expInAb", expInAb);
-				values.put("expInaB", expInaB);
-				values.put("expInab", expInab);
-				values.put("expInAC", expInAC);
-				values.put("expInAc", expInAc);
-				values.put("expInaC", expInaC);
-				values.put("expInac", expInac);
-				values.put("expInBC", expInBC);
-				values.put("expInBc", expInBc);
-				values.put("expInbc", expInbc);
-				values.put("expInbC", expInbC);
+				expectedValues.put("expIndAB", expInAB);
+				expectedValues.put("expIndAb", expInAb);
+				expectedValues.put("expIndaB", expInaB);
+				expectedValues.put("expIndab", expInab);
+				expectedValues.put("expIndAC", expInAC);
+				expectedValues.put("expIndAc", expInAc);
+				expectedValues.put("expIndaC", expInaC);
+				expectedValues.put("expIndac", expInac);
+				expectedValues.put("expIndBC", expInBC);
+				expectedValues.put("expIndBc", expInBc);
+				expectedValues.put("expIndbc", expInbc);
+				expectedValues.put("expIndbC", expInbC);
 				expConAB = (obsA * obsB) / total;
 				expConAb = (obsA * obsb) / total;
 				expConaB = (obsa * obsB) / total;
@@ -841,18 +802,18 @@ public class CTLinkageImp implements CTLinkage{
 				expConBc = (obsB * obsc) / total;
 				expConbc = (obsb * obsc) / total;
 				expConbC = (obsb * obsC) / total;
-				values.put("expConAB", expConAB);
-				values.put("expConAb", expConAb);
-				values.put("expConaB", expConaB);
-				values.put("expConab", expConab);
-				values.put("expConAC", expConAC);
-				values.put("expConAc", expConAc);
-				values.put("expConaC", expConaC);
-				values.put("expConac", expConac);
-				values.put("expConBC", expConBC);
-				values.put("expConBc", expConBc);
-				values.put("expConbc", expConbc);
-				values.put("expConbC", expConbC);
+				expectedValues.put("expConAB", expConAB);
+				expectedValues.put("expConAb", expConAb);
+				expectedValues.put("expConaB", expConaB);
+				expectedValues.put("expConab", expConab);
+				expectedValues.put("expConAC", expConAC);
+				expectedValues.put("expConAc", expConAc);
+				expectedValues.put("expConaC", expConaC);
+				expectedValues.put("expConac", expConac);
+				expectedValues.put("expConBC", expConBC);
+				expectedValues.put("expConBc", expConBc);
+				expectedValues.put("expConbc", expConbc);
+				expectedValues.put("expConbC", expConbC);
 				////////////////////
 				if (expConAB >= 5 && expConAb >= 5 && expConaB >= 5 && expConab >= 5 && expConAC >= 5 && expConAc >= 5
 						&& expConaC >= 5 && expConac >= 5 && expConBC >= 5 && expConBc >= 5 && expConbc >= 5
@@ -890,9 +851,11 @@ public class CTLinkageImp implements CTLinkage{
 								+ Math.pow((obsBc - expConBc), 2) / expConBc
 								+ Math.pow((obsbc - expConbc), 2) / expConbc;
 					}
-					values.put("chiAB", chiAB);
-					values.put("chiAC", chiAC);
-					values.put("chiBC", chiBC);
+					resultValues.put("chiAB", chiAB);
+					resultValues.put("chiAC", chiAC);
+					resultValues.put("chiBC", chiBC);
+				} else {
+					return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 				}
 				if (chiAB >= 3.841 && obsAB > obsAb) {
 					rfAB = (obsAb + obsaB) / total;
@@ -931,15 +894,15 @@ public class CTLinkageImp implements CTLinkage{
 							/ Math.pow(0.5, total))) / Math.log(10));
 				}
 				
-				values.put("rfAB", rfAB);
-				values.put("distAB", distAB);
-				values.put("lodzAB", lodzAB);
-				values.put("rfAC", rfAC);
-				values.put("distAC", distAC);
-				values.put("lodzAC", lodzAC);
-				values.put("rfBC", rfBC);
-				values.put("distBC", distBC);
-				values.put("lodzBC", lodzBC);
+				resultValues.put("rfAB", rfAB);
+				resultValues.put("distAB", distAB);
+				resultValues.put("lodzAB", lodzAB);
+				resultValues.put("rfAC", rfAC);
+				resultValues.put("distAC", distAC);
+				resultValues.put("lodzAC", lodzAC);
+				resultValues.put("rfBC", rfBC);
+				resultValues.put("distBC", distBC);
+				resultValues.put("lodzBC", lodzBC);
 
 				if (chiAB < 3.841 && chiAC < 3.841 && chiBC < 3.841) {
 					result = "The three loci are independent";
@@ -983,90 +946,90 @@ public class CTLinkageImp implements CTLinkage{
 				}
 				double coincidence = 0, interference;
 				if (chiAB >= 3.841 && chiAC >= 3.841 && chiBC >= 3.641 && rfAB > rfAC && rfAB > rfBC) {
-					valuesString.put("centre", "C,c");
+					phases.put("centre", "C,c");
 					if (iMax == 0 || iMax == 1) {
 						phases.put("phaseA", "ACB");
 						phases.put("phaseB", "acb");
 						coincidence = ((obsABc + obsabC) / total) / (rfAC * rfBC);
-						values.put("coincidence", coincidence);
+						resultValues.put("coincidence", coincidence);
 					} else {
 						if (iMax == 2 || iMax == 3) {
 							phases.put("phaseA", "Acb");
 							phases.put("phaseB", "aCB");
 							coincidence = ((obsAbC + obsaBc) / total) / (rfAC * rfBC);
-							values.put("coincidence", coincidence);
+							resultValues.put("coincidence", coincidence);
 						} else {
 							if (iMax == 4 || iMax == 5) {
 								phases.put("phaseA", "AcB");
 								phases.put("phaseB", "aCb");
 								coincidence = ((obsABC + obsabc) / total) / (rfAC * rfBC);
-								values.put("coincidence", coincidence);
+								resultValues.put("coincidence", coincidence);
 							} else {
 								if (iMax == 6 || iMax == 7) {
 									phases.put("phaseA", "ACb");
 									phases.put("phaseB", "acB");
 									coincidence = ((obsaBC + obsABc) / total) / (rfAC * rfBC);
-									values.put("coincidence", coincidence);
+									resultValues.put("coincidence", coincidence);
 								}
 							}
 						}
 					}
 				} else {
 					if (chiAB >= 3.841 && chiAC >= 3.841 && chiBC >= 3.641 && rfAC > rfAB && rfAC > rfBC) {
-						valuesString.put("centre", "B,b");
+						phases.put("centre", "B,b");
 						if (iMax == 0 || iMax == 1) {
 							phases.put("phaseA", "ABC");
 							phases.put("phaseB", "abc");
 							coincidence = ((obsAbC + obsaBc) / total) / (rfAB * rfBC);
-							values.put("coincidence", coincidence);
+							resultValues.put("coincidence", coincidence);
 						} else {
 							if (iMax == 2 || iMax == 3) {
 								phases.put("phaseA", "Abc");
 								phases.put("phaseB", "aBC");
 								coincidence = ((obsABc + obsabC) / total) / (rfAB * rfBC);
-								values.put("coincidence", coincidence);
+								resultValues.put("coincidence", coincidence);
 							} else {
 								if (iMax == 4 || iMax == 5) {
 									phases.put("phaseA", "ABc");
 									phases.put("phaseB", "abC");
 									coincidence = ((obsAbc + obsaBC) / total) / (rfAB * rfBC);
-									values.put("coincidence", coincidence);
+									resultValues.put("coincidence", coincidence);
 								} else {
 									if (iMax == 6 || iMax == 7) {
 										phases.put("phaseA", "AbC");
 										phases.put("phaseB", "aBc");
 										coincidence = ((obsabc + obsABC) / total) / (rfAB * rfBC);
-										values.put("coincidence", coincidence);
+										resultValues.put("coincidence", coincidence);
 									}
 								}
 							}
 						}
 					} else {
 						if (chiAB >= 3.841 && chiAC >= 3.841 && chiBC >= 3.641 && rfBC > rfAB && rfBC > rfAC) {
-							valuesString.put("centre", "A,a");
+							phases.put("centre", "A,a");
 							if (iMax == 0 || iMax == 1) {
 								phases.put("phaseA", "BAC");
 								phases.put("phaseB", "bac");
 								coincidence = ((obsaBC + obsAbc) / total) / (rfAB * rfAC);
-								values.put("coincidence", coincidence);
+								resultValues.put("coincidence", coincidence);
 							} else {
 								if (iMax == 2 || iMax == 3) {
 									phases.put("phaseA", "bAc");
 									phases.put("phaseB", "BaC");
 									coincidence = ((obsABC + obsabc) / total) / (rfAB * rfAC);
-									values.put("coincidence", coincidence);
+									resultValues.put("coincidence", coincidence);
 								} else {
 									if (iMax == 4 || iMax == 5) {
 										phases.put("phaseA", "BAc");
 										phases.put("phaseB", "baC");
 										coincidence = ((obsAbC + obsaBc) / total) / (rfAB * rfAC);
-										values.put("coincidence", coincidence);
+										resultValues.put("coincidence", coincidence);
 									} else {
 										if (iMax == 6 || iMax == 7) {
 											phases.put("phaseA", "bAC");
 											phases.put("phaseB", "Bac");
 											coincidence = ((obsABc + obsabC) / total) / (rfAB * rfAC);
-											values.put("coincidence", coincidence);
+											resultValues.put("coincidence", coincidence);
 										}
 									}
 								}
@@ -1075,21 +1038,27 @@ public class CTLinkageImp implements CTLinkage{
 					}
 				}
 				interference = 1 - coincidence;
-				values.put("interference", interference);
+				resultValues.put("interference", interference);
+			} else {
+				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 			}
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 1000").build();
 		}
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.expectedValues(expectedValues)
+				.resultValues(resultValues)
+				.result(result)
+				.agree(agree)
+				.observed(observedValues)
+				.phase(phases)
+				.build();
 	}
 
 	public CTResult testcrossDM(double r1, double r2, double cOc, double tOs) {
-		Map<String, String> agreeV = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
-		String result = "";
+		Map<String, Double> resultValues = new HashMap<>();
 		////////////////////////
 		double ABCn, abcn, ABcn, abCn, AbCn, aBcn, aBCn, Abcn, ABC2, abc2, ABc2, abC2, AbC2, aBc2, aBC2, Abc2, ABC3,
 				abc3, ABc3, abC3, AbC3, aBc3, aBC3, Abc3, ABC4, abc4, ABc4, abC4, AbC4, aBc4, aBC4, Abc4, interference,
@@ -1104,21 +1073,21 @@ public class CTLinkageImp implements CTLinkage{
 			abCn = tOs * ((r2 - (r1 * r2 * cOc)) / 2);
 			abcn = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);
 			ABCn = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);
-			
-			values.put("AbCn", AbCn);
-			values.put("aBcn", aBcn);
-			values.put("Abcn", Abcn);
-			values.put("aBCn", aBCn);
-			values.put("ABcn", ABcn);
-			values.put("abCn", abCn);
-			values.put("abcn", abcn);
-			values.put("ABCn", ABCn);
+
+			resultValues.put("AbCn", AbCn);
+			resultValues.put("aBcn", aBcn);
+			resultValues.put("Abcn", Abcn);
+			resultValues.put("aBCn", aBCn);
+			resultValues.put("ABcn", ABcn);
+			resultValues.put("abCn", abCn);
+			resultValues.put("abcn", abcn);
+			resultValues.put("ABCn", ABCn);
 
 			interference = 1 - cOc;
 			rf = r1 + r2 - (r1 * r2 * cOc * 2);
-			
-			values.put("interference", interference);
-			values.put("rf", rf);
+
+			resultValues.put("interference", interference);
+			resultValues.put("rf", rf);
 
 			ABC2 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
 			aBC2 = tOs * ((r1 * r2 * cOc) / 2);//
@@ -1128,14 +1097,14 @@ public class CTLinkageImp implements CTLinkage{
 			aBc2 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
 			Abc2 = tOs * ((r1 * r2 * cOc) / 2);//
 			abC2 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			values.put("AbC2", AbC2);
-			values.put("aBc2", aBc2);
-			values.put("Abc2", Abc2);
-			values.put("aBC2", aBC2);
-			values.put("ABc2", ABc2);
-			values.put("abC2", abC2);
-			values.put("abc2", abc2);
-			values.put("ABC2", ABC2);
+			resultValues.put("AbC2", AbC2);
+			resultValues.put("aBc2", aBc2);
+			resultValues.put("Abc2", Abc2);
+			resultValues.put("aBC2", aBC2);
+			resultValues.put("ABc2", ABc2);
+			resultValues.put("abC2", abC2);
+			resultValues.put("abc2", abc2);
+			resultValues.put("ABC2", ABC2);
 
 			ABC3 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
 			aBC3 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
@@ -1145,14 +1114,14 @@ public class CTLinkageImp implements CTLinkage{
 			aBc3 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
 			Abc3 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
 			abC3 = tOs * ((r1 * r2 * cOc) / 2);//
-			values.put("AbC3", AbC3);
-			values.put("aBc3", aBc3);
-			values.put("Abc3", Abc3);
-			values.put("aBC3", aBC3);
-			values.put("ABc3", ABc3);
-			values.put("abC3", abC3);
-			values.put("abc3", abc3);
-			values.put("ABC3", ABC3);
+			resultValues.put("AbC3", AbC3);
+			resultValues.put("aBc3", aBc3);
+			resultValues.put("Abc3", Abc3);
+			resultValues.put("aBC3", aBC3);
+			resultValues.put("ABc3", ABc3);
+			resultValues.put("abC3", abC3);
+			resultValues.put("abc3", abc3);
+			resultValues.put("ABC3", ABC3);
 
 			ABC4 = tOs * ((r1 * r2 * cOc) / 2);//
 			aBC4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
@@ -1162,34 +1131,33 @@ public class CTLinkageImp implements CTLinkage{
 			aBc4 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
 			Abc4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
 			abC4 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			values.put("AbC4", AbC4);
-			values.put("aBc4", aBc4);
-			values.put("Abc4", Abc4);
-			values.put("aBC4", aBC4);
-			values.put("ABc4", ABc4);
-			values.put("abC4", abC4);
-			values.put("abc4", abc4);
-			values.put("ABC4", ABC4);
+			resultValues.put("AbC4", AbC4);
+			resultValues.put("aBc4", aBc4);
+			resultValues.put("Abc4", Abc4);
+			resultValues.put("aBC4", aBC4);
+			resultValues.put("ABc4", ABc4);
+			resultValues.put("abC4", abC4);
+			resultValues.put("abc4", abc4);
+			resultValues.put("ABC4", ABC4);
 
 			if (rf >= 0.5) {
-				valuesString.put("rf", "r is >=0.5");
+				phases.put("rf", "r is >=0.5");
 			} else {
-				valuesString.put("rf", String.valueOf(rf));
+				phases.put("rf", String.valueOf(rf));
 			}
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage(" r can´t be higher than 0,5. The max number of total offspring is 5000").build();
 		}
 
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.resultValues(resultValues)
+				.phase(phases)
+				.build();
 	}
 
 	public CTResult dominanceDM(double r1, double tOs) {
-		Map<String, String> agreeV = new HashMap<>();
-		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
-		String result = "";
+		Map<String, Double> resultValues = new HashMap<>();
 		////////////////////////
 		double repAB = 0, repAb = 0, repaB = 0, repab = 0, coupAB = 0, coupAb = 0, coupaB = 0, coupab = 0;
 		///////////////////////
@@ -1203,29 +1171,27 @@ public class CTLinkageImp implements CTLinkage{
 			repAb = tOs * ((1 - Math.pow(r1, 2)) / 4);
 			repaB = tOs * ((1 - Math.pow(r1, 2)) / 4);
 			repab = tOs * (Math.pow(r1, 2) / 4);
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("r can´t be higher than 0,5. The max number accepted for total offspring is 5000").build();
 		}
 
-		values.put("coupAB", coupAB);
-		values.put("coupAb", coupAb);
-		values.put("coupaB", coupaB);
-		values.put("coupab", coupab);
-		values.put("repAB", repAB);
-		values.put("repAb", repAb);
-		values.put("repaB", repaB);
-		values.put("repab", repab);
+		resultValues.put("coupAB", coupAB);
+		resultValues.put("coupAb", coupAb);
+		resultValues.put("coupaB", coupaB);
+		resultValues.put("coupab", coupab);
+		resultValues.put("repAB", repAB);
+		resultValues.put("repAb", repAb);
+		resultValues.put("repaB", repaB);
+		resultValues.put("repab", repab);
 
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.resultValues(resultValues)
+				.build();
 	}
 
 	public CTResult codominanceDM(double r1, double tOs) {
-		Map<String, String> agreeV = new HashMap<>();
-		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
-		String result = "";
+		Map<String, Double> resultValues = new HashMap<>();
 		////////////////////////
 		double repA1A1B1B1 = 0, repA1A2B1B1 = 0, repA2A2B1B1 = 0, repA1A1B1B2 = 0, repA1A2B1B2 = 0, repA2A2B1B2 = 0,
 				repA1A1B2B2 = 0, repA1A2B2B2 = 0, repA2A2B2B2 = 0, coupA1A1B1B1 = 0, coupA1A2B1B1 = 0, coupA2A2B1B1 = 0,
@@ -1252,40 +1218,39 @@ public class CTLinkageImp implements CTLinkage{
 			repA1A1B2B2 = tOs * ((Math.pow((1 - r1), 2)) / 4);
 			repA1A2B2B2 = tOs * ((r1 - Math.pow((r1), 2)) / 2);
 			repA2A2B2B2 = tOs * ((Math.pow((r1), 2)) / 4);
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("r can´t be higher than 0,5. The max number accepted for total offspring is 5000").build();
 		}
 
-		values.put("coupA1A1B1B1", coupA1A1B1B1);
-		values.put("coupA1A2B1B1", coupA1A2B1B1);
-		values.put("coupA2A2B1B1", coupA2A2B1B1);
-		values.put("coupA1A1B1B2", coupA1A1B1B2);
-		values.put("coupA1A2B1B2", coupA1A2B1B2);
-		values.put("coupA2A2B1B2", coupA2A2B1B2);
-		values.put("coupA1A1B2B2", coupA1A1B2B2);
-		values.put("coupA1A2B2B2", coupA1A2B2B2);
-		values.put("coupA2A2B2B2", coupA2A2B2B2);
+		resultValues.put("coupA1A1B1B1", coupA1A1B1B1);
+		resultValues.put("coupA1A2B1B1", coupA1A2B1B1);
+		resultValues.put("coupA2A2B1B1", coupA2A2B1B1);
+		resultValues.put("coupA1A1B1B2", coupA1A1B1B2);
+		resultValues.put("coupA1A2B1B2", coupA1A2B1B2);
+		resultValues.put("coupA2A2B1B2", coupA2A2B1B2);
+		resultValues.put("coupA1A1B2B2", coupA1A1B2B2);
+		resultValues.put("coupA1A2B2B2", coupA1A2B2B2);
+		resultValues.put("coupA2A2B2B2", coupA2A2B2B2);
 
-		values.put("repA1A1B1B1", repA1A1B1B1);
-		values.put("repA1A2B1B1", repA1A2B1B1);
-		values.put("repA2A2B1B1", repA2A2B1B1);
-		values.put("repA1A1B1B2", repA1A1B1B2);
-		values.put("repA1A2B1B2", repA1A2B1B2);
-		values.put("repA2A2B1B2", repA2A2B1B2);
-		values.put("repA1A1B2B2", repA1A1B2B2);
-		values.put("repA1A2B2B2", repA1A2B2B2);
-		values.put("repA2A2B2B2", repA2A2B2B2);
+		resultValues.put("repA1A1B1B1", repA1A1B1B1);
+		resultValues.put("repA1A2B1B1", repA1A2B1B1);
+		resultValues.put("repA2A2B1B1", repA2A2B1B1);
+		resultValues.put("repA1A1B1B2", repA1A1B1B2);
+		resultValues.put("repA1A2B1B2", repA1A2B1B2);
+		resultValues.put("repA2A2B1B2", repA2A2B1B2);
+		resultValues.put("repA1A1B2B2", repA1A1B2B2);
+		resultValues.put("repA1A2B2B2", repA1A2B2B2);
+		resultValues.put("repA2A2B2B2", repA2A2B2B2);
 
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.resultValues(resultValues)
+				.build();
 	}
 
 	public CTResult tresLociDM(double r1, double r2, double cOc, double tOs) {
-		Map<String, String> agreeV = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
-		Map<String, Double> values = new HashMap<>();
-		Map<String, Double> expected = new HashMap<>();
-		Map<String, Double> observed = new HashMap<>();
-		Map<String, String> valuesString = new HashMap<>();
-		String result = "";
+		Map<String, Double> resultValues = new HashMap<>();
 		////////////////////////
 		double vAbCn = 0, vaBcn = 0, vAbcn = 0, vaBCn = 0, vABcn = 0, vabCn = 0, vabcn = 0, vABCn = 0, vAbC2 = 0,
 				vaBc2 = 0, vAbc2 = 0, vaBC2 = 0, vABc2 = 0, vabC2 = 0, vabc2 = 0, vABC2 = 0, vAbC3 = 0, vaBc3 = 0,
@@ -1331,52 +1296,57 @@ public class CTLinkageImp implements CTLinkage{
 			vaBc4 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2);
 			vAbc4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);
 			vabC4 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);
+		} else {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("r can´t be higher than 0,5. The max number accepted for total offspring is 5000").build();
 		}
 
-		values.put("vAbCn", vAbCn);
-		values.put("vaBcn", vaBcn);
-		values.put("vAbcn", vAbcn);
-		values.put("vaBCn", vaBCn);
-		values.put("vABcn", vABcn);
-		values.put("vabCn", vabCn);
-		values.put("vabcn", vabcn);
-		values.put("vABCn", vABCn);
+		resultValues.put("vAbCn", vAbCn);
+		resultValues.put("vaBcn", vaBcn);
+		resultValues.put("vAbcn", vAbcn);
+		resultValues.put("vaBCn", vaBCn);
+		resultValues.put("vABcn", vABcn);
+		resultValues.put("vabCn", vabCn);
+		resultValues.put("vabcn", vabcn);
+		resultValues.put("vABCn", vABCn);
 
-		values.put("vAbC2", vAbC2);
-		values.put("vaBc2", vaBc2);
-		values.put("vAbc2", vAbc2);
-		values.put("vaBC2", vaBC2);
-		values.put("vABc2", vABc2);
-		values.put("vabC2", vabC2);
-		values.put("vabc2", vabc2);
-		values.put("vABC2", vABC2);
+		resultValues.put("vAbC2", vAbC2);
+		resultValues.put("vaBc2", vaBc2);
+		resultValues.put("vAbc2", vAbc2);
+		resultValues.put("vaBC2", vaBC2);
+		resultValues.put("vABc2", vABc2);
+		resultValues.put("vabC2", vabC2);
+		resultValues.put("vabc2", vabc2);
+		resultValues.put("vABC2", vABC2);
 
-		values.put("vAbC3", vAbC3);
-		values.put("vaBc3", vaBc3);
-		values.put("vAbc3", vAbc3);
-		values.put("vaBC3", vaBC3);
-		values.put("vABc3", vABc3);
-		values.put("vabC3", vabC3);
-		values.put("vabc3", vabc3);
-		values.put("vABC3", vABC3);
+		resultValues.put("vAbC3", vAbC3);
+		resultValues.put("vaBc3", vaBc3);
+		resultValues.put("vAbc3", vAbc3);
+		resultValues.put("vaBC3", vaBC3);
+		resultValues.put("vABc3", vABc3);
+		resultValues.put("vabC3", vabC3);
+		resultValues.put("vabc3", vabc3);
+		resultValues.put("vABC3", vABC3);
 
-		values.put("vAbC4", vAbC4);
-		values.put("vaBc4", vaBc4);
-		values.put("vAbc4", vAbc4);
-		values.put("vaBC4", vaBC4);
-		values.put("vABc4", vABc4);
-		values.put("vabC4", vabC4);
-		values.put("vabc4", vabc4);
-		values.put("vABC4", vABC4);
+		resultValues.put("vAbC4", vAbC4);
+		resultValues.put("vaBc4", vaBc4);
+		resultValues.put("vAbc4", vAbc4);
+		resultValues.put("vaBC4", vaBC4);
+		resultValues.put("vABc4", vABc4);
+		resultValues.put("vabC4", vabC4);
+		resultValues.put("vabc4", vabc4);
+		resultValues.put("vABC4", vABC4);
 
 		if (rf >= 0.5) {
-			valuesString.put("rf", "r is >=0.5");
+			phases.put("rf", "r is >=0.5");
 		} else {
-			valuesString.put("rf", String.valueOf(rf));
+			phases.put("rf", String.valueOf(rf));
 		}
-		values.put("interference", interference);
+		resultValues.put("interference", interference);
 
-		return CTResult.builder().agree(agreeV).expectedValues(expected).result(result).values(values)
-				.observed(observed).phase(phases).valuesString(valuesString).build();
+		return CTResult.builder()
+				.cleanInputs(false)
+				.phase(phases)
+				.resultValues(resultValues)
+				.build();
 	}
 }
