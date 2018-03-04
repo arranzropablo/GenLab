@@ -50,21 +50,27 @@ public class RestController {
         return bookService.getBooksBySection(section);
     }
 
-    @GetMapping("/tests")
-    public @ResponseBody List<Test> getTests(@RequestParam("sectionid") int section){
-        return testService.getTestBySection(section);
-    }
-
-    @GetMapping("/tests/detail")
-    public @ResponseBody Test getTest(@RequestParam("id") int id){
-        Test testToReturn = testService.getTest(id);
-        testToReturn.getQuestions().forEach(question -> {
+    private Test mapTest(Test test){
+        test.getQuestions().forEach(question -> {
             question.setTest(null);
             question.getAnswers().forEach(answer -> {
                 answer.setPregunta(null);
             });
         });
-        return testToReturn;
+        return test;
+    }
+
+    @GetMapping("/tests")
+    public @ResponseBody List<Test> getTests(@RequestParam("sectionid") int section){
+        List<Test> testsToReturn = testService.getTestBySection(section);
+        testsToReturn.stream().forEach(test -> mapTest(test));
+        return testsToReturn;
+    }
+
+    @GetMapping("/tests/detail")
+    public @ResponseBody Test getTest(@RequestParam("id") int id){
+        Test testToReturn = testService.getTest(id);
+        return mapTest(testToReturn);
     }
 
 }

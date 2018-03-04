@@ -3,7 +3,7 @@ package com.genlab.serverapplication.services.ctservice;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.genlab.serverapplication.viewobjects.CTResult;
+import com.genlab.serverapplication.models.CTResult;
 
 public class CTOneLocus {
 
