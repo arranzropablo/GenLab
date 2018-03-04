@@ -1,8 +1,10 @@
-package com.genlab.serverapplication.services.ctservice;
+package com.genlab.serverapplication.services.ctservice.Polyhybrid;
 
 import com.genlab.serverapplication.models.CTResult;
+import org.springframework.stereotype.Service;
 
-public class CTPolyhybrid {
+@Service
+public class CTPolyhybridimp implements CTPolyHybrid {
 
 	public CTResult polyhybrid(int n, int h, int d, int r, int D, int R, int T) {
 		//Cosas que haríamos en el controlador:

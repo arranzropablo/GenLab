@@ -2,6 +2,7 @@ package com.genlab.serverapplication.controllers;
 
 import com.genlab.serverapplication.models.*;
 import com.genlab.serverapplication.services.bookService.BookService;
+import com.genlab.serverapplication.services.ctservice.Twoloci.CTTwoLoci;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
 import com.genlab.serverapplication.services.testsService.TestService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
@@ -29,6 +30,9 @@ public class RestController {
 
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private CTTwoLoci twoLociService;
 
     @GetMapping("/problems")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
@@ -71,6 +75,11 @@ public class RestController {
     public @ResponseBody Test getTest(@RequestParam("id") int id){
         Test testToReturn = testService.getTest(id);
         return mapTest(testToReturn);
+    }
+
+    @GetMapping("/calctool")
+    public @ResponseBody CTResult getResult(@RequestParam("AB") int AB, @RequestParam("Ab") int Ab, @RequestParam("aB") int aB, @RequestParam("ab") int ab){
+        return twoLociService.testcross(AB, Ab, aB, ab);
     }
 
 }
