@@ -92,23 +92,24 @@ public class RestController {
 
     @PostMapping("/calctool")
     public @ResponseBody CTResult getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values){
-        switch(CTid.toCharArray()[0]){
+        CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();;
+        switch(Integer.parseInt(String.valueOf(CTid.toCharArray()[0]))){
             case 0:
-                switch (CTid.toCharArray()[1]){
+                switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
-                        twoLociService.testcross(values.get("AB"),
+                        result = twoLociService.testcross(values.get("AB"),
                                                     values.get("Ab"),
                                                     values.get("aB"),
                                                     values.get("ab"));
                         break;
                     case 1:
-                        twoLociService.f2Dominance(values.get("AB"),
+                        result = twoLociService.f2Dominance(values.get("AB"),
                                                     values.get("Ab"),
                                                     values.get("aB"),
                                                     values.get("ab"));
                         break;
                     case 2:
-                        twoLociService.f2coDominance(values.get("A1A1B1B1"),
+                        result = twoLociService.f2coDominance(values.get("A1A1B1B1"),
                                                         values.get("A1A1B1B2"),
                                                         values.get("A1A1B2B2"),
                                                         values.get("A1A2B1B1"),
@@ -119,7 +120,7 @@ public class RestController {
                                                         values.get("A2A2B2B2"));
                         break;
                     case 3:
-                        twoLociService.f2coDom2dom(values.get("A1A1B"),
+                        result = twoLociService.f2coDom2dom(values.get("A1A1B"),
                                                     values.get("A1A2B"),
                                                     values.get("A2A2B"),
                                                     values.get("A1A1b"),
@@ -127,7 +128,7 @@ public class RestController {
                                                     values.get("A2A2b"));
                         break;
                     case 4:
-                        twoLociService.f2coDom4dom(values.get("A1A3B"),
+                        result = twoLociService.f2coDom4dom(values.get("A1A3B"),
                                                     values.get("A1A3b"),
                                                     values.get("A1A4B"),
                                                     values.get("A1A4b"),
@@ -137,13 +138,13 @@ public class RestController {
                                                     values.get("A2A4b"));
                         break;
                     case 5:
-                        twoLociService.f2TestcrossDom(values.get("AB"),
+                        result = twoLociService.f2TestcrossDom(values.get("AB"),
                                                         values.get("Ab"),
                                                         values.get("aB"),
                                                         values.get("ab"));
                         break;
                     case 6:
-                        twoLociService.f2Testcross2Dom(values.get("A1A1B"),
+                        result = twoLociService.f2Testcross2Dom(values.get("A1A1B"),
                                                         values.get("A1A2B"),
                                                         values.get("A2A2B"),
                                                         values.get("A1A1b"),
@@ -151,7 +152,7 @@ public class RestController {
                                                         values.get("A2A2b"));
                         break;
                     case 7:
-                        twoLociService.f2Testcross4Dom(values.get("A1A3B"),
+                        result = twoLociService.f2Testcross4Dom(values.get("A1A3B"),
                                                         values.get("A1A3b"),
                                                         values.get("A1A4B"),
                                                         values.get("A1A4b"),
@@ -163,54 +164,54 @@ public class RestController {
                 }
                 break;
             case 1:
-                switch (CTid.toCharArray()[1]){
+                switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
-                        oneLocusService.testcross(values.get("A"),
+                        result = oneLocusService.testcross(values.get("A"),
                                                     values.get("a"));
                         break;
                     case 1:
-                        oneLocusService.f2Dominance(values.get("A"),
+                        result = oneLocusService.f2Dominance(values.get("A"),
                                                     values.get("a"));
                         break;
                     case 2:
-                        oneLocusService.f2CoDominance(values.get("AA"),
+                        result = oneLocusService.f2CoDominance(values.get("AA"),
                                                         values.get("Aa"),
                                                         values.get("aa"));
                         break;
                     case 3:
-                        oneLocusService.coDominance3Alleles(values.get("A1A1"),
+                        result = oneLocusService.coDominance3Alleles(values.get("A1A1"),
                                                             values.get("A1A2"),
                                                             values.get("A1A3"),
                                                             values.get("A2A3"));
                         break;
                     case 4:
-                        oneLocusService.coDominance4Alleles(values.get("A1A3"),
+                        result = oneLocusService.coDominance4Alleles(values.get("A1A3"),
                                                             values.get("A1A4"),
                                                             values.get("A2A3"),
                                                             values.get("A2A4"));
                         break;
                     case 5:
-                        oneLocusService.lethalGenes(values.get("AA"),
+                        result = oneLocusService.lethalGenes(values.get("AA"),
                                                     values.get("Aa"));
                         break;
                 }
                 break;
             case 2:
-                switch (CTid.toCharArray()[1]){
+                switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
-                        linkageService.testcross2Loci(values.get("AB"),
+                        result = linkageService.testcross2Loci(values.get("AB"),
                                                         values.get("Ab"),
                                                         values.get("aB"),
                                                         values.get("ab"));
                         break;
                     case 1:
-                        linkageService.f22LociDominance(values.get("AB"),
+                        result = linkageService.f22LociDominance(values.get("AB"),
                                                         values.get("Ab"),
                                                         values.get("aB"),
                                                         values.get("ab"));
                         break;
                     case 2:
-                        linkageService.f22LociCodominance(values.get("AABB"),
+                        result = linkageService.f22LociCodominance(values.get("AABB"),
                                                             values.get("AABb"),
                                                             values.get("AAbb"),
                                                             values.get("AaBB"),
@@ -221,7 +222,7 @@ public class RestController {
                                                             values.get("aabb"));
                         break;
                     case 3:
-                        linkageService.testcross3Loci(values.get("ABC"),
+                        result = linkageService.testcross3Loci(values.get("ABC"),
                                                         values.get("abc"),
                                                         values.get("ABc"),
                                                         values.get("abC"),
@@ -231,21 +232,21 @@ public class RestController {
                                                         values.get("aBc"));
                         break;
                     case 4:
-                        linkageService.testcrossDM(values.get("r1"),
+                        result = linkageService.testcrossDM(values.get("r1"),
                                                     values.get("r2"),
                                                     values.get("cOc"),
                                                     values.get("tOs"));
                         break;
                     case 5:
-                        linkageService.dominanceDM(values.get("r1"),
+                        result = linkageService.dominanceDM(values.get("r1"),
                                                     values.get("tOs"));
                         break;
                     case 6:
-                        linkageService.codominanceDM(values.get("r1"),
+                        result = linkageService.codominanceDM(values.get("r1"),
                                                         values.get("tOs"));
                         break;
                     case 7:
-                        linkageService.testcross3Loci(values.get("ABC"),
+                        result = linkageService.testcross3Loci(values.get("ABC"),
                                                         values.get("abc"),
                                                         values.get("ABc"),
                                                         values.get("abC"),
@@ -257,7 +258,7 @@ public class RestController {
                 }
                 break;
             case 3:
-                switch (CTid.toCharArray()[1]){
+                switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
                         break;
                     case 1:
@@ -279,9 +280,9 @@ public class RestController {
                 }
                 break;
             case 4:
-                switch (CTid.toCharArray()[1]){
+                switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
-                        polyhybridService.polyhybrid(values.get("n"),
+                        result = polyhybridService.polyhybrid(values.get("n"),
                                                         values.get("h"),
                                                         values.get("d"),
                                                         values.get("r"),
@@ -290,7 +291,7 @@ public class RestController {
                                                         values.get("T"));
                         break;
                     case 1:
-                        polyhybridService.multiplealleles(values.get("locus1"),
+                        result = polyhybridService.multiplealleles(values.get("locus1"),
                                                             values.get("locus2"),
                                                             values.get("locus3"),
                                                             values.get("locus4"),
@@ -298,9 +299,8 @@ public class RestController {
                         break;
                 }
                 break;
-
         }
-        return CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();
+        return result;
     }
 
 }
