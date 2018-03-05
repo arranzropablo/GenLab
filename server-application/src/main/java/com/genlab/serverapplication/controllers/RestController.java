@@ -90,7 +90,7 @@ public class RestController {
         return mapTest(testToReturn);
     }
 
-    @GetMapping("/calctool")
+    @PostMapping("/calctool")
     public @ResponseBody CTResult getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values){
         switch(CTid.toCharArray()[0]){
             case 0:

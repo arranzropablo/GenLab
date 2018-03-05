@@ -35,9 +35,9 @@
 	        					th:text="${link.title}"
 	        					th:style="${(#httpServletRequest.getServletPath() == '/home' + link.link || '/' + session.currentSection.toString().toLowerCase() == link.link) ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}"></a>
 	      </li>
-	      <li><form th:action="@{/logout}" method="post"><button id="logoutBtn" type="submit" class="btn btn-danger">Log Out</button></form></li>
-	     <!-- <li th:text="'Bienvenido ' +${username}"></li> --> 
+	     <!-- <li th:text="'Bienvenido ' +${username}"></li> -->
 	    </ul>
+		<form th:action="@{/logout}" method="post" id="logoutForm"><button id="logoutBtn" type="submit" class="btn btn-danger">Log Out</button></form>
 	  </div>
 	</nav>
 	
