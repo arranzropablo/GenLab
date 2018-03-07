@@ -50,7 +50,6 @@ public class TestsController {
 		return "tests";
 	}
 
-	//en uno nuevo borrar algo va a dar fallo xq aun no esta en la bd
 	/**
 	 * Mostrar la página de un test por ID
 	 * **/
@@ -119,7 +118,6 @@ public class TestsController {
 
 		List<Integer> listQuestionsDeleted = (List<Integer>)session.getAttribute("listQuestionsDeleted");
 		List<Integer> listAnswersDeleted = (List<Integer>)session.getAttribute("listAnswersDeleted");
-		//para borrar preguntas y respuestas se guardan en una lista y luego se hace un for sobre ellas al darle a save
 
 		for(int answerId : listAnswersDeleted) {
 			if(testAnswerService.existsAnswer(answerId)) {

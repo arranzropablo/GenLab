@@ -29,14 +29,14 @@
 				</div>
 				<!-- Aqui el main content -->
 				<div class="main-content-fragment" >
-					<div id="calcToolFrag" th:include="fragments/CTFragments :: 10">
+					<div id="calcToolFrag" th:include="fragments/CTFragments::${calcToShow}">
 					</div>	 
-					<button type="button" class="btn btn-success">Calculate</button>
-					<button type="button" class="btn btn-danger">Clean</button>
-					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-success" id="calcButton">Calculate</button>
+					<button type="button" class="btn btn-danger" id="cleanButton">Clean</button>
 				</div>
 			</div>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+            <script src="../static/js/CTAjax.js" th:src="@{/js/CTAjax.js}"></script>
 		</div>
 	</body>
 </html>

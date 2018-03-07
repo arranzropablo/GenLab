@@ -1,9 +1,27 @@
-$(".CTButton").on('click', function(event){
+$("#calcButton").on('click', function(event){
 	event.preventDefault();
 	
-	var href = $(this).attr("href");
-	
-	$.get(href, function(response){
-		$(".mainContentCalcTool").html(response);
-	})
+	var elem = $($("form")[1]);
+	var inputs = $("input");
+
+	var obj = {};
+
+	Array.prototype.forEach.call(inputs,function(input){
+	    obj[$(input).attr("id")] = $(input).val();
+    });
+
+    let responseText;
+     $.ajax({
+        url: "/calculationtools/result?CTid=" + $("#CTid").val(),
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(obj),
+        success: function(data){
+            document.open();
+            document.write(data);
+            document.close();
+        }
+    });
+
+
 });
