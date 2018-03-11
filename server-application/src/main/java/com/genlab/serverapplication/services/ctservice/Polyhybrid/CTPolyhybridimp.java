@@ -17,27 +17,27 @@ public class CTPolyhybridimp implements CTPolyHybrid {
 			if (n != d + h + r || n != D + R) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("The sum of d+h+r or the sum of D+R is different to n").build();
 			} else {
-				int factn = 1;
+				double factn = 1;
 				for (int i = 2; i <= n; i++) {
 					factn *= i;
 				}
-				int facth = 1;
+				double facth = 1;
 				for (int i = 2; i <= h; i++) {
 					facth *= i;
 				}
-				int factd = 1;
+				double factd = 1;
 				for (int i = 2; i <= d; i++) {
 					factd *= i;
 				}
-				int factr = 1;
+				double factr = 1;
 				for (int i = 2; i <= r; i++) {
 					factr *= i;
 				}
-				int factD = 1;
+				double factD = 1;
 				for (int i = 2; i <= D; i++) {
 					factD *= i;
 				}
-				int factR = 1;
+				double factR = 1;
 				for (int i = 2; i <= R; i++) {
 					factR *= i;
 				}
@@ -56,7 +56,7 @@ public class CTPolyhybridimp implements CTPolyHybrid {
 				double factGenotypes = factn / (factd * facth * factr);
 				resultValues.put("factGenotypes", factGenotypes);
 
-				double frGenotype = Math.pow(1 / 4, d) * Math.pow(1 / 4, h) * Math.pow(1 / 2, r);
+				double frGenotype = Math.pow(1 / 4.0, d) * Math.pow(1 / 4.0, h) * Math.pow(1 / 2.0, r);
 				resultValues.put("frGenotype", frGenotype);
 
 				double frecGenotype = factGenotypes * frGenotype;
@@ -68,7 +68,7 @@ public class CTPolyhybridimp implements CTPolyHybrid {
 				double factPhenotype = factn / (factD * factR);
 				resultValues.put("factPhenotype", factPhenotype);
 
-				double frPhenotype = Math.pow(3 / 4, D) * Math.pow(1 / 4, R);
+				double frPhenotype = Math.pow(3 / 4.0, D) * Math.pow(1 / 4.0, R);
 				resultValues.put("frPhenotype", frPhenotype);
 
 				double frecPhenotype = factPhenotype * frPhenotype;

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.genlab.serverapplication.models.*;
+import com.genlab.serverapplication.services.ctservice.Epistasia.CTEpistasia;
 import com.genlab.serverapplication.services.ctservice.Linkage.CTLinkage;
 import com.genlab.serverapplication.services.ctservice.Onelocus.CTOneLocus;
 import com.genlab.serverapplication.services.ctservice.Polyhybrid.CTPolyHybrid;
@@ -34,6 +35,9 @@ public class CalculationToolsController {
 
     @Autowired
     private CTPolyHybrid polyhybridService;
+
+    @Autowired
+    private CTEpistasia epistasiaService;
 
 	@GetMapping("")
 	public String getCalculationTool(Model model) {
@@ -227,22 +231,48 @@ public class CalculationToolsController {
             case 3:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
+                        result = epistasiaService.whithoutModif(values.get("AB"),
+                                values.get("aB"),
+                                values.get("Ab"),
+                                values.get("ab"));
                         break;
                     case 1:
+                        result = epistasiaService.singleRecessive(values.get("AB"),
+                                values.get("Ab"),
+                                values.get("aBab"));
                         break;
                     case 2:
+                        result = epistasiaService.singleDominant(values.get("aB"),
+                                values.get("ab"),
+                                values.get("ABAb"));
                         break;
                     case 3:
+                        result = epistasiaService.singleAdditive(values.get("AB"),
+                                values.get("ab"),
+                                values.get("ABaB"));
                         break;
                     case 4:
+                        result = epistasiaService.doubleRecessive(values.get("AB"),
+                                values.get("AaaBab"));
                         break;
                     case 5:
+                        result = epistasiaService.doubleDominant(values.get("ab"),
+                                values.get("ABAbaB"));
                         break;
                     case 6:
+                        result = epistasiaService.doubleDominantRecessive(values.get("aB"),
+                                values.get("ABAbab"));
                         break;
                     case 7:
+                        result = epistasiaService.segregation6334(values.get("6"),
+                                values.get("3a"),
+                                values.get("3b"),
+                                values.get("4"));
                         break;
                     case 8:
+                        result = epistasiaService.segregation1033(values.get("10"),
+                                values.get("3a"),
+                                values.get("3b"));
                         break;
                 }
                 break;

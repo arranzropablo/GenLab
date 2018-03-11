@@ -668,7 +668,7 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsb", totalb);
             observedValues.put("total", totalobs);
 
-            double chiA1A2A3A4 = (Math.pow(totalA1A3 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A4 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2A3 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalA2A4 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
+            double chiA1A2A3A4 = (Math.pow(totalA1A3 - (totalobs / 4), 2) / (totalobs / 4)) + (Math.pow(totalA1A4 - (totalobs / 4), 2) / (totalobs / 4)) + (Math.pow(totalA2A3 - (totalobs / 4), 2) / (totalobs / 4)) + (Math.pow(totalA2A4 - (totalobs / 4), 2) / (totalobs / 4));
             double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
 
             Map<String, Double> chiValues = new HashMap<>();

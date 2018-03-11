@@ -17,7 +17,7 @@ public class CTOneLocusImp implements CTOneLocus{
 		if(obsA > 5000 || obsa > 5000){
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
-			double expectedValue = (obsA + obsa) / 2, chi;
+			double expectedValue = (obsA + obsa) / 2.0, chi;
 			expectedValues.put("expA", expectedValue);
 			expectedValues.put("expa", expectedValue);
 
@@ -43,12 +43,11 @@ public class CTOneLocusImp implements CTOneLocus{
 		if(obsA > 5000 || obsa > 5000){
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
-			double expectedValueA = (obsA + obsa) * (3 / 4);
-			double expectedValuea = (obsA + obsa) / 4;
+			double expectedValueA = (obsA + obsa) * 3 / 4.0;
+			double expectedValuea = (obsA + obsa) / 4.0;
 			double chi;
-			Map<String, Double> expValues = new HashMap<>();
-			expValues.put("a", expectedValueA);
-			expValues.put("A", expectedValueA);
+			expectedValues.put("a", expectedValueA);
+			expectedValues.put("A", expectedValueA);
 
 			if (expectedValueA < 5 || expectedValuea < 5) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
@@ -73,9 +72,9 @@ public class CTOneLocusImp implements CTOneLocus{
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
 			int total = obsAA + obsAa + obsaa;
-			double expectedValueAA = total / 4;
-			double expectedValueAa = total / 2;
-			double expectedValueaa = total / 4;
+			double expectedValueAA = total / 4.0;
+			double expectedValueAa = total / 2.0;
+			double expectedValueaa = total / 4.0;
 			double chi;
 			expectedValues.put("AA", expectedValueAA);
 			expectedValues.put("Aa", expectedValueAa);
@@ -105,7 +104,7 @@ public class CTOneLocusImp implements CTOneLocus{
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
 			int total = obsA1A1 + obsA1A2 + obsA1A3 + obsA2A3;
-			double expectedValue = total / 4;
+			double expectedValue = total / 4.0;
 			double chi;
 			expectedValues.put("expectedA1A1", expectedValue);
 			expectedValues.put("expectedA1A2", expectedValue);
@@ -136,7 +135,7 @@ public class CTOneLocusImp implements CTOneLocus{
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
 			int total = obsA1A3 + obsA1A4 + obsA2A3 + obsA2A4;
-			double expectedValue = total / 4;
+			double expectedValue = total / 4.0;
 			double chi;
 			expectedValues.put("expectedA2A4", expectedValue);
 			expectedValues.put("expectedA2A3", expectedValue);
@@ -167,8 +166,8 @@ public class CTOneLocusImp implements CTOneLocus{
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
 			int total = obsAA + obsAa;
-			double expectedValueAA = total / 3;
-			double expectedValueAa = total * (2 / 3);
+			double expectedValueAA = total / 3.0;
+			double expectedValueAa = total * 2 / 3.0;
 			double chi;
 			expectedValues.put("AA", expectedValueAA);
 			expectedValues.put("Aa", expectedValueAa);
