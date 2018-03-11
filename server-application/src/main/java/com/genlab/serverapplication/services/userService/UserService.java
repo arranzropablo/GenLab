@@ -1,9 +1,9 @@
 package com.genlab.serverapplication.services.userService;
 
-import com.genlab.serverapplication.models.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.genlab.serverapplication.models.User;
 
 
 public interface UserService {

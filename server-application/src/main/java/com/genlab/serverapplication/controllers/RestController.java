@@ -1,6 +1,24 @@
 package com.genlab.serverapplication.controllers;
 
-import com.genlab.serverapplication.models.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.genlab.serverapplication.models.Book;
+import com.genlab.serverapplication.models.CTResult;
+import com.genlab.serverapplication.models.Problem;
+import com.genlab.serverapplication.models.Test;
+import com.genlab.serverapplication.models.Theory;
 import com.genlab.serverapplication.services.bookService.BookService;
 import com.genlab.serverapplication.services.ctservice.Epistasia.CTEpistasia;
 import com.genlab.serverapplication.services.ctservice.Linkage.CTLinkage;
@@ -10,15 +28,6 @@ import com.genlab.serverapplication.services.ctservice.Twoloci.CTTwoLoci;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
 import com.genlab.serverapplication.services.testsService.TestService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/api/v1")

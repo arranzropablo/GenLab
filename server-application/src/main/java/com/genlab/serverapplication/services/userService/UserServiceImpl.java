@@ -1,6 +1,7 @@
 package com.genlab.serverapplication.services.userService;
 
-import org.apache.log4j.Logger;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.genlab.serverapplication.models.User;
 import com.genlab.serverapplication.repositories.UserRepository;
-
-import java.util.ArrayList;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService  {

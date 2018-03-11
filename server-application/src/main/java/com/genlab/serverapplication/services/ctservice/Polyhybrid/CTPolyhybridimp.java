@@ -1,10 +1,11 @@
 package com.genlab.serverapplication.services.ctservice.Polyhybrid;
 
-import com.genlab.serverapplication.models.CTResult;
-import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.genlab.serverapplication.models.CTResult;
 
 @Service
 public class CTPolyhybridimp implements CTPolyHybrid {

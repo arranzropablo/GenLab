@@ -1,11 +1,11 @@
 package com.genlab.serverapplication.services.ctservice.Twoloci;
 
-import com.genlab.serverapplication.models.CTResult;
-import org.springframework.stereotype.Service;
-
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.genlab.serverapplication.models.CTResult;
 
 @Service
 public class CTTwoLociImp implements CTTwoLoci{
@@ -105,6 +105,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContAB = totalA * totalB / totalobs,
@@ -143,7 +150,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2Dominance(int obsAB, int obsAb, int obsaB, int obsab) {
@@ -244,6 +250,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContAB = totalA * totalB / totalobs,
@@ -281,7 +294,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2coDominance(int obsA1A1B1B1, int obsA1A1B1B2, int obsA1A1B2B2, int obsA1A2B1B1, int obsA1A2B1B2, int obsA1A2B2B2, int obsA2A2B1B1, int obsA2A2B1B2, int obsA2A2B2B2) {
@@ -417,6 +429,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContA1B1 = totalA1 * totalB1 / totalobs,
@@ -466,7 +485,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2coDom2dom(int obsA1A1B, int obsA1A2B, int obsA2A2B, int obsA1A1b, int obsA1A2b, int obsA2A2b) {
@@ -588,7 +606,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
-
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContA1B = totalA1 * totalB / totalobs,
@@ -634,7 +658,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2coDom4dom(int obsA1A3B, int obsA1A3b, int obsA1A4B, int obsA1A4b, int obsA2A3B, int obsA2A3b, int obsA2A4B, int obsA2A4b) {
@@ -769,6 +792,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContA1A3B = totalA1A3 * totalB / totalobs,
@@ -818,7 +848,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2TestcrossDom(int obsAB, int obsAb, int obsaB, int obsab) {
@@ -925,6 +954,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                             }
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContAB = totalA * totalB / totalobs,
@@ -966,7 +1002,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2Testcross2Dom(int obsA1A1B, int obsA1A2B, int obsA2A2B, int obsA1A1b, int obsA1A2b, int obsA2A2b) {
@@ -1085,6 +1120,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContA1B = totalA1 * totalB / totalobs,
@@ -1130,7 +1172,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
     public CTResult f2Testcross4Dom(int obsA1A3B, int obsA1A3b, int obsA1A4B, int obsA1A4b, int obsA2A3B, int obsA2A3b, int obsA2A4B, int obsA2A4b) {
@@ -1262,6 +1303,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                                     .build();
                         }
                     }
+                    return CTResult.builder()
+                            .cleanInputs(false)
+                            .expectedValues(expValues)
+                            .resultValues(chiValues)
+                            .agree(agree)
+                            .observed(observedValues)
+                            .build();
                 }
             } else {
                 double expectedContA1A3B = totalA1A3 * totalB / totalobs,
@@ -1311,7 +1359,6 @@ public class CTTwoLociImp implements CTTwoLoci{
                 }
             }
         }
-        return CTResult.builder().cleanInputs(true).feedbackMessage("Your data input wasn't correct").build();
     }
 
 }

@@ -3,8 +3,9 @@ package com.genlab.serverapplication.services.ctservice.Epistasia;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.genlab.serverapplication.models.CTResult;
 import org.springframework.stereotype.Service;
+
+import com.genlab.serverapplication.models.CTResult;
 
 @Service
 public class CTEpistasiaImp implements CTEpistasia{
