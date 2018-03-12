@@ -1,9 +1,11 @@
 package com.genlab.serverapplication.services.userService;
 
+import com.genlab.serverapplication.models.User;
+
+import java.util.List;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import com.genlab.serverapplication.models.User;
 
 
 public interface UserService {
@@ -14,4 +16,7 @@ public interface UserService {
     public boolean exists(String email);
 
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException;
+
+	public List<User> getAllUsers();
+
 }

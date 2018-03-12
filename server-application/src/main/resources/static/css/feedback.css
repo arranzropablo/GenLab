@@ -1,0 +1,22 @@
+.feedback div{
+	overflow: hidden;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: rgba(142, 186, 230, 0.64);
+    margin-bottom: 0.5rem;
+}
+
+.table{
+	float: left;
+    width: 50%;
+}
+
+.userFeedback{
+	text-align: center;
+    background-color: dodgerblue;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0px;
+    color: white;
+    text-transform: uppercase;
+}

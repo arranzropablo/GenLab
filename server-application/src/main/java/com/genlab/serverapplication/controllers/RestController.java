@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.genlab.serverapplication.models.Book;
 import com.genlab.serverapplication.models.CTResult;
+import com.genlab.serverapplication.models.FeedbackObject;
 import com.genlab.serverapplication.models.Problem;
 import com.genlab.serverapplication.models.Test;
 import com.genlab.serverapplication.models.Theory;
+import com.genlab.serverapplication.models.User;
 import com.genlab.serverapplication.services.bookService.BookService;
 import com.genlab.serverapplication.services.ctservice.Epistasia.CTEpistasia;
 import com.genlab.serverapplication.services.ctservice.Linkage.CTLinkage;
@@ -28,6 +30,20 @@ import com.genlab.serverapplication.services.ctservice.Twoloci.CTTwoLoci;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
 import com.genlab.serverapplication.services.testsService.TestService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
+import com.genlab.serverapplication.services.userService.UserService;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+import org.skyscreamer.jsonassert.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/api/v1")
@@ -60,6 +76,9 @@ public class RestController {
 
     @Autowired
     private CTEpistasia epistasiaService;
+    
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/problems")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
@@ -342,5 +361,28 @@ public class RestController {
         }
         return result;
     }
+
+
+	@RequestMapping("/feedback")
+	public @ResponseBody boolean addFeedback(@RequestParam("usu") String usuario,
+			@RequestParam("feedback") String feedback) {
+		boolean dev = false;
+		User u = userService.getUser(usuario);
+		if (u != null) {
+			Gson gson = new Gson();
+			FeedbackObject clientFb = gson.fromJson(feedback, FeedbackObject.class);
+			String servFeed = u.getFeedback();
+			if( servFeed == null || servFeed.equals("")) {
+				servFeed = "{user: '', right: [], wrong: []}";
+			}
+			FeedbackObject serverFb = gson.fromJson(servFeed, FeedbackObject.class);
+			serverFb.getRight().addAll(clientFb.getRight());
+			serverFb.getWrong().addAll(clientFb.getWrong());
+			u.setFeedback(gson.toJson(serverFb));
+			userService.addUser(u);
+			dev = true;
+		}
+		return dev;
+	}
 
 }

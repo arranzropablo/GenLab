@@ -9,8 +9,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.genlab.serverapplication.models.FeedbackObject;
 import com.genlab.serverapplication.models.User;
 import com.genlab.serverapplication.repositories.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService  {
@@ -47,6 +51,11 @@ public class UserServiceImpl implements UserService, UserDetailsService  {
 		}catch(Exception e) {
 			throw new UsernameNotFoundException("No such user: " + email);
 		}
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return (List<User>) userRepository.findAll();
 	}
 
 }
