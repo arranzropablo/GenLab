@@ -1308,6 +1308,7 @@
 			</div>
 
 			<div class="row">
+				<label class="col-4">X<sup>2</sup> B,b (df = 1) =</label>
 				<label class="col-4" th:text="${result?.resultValues?.get('chiB')}"></label>
         <label class="col-4" th:text="${result?.agree?.get('chiB')}"></label>
 			</div>
@@ -1319,7 +1320,7 @@
 			</div>
 
 			<div class="row">
-				<label class="col-4">X<sup>2</sup> Lin. (df = 1) =</label>
+				<label class="col-4">X<sup>2</sup> Link. (df = 1) =</label>
 				<label class="col-4" th:text="${result?.resultValues?.get('chiLink')}"></label>
         <label class="col-4" th:text="${result?.agree?.get('chiLink')}"></label>
 			</div>
@@ -1379,106 +1380,114 @@
 				<input class="col-2" type="text" name="Ab" id="Ab"/>
 				<input class="col-2" type="text" name="aB" id="aB"/>
 				<input class="col-2" type="text" name="ab" id="ab"/>
-				<label class="col-2" th:text="${totalObserved}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 			<div class="row">
 				<label class="col-2">Ind.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expIndAB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expIndAb')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expIndaB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expIndab')}"></label>
 			</div>
 			<div class="row">
 				<label class="col-2">Cont.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contAB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contAb')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contaB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contab')}"></label>
 			</div>
 			<hr/>
 
 			<div class="row">
-				<label class="col-4">A</label>
-				<label class="col-4">a</label>
-				<label class="col-4">Total</label>
+				<label class="col-3"></label>
+				<label class="col-3">A</label>
+				<label class="col-3">a</label>
+				<label class="col-3">Total</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Observed</label>
+				<label class="col-3" th:text="${result?.observed?.get('obsA')}"></label>
+				<label class="col-3" th:text="${result?.observed?.get('obsa')}"></label>
+				<label class="col-3" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Expected</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Expected</label>
+				<label class="col-3" th:text="${result?.expectedValues?.get('expA')}"></label>
+				<label class="col-3" th:text="${result?.expectedValues?.get('expa')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">B</label>
-				<label class="col-4">b</label>
-				<label class="col-4">Total</label>
+				<label class="col-3"></label>
+				<label class="col-3">B</label>
+				<label class="col-3">b</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Observed</label>
+				<label class="col-3" th:text="${result?.observed?.get('obsB')}"></label>
+				<label class="col-3" th:text="${result?.observed?.get('obsb')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Expected</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Expected</label>
+				<label class="col-3" th:text="${result?.expectedValues?.get('expB')}"></label>
+				<label class="col-3" th:text="${result?.expectedValues?.get('expb')}"></label>
 			</div>
 
 			<hr/>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> A,a (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiA')}"></label>
+				<label class="col-4" th:text="${result?.agree?.get('chiA')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> B,b (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiB')}"></label>
+        <label class="col-4" th:text="${result?.agree?.get('chiB')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> Indep. (df = 3) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiInd')}"></label>
+				<label class="col-4" th:text="${result?.agree?.get('chiInd')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> Link. (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiLink')}"></label>
+        <label class="col-4" th:text="${result?.agree?.get('chiLink')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> Cont. (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiCont')}"></label>
+				<label class="col-4" th:text="${result?.agree?.get('chiCont')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">RF (r) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('rf')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Distance (cM) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('distance')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Phase =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.phases?.get('phaseA')}"></label>
+				<label class="col-4" th:text="${result?.phases?.get('phaseB')}"></label>
 			</div>
-            <script th:if="${result?.feedbackMessage != null}" th:inline="javascript">
-                /*<![CDATA[*/
-                alert(/*[[${result?.feedbackMessage}]]*/);
-                /*]]>*/
-            </script>
+      <script th:if="${result?.feedbackMessage != null}" th:inline="javascript">
+          /*<![CDATA[*/
+          alert(/*[[${result?.feedbackMessage}]]*/);
+          /*]]>*/
+      </script>
 		</div>
 	</form>
 </div>
@@ -1490,114 +1499,124 @@
         <div class="container">
 			<!-- Enviar por ajax -->
 			<div class="row">
-				<label class="col-2"></label>
-				<label class="col-2" for="A1A1B1B1">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-2" for="A1A1B1B2">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>2</sub></label>
-				<label class="col-2" for="A1A1B2B2">A<sub>1</sub>A<sub>1</sub>B<sub>2</sub>B<sub>2</sub></label>
-				<label class="col-2" for="A1A2B1B1">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-2" for="A1A2B1B2">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
-				<label class="col-2" for="A1A2B2B2">A<sub>1</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
-				<label class="col-2" for="A2A2B1B1">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-2" for="A2A2B1B2">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
-				<label class="col-2" for="A2A2B2B2">A<sub>2</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-1"></label>
+				<label class="col-1" for="A1A1B1B1">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-1" for="A1A1B1B2">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-1" for="A1A1B2B2">A<sub>1</sub>A<sub>1</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-1" for="A1A2B1B1">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-1" for="A1A2B1B2">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-1" for="A1A2B2B2">A<sub>1</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-1" for="A2A2B1B1">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-1" for="A2A2B1B2">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-1" for="A2A2B2B2">A<sub>2</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
 				<label class="col-2">Total</label>
 			</div>
 			<div class="row">
-				<label class="col-2">Observed</label>
-				<input class="col-2" type="text" name="A1A1B1B1" id="A1A1B1B1"/>
-				<input class="col-2" type="text" name="A1A1B1B2" id="A1A1B1B2"/>
-				<input class="col-2" type="text" name="A1A1B2B2" id="A1A1B2B2"/>
-				<input class="col-2" type="text" name="A1A2B1B1" id="A1A2B1B1"/>
-				<input class="col-2" type="text" name="A1A2B1B2" id="A1A2B1B2"/>
-				<input class="col-2" type="text" name="A1A2B2B2" id="A1A2B2B2"/>
-				<input class="col-2" type="text" name="A2A2B1B1" id="A2A2B1B1"/>
-				<input class="col-2" type="text" name="A2A2B1B2" id="A2A2B1B2"/>
-				<input class="col-2" type="text" name="A2A2B2B2" id="A2A2B2B2"/>
-				<label class="col-2" th:text="${totalObserved}"></label>
+				<label class="col-1">Observed</label>
+				<input class="col-1" type="text" name="A1A1B1B1" id="A1A1B1B1"/>
+				<input class="col-1" type="text" name="A1A1B1B2" id="A1A1B1B2"/>
+				<input class="col-1" type="text" name="A1A1B2B2" id="A1A1B2B2"/>
+				<input class="col-1" type="text" name="A1A2B1B1" id="A1A2B1B1"/>
+				<input class="col-1" type="text" name="A1A2B1B2" id="A1A2B1B2"/>
+				<input class="col-1" type="text" name="A1A2B2B2" id="A1A2B2B2"/>
+				<input class="col-1" type="text" name="A2A2B1B1" id="A2A2B1B1"/>
+				<input class="col-1" type="text" name="A2A2B1B2" id="A2A2B1B2"/>
+				<input class="col-1" type="text" name="A2A2B2B2" id="A2A2B2B2"/>
+				<label class="col-1" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
 			<hr/>
 
 			<div class="row">
-				<label class="col-4">A<sub>1</sub>A<sub>1</sub></label>
-				<label class="col-4">A<sub>1</sub>A<sub>2</sub></label>
-				<label class="col-4">A<sub>2</sub>A<sub>2</sub></label>
+				<label class="col-4"></label>
+				<label class="col-2">A<sub>1</sub>A<sub>1</sub></label>
+				<label class="col-2">A<sub>1</sub>A<sub>2</sub></label>
+				<label class="col-2">A<sub>2</sub>A<sub>2</sub></label>
+				<label class="col-2">Total</label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsA1')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsA1A2')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsA2')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Expected</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expA1')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expA1A2')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expA2')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-4">B<sub>1</sub>B<sub>2</sub></label>
-				<label class="col-4">B<sub>2</sub>B<sub>2</sub></label>
+				<label class="col-4"></label>
+				<label class="col-2">B<sub>1</sub>B<sub>1</sub></label>
+				<label class="col-2">B<sub>1</sub>B<sub>2</sub></label>
+				<label class="col-2">B<sub>2</sub>B<sub>2</sub></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsB1')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsB1B2')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsB2')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Expected</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expB1')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expB1B2')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expB2')}"></label>
 			</div>
 
 			<hr/>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> A<sub>1</sub>,A<sub>2</sub> (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiA')}"></label>
+        <label class="col-4" th:text="${result?.agree?.get('chiA')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> B<sub>1</sub>,B<sub>2</sub> (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiB')}"></label>
+        <label class="col-4" th:text="${result?.agree?.get('chiB')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> Ind. (df = 3) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiInd')}"></label>
+				<label class="col-4" th:text="${result?.agree?.get('chiInd')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> Link. (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiLink')}"></label>
+				<label class="col-4" th:text="${result?.agree?.get('chiLink')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">X<sup>2</sup> Cont. (df = 1) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('chiCont')}"></label>
+        <label class="col-4" th:text="${result?.agree?.get('chiCont')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">RF (r) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('rf')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Distance (cM) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('distance')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Phase =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.phases?.get('phaseA')}"></label>
+				<label class="col-4" th:text="${result?.phases?.get('phaseB')}"></label>
 			</div>
 			<script th:if="${result?.feedbackMessage != null}" th:inline="javascript">
                 /*<![CDATA[*/
@@ -1616,241 +1635,235 @@
 			<!-- Enviar por ajax -->
 			<div class="row">
 				<label class="col-2"></label>
-				<label class="col-2" for="ABC">ABC</label>
-				<label class="col-2" for="abc">abc</label>
-				<label class="col-2" for="ABc">ABc</label>
-				<label class="col-2" for="abC">abC</label>
-				<label class="col-2" for="aBC">aBC</label>
-				<label class="col-2" for="Abc">Abc</label>
-				<label class="col-2" for="AbC">AbC</label>
-				<label class="col-2" for="aBc">aBc</label>
+				<label class="col-1" for="ABC">ABC</label>
+				<label class="col-1" for="abc">abc</label>
+				<label class="col-1" for="ABc">ABc</label>
+				<label class="col-1" for="abC">abC</label>
+				<label class="col-1" for="aBC">aBC</label>
+				<label class="col-1" for="Abc">Abc</label>
+				<label class="col-1" for="AbC">AbC</label>
+				<label class="col-1" for="aBc">aBc</label>
 				<label class="col-2">Total</label>
 			</div>
 			<div class="row">
 				<label class="col-2">Observed</label>
-				<input class="col-2" type="text" name="ABC" id="ABC"/>
-				<input class="col-2" type="text" name="abc" id="abc"/>
-				<input class="col-2" type="text" name="ABc" id="ABc"/>
-				<input class="col-2" type="text" name="abC" id="abC"/>
-				<input class="col-2" type="text" name="aBC" id="aBC"/>
-				<input class="col-2" type="text" name="Abc" id="Abc"/>
-				<input class="col-2" type="text" name="AbC" id="AbC"/>
-				<input class="col-2" type="text" name="aBc" id="aBc"/>
-				<label class="col-2" th:text="${totalObserved}"></label>
+				<input class="col-1" type="text" name="ABC" id="ABC"/>
+				<input class="col-1" type="text" name="abc" id="abc"/>
+				<input class="col-1" type="text" name="ABc" id="ABc"/>
+				<input class="col-1" type="text" name="abC" id="abC"/>
+				<input class="col-1" type="text" name="aBC" id="aBC"/>
+				<input class="col-1" type="text" name="Abc" id="Abc"/>
+				<input class="col-1" type="text" name="AbC" id="AbC"/>
+				<input class="col-1" type="text" name="aBc" id="aBc"/>
+				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
 			<hr/>
 
 			<div class="row">
-				<label class="col-4">A</label>
-				<label class="col-4">a</label>
+				<label class="col-3"></label>
+				<label class="col-3">A</label>
+				<label class="col-3">a</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Observed</label>
+				<label class="col-3" th:text="${result?.observed?.get('obsA')}"></label>
+				<label class="col-3" th:text="${result?.observed?.get('obsa')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">B</label>
-				<label class="col-4">b</label>
+				<label class="col-3"></label>
+				<label class="col-3">B</label>
+				<label class="col-3">b</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Observed</label>
+				<label class="col-3" th:text="${result?.observed?.get('obsB')}"></label>
+				<label class="col-3" th:text="${result?.observed?.get('obsb')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">C</label>
-				<label class="col-4">c</label>
+				<label class="col-3"></label>
+				<label class="col-3">C</label>
+				<label class="col-3">c</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Observed</label>
+				<label class="col-3" th:text="${result?.observed?.get('obsC')}"></label>
+				<label class="col-3" th:text="${result?.observed?.get('obsc')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Dominant</label>
-				<label class="col-4">Recessive</label>
+				<label class="col-3"></label>
+				<label class="col-3">Dominant</label>
+				<label class="col-3">Recessive</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Expected</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-3">Expected</label>
+				<label class="col-3" th:text="${result?.expectedValues?.get('expDo')}"></label>
+				<label class="col-3" th:text="${result?.expectedValues?.get('expRe')}"></label>
 			</div>
 
 			<hr/>
 
 			<div class="row">
-				<label class="col-4">AB</label>
-				<label class="col-4">Ab</label>
-				<label class="col-4">aB</label>
-				<label class="col-4">ab</label>
+				<label class="col-2"></label>
+				<label class="col-2">AB</label>
+				<label class="col-2">Ab</label>
+				<label class="col-2">aB</label>
+				<label class="col-2">ab</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Observed</label>
+				<label class="col-2" th:text="${result?.observed?.get('obsAB')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsAb')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsaB')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsab')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Ind.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Ind.</label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndAB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndAb')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndaB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndab')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Cont.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Cont.</label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contAB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contAb')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contaB')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contab')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">AC</label>
-				<label class="col-4">Ac</label>
-				<label class="col-4">aC</label>
-				<label class="col-4">ac</label>
+				<label class="col-2"></label>
+				<label class="col-2">AC</label>
+				<label class="col-2">Ac</label>
+				<label class="col-2">aC</label>
+				<label class="col-2">ac</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Observed</label>
+				<label class="col-2" th:text="${result?.observed?.get('obsAC')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsAc')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsaC')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsac')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Ind.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Ind.</label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndAC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndAc')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndaC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndac')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Cont.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Cont.</label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contAC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contAc')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contaC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contac')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">BC</label>
-				<label class="col-4">Bc</label>
-				<label class="col-4">bC</label>
-				<label class="col-4">bc</label>
+				<label class="col-2"></label>
+				<label class="col-2">BC</label>
+				<label class="col-2">Bc</label>
+				<label class="col-2">bC</label>
+				<label class="col-2">bc</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Observed</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Observed</label>
+				<label class="col-2" th:text="${result?.observed?.get('obsBC')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsBc')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsbC')}"></label>
+				<label class="col-2" th:text="${result?.observed?.get('obsbc')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Ind.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Ind.</label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndBC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndBc')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndbC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('expectedIndbc')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Cont.</label>
-				<label class="col-4">Cont.</label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
-				<label class="col-2" th:text="${expectedValue}"></label>
+				<label class="col-2">Cont.</label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contBC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contBc')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contbC')}"></label>
+				<label class="col-2" th:text="${result?.expectedValues?.get('contbc')}"></label>
 			</div>
 
 
 			<div class="row">
-				<label class="col-4">X2 Cont</label>
-				<label class="col-4">Lod Z</label>
-				<label class="col-4">RF</label>
-				<label class="col-4">Dist (cM)</label>
+				<label class="col-2"></label>
+				<label class="col-2">X2 Cont</label>
+				<label class="col-2">Lod Z</label>
+				<label class="col-2">RF</label>
+				<label class="col-2">Dist (cM)</label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">A,a-B,b</label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-2">A,a-B,b</label>
+				<label class="col-2" th:text="${result?.resultValues?.get('chiAB')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('lodzAB')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('rfAB')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('distAB')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">A,a-C,c</label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-2">A,a-C,c</label>
+				<label class="col-2" th:text="${result?.resultValues?.get('chiAC')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('lodzAC')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('rfAC')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('distAC')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">B,b-C,c</label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-2">B,b-C,c</label>
+				<label class="col-2" th:text="${result?.resultValues?.get('chiBC')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('lodzBC')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('rfBC')}"></label>
+				<label class="col-2" th:text="${result?.resultValues?.get('distBC')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Centre</label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-2">Centre</label>
+				<label class="col-2" th:text="${result?.phases?.get('centre')}"></label>
 			</div>
 
 			<div class="row">
-				<label class="col-4">Phase</label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-			</div>
-
-			<div class="row">
-				<label class="col-4">Phase</label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-2">Phase</label>
+				<label class="col-2" th:text="${result?.phases?.get('phaseA')}"></label>
+				<label class="col-2" th:text="${result?.phases?.get('phaseB')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Coefficient of coincidence (c) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('coincidence')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">Interference (1-c) =</label>
-				<label class="col-4" th:text="${chiValue}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('interference')}"></label>
 			</div>
 			<script th:if="${result?.feedbackMessage != null}" th:inline="javascript">
-                /*<![CDATA[*/
-                alert(/*[[${result?.feedbackMessage}]]*/);
-                /*]]>*/
-            </script>
+          /*<![CDATA[*/
+          alert(/*[[${result?.feedbackMessage}]]*/);
+          /*]]>*/
+      </script>
 		</div>
 	</form>
 </div>

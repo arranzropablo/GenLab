@@ -426,26 +426,26 @@ public class CTLinkageImp implements CTLinkage{
 				.build();
 	}
 
-	public CTResult f22LociCodominance(int obsAABB, int obsAABb, int obsAAbb, int obsAaBB, int obsAaBb, int obsAabb,
-			int obsaaBB, int obsaaBb, int obsaabb) {
+	public CTResult f22LociCodominance(int obsA1A1B1B1, int obsA1A1B1B2, int obsA1A1B2B2, int obsA1A2B1B1, int obsA1A2B1B2, int obsA1A2B2B2,
+			int obsA2A2B1B1, int obsA2A2B1B2, int obsA2A2B2B2) {
 		Map<String, String> agree = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
 		Map<String, Double> observedValues = new HashMap<>();
 		String result = "";
-		if (obsAABB <= 1000 && obsAABb <= 1000 && obsAAbb <= 1000 && obsAaBB <= 1000 && obsAaBb <= 1000
-				&& obsAabb <= 1000 && obsaaBB <= 1000 && obsaaBb <= 1000 && obsaabb <= 1000) {
-			int total = obsAABB + obsAABb + obsAAbb + obsAaBB + obsAaBb + obsAabb + obsaaBB + obsaaBb + obsaabb;
-			int obsA1 = obsAABB + obsAABb + obsAAbb;
-			int obsA1A2 = obsAaBB + obsAaBb + obsAabb;
-			int obsA2 = obsaaBB + obsaaBb + obsaabb;
+		if (obsA1A1B1B1 <= 1000 && obsA1A1B1B2 <= 1000 && obsA1A1B2B2 <= 1000 && obsA1A2B1B1 <= 1000 && obsA1A2B1B2 <= 1000
+				&& obsA1A2B2B2 <= 1000 && obsA2A2B1B1 <= 1000 && obsA2A2B1B2 <= 1000 && obsA2A2B2B2 <= 1000) {
+			int total = obsA1A1B1B1 + obsA1A1B1B2 + obsA1A1B2B2 + obsA1A2B1B1 + obsA1A2B1B2 + obsA1A2B2B2 + obsA2A2B1B1 + obsA2A2B1B2 + obsA2A2B2B2;
+			int obsA1 = obsA1A1B1B1 + obsA1A1B1B2 + obsA1A1B2B2;
+			int obsA1A2 = obsA1A2B1B1 + obsA1A2B1B2 + obsA1A2B2B2;
+			int obsA2 = obsA2A2B1B1 + obsA2A2B1B2 + obsA2A2B2B2;
 			int expA1 = total / 4;
 			int expA1A2 = total / 2;
 			int expA2 = total / 4;
-			int obsB1 = obsAABB + obsAaBB + obsaaBB;
-			int obsB1B2 = obsAABb + obsAaBb + obsaaBb;
-			int obsB2 = obsAAbb + obsAabb + obsaabb;
+			int obsB1 = obsA1A1B1B1 + obsA1A2B1B1 + obsA2A2B1B1;
+			int obsB1B2 = obsA1A1B1B2 + obsA1A2B1B2 + obsA2A2B1B2;
+			int obsB2 = obsA1A1B2B2 + obsA1A2B2B2 + obsA2A2B2B2;
 			int expB1 = total / 4;
 			int expB1B2 = total / 2;
 			int expB2 = total / 4;
@@ -514,25 +514,25 @@ public class CTLinkageImp implements CTLinkage{
 							|| (expInA2B1B2 <= 10 && expInA2B1B2 >= 5) || (expInA2B2 <= 10 && expInA2B2 >= 5)
 							|| (expInA1A2B1 <= 10 && expInA1A2B1 >= 5) || (expInA1A2B2 <= 10 && expInA1A2B2 >= 5)
 							|| (expInA1A2B1B2 <= 10 && expInA1A2B1B2 >= 5)) {
-						chiInde = Math.pow((obsAABB - expInA1B1) - 0.5, 2) / expInA1B1
-								+ Math.pow((obsAAbb - expInA1B2) - 0.5, 2) / expInA1B2
-								+ Math.pow((obsAABb - expInA1B1B2) - 0.5, 2) / expInA1B1B2
-								+ Math.pow((obsaaBB - expInA2B1) - 0.5, 2) / expInA2B1
-								+ Math.pow((obsaabb - expInA2B2) - 0.5, 2) / expInA2B2
-								+ Math.pow((obsaaBb - expInA2B1B2) - 0.5, 2) / expInA2B1B2
-								+ Math.pow((obsAaBB - expInA1A2B1) - 0.5, 2) / expInA1A2B1
-								+ Math.pow((obsAabb - expInA1A2B2) - 0.5, 2) / expInA1A2B2
-								+ Math.pow((obsAaBb - expInA1A2B1B2) - 0.5, 2) / expInA1A2B1B2;
+						chiInde = Math.pow((obsA1A1B1B1 - expInA1B1) - 0.5, 2) / expInA1B1
+								+ Math.pow((obsA1A1B2B2 - expInA1B2) - 0.5, 2) / expInA1B2
+								+ Math.pow((obsA1A1B1B2 - expInA1B1B2) - 0.5, 2) / expInA1B1B2
+								+ Math.pow((obsA2A2B1B1 - expInA2B1) - 0.5, 2) / expInA2B1
+								+ Math.pow((obsA2A2B2B2 - expInA2B2) - 0.5, 2) / expInA2B2
+								+ Math.pow((obsA2A2B1B2 - expInA2B1B2) - 0.5, 2) / expInA2B1B2
+								+ Math.pow((obsA1A2B1B1 - expInA1A2B1) - 0.5, 2) / expInA1A2B1
+								+ Math.pow((obsA1A2B2B2 - expInA1A2B2) - 0.5, 2) / expInA1A2B2
+								+ Math.pow((obsA1A2B1B2 - expInA1A2B1B2) - 0.5, 2) / expInA1A2B1B2;
 					} else {
-						chiInde = Math.pow((obsAABB - expInA1B1), 2) / expInA1B1
-								+ Math.pow((obsAAbb - expInA1B2), 2) / expInA1B2
-								+ Math.pow((obsAABb - expInA1B1B2), 2) / expInA1B1B2
-								+ Math.pow((obsaaBB - expInA2B1), 2) / expInA2B1
-								+ Math.pow((obsaabb - expInA2B2), 2) / expInA2B2
-								+ Math.pow((obsaaBb - expInA2B1B2), 2) / expInA2B1B2
-								+ Math.pow((obsAaBB - expInA1A2B1), 2) / expInA1A2B1
-								+ Math.pow((obsAabb - expInA1A2B2), 2) / expInA1A2B2
-								+ Math.pow((obsAaBb - expInA1A2B1B2), 2) / expInA1A2B1B2;
+						chiInde = Math.pow((obsA1A1B1B1 - expInA1B1), 2) / expInA1B1
+								+ Math.pow((obsA1A1B2B2 - expInA1B2), 2) / expInA1B2
+								+ Math.pow((obsA1A1B1B2 - expInA1B1B2), 2) / expInA1B1B2
+								+ Math.pow((obsA2A2B1B1 - expInA2B1), 2) / expInA2B1
+								+ Math.pow((obsA2A2B2B2 - expInA2B2), 2) / expInA2B2
+								+ Math.pow((obsA2A2B1B2 - expInA2B1B2), 2) / expInA2B1B2
+								+ Math.pow((obsA1A2B1B1 - expInA1A2B1), 2) / expInA1A2B1
+								+ Math.pow((obsA1A2B2B2 - expInA1A2B2), 2) / expInA1A2B2
+								+ Math.pow((obsA1A2B1B2 - expInA1A2B1B2), 2) / expInA1A2B1B2;
 					}
 					resultValues.put("chiInd", chiInde);
 					agree.put("chiInd", (chiInde > 15.51 ? "No" : "Yes"));
@@ -566,25 +566,25 @@ public class CTLinkageImp implements CTLinkage{
 							|| (expConA2B1B2 <= 10 && expConA2B1B2 >= 5) || (expConA2B2 <= 10 && expConA2B2 >= 5)
 							|| (expConA1A2B1 <= 10 && expConA1A2B1 >= 5) || (expConA1A2B2 <= 10 && expConA1A2B2 >= 5)
 							|| (expConA1A2B1B2 <= 10 && expConA1A2B1B2 >= 5)) {
-						chiCont = Math.pow((obsAABB - expConA1B1) - 0.5, 2) / expConA1B1
-								+ Math.pow((obsAAbb - expConA1B2) - 0.5, 2) / expConA1B2
-								+ Math.pow((obsAABb - expConA1B1B2) - 0.5, 2) / expConA1B1B2
-								+ Math.pow((obsaaBB - expConA2B1) - 0.5, 2) / expConA2B1
-								+ Math.pow((obsaabb - expConA2B2) - 0.5, 2) / expConA2B2
-								+ Math.pow((obsaaBb - expConA2B1B2) - 0.5, 2) / expConA2B1B2
-								+ Math.pow((obsAaBB - expConA1A2B1) - 0.5, 2) / expConA1A2B1
-								+ Math.pow((obsAabb - expConA1A2B2) - 0.5, 2) / expConA1A2B2
-								+ Math.pow((obsAaBb - expConA1A2B1B2) - 0.5, 2) / expConA1A2B1B2;
+						chiCont = Math.pow((obsA1A1B1B1 - expConA1B1) - 0.5, 2) / expConA1B1
+								+ Math.pow((obsA1A1B2B2 - expConA1B2) - 0.5, 2) / expConA1B2
+								+ Math.pow((obsA1A1B1B2 - expConA1B1B2) - 0.5, 2) / expConA1B1B2
+								+ Math.pow((obsA2A2B1B1 - expConA2B1) - 0.5, 2) / expConA2B1
+								+ Math.pow((obsA2A2B2B2 - expConA2B2) - 0.5, 2) / expConA2B2
+								+ Math.pow((obsA2A2B1B2 - expConA2B1B2) - 0.5, 2) / expConA2B1B2
+								+ Math.pow((obsA1A2B1B1 - expConA1A2B1) - 0.5, 2) / expConA1A2B1
+								+ Math.pow((obsA1A2B2B2 - expConA1A2B2) - 0.5, 2) / expConA1A2B2
+								+ Math.pow((obsA1A2B1B2 - expConA1A2B1B2) - 0.5, 2) / expConA1A2B1B2;
 					} else {
-						chiCont = Math.pow((obsAABB - expConA1B1), 2) / expConA1B1
-								+ Math.pow((obsAAbb - expConA1B2), 2) / expConA1B2
-								+ Math.pow((obsAABb - expConA1B1B2), 2) / expConA1B1B2
-								+ Math.pow((obsaaBB - expConA2B1), 2) / expConA2B1
-								+ Math.pow((obsaabb - expConA2B2), 2) / expConA2B2
-								+ Math.pow((obsaaBb - expConA2B1B2), 2) / expConA2B1B2
-								+ Math.pow((obsAaBB - expConA1A2B1), 2) / expConA1A2B1
-								+ Math.pow((obsAabb - expConA1A2B2), 2) / expConA1A2B2
-								+ Math.pow((obsAaBb - expConA1A2B1B2), 2) / expConA1A2B1B2;
+						chiCont = Math.pow((obsA1A1B1B1 - expConA1B1), 2) / expConA1B1
+								+ Math.pow((obsA1A1B2B2 - expConA1B2), 2) / expConA1B2
+								+ Math.pow((obsA1A1B1B2 - expConA1B1B2), 2) / expConA1B1B2
+								+ Math.pow((obsA2A2B1B1 - expConA2B1), 2) / expConA2B1
+								+ Math.pow((obsA2A2B2B2 - expConA2B2), 2) / expConA2B2
+								+ Math.pow((obsA2A2B1B2 - expConA2B1B2), 2) / expConA2B1B2
+								+ Math.pow((obsA1A2B1B1 - expConA1A2B1), 2) / expConA1A2B1
+								+ Math.pow((obsA1A2B2B2 - expConA1A2B2), 2) / expConA1A2B2
+								+ Math.pow((obsA1A2B1B2 - expConA1A2B1B2), 2) / expConA1A2B1B2;
 					}
 
 					resultValues.put("chiCont", chiCont);
@@ -593,12 +593,12 @@ public class CTLinkageImp implements CTLinkage{
 					if (chiCont < 9.49) {
 						result = "The loci A₁A₂ and B₁B₂ are independent";
 					} else {
-						if (chiCont > 9.49 && obsAABB > obsAAbb && obsaabb > obsaaBB) {
-							rf = ((2 * (obsAAbb + obsaaBB)) + ((obsAABB + obsaaBb + obsAaBB + obsAabb) / 2)) / total;
+						if (chiCont > 9.49 && obsA1A1B1B1 > obsA1A1B2B2 && obsA2A2B2B2 > obsA2A2B1B1) {
+							rf = ((2 * (obsA1A1B2B2 + obsA2A2B1B1)) + ((obsA1A1B1B1 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
 							phases.put("phaseA", "Coupling");
 							phases.put("phaseB", "A₁B₁/A₂B₂");
 						} else {
-							rf = ((2 * (obsAABB + obsaabb)) + ((obsAABb + obsaaBb + obsAaBB + obsAabb) / 2)) / total;
+							rf = ((2 * (obsA1A1B1B1 + obsA2A2B2B2)) + ((obsA1A1B1B2 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
 							phases.put("phaseA", "Repulsion");
 							phases.put("phaseB", "A₁B₂/A₂B₁");
 						}
@@ -634,25 +634,25 @@ public class CTLinkageImp implements CTLinkage{
 						|| (expConA2B1B2 <= 10 && expConA2B1B2 >= 5) || (expConA2B2 <= 10 && expConA2B2 >= 5)
 						|| (expConA1A2B1 <= 10 && expConA1A2B1 >= 5) || (expConA1A2B2 <= 10 && expConA1A2B2 >= 5)
 						|| (expConA1A2B1B2 <= 10 && expConA1A2B1B2 >= 5)) {
-					chiCont = Math.pow((obsAABB - expConA1B1) - 0.5, 2) / expConA1B1
-							+ Math.pow((obsAAbb - expConA1B2) - 0.5, 2) / expConA1B2
-							+ Math.pow((obsAABb - expConA1B1B2) - 0.5, 2) / expConA1B1B2
-							+ Math.pow((obsaaBB - expConA2B1) - 0.5, 2) / expConA2B1
-							+ Math.pow((obsaabb - expConA2B2) - 0.5, 2) / expConA2B2
-							+ Math.pow((obsaaBb - expConA2B1B2) - 0.5, 2) / expConA2B1B2
-							+ Math.pow((obsAaBB - expConA1A2B1) - 0.5, 2) / expConA1A2B1
-							+ Math.pow((obsAabb - expConA1A2B2) - 0.5, 2) / expConA1A2B2
-							+ Math.pow((obsAaBb - expConA1A2B1B2) - 0.5, 2) / expConA1A2B1B2;
+					chiCont = Math.pow((obsA1A1B1B1 - expConA1B1) - 0.5, 2) / expConA1B1
+							+ Math.pow((obsA1A1B2B2 - expConA1B2) - 0.5, 2) / expConA1B2
+							+ Math.pow((obsA1A1B1B2 - expConA1B1B2) - 0.5, 2) / expConA1B1B2
+							+ Math.pow((obsA2A2B1B1 - expConA2B1) - 0.5, 2) / expConA2B1
+							+ Math.pow((obsA2A2B2B2 - expConA2B2) - 0.5, 2) / expConA2B2
+							+ Math.pow((obsA2A2B1B2 - expConA2B1B2) - 0.5, 2) / expConA2B1B2
+							+ Math.pow((obsA1A2B1B1 - expConA1A2B1) - 0.5, 2) / expConA1A2B1
+							+ Math.pow((obsA1A2B2B2 - expConA1A2B2) - 0.5, 2) / expConA1A2B2
+							+ Math.pow((obsA1A2B1B2 - expConA1A2B1B2) - 0.5, 2) / expConA1A2B1B2;
 				} else {
-					chiCont = Math.pow((obsAABB - expConA1B1), 2) / expConA1B1
-							+ Math.pow((obsAAbb - expConA1B2), 2) / expConA1B2
-							+ Math.pow((obsAABb - expConA1B1B2), 2) / expConA1B1B2
-							+ Math.pow((obsaaBB - expConA2B1), 2) / expConA2B1
-							+ Math.pow((obsaabb - expConA2B2), 2) / expConA2B2
-							+ Math.pow((obsaaBb - expConA2B1B2), 2) / expConA2B1B2
-							+ Math.pow((obsAaBB - expConA1A2B1), 2) / expConA1A2B1
-							+ Math.pow((obsAabb - expConA1A2B2), 2) / expConA1A2B2
-							+ Math.pow((obsAaBb - expConA1A2B1B2), 2) / expConA1A2B1B2;
+					chiCont = Math.pow((obsA1A1B1B1 - expConA1B1), 2) / expConA1B1
+							+ Math.pow((obsA1A1B2B2 - expConA1B2), 2) / expConA1B2
+							+ Math.pow((obsA1A1B1B2 - expConA1B1B2), 2) / expConA1B1B2
+							+ Math.pow((obsA2A2B1B1 - expConA2B1), 2) / expConA2B1
+							+ Math.pow((obsA2A2B2B2 - expConA2B2), 2) / expConA2B2
+							+ Math.pow((obsA2A2B1B2 - expConA2B1B2), 2) / expConA2B1B2
+							+ Math.pow((obsA1A2B1B1 - expConA1A2B1), 2) / expConA1A2B1
+							+ Math.pow((obsA1A2B2B2 - expConA1A2B2), 2) / expConA1A2B2
+							+ Math.pow((obsA1A2B1B2 - expConA1A2B1B2), 2) / expConA1A2B1B2;
 				}
 
 				resultValues.put("chiCont", chiCont);
@@ -661,12 +661,12 @@ public class CTLinkageImp implements CTLinkage{
 				if (chiCont < 9.49) {
 					result = "The loci A₁A₂ and B₁B₂ are independent";
 				} else {
-					if (chiCont > 9.49 && obsAABB > obsAAbb && obsaabb > obsaaBB) {
-						rf = ((2 * (obsAAbb + obsaaBB)) + ((obsAABB + obsaaBb + obsAaBB + obsAabb) / 2)) / total;
+					if (chiCont > 9.49 && obsA1A1B1B1 > obsA1A1B2B2 && obsA2A2B2B2 > obsA2A2B1B1) {
+						rf = ((2 * (obsA1A1B2B2 + obsA2A2B1B1)) + ((obsA1A1B1B1 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
 						phases.put("phaseA", "Coupling");
 						phases.put("phaseB", "A₁B₁/A₂B₂");
 					} else {
-						rf = ((2 * (obsAABB + obsaabb)) + ((obsAABb + obsaaBb + obsAaBB + obsAabb) / 2)) / total;
+						rf = ((2 * (obsA1A1B1B1 + obsA2A2B2B2)) + ((obsA1A1B1B2 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
 						phases.put("phaseA", "Repulsion");
 						phases.put("phaseB", "A₁B₂/A₂B₁");
 					}
@@ -1056,104 +1056,25 @@ public class CTLinkageImp implements CTLinkage{
 				.build();
 	}
 
-	public CTResult testcrossDM(double r1, double r2, double cOc, double tOs) {
-		Map<String, String> phases = new HashMap<>();
+	public CTResult testcrossDM(double r1, double tOs) {
 		Map<String, Double> resultValues = new HashMap<>();
-		////////////////////////
-		double ABCn, abcn, ABcn, abCn, AbCn, aBcn, aBCn, Abcn, ABC2, abc2, ABc2, abC2, AbC2, aBc2, aBC2, Abc2, ABC3,
-				abc3, ABc3, abC3, AbC3, aBc3, aBC3, Abc3, ABC4, abc4, ABc4, abC4, AbC4, aBc4, aBC4, Abc4, interference,
-				rf;
-		///////////////////////
-		if (r1 < 0.5 && r2 < 0.5 && tOs < 5000) {
-			AbCn = tOs * ((r1 * r2 * cOc) / 2);
-			aBcn = tOs * ((r1 * r2 * cOc) / 2);
-			Abcn = tOs * ((r1 - (r1 * r2 * cOc)) / 2);
-			aBCn = tOs * ((r1 - (r1 * r2 * cOc)) / 2);
-			ABcn = tOs * ((r2 - (r1 * r2 * cOc)) / 2);
-			abCn = tOs * ((r2 - (r1 * r2 * cOc)) / 2);
-			abcn = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);
-			ABCn = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);
-
-			resultValues.put("AbCn", AbCn);
-			resultValues.put("aBcn", aBcn);
-			resultValues.put("Abcn", Abcn);
-			resultValues.put("aBCn", aBCn);
-			resultValues.put("ABcn", ABcn);
-			resultValues.put("abCn", abCn);
-			resultValues.put("abcn", abcn);
-			resultValues.put("ABCn", ABCn);
-
-			interference = 1 - cOc;
-			rf = r1 + r2 - (r1 * r2 * cOc * 2);
-
-			resultValues.put("interference", interference);
-			resultValues.put("rf", rf);
-
-			ABC2 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
-			aBC2 = tOs * ((r1 * r2 * cOc) / 2);//
-			AbC2 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			abc2 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
-			ABc2 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			aBc2 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			Abc2 = tOs * ((r1 * r2 * cOc) / 2);//
-			abC2 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			resultValues.put("AbC2", AbC2);
-			resultValues.put("aBc2", aBc2);
-			resultValues.put("Abc2", Abc2);
-			resultValues.put("aBC2", aBC2);
-			resultValues.put("ABc2", ABc2);
-			resultValues.put("abC2", abC2);
-			resultValues.put("abc2", abc2);
-			resultValues.put("ABC2", ABC2);
-
-			ABC3 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			aBC3 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			AbC3 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
-			abc3 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			ABc3 = tOs * ((r1 * r2 * cOc) / 2);//
-			aBc3 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
-			Abc3 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			abC3 = tOs * ((r1 * r2 * cOc) / 2);//
-			resultValues.put("AbC3", AbC3);
-			resultValues.put("aBc3", aBc3);
-			resultValues.put("Abc3", Abc3);
-			resultValues.put("aBC3", aBC3);
-			resultValues.put("ABc3", ABc3);
-			resultValues.put("abC3", abC3);
-			resultValues.put("abc3", abc3);
-			resultValues.put("ABC3", ABC3);
-
-			ABC4 = tOs * ((r1 * r2 * cOc) / 2);//
-			aBC4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
-			AbC4 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			abc4 = tOs * ((r1 * r2 * cOc) / 2);//
-			ABc4 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			aBc4 = tOs * ((1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2);//
-			Abc4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2);//
-			abC4 = tOs * ((r1 - (r1 * r2 * cOc)) / 2);//
-			resultValues.put("AbC4", AbC4);
-			resultValues.put("aBc4", aBc4);
-			resultValues.put("Abc4", Abc4);
-			resultValues.put("aBC4", aBC4);
-			resultValues.put("ABc4", ABc4);
-			resultValues.put("abC4", abC4);
-			resultValues.put("abc4", abc4);
-			resultValues.put("ABC4", ABC4);
-
-			if (rf >= 0.5) {
-				phases.put("rf", "r is >=0.5");
-			} else {
-				phases.put("rf", String.valueOf(rf));
-			}
+		if(r1 >= 0.5 || tOs >= 5000) {
+			return CTResult.builder().cleanInputs(true).feedbackMessage("r can´t be higher than 0,5. The max number accepted for total offspring is 5000").build();
 		} else {
-			return CTResult.builder().cleanInputs(true).feedbackMessage(" r can´t be higher than 0,5. The max number of total offspring is 5000").build();
-		}
+			resultValues.put("repulsionAB", tOs * r1 / 2.0);
+			resultValues.put("couplingAB", tOs * (1 - r1) / 2.0);
+			resultValues.put("repulsionAb", tOs * (1 - r1) / 2.0);
+			resultValues.put("couplingAb", tOs * r1 / 2.0);
+			resultValues.put("repulsionaB", (1 - r1) / 2.0);
+			resultValues.put("couplingaB", tOs * r1 / 2.0);
+			resultValues.put("repulsionab", tOs * r1 / 2.0);
+			resultValues.put("couplingab", tOs * (1 - r1) / 2.0);
 
-		return CTResult.builder()
-				.cleanInputs(false)
-				.resultValues(resultValues)
-				.phase(phases)
-				.build();
+			return CTResult.builder()
+					.cleanInputs(false)
+					.resultValues(resultValues)
+					.build();
+		}
 	}
 
 	public CTResult dominanceDM(double r1, double tOs) {
