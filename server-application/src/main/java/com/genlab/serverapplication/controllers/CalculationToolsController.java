@@ -70,7 +70,7 @@ public class CalculationToolsController {
     @PostMapping("/result")
     //TODO si se queda así para eso uso la api qe es exactamente lo mismo, lo ideal sería qe en este metodo sse metiera todo en el modelo y qe se devolviera la plantilla con todo en su sitio
     public String getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values, Model model, HttpSession session, RedirectAttributes redirect){
-        CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();;
+        CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();
         switch(Integer.parseInt(String.valueOf(CTid.toCharArray()[0]))){
             case 0:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
