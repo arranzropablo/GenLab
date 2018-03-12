@@ -134,6 +134,8 @@ public class CTPolyhybridimp implements CTPolyHybrid {
 			resultValues.put("HT5", HT5);
 
 			double totalgenotypes = NG1 * NG2 * NG3 * NG4 * NG5;
+			resultValues.put("totalgenotypes", totalgenotypes);
+
 		}
 		return CTResult.builder().resultValues(resultValues).cleanInputs(false).build();
 	}

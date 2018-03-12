@@ -47,8 +47,8 @@ public class CTOneLocusImp implements CTOneLocus{
 			double expectedValueA = (obsA + obsa) * 3 / 4.0;
 			double expectedValuea = (obsA + obsa) / 4.0;
 			double chi;
-			expectedValues.put("a", expectedValueA);
-			expectedValues.put("A", expectedValueA);
+			expectedValues.put("expa", expectedValuea);
+			expectedValues.put("expA", expectedValueA);
 
 			if (expectedValueA < 5 || expectedValuea < 5) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
@@ -64,29 +64,29 @@ public class CTOneLocusImp implements CTOneLocus{
 		return CTResult.builder().resultValues(resultValues).cleanInputs(false).expectedValues(expectedValues).result(result).agree(agree).build();
 	}
 	
-	public CTResult f2CoDominance(int obsAA, int obsAa, int obsaa) {
+	public CTResult f2CoDominance(int obsA1A1, int obsA1A2, int obsA2A2) {
 		Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
 		String result = "";
-		if(obsAA > 5000 || obsAa > 5000 || obsaa > 5000){
+		if(obsA1A1 > 5000 || obsA1A2 > 5000 || obsA2A2 > 5000){
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
 		} else {
-			int total = obsAA + obsAa + obsaa;
+			int total = obsA1A1 + obsA1A2 + obsA2A2;
 			double expectedValueAA = total / 4.0;
 			double expectedValueAa = total / 2.0;
 			double expectedValueaa = total / 4.0;
 			double chi;
-			expectedValues.put("AA", expectedValueAA);
-			expectedValues.put("Aa", expectedValueAa);
-			expectedValues.put("aa", expectedValueaa);
+			expectedValues.put("expA1A1", expectedValueAA);
+			expectedValues.put("expA1A2", expectedValueAa);
+			expectedValues.put("expA2A2", expectedValueaa);
 
 			if (expectedValueAA < 5 || expectedValueAa < 5 || expectedValueaa < 5) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 			} else if (expectedValueAA > 10 || expectedValueAa > 10 || expectedValueaa > 10) {
-				chi = (Math.pow((obsAA - expectedValueAA), 2) / expectedValueAA) + (Math.pow(obsAa - expectedValueAa, 2) / expectedValueAa) + (Math.pow(obsaa - expectedValueaa, 2) / expectedValueaa);
+				chi = (Math.pow((obsA1A1 - expectedValueAA), 2) / expectedValueAA) + (Math.pow(obsA1A2 - expectedValueAa, 2) / expectedValueAa) + (Math.pow(obsA2A2 - expectedValueaa, 2) / expectedValueaa);
 			} else {
-				chi = (Math.pow((obsAA - expectedValueAA) - 0.5, 2) / expectedValueAA) + (Math.pow(obsAa - expectedValueAa - 0.5, 2) / expectedValueAa) + (Math.pow(obsaa - expectedValueaa - 0.5, 2) / expectedValueaa);
+				chi = (Math.pow((obsA1A1 - expectedValueAA) - 0.5, 2) / expectedValueAA) + (Math.pow(obsA1A2 - expectedValueAa - 0.5, 2) / expectedValueAa) + (Math.pow(obsA2A2 - expectedValueaa - 0.5, 2) / expectedValueaa);
 			}
 			resultValues.put("chi", chi);
 			agree.put("chi", (chi > 5.991 ? "No" : "Yes"));
@@ -107,10 +107,10 @@ public class CTOneLocusImp implements CTOneLocus{
 			int total = obsA1A1 + obsA1A2 + obsA1A3 + obsA2A3;
 			double expectedValue = total / 4.0;
 			double chi;
-			expectedValues.put("expectedA1A1", expectedValue);
-			expectedValues.put("expectedA1A2", expectedValue);
-			expectedValues.put("expectedA1A3", expectedValue);
-			expectedValues.put("expectedA2A3", expectedValue);
+			expectedValues.put("expA1A1", expectedValue);
+			expectedValues.put("expA1A2", expectedValue);
+			expectedValues.put("expA1A3", expectedValue);
+			expectedValues.put("expA2A3", expectedValue);
 
 			if (expectedValue < 5) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
@@ -138,10 +138,10 @@ public class CTOneLocusImp implements CTOneLocus{
 			int total = obsA1A3 + obsA1A4 + obsA2A3 + obsA2A4;
 			double expectedValue = total / 4.0;
 			double chi;
-			expectedValues.put("expectedA2A4", expectedValue);
-			expectedValues.put("expectedA2A3", expectedValue);
-			expectedValues.put("expectedA1A3", expectedValue);
-			expectedValues.put("expectedA1A4", expectedValue);
+			expectedValues.put("expA2A4", expectedValue);
+			expectedValues.put("expA2A3", expectedValue);
+			expectedValues.put("expA1A3", expectedValue);
+			expectedValues.put("expA1A4", expectedValue);
 
 			if (expectedValue < 5) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
@@ -170,8 +170,8 @@ public class CTOneLocusImp implements CTOneLocus{
 			double expectedValueAA = total / 3.0;
 			double expectedValueAa = total * 2 / 3.0;
 			double chi;
-			expectedValues.put("AA", expectedValueAA);
-			expectedValues.put("Aa", expectedValueAa);
+			expectedValues.put("expAA", expectedValueAA);
+			expectedValues.put("expAa", expectedValueAa);
 
 			if (expectedValueAA < 5 || expectedValueAa < 5) {
 				return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();

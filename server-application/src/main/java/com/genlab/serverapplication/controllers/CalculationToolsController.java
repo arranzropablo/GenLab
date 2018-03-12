@@ -47,8 +47,8 @@ public class CalculationToolsController {
     private CTEpistasia epistasiaService;
 
 	@GetMapping("")
-	public String getCalculationTool(Model model) {
-		return "redirect:/calculationtools/00";
+	public String getCalculationTool(Model model, HttpSession session) {
+		return "redirect:/calculationtools/"+ String.valueOf(((SectionsMapping)session.getAttribute("currentSection")).getId()) +"0";
 	}
 	
 	@GetMapping("/{id}")

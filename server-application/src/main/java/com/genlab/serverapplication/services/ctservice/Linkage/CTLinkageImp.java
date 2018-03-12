@@ -48,7 +48,7 @@ public class CTLinkageImp implements CTLinkage{
 			expectedValues.put("expB", expB);
 			expectedValues.put("expb", expb);
 			if (expA >= 5 && expa >= 5 && expB >= 5 && expb >= 5) {
-				double chiA, chiB, chiInd, chiCon = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
+				double chiA, chiB, chiInd, chiCont = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
 						expConaB = 0, expConab = 0;
 
 				if ((expA <= 10 && expA >= 5) || (expa <= 10 && expa >= 5)) {
@@ -72,10 +72,10 @@ public class CTLinkageImp implements CTLinkage{
 					expInAb = total / 4;
 					expInaB = total / 4;
 					expInab = total / 4;
-					expectedValues.put("expectedIndAB", expInAB);
-					expectedValues.put("expectedIndAb", expInAb);
-					expectedValues.put("expectedIndaB", expInaB);
-					expectedValues.put("expectedIndab", expInab);
+					expectedValues.put("expIndAB", expInAB);
+					expectedValues.put("expIndAb", expInAb);
+					expectedValues.put("expIndaB", expInaB);
+					expectedValues.put("expIndab", expInab);
 					if (expInAB < 5 || expInAb < 5 || expInaB < 5 || expInab < 5) {
 						return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 					} else {
@@ -97,37 +97,37 @@ public class CTLinkageImp implements CTLinkage{
 
 							double chiLink = chiInd - (chiA + chiB);
 							resultValues.put("chiLink", chiLink);
-							agree.put("chiInd", (chiInd > 3.841 ? "No" : "Yes"));
+							agree.put("chiLink", (chiInd > 3.841 ? "No" : "Yes"));
 							if (chiInd < 7.82) { result = "The loci A,a and B,b are independent"; }
 						}
 						expConAB = (obsA * obsB) / total;
 						expConAb = (obsA * obsb) / total;
 						expConaB = (obsa * obsB) / total;
 						expConab = (obsa * obsb) / total;
-						expectedValues.put("expConAB", expConAB);
-						expectedValues.put("expConAb", expConAb);
-						expectedValues.put("expConaB", expConaB);
-						expectedValues.put("expConab", expConab);
+						expectedValues.put("contAB", expConAB);
+						expectedValues.put("contAb", expConAb);
+						expectedValues.put("contaB", expConaB);
+						expectedValues.put("contab", expConab);
 						if (expConAB >= 5 && expConAb >= 5 && expConaB >= 5 && expConab >= 5) {
 							if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 									|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
-								chiCon = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
+								chiCont = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
 										+ Math.pow((obsAb - expConAb) - 0.5, 2) / expConAb
 										+ Math.pow((obsaB - expConaB) - 0.5, 2) / expConaB
 										+ Math.pow((obsab - expConab) - 0.5, 2) / expConab;
 							} else {
-								chiCon = Math.pow((obsAB - expConAB), 2) / expConAB
+								chiCont = Math.pow((obsAB - expConAB), 2) / expConAB
 										+ Math.pow((obsAb - expConAb), 2) / expConAb
 										+ Math.pow((obsaB - expConaB), 2) / expConaB
 										+ Math.pow((obsab - expConab), 2) / expConab;
 							}
-							resultValues.put("chiCon", chiCon);
-							agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
-							if (chiCon < 3.841) {
+							resultValues.put("chiCont", chiCont);
+							agree.put("chiCont", (chiCont > 3.841 ? "No" : "Yes"));
+							if (chiCont < 3.841) {
 								result = "The loci A,a and B,b are independent";
 							} else {
 								double rf, distance, lodZ;
-								if ((chiCon >= 3.841) && (obsAB > obsAb)) {
+								if ((chiCont >= 3.841) && (obsAB > obsAb)) {
 									phases.put("phaseA", "Coupling");
 									phases.put("phaseB", "AB/ab");
 									rf = (obsAb + obsaB) / total;
@@ -153,31 +153,31 @@ public class CTLinkageImp implements CTLinkage{
 					expConAb = (obsA * obsb) / total;
 					expConaB = (obsa * obsB) / total;
 					expConab = (obsa * obsb) / total;
-					expectedValues.put("expConAB", expConAB);
-					expectedValues.put("expConAb", expConAb);
-					expectedValues.put("expConaB", expConaB);
-					expectedValues.put("expConab", expConab);
+					expectedValues.put("contAB", expConAB);
+					expectedValues.put("contAb", expConAb);
+					expectedValues.put("contaB", expConaB);
+					expectedValues.put("contab", expConab);
 					if (expConAB >=  5 && expConAb >=  5 && expConaB >=  5 && expConab >=5) {
 						if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 								|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
-							chiCon = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
+							chiCont = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
 									+ Math.pow((obsAb - expConAb) - 0.5, 2) / expConAb
 									+ Math.pow((obsaB - expConaB) - 0.5, 2) / expConaB
 									+ Math.pow((obsab - expConab) - 0.5, 2) / expConab;
 						} else {
-							chiCon = Math.pow((obsAB - expConAB), 2) / expConAB
+							chiCont = Math.pow((obsAB - expConAB), 2) / expConAB
 									+ Math.pow((obsAb - expConAb), 2) / expConAb
 									+ Math.pow((obsaB - expConaB), 2) / expConaB
 									+ Math.pow((obsab - expConab), 2) / expConab;
 						}
-						resultValues.put("chiCon", chiCon);
-						agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
+						resultValues.put("chiCont", chiCont);
+						agree.put("chiCont", (chiCont > 3.841 ? "No" : "Yes"));
 
-						if (chiCon < 3.841) {
+						if (chiCont < 3.841) {
 							result = "The loci A,a and B,b are independent";
 						} else {
 							double rf, distance, lodZ;
-							if ((chiCon >= 3.841) && (obsAB > obsAb)) {
+							if ((chiCont >= 3.841) && (obsAB > obsAb)) {
 								phases.put("phaseA", "Coupling");
 								phases.put("phaseB", "AB/ab");
 								rf = (obsAb + obsaB) / total;
@@ -242,7 +242,7 @@ public class CTLinkageImp implements CTLinkage{
 			expectedValues.put("expB", expB);
 			expectedValues.put("expb", expb);
 			if (expA >= 5 && expa >= 5 && expB >= 5 && expb >= 5) {
-				double chiA, chiB, chiInde, chiCon = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
+				double chiA, chiB, chiInde, chiCont = 0, expInAB, expInAb, expInaB, expInab, expConAB = 0, expConAb = 0,
 						expConaB = 0, expConab = 0;
 
 				if ((expA <= 10 && expA >= 5) || (expa <= 10 && expa >= 5)) {
@@ -298,30 +298,30 @@ public class CTLinkageImp implements CTLinkage{
 						expConAb = (obsA * obsb) / total;
 						expConaB = (obsa * obsB) / total;
 						expConab = (obsa * obsb) / total;
-						expectedValues.put("expConAB", expConAB);
-						expectedValues.put("expConAb", expConAb);
-						expectedValues.put("expConaB", expConaB);
-						expectedValues.put("expConab", expConab);
+						expectedValues.put("contAB", expConAB);
+						expectedValues.put("contAb", expConAb);
+						expectedValues.put("contaB", expConaB);
+						expectedValues.put("contab", expConab);
 						if (expConAB >=  5 && expConAb >=  5 && expConaB >=  5 && expConab >= 5) {
 							if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 									|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
-								chiCon = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
+								chiCont = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
 										+ Math.pow((obsAb - expConAb) - 0.5, 2) / expConAb
 										+ Math.pow((obsaB - expConaB) - 0.5, 2) / expConaB
 										+ Math.pow((obsab - expConab) - 0.5, 2) / expConab;
 							} else {
-								chiCon = Math.pow((obsAB - expConAB), 2) / expConAB
+								chiCont = Math.pow((obsAB - expConAB), 2) / expConAB
 										+ Math.pow((obsAb - expConAb), 2) / expConAb
 										+ Math.pow((obsaB - expConaB), 2) / expConaB
 										+ Math.pow((obsab - expConab), 2) / expConab;
 							}
-							resultValues.put("chiCon", chiCon);
-							agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
+							resultValues.put("chiCont", chiCont);
+							agree.put("chiCont", (chiCont > 3.841 ? "No" : "Yes"));
 
-							if (chiCon < 3.841) {
+							if (chiCont < 3.841) {
 								result = "The loci A,a and B,b are independent";
 							}
-							if (chiCon >= 3.841 && obsab > expConab) {
+							if (chiCont >= 3.841 && obsab > expConab) {
 								double rf = 0, distance;
 								phases.put("phaseA", "Coupling");
 								phases.put("phaseB", "AB/ab");
@@ -334,7 +334,7 @@ public class CTLinkageImp implements CTLinkage{
 								resultValues.put("distance", distance);
 								result = "The loci A,a and B,b are linked";
 							}
-							if (chiCon >= 3.841 && obsab > expConab) {
+							if (chiCont >= 3.841 && obsab > expConab) {
 								double rf = 0, distance;
 								phases.put("phaseA", "Repulsion");
 								phases.put("phaseB", "Ab/aB");
@@ -358,30 +358,30 @@ public class CTLinkageImp implements CTLinkage{
 					expConAb = (obsA * obsb) / total;
 					expConaB = (obsa * obsB) / total;
 					expConab = (obsa * obsb) / total;
-					expectedValues.put("expConAB", expConAB);
-					expectedValues.put("expConAb", expConAb);
-					expectedValues.put("expConaB", expConaB);
-					expectedValues.put("expConab", expConab);
+					expectedValues.put("contAB", expConAB);
+					expectedValues.put("contAb", expConAb);
+					expectedValues.put("contaB", expConaB);
+					expectedValues.put("contab", expConab);
 					if (expConAB >=  5 && expConAb >=  5 && expConaB >=  5 && expConab >= 5) {
 						if ((expConAB <= 10 && expConAB >= 5) || (expConAb <= 10 && expConAb >= 5)
 								|| (expConaB <= 10 && expConaB >= 5) || (expConab <= 10 && expConab >= 5)) {
-							chiCon = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
+							chiCont = Math.pow((obsAB - expConAB) - 0.5, 2) / expConAB
 									+ Math.pow((obsAb - expConAb) - 0.5, 2) / expConAb
 									+ Math.pow((obsaB - expConaB) - 0.5, 2) / expConaB
 									+ Math.pow((obsab - expConab) - 0.5, 2) / expConab;
 						} else {
-							chiCon = Math.pow((obsAB - expConAB), 2) / expConAB
+							chiCont = Math.pow((obsAB - expConAB), 2) / expConAB
 									+ Math.pow((obsAb - expConAb), 2) / expConAb
 									+ Math.pow((obsaB - expConaB), 2) / expConaB
 									+ Math.pow((obsab - expConab), 2) / expConab;
 						}
-						resultValues.put("chiCon", chiCon);
-						agree.put("chiCon", (chiCon > 3.841 ? "No" : "Yes"));
+						resultValues.put("chiCont", chiCont);
+						agree.put("chiCont", (chiCont > 3.841 ? "No" : "Yes"));
 
-						if (chiCon < 3.841) {
+						if (chiCont < 3.841) {
 							result = "The loci A,a and B,b are independent";
 						}
-						if (chiCon >= 3.841 && obsab > expConab) {
+						if (chiCont >= 3.841 && obsab > expConab) {
 							double rf = 0, distance;
 							phases.put("phaseA", "Coupling");
 							phases.put("phaseB", "AB/ab");
@@ -394,7 +394,7 @@ public class CTLinkageImp implements CTLinkage{
 							resultValues.put("distance", distance);
 							result = "The loci A,a and B,b are linked";
 						}
-						if (chiCon >= 3.841 && obsab > expConab) {
+						if (chiCont >= 3.841 && obsab > expConab) {
 							double rf = 0, distance;
 							phases.put("phaseA", "Repulsion");
 							phases.put("phaseB", "Ab/aB");
@@ -464,7 +464,7 @@ public class CTLinkageImp implements CTLinkage{
 			expectedValues.put("expB1B2", (double) expB1B2);
 			expectedValues.put("expB2", (double) expB2);
 
-			double chiA, chiB, chiInde, chiCon, chiLink, expInA1B1, expInA1B1B2, expInA1B2, expInA2B1, expInA2B1B2,
+			double chiA, chiB, chiInde, chiCont, chiLink, expInA1B1, expInA1B1B2, expInA1B2, expInA2B1, expInA2B1B2,
 					expInA2B2, expInA1A2B1, expInA1A2B2, expInA1A2B1B2, expConA1B1, expConA1B1B2, expConA1B2, expConA2B1,
 					expConA2B1B2, expConA2B2, expConA1A2B1, expConA1A2B2, expConA1A2B1B2, rf, distance;
 
@@ -552,21 +552,21 @@ public class CTLinkageImp implements CTLinkage{
 					expConA1A2B1 = (obsA1A2 * obsB1) / total;
 					expConA1A2B2 = (obsA1A2 * obsB2) / total;
 					expConA1A2B1B2 = (obsA1A2 * obsB1B2) / total;
-					resultValues.put("expConA1B1", expConA1B1);
-					resultValues.put("expConA1B1B2", expConA1B1B2);
-					resultValues.put("expConA1B2", expConA1B2);
-					resultValues.put("expConA2B1", expConA2B1);
-					resultValues.put("expConA2B1B2", expConA2B1B2);
-					resultValues.put("expConA2B2", expConA2B2);
-					resultValues.put("expConA1A2B1", expConA1A2B1);
-					resultValues.put("expConA1A2B2", expConA1A2B2);
-					resultValues.put("expConA1A2B1B2", expConA1A2B1B2);
+					resultValues.put("contA1B1", expConA1B1);
+					resultValues.put("contA1B1B2", expConA1B1B2);
+					resultValues.put("contA1B2", expConA1B2);
+					resultValues.put("contA2B1", expConA2B1);
+					resultValues.put("contA2B1B2", expConA2B1B2);
+					resultValues.put("contA2B2", expConA2B2);
+					resultValues.put("contA1A2B1", expConA1A2B1);
+					resultValues.put("contA1A2B2", expConA1A2B2);
+					resultValues.put("contA1A2B1B2", expConA1A2B1B2);
 					if ((expConA1B1 <= 10 && expConA1B1 >= 5) || (expConA1B1B2 <= 10 && expConA1B1B2 >= 5)
 							|| (expConA1B2 <= 10 && expConA1B2 >= 5) || (expConA2B1 <= 10 && expConA2B1 >= 5)
 							|| (expConA2B1B2 <= 10 && expConA2B1B2 >= 5) || (expConA2B2 <= 10 && expConA2B2 >= 5)
 							|| (expConA1A2B1 <= 10 && expConA1A2B1 >= 5) || (expConA1A2B2 <= 10 && expConA1A2B2 >= 5)
 							|| (expConA1A2B1B2 <= 10 && expConA1A2B1B2 >= 5)) {
-						chiCon = Math.pow((obsAABB - expConA1B1) - 0.5, 2) / expConA1B1
+						chiCont = Math.pow((obsAABB - expConA1B1) - 0.5, 2) / expConA1B1
 								+ Math.pow((obsAAbb - expConA1B2) - 0.5, 2) / expConA1B2
 								+ Math.pow((obsAABb - expConA1B1B2) - 0.5, 2) / expConA1B1B2
 								+ Math.pow((obsaaBB - expConA2B1) - 0.5, 2) / expConA2B1
@@ -576,7 +576,7 @@ public class CTLinkageImp implements CTLinkage{
 								+ Math.pow((obsAabb - expConA1A2B2) - 0.5, 2) / expConA1A2B2
 								+ Math.pow((obsAaBb - expConA1A2B1B2) - 0.5, 2) / expConA1A2B1B2;
 					} else {
-						chiCon = Math.pow((obsAABB - expConA1B1), 2) / expConA1B1
+						chiCont = Math.pow((obsAABB - expConA1B1), 2) / expConA1B1
 								+ Math.pow((obsAAbb - expConA1B2), 2) / expConA1B2
 								+ Math.pow((obsAABb - expConA1B1B2), 2) / expConA1B1B2
 								+ Math.pow((obsaaBB - expConA2B1), 2) / expConA2B1
@@ -587,13 +587,13 @@ public class CTLinkageImp implements CTLinkage{
 								+ Math.pow((obsAaBb - expConA1A2B1B2), 2) / expConA1A2B1B2;
 					}
 
-					resultValues.put("chiCon", chiCon);
-					agree.put("chiCon", (chiCon > 9.49 ? "No" : "Yes"));
+					resultValues.put("chiCont", chiCont);
+					agree.put("chiCont", (chiCont > 9.49 ? "No" : "Yes"));
 
-					if (chiCon < 9.49) {
+					if (chiCont < 9.49) {
 						result = "The loci A₁A₂ and B₁B₂ are independent";
 					} else {
-						if (chiCon > 9.49 && obsAABB > obsAAbb && obsaabb > obsaaBB) {
+						if (chiCont > 9.49 && obsAABB > obsAAbb && obsaabb > obsaaBB) {
 							rf = ((2 * (obsAAbb + obsaaBB)) + ((obsAABB + obsaaBb + obsAaBB + obsAabb) / 2)) / total;
 							phases.put("phaseA", "Coupling");
 							phases.put("phaseB", "A₁B₁/A₂B₂");
@@ -620,21 +620,21 @@ public class CTLinkageImp implements CTLinkage{
 				expConA1A2B1 = (obsA1A2 * obsB1) / total;
 				expConA1A2B2 = (obsA1A2 * obsB2) / total;
 				expConA1A2B1B2 = (obsA1A2 * obsB1B2) / total;
-				resultValues.put("expConA1B1", expConA1B1);
-				resultValues.put("expConA1B1B2", expConA1B1B2);
-				resultValues.put("expConA1B2", expConA1B2);
-				resultValues.put("expConA2B1", expConA2B1);
-				resultValues.put("expConA2B1B2", expConA2B1B2);
-				resultValues.put("expConA2B2", expConA2B2);
-				resultValues.put("expConA1A2B1", expConA1A2B1);
-				resultValues.put("expConA1A2B2", expConA1A2B2);
-				resultValues.put("expConA1A2B1B2", expConA1A2B1B2);
+				resultValues.put("contA1B1", expConA1B1);
+				resultValues.put("contA1B1B2", expConA1B1B2);
+				resultValues.put("contA1B2", expConA1B2);
+				resultValues.put("contA2B1", expConA2B1);
+				resultValues.put("contA2B1B2", expConA2B1B2);
+				resultValues.put("contA2B2", expConA2B2);
+				resultValues.put("contA1A2B1", expConA1A2B1);
+				resultValues.put("contA1A2B2", expConA1A2B2);
+				resultValues.put("contA1A2B1B2", expConA1A2B1B2);
 				if ((expConA1B1 <= 10 && expConA1B1 >= 5) || (expConA1B1B2 <= 10 && expConA1B1B2 >= 5)
 						|| (expConA1B2 <= 10 && expConA1B2 >= 5) || (expConA2B1 <= 10 && expConA2B1 >= 5)
 						|| (expConA2B1B2 <= 10 && expConA2B1B2 >= 5) || (expConA2B2 <= 10 && expConA2B2 >= 5)
 						|| (expConA1A2B1 <= 10 && expConA1A2B1 >= 5) || (expConA1A2B2 <= 10 && expConA1A2B2 >= 5)
 						|| (expConA1A2B1B2 <= 10 && expConA1A2B1B2 >= 5)) {
-					chiCon = Math.pow((obsAABB - expConA1B1) - 0.5, 2) / expConA1B1
+					chiCont = Math.pow((obsAABB - expConA1B1) - 0.5, 2) / expConA1B1
 							+ Math.pow((obsAAbb - expConA1B2) - 0.5, 2) / expConA1B2
 							+ Math.pow((obsAABb - expConA1B1B2) - 0.5, 2) / expConA1B1B2
 							+ Math.pow((obsaaBB - expConA2B1) - 0.5, 2) / expConA2B1
@@ -644,7 +644,7 @@ public class CTLinkageImp implements CTLinkage{
 							+ Math.pow((obsAabb - expConA1A2B2) - 0.5, 2) / expConA1A2B2
 							+ Math.pow((obsAaBb - expConA1A2B1B2) - 0.5, 2) / expConA1A2B1B2;
 				} else {
-					chiCon = Math.pow((obsAABB - expConA1B1), 2) / expConA1B1
+					chiCont = Math.pow((obsAABB - expConA1B1), 2) / expConA1B1
 							+ Math.pow((obsAAbb - expConA1B2), 2) / expConA1B2
 							+ Math.pow((obsAABb - expConA1B1B2), 2) / expConA1B1B2
 							+ Math.pow((obsaaBB - expConA2B1), 2) / expConA2B1
@@ -655,13 +655,13 @@ public class CTLinkageImp implements CTLinkage{
 							+ Math.pow((obsAaBb - expConA1A2B1B2), 2) / expConA1A2B1B2;
 				}
 
-				resultValues.put("chiCon", chiCon);
-				agree.put("chiCon", (chiCon > 9.49 ? "No" : "Yes"));
+				resultValues.put("chiCont", chiCont);
+				agree.put("chiCont", (chiCont > 9.49 ? "No" : "Yes"));
 
-				if (chiCon < 9.49) {
+				if (chiCont < 9.49) {
 					result = "The loci A₁A₂ and B₁B₂ are independent";
 				} else {
-					if (chiCon > 9.49 && obsAABB > obsAAbb && obsaabb > obsaaBB) {
+					if (chiCont > 9.49 && obsAABB > obsAAbb && obsaabb > obsaaBB) {
 						rf = ((2 * (obsAAbb + obsaaBB)) + ((obsAABB + obsaaBb + obsAaBB + obsAabb) / 2)) / total;
 						phases.put("phaseA", "Coupling");
 						phases.put("phaseB", "A₁B₁/A₂B₂");
@@ -743,7 +743,7 @@ public class CTLinkageImp implements CTLinkage{
 			expectedValues.put("expDo", expDo);
 			expectedValues.put("expRe", expRe);
 			if (expDo >= 5 && expRe >= 5) {
-				double chiA, chiB, chiC, chiInde, chiAB = 0, chiAC = 0, chiBC = 0, expInAB, expInAb, expInaB, expInab,
+				double chiA, chiB, chiC, chiAB = 0, chiAC = 0, chiBC = 0, expInAB, expInAb, expInaB, expInab,
 						expInAC, expInAc, expInaC, expInac, expInBC, expInbC, expInBc, expInbc, expConAB = 0,
 						expConAb = 0, expConaB = 0, expConab = 0, expConAC = 0, expConAc = 0, expConaC = 0,
 						expConac = 0, expConBC = 0, expConbC = 0, expConBc = 0, expConbc = 0, distAB = 0, distAC = 0, distBC= 0,
@@ -802,18 +802,18 @@ public class CTLinkageImp implements CTLinkage{
 				expConBc = (obsB * obsc) / total;
 				expConbc = (obsb * obsc) / total;
 				expConbC = (obsb * obsC) / total;
-				expectedValues.put("expConAB", expConAB);
-				expectedValues.put("expConAb", expConAb);
-				expectedValues.put("expConaB", expConaB);
-				expectedValues.put("expConab", expConab);
-				expectedValues.put("expConAC", expConAC);
-				expectedValues.put("expConAc", expConAc);
-				expectedValues.put("expConaC", expConaC);
-				expectedValues.put("expConac", expConac);
-				expectedValues.put("expConBC", expConBC);
-				expectedValues.put("expConBc", expConBc);
-				expectedValues.put("expConbc", expConbc);
-				expectedValues.put("expConbC", expConbC);
+				expectedValues.put("contAB", expConAB);
+				expectedValues.put("contAb", expConAb);
+				expectedValues.put("contaB", expConaB);
+				expectedValues.put("contab", expConab);
+				expectedValues.put("contAC", expConAC);
+				expectedValues.put("contAc", expConAc);
+				expectedValues.put("contaC", expConaC);
+				expectedValues.put("contac", expConac);
+				expectedValues.put("contBC", expConBC);
+				expectedValues.put("contBc", expConBc);
+				expectedValues.put("contbc", expConbc);
+				expectedValues.put("contbC", expConbC);
 				////////////////////
 				if (expConAB >= 5 && expConAb >= 5 && expConaB >= 5 && expConab >= 5 && expConAC >= 5 && expConAc >= 5
 						&& expConaC >= 5 && expConac >= 5 && expConBC >= 5 && expConBc >= 5 && expConbc >= 5
