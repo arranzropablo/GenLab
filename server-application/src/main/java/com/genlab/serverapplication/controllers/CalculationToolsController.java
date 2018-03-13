@@ -70,7 +70,7 @@ public class CalculationToolsController {
     @PostMapping("/result")
     //TODO si se queda así para eso uso la api qe es exactamente lo mismo, lo ideal sería qe en este metodo sse metiera todo en el modelo y qe se devolviera la plantilla con todo en su sitio
     public String getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values, Model model, HttpSession session, RedirectAttributes redirect){
-        CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();;
+        CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();
         switch(Integer.parseInt(String.valueOf(CTid.toCharArray()[0]))){
             case 0:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
@@ -176,63 +176,57 @@ public class CalculationToolsController {
                 break;
             case 2:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
-                    case 0:
-                        result = linkageService.testcross2Loci(values.get("AB"),
-                                values.get("Ab"),
-                                values.get("aB"),
-                                values.get("ab"));
-                        break;
-                    case 1:
-                        result = linkageService.f22LociDominance(values.get("AB"),
-                                values.get("Ab"),
-                                values.get("aB"),
-                                values.get("ab"));
-                        break;
-                    case 2:
-                        result = linkageService.f22LociCodominance(values.get("AABB"),
-                                values.get("AABb"),
-                                values.get("AAbb"),
-                                values.get("AaBB"),
-                                values.get("AaBb"),
-                                values.get("Aabb"),
-                                values.get("aaBB"),
-                                values.get("aaBb"),
-                                values.get("aabb"));
-                        break;
-                    case 3:
-                        result = linkageService.testcross3Loci(values.get("ABC"),
-                                values.get("abc"),
-                                values.get("ABc"),
-                                values.get("abC"),
-                                values.get("aBC"),
-                                values.get("Abc"),
-                                values.get("AbC"),
-                                values.get("aBc"));
-                        break;
-                    case 4:
-                        result = linkageService.testcrossDM(values.get("r1"),
-                                values.get("r2"),
-                                values.get("cOc"),
-                                values.get("tOs"));
-                        break;
-                    case 5:
-                        result = linkageService.dominanceDM(values.get("r1"),
-                                values.get("tOs"));
-                        break;
-                    case 6:
-                        result = linkageService.codominanceDM(values.get("r1"),
-                                values.get("tOs"));
-                        break;
-                    case 7:
-                        result = linkageService.testcross3Loci(values.get("ABC"),
-                                values.get("abc"),
-                                values.get("ABc"),
-                                values.get("abC"),
-                                values.get("aBC"),
-                                values.get("Abc"),
-                                values.get("AbC"),
-                                values.get("aBc"));
-                        break;
+	                case 0:
+	                    result = linkageService.testcross2Loci(values.get("AB"),
+	                                                    values.get("Ab"),
+	                                                    values.get("aB"),
+	                                                    values.get("ab"));
+	                    break;
+	                case 1:
+	                    result = linkageService.f22LociDominance(values.get("AB"),
+	                                                    values.get("Ab"),
+	                                                    values.get("aB"),
+	                                                    values.get("ab"));
+	                    break;
+	                case 2:
+	                    result = linkageService.f22LociCodominance(values.get("A1A1B1B1"),
+	                                                        values.get("A1A1B1B2"),
+	                                                        values.get("A1A1B2B2"),
+	                                                        values.get("A1A2B1B1"),
+	                                                        values.get("A1A2B1B2"),
+	                                                        values.get("A1A2B2B2"),
+	                                                        values.get("A2A2B1B1"),
+	                                                        values.get("A2A2B1B2"),
+	                                                        values.get("A2A2B2B2"));
+	                    break;
+	                case 3:
+	                    result = linkageService.testcross3Loci(values.get("ABC"),
+	                                                    values.get("abc"),
+	                                                    values.get("ABc"),
+	                                                    values.get("abC"),
+	                                                    values.get("aBC"),
+	                                                    values.get("Abc"),
+	                                                    values.get("AbC"),
+	                                                    values.get("aBc"));
+	                    break;
+	                case 4:
+	                    result = linkageService.testcrossDM(values.get("r1"),
+	                                                values.get("tOs"));
+	                    break;
+	                case 5:
+	                    result = linkageService.dominanceDM(values.get("r1"),
+	                                                values.get("tOs"));
+	                    break;
+	                case 6:
+	                    result = linkageService.codominanceDM(values.get("r1"),
+	                                                    values.get("tOs"));
+	                    break;
+	                case 7:
+	                    result = linkageService.tresLociDM(values.get("r1"),
+	                                                    values.get("r2"),
+	                                                    values.get("cOc"),
+	                                                    values.get("tOs"));
+	                    break;
                 }
                 break;
             case 3:

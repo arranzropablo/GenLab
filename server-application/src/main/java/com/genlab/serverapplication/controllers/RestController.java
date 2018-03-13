@@ -244,15 +244,15 @@ public class RestController {
                                                         values.get("ab"));
                         break;
                     case 2:
-                        result = linkageService.f22LociCodominance(values.get("AABB"),
-                                                            values.get("AABb"),
-                                                            values.get("AAbb"),
-                                                            values.get("AaBB"),
-                                                            values.get("AaBb"),
-                                                            values.get("Aabb"),
-                                                            values.get("aaBB"),
-                                                            values.get("aaBb"),
-                                                            values.get("aabb"));
+                        result = linkageService.f22LociCodominance(values.get("A1A1B1B1"),
+                                                            values.get("A1A1B1B2"),
+                                                            values.get("A1A1B2B2"),
+                                                            values.get("A1A2B1B1"),
+                                                            values.get("A1A2B1B2"),
+                                                            values.get("A1A2B2B2"),
+                                                            values.get("A2A2B1B1"),
+                                                            values.get("A2A2B1B2"),
+                                                            values.get("A2A2B2B2"));
                         break;
                     case 3:
                         result = linkageService.testcross3Loci(values.get("ABC"),
@@ -266,8 +266,6 @@ public class RestController {
                         break;
                     case 4:
                         result = linkageService.testcrossDM(values.get("r1"),
-                                                    values.get("r2"),
-                                                    values.get("cOc"),
                                                     values.get("tOs"));
                         break;
                     case 5:
@@ -279,14 +277,10 @@ public class RestController {
                                                         values.get("tOs"));
                         break;
                     case 7:
-                        result = linkageService.testcross3Loci(values.get("ABC"),
-                                                        values.get("abc"),
-                                                        values.get("ABc"),
-                                                        values.get("abC"),
-                                                        values.get("aBC"),
-                                                        values.get("Abc"),
-                                                        values.get("AbC"),
-                                                        values.get("aBc"));
+                        result = linkageService.tresLociDM(values.get("r1"),
+                                                        values.get("r2"),
+                                                        values.get("cOc"),
+                                                        values.get("tOs"));
                         break;
                 }
                 break;

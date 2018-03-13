@@ -14,7 +14,7 @@ public class CTResult {
 	private boolean cleanInputs;
 	private String feedbackMessage;
 	private Map<String,String> agree;
-	private Map<String,Double> observed;
+	private Map<String,Integer> observed;
 	private String result;
 	private Map<String,String> phase;
 

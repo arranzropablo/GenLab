@@ -14,7 +14,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsAB > 5000 || obsAb > 5000 || obsaB > 5000 || obsab > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsAB + obsAb + obsaB + obsab,
+            int totalobs = obsAB + obsAb + obsaB + obsab,
                     totalA = obsAB + obsAb,
                     totala = obsaB + obsab,
                     totalB = obsAB + obsaB,
@@ -28,7 +28,7 @@ public class CTTwoLociImp implements CTTwoLoci{
             expValues.put("expa", expectedAlelos);
             expValues.put("expb", expectedAlelos);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA", totalA);
             observedValues.put("obsB", totalB);
             observedValues.put("obsa", totala);
@@ -156,27 +156,27 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsAB > 5000 || obsAb > 5000 || obsaB > 5000 || obsab > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsAB + obsAb + obsaB + obsab,
+            int totalobs = obsAB + obsAb + obsaB + obsab,
                     totalA = obsAB + obsAb,
                     totala = obsaB + obsab,
                     totalB = obsAB + obsaB,
                     totalb = obsAb + obsab;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA", totalobs * 3 / 4);
-            expValues.put("expB", totalobs * 3 / 4);
-            expValues.put("expa", totalobs / 4);
-            expValues.put("expb", totalobs / 4);
+            expValues.put("expA", totalobs * 3 / 4.0);
+            expValues.put("expB", totalobs * 3 / 4.0);
+            expValues.put("expa", totalobs / 4.0);
+            expValues.put("expb", totalobs / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA", totalA);
             observedValues.put("obsB", totalB);
             observedValues.put("obsa", totala);
             observedValues.put("obsb", totalb);
             observedValues.put("total", totalobs);
 
-            double chiAa = (Math.pow(totalA - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totala - totalobs / 4, 2) / (totalobs / 4));
-            double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
+            double chiAa = (Math.pow(totalA - totalobs * 3 / 4.0, 2) / (totalobs * 3 / 4.0)) + (Math.pow(totala - totalobs / 4.0, 2) / (totalobs / 4.0));
+            double chiBb = (Math.pow(totalB - totalobs * 3 / 4.0, 2) / (totalobs * 3 / 4.0)) + (Math.pow(totalb - totalobs / 4.0, 2) / (totalobs / 4.0));
 
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
@@ -186,10 +186,10 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiBb > 3.84 ? "No" : "Yes"));
 
             if (chiAa < 3.84 && chiBb < 3.84) {
-                double expectedIndAB = totalobs * 9 / 16,
-                        expectedIndAb = totalobs * 3 / 16,
-                        expectedIndaB = totalobs * 3 / 16,
-                        expectedIndab = totalobs * 1 / 16;
+                double expectedIndAB = totalobs * 9 / 16.0,
+                        expectedIndAb = totalobs * 3 / 16.0,
+                        expectedIndaB = totalobs * 3 / 16.0,
+                        expectedIndab = totalobs * 1 / 16.0;
                 expValues.put("expectedIndAB", expectedIndAB);
                 expValues.put("expectedIndAb", expectedIndAb);
                 expValues.put("expectedIndaB", expectedIndaB);
@@ -300,7 +300,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsA1A1B1B1 > 5000 || obsA1A1B1B2 > 5000 || obsA1A1B2B2 > 5000 || obsA1A2B1B1 > 5000 || obsA1A2B1B2 > 5000 || obsA1A2B2B2 > 5000 || obsA2A2B1B1 > 5000 || obsA2A2B1B2 > 5000 || obsA2A2B2B2 > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsA1A1B1B1 + obsA1A1B1B2 + obsA1A1B2B2 + obsA1A2B1B1 + obsA1A2B1B2 + obsA1A2B2B2 + obsA2A2B1B1 + obsA2A2B1B2 + obsA2A2B2B2,
+            int totalobs = obsA1A1B1B1 + obsA1A1B1B2 + obsA1A1B2B2 + obsA1A2B1B1 + obsA1A2B1B2 + obsA1A2B2B2 + obsA2A2B1B1 + obsA2A2B1B2 + obsA2A2B2B2,
                     totalA1 = obsA1A1B1B1 + obsA1A1B1B2 + obsA1A1B2B2,
                     totalA2 = obsA2A2B1B1 + obsA2A2B1B2 + obsA2A2B2B2,
                     totalA1A2 = obsA1A2B1B1 + obsA1A2B1B2 + obsA1A2B2B2,
@@ -309,14 +309,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                     totalB1B2 = obsA1A1B1B2 + obsA1A2B1B2 + obsA2A2B1B2;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA1", totalobs / 4);
-            expValues.put("expA2", totalobs / 4);
-            expValues.put("expA1A2", totalobs * 2 / 4);
-            expValues.put("expB1", totalobs / 4);
-            expValues.put("expB2", totalobs / 4);
-            expValues.put("expB1B2", totalobs * 2 / 4);
+            expValues.put("expA1", totalobs / 4.0);
+            expValues.put("expA2", totalobs / 4.0);
+            expValues.put("expA1A2", totalobs * 2 / 4.0);
+            expValues.put("expB1", totalobs / 4.0);
+            expValues.put("expB2", totalobs / 4.0);
+            expValues.put("expB1B2", totalobs * 2 / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA1", totalA1);
             observedValues.put("obsA2", totalA2);
             observedValues.put("obsA1A2", totalA1A2);
@@ -325,8 +325,8 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsB1B2", totalB1B2);
             observedValues.put("total", totalobs);
 
-            double chiA = (Math.pow(totalA1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
-            double chiB = (Math.pow(totalB1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalB2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalB1B2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
+            double chiA = (Math.pow(totalA1 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA2 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA1A2 - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0));
+            double chiB = (Math.pow(totalB1 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalB2 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalB1B2 - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0));
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
             chiValues.put("chiAa", chiA);
@@ -335,15 +335,15 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiB > 5.99 ? "No" : "Yes"));
 
             if (chiA < 5.99 && chiB < 5.99) {
-                double expectedIndA1B1 = totalobs * 1 / 16,
-                        expectedIndA1B2 = totalobs * 1 / 16,
-                        expectedIndA1B1B2 = totalobs * 2 / 16,
-                        expectedIndA2B1 = totalobs * 1 / 16,
-                        expectedIndA2B2 = totalobs * 1 / 16,
-                        expectedIndA2B1B2 = totalobs * 2 / 16,
-                        expectedIndA1A2B1 = totalobs * 2 / 16,
-                        expectedIndA1A2B2 = totalobs * 2 / 16,
-                        expectedIndA1A2B1B2 = totalobs * 4 / 16;
+                double expectedIndA1B1 = totalobs * 1 / 16.0,
+                        expectedIndA1B2 = totalobs * 1 / 16.0,
+                        expectedIndA1B1B2 = totalobs * 2 / 16.0,
+                        expectedIndA2B1 = totalobs * 1 / 16.0,
+                        expectedIndA2B2 = totalobs * 1 / 16.0,
+                        expectedIndA2B1B2 = totalobs * 2 / 16.0,
+                        expectedIndA1A2B1 = totalobs * 2 / 16.0,
+                        expectedIndA1A2B2 = totalobs * 2 / 16.0,
+                        expectedIndA1A2B1B2 = totalobs * 4 / 16.0;
 
                 expValues.put("expectedIndA1B1", expectedIndA1B1);
                 expValues.put("expectedIndA1B2", expectedIndA1B2);
@@ -491,7 +491,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsA1A1B > 5000 || obsA1A2B > 5000 || obsA2A2B > 5000 || obsA1A1b > 5000 || obsA1A2b > 5000 || obsA2A2b > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsA1A1B + obsA1A2B + obsA2A2B + obsA1A1b + obsA1A2b + obsA2A2b,
+            int totalobs = obsA1A1B + obsA1A2B + obsA2A2B + obsA1A1b + obsA1A2b + obsA2A2b,
                     totalA1 = obsA1A1B + obsA1A1b,
                     totalA2 = obsA2A2B + obsA2A2b,
                     totalA1A2 = obsA1A2B + obsA1A2b,
@@ -499,13 +499,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                     totalb = obsA1A1b + obsA1A2b + obsA2A2b;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA1", totalobs / 4);
-            expValues.put("expA2", totalobs / 4);
-            expValues.put("expA1A2", totalobs * 2 / 4);
-            expValues.put("expB", totalobs * 3 / 4);
-            expValues.put("expb", totalobs / 4);
+            expValues.put("expA1", totalobs / 4.0);
+            expValues.put("expA2", totalobs / 4.0);
+            expValues.put("expA1A2", totalobs * 2 / 4.0);
+            expValues.put("expB", totalobs * 3 / 4.0);
+            expValues.put("expb", totalobs / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA1", totalA1);
             observedValues.put("obsA2", totalA2);
             observedValues.put("obsA1A2", totalA1A2);
@@ -513,8 +513,8 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsB2", totalb);
             observedValues.put("total", totalobs);
 
-            double chiA1A2 = (Math.pow(totalA1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
-            double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
+            double chiA1A2 = (Math.pow(totalA1 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA2 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA1A2 - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0));
+            double chiBb = (Math.pow(totalB - totalobs * 3 / 4.0, 2) / (totalobs * 3 / 4.0)) + (Math.pow(totalb - totalobs / 4.0, 2) / (totalobs / 4.0));
 
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
@@ -524,12 +524,12 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiBb > 5.99 ? "No" : "Yes"));
 
             if (chiA1A2 < 5.99 && chiBb < 5.99) {
-                double expectedIndA1B = totalobs * 3 / 16,
-                        expectedIndA1b = totalobs * 1 / 16,
-                        expectedIndA2B = totalobs * 3 / 16,
-                        expectedIndA2b = totalobs * 1 / 16,
-                        expectedIndA1A2B = totalobs * 6 / 16,
-                        expectedIndA1A2b = totalobs * 2 / 16;
+                double expectedIndA1B = totalobs * 3 / 16.0,
+                        expectedIndA1b = totalobs * 1 / 16.0,
+                        expectedIndA2B = totalobs * 3 / 16.0,
+                        expectedIndA2b = totalobs * 1 / 16.0,
+                        expectedIndA1A2B = totalobs * 6 / 16.0,
+                        expectedIndA1A2b = totalobs * 2 / 16.0;
 
                 expValues.put("expectedIndA1B", expectedIndA1B);
                 expValues.put("expectedIndA1b", expectedIndA1b);
@@ -664,7 +664,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsA1A3B > 5000 || obsA1A3b > 5000 || obsA1A4B > 5000 || obsA1A4b > 5000 || obsA2A3B > 5000 || obsA2A3b > 5000 || obsA2A4B > 5000 || obsA2A4b > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsA1A3B + obsA1A3b + obsA1A4B + obsA1A4b + obsA2A3B + obsA2A3b + obsA2A4B + obsA2A4b,
+        		int totalobs = obsA1A3B + obsA1A3b + obsA1A4B + obsA1A4b + obsA2A3B + obsA2A3b + obsA2A4B + obsA2A4b,
                     totalA1A3 = obsA1A3B + obsA1A3b,
                     totalA1A4 = obsA1A4B + obsA1A4b,
                     totalA2A3 = obsA2A3B + obsA2A3b,
@@ -674,14 +674,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                     totalb = obsA1A3b + obsA1A4b + obsA2A3b + obsA2A4b;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA1A3", totalobs / 4);
-            expValues.put("expA1A4", totalobs / 4);
-            expValues.put("expA2A3", totalobs / 4);
-            expValues.put("expA2A4", totalobs / 4);
-            expValues.put("expB", totalobs * 3 / 4);
-            expValues.put("expb", totalobs / 4);
+            expValues.put("expA1A3", totalobs / 4.0);
+            expValues.put("expA1A4", totalobs / 4.0);
+            expValues.put("expA2A3", totalobs / 4.0);
+            expValues.put("expA2A4", totalobs / 4.0);
+            expValues.put("expB", totalobs * 3 / 4.0);
+            expValues.put("expb", totalobs / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA1A3", totalA1A3);
             observedValues.put("obsA1A4", totalA1A4);
             observedValues.put("obsA2A3", totalA2A3);
@@ -691,8 +691,8 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsb", totalb);
             observedValues.put("total", totalobs);
 
-            double chiA1A2A3A4 = (Math.pow(totalA1A3 - (totalobs / 4), 2) / (totalobs / 4)) + (Math.pow(totalA1A4 - (totalobs / 4), 2) / (totalobs / 4)) + (Math.pow(totalA2A3 - (totalobs / 4), 2) / (totalobs / 4)) + (Math.pow(totalA2A4 - (totalobs / 4), 2) / (totalobs / 4));
-            double chiBb = (Math.pow(totalB - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totalb - totalobs / 4, 2) / (totalobs / 4));
+            double chiA1A2A3A4 = (Math.pow(totalA1A3 - (totalobs / 4.0), 2) / (totalobs / 4.0)) + (Math.pow(totalA1A4 - (totalobs / 4.0), 2) / (totalobs / 4.0)) + (Math.pow(totalA2A3 - (totalobs / 4.0), 2) / (totalobs / 4.0)) + (Math.pow(totalA2A4 - (totalobs / 4.0), 2) / (totalobs / 4.0));
+            double chiBb = (Math.pow(totalB - totalobs * 3 / 4.0, 2) / (totalobs * 3 / 4.0)) + (Math.pow(totalb - totalobs / 4.0, 2) / (totalobs / 4.0));
 
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
@@ -702,14 +702,14 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiBb > 3.84 ? "No" : "Yes"));
 
             if (chiA1A2A3A4 < 7.82 && chiBb < 3.84) {
-                double expectedIndA1A3B = totalobs * 3 / 16,
-                        expectedIndA1A3b = totalobs * 1 / 16,
-                        expectedIndA1A4B = totalobs * 3 / 16,
-                        expectedIndA1A4b = totalobs * 1 / 16,
-                        expectedIndA2A3B = totalobs * 3 / 16,
-                        expectedIndA2A3b = totalobs * 1 / 16,
-                        expectedIndA2A4B = totalobs * 3 / 16,
-                        expectedIndA2A4b = totalobs * 1 / 16;
+                double expectedIndA1A3B = totalobs * 3 / 16.0,
+                        expectedIndA1A3b = totalobs * 1 / 16.0,
+                        expectedIndA1A4B = totalobs * 3 / 16.0,
+                        expectedIndA1A4b = totalobs * 1 / 16.0,
+                        expectedIndA2A3B = totalobs * 3 / 16.0,
+                        expectedIndA2A3b = totalobs * 1 / 16.0,
+                        expectedIndA2A4B = totalobs * 3 / 16.0,
+                        expectedIndA2A4b = totalobs * 1 / 16.0;
 
                 expValues.put("expectedIndA1A3B", expectedIndA1A3B);
                 expValues.put("expectedIndA1A3b", expectedIndA1A3b);
@@ -854,7 +854,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsAB > 5000 || obsAb > 5000 || obsaB > 5000 || obsab > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsAB + obsAb + obsaB + obsab,
+        		int totalobs = obsAB + obsAb + obsaB + obsab,
                     totalA = obsAB + obsAb,
                     totala = obsaB + obsab,
                     totalAa = totalA + totala,
@@ -863,12 +863,12 @@ public class CTTwoLociImp implements CTTwoLoci{
                     totalBb = totalB + totalb;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA", totalobs * 3 / 4);
-            expValues.put("expa", totalobs / 4);
-            expValues.put("expB", totalobs * 2 / 4);
-            expValues.put("expb", totalobs * 2 / 4);
+            expValues.put("expA", totalobs * 3 / 4.0);
+            expValues.put("expa", totalobs / 4.0);
+            expValues.put("expB", totalobs * 2 / 4.0);
+            expValues.put("expb", totalobs * 2 / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA", totalA);
             observedValues.put("obsa", totala);
             observedValues.put("obsAa", totalAa);
@@ -877,8 +877,8 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsBb", totalBb);
             observedValues.put("total", totalobs);
 
-            double chiAa = (Math.pow(totalA - totalobs * 3 / 4, 2) / (totalobs * 3 / 4)) + (Math.pow(totala - totalobs / 4, 2) / (totalobs / 4));
-            double chiBb = (Math.pow(totalB - totalobs * 2 / 4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalb - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
+            double chiAa = (Math.pow(totalA - totalobs * 3 / 4.0, 2) / (totalobs * 3 / 4.0)) + (Math.pow(totala - totalobs / 4.0, 2) / (totalobs / 4.0));
+            double chiBb = (Math.pow(totalB - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0)) + (Math.pow(totalb - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0));
 
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
@@ -888,10 +888,10 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiBb > 3.84 ? "No" : "Yes"));
 
             if (chiAa < 3.84 && chiBb < 3.84) {
-                double expectedIndAB = totalobs * 3 / 8,
-                        expectedIndAb = totalobs * 3 / 8,
-                        expectedIndaB = totalobs * 1 / 8,
-                        expectedIndab = totalobs * 1 / 8;
+                double expectedIndAB = totalobs * 3 / 8.0,
+                        expectedIndAb = totalobs * 3 / 8.0,
+                        expectedIndaB = totalobs * 1 / 8.0,
+                        expectedIndab = totalobs * 1 / 8.0;
 
                 expValues.put("expectedIndAB", expectedIndAB);
                 expValues.put("expectedIndAb", expectedIndAb);
@@ -1008,7 +1008,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsA1A1B > 5000 || obsA1A2B > 5000 || obsA2A2B > 5000 || obsA1A1b > 5000 || obsA1A2b > 5000 || obsA2A2b > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsA1A1B + obsA1A2B + obsA2A2B + obsA1A1b + obsA1A2b + obsA2A2b,
+        		int totalobs = obsA1A1B + obsA1A2B + obsA2A2B + obsA1A1b + obsA1A2b + obsA2A2b,
                     totalA1 = obsA1A1B + obsA1A1b,
                     totalA2 = obsA2A2B + obsA2A2b,
                     totalA1A2 = obsA1A2B + obsA1A2b,
@@ -1016,13 +1016,13 @@ public class CTTwoLociImp implements CTTwoLoci{
                     totalb = obsA1A1b + obsA1A2b + obsA2A2b;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA1", totalobs * 1 / 4);
-            expValues.put("expA2", totalobs * 1 / 4);
-            expValues.put("expA1A2", totalobs * 2 / 4);
-            expValues.put("expB", totalobs * 2 / 4);
-            expValues.put("expb", totalobs * 2 / 4);
+            expValues.put("expA1", totalobs * 1 / 4.0);
+            expValues.put("expA2", totalobs * 1 / 4.0);
+            expValues.put("expA1A2", totalobs * 2 / 4.0);
+            expValues.put("expB", totalobs * 2 / 4.0);
+            expValues.put("expb", totalobs * 2 / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA1", totalA1);
             observedValues.put("obsA2", totalA2);
             observedValues.put("obsA1A2", totalA1A2);
@@ -1030,8 +1030,8 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsb", totalb);
             observedValues.put("total", totalobs);
 
-            double chiA1A2 = (Math.pow(totalA1 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A2 - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
-            double chiBb = (Math.pow(totalB - totalobs * 2 / 4, 2) / (totalobs * 2 / 4)) + (Math.pow(totalb - totalobs * 2 / 4, 2) / (totalobs * 2 / 4));
+            double chiA1A2 = (Math.pow(totalA1 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA2 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA1A2 - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0));
+            double chiBb = (Math.pow(totalB - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0)) + (Math.pow(totalb - totalobs * 2 / 4.0, 2) / (totalobs * 2 / 4.0));
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
             chiValues.put("chiAa", chiA1A2);
@@ -1040,12 +1040,12 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiBb > 5.99 ? "No" : "Yes"));
 
             if (chiA1A2 < 5.99 && chiBb < 5.99) {
-                double expectedIndA1B = totalobs / 8,
-                        expectedIndA1b = totalobs / 8,
-                        expectedIndA2B = totalobs / 8,
-                        expectedIndA2b = totalobs / 8,
-                        expectedIndA1A2B = totalobs * 2 / 8,
-                        expectedIndA1A2b = totalobs * 2 / 8;
+                double expectedIndA1B = totalobs / 8.0,
+                        expectedIndA1b = totalobs / 8.0,
+                        expectedIndA2B = totalobs / 8.0,
+                        expectedIndA2b = totalobs / 8.0,
+                        expectedIndA1A2B = totalobs * 2 / 8.0,
+                        expectedIndA1A2b = totalobs * 2 / 8.0;
 
                 expValues.put("expectedIndA1B", expectedIndA1B);
                 expValues.put("expectedIndA1b", expectedIndA1b);
@@ -1178,7 +1178,7 @@ public class CTTwoLociImp implements CTTwoLoci{
         if(obsA1A3B > 5000 || obsA1A3b > 5000 || obsA1A4B > 5000 || obsA1A4b > 5000 || obsA2A3B > 5000 || obsA2A3b > 5000 || obsA2A4B > 5000 || obsA2A4b > 5000){
             return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum value allowed is 5000").build();
         } else {
-            double totalobs = obsA1A3B + obsA1A3b + obsA1A4B + obsA1A4b + obsA2A3B + obsA2A3b + obsA2A4B + obsA2A4b,
+            int totalobs = obsA1A3B + obsA1A3b + obsA1A4B + obsA1A4b + obsA2A3B + obsA2A3b + obsA2A4B + obsA2A4b,
                     totalA1A3 = obsA1A3B + obsA1A3b,
                     totalA1A4 = obsA1A4B + obsA1A4b,
                     totalA2A3 = obsA2A3B + obsA2A3b,
@@ -1188,14 +1188,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                     totalb = obsA1A3b + obsA1A4b + obsA2A3b + obsA2A4b;
 
             Map<String, Double> expValues = new HashMap<>();
-            expValues.put("expA1A3", totalobs * 1 / 4);
-            expValues.put("expA1A4", totalobs * 1 / 4);
-            expValues.put("expA2A3", totalobs * 1 / 4);
-            expValues.put("expA2A4", totalobs * 1 / 4);
-            expValues.put("expB", totalobs * 2 / 4);
-            expValues.put("expb", totalobs * 2 / 4);
+            expValues.put("expA1A3", totalobs * 1 / 4.0);
+            expValues.put("expA1A4", totalobs * 1 / 4.0);
+            expValues.put("expA2A3", totalobs * 1 / 4.0);
+            expValues.put("expA2A4", totalobs * 1 / 4.0);
+            expValues.put("expB", totalobs * 2 / 4.0);
+            expValues.put("expb", totalobs * 2 / 4.0);
 
-            Map<String, Double> observedValues = new HashMap<>();
+            Map<String, Integer> observedValues = new HashMap<>();
             observedValues.put("obsA1A3", totalA1A3);
             observedValues.put("obsA1A4", totalA1A4);
             observedValues.put("obsA2A3", totalA2A3);
@@ -1205,7 +1205,7 @@ public class CTTwoLociImp implements CTTwoLoci{
             observedValues.put("obsb", totalb);
             observedValues.put("total", totalobs);
 
-            double chiA1A2A3A4 = (Math.pow(totalA1A3 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA1A4 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2A3 - totalobs / 4, 2) / (totalobs / 4)) + (Math.pow(totalA2A4 - totalobs / 4, 2) / (totalobs / 4));
+            double chiA1A2A3A4 = (Math.pow(totalA1A3 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA1A4 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA2A3 - totalobs / 4.0, 2) / (totalobs / 4.0)) + (Math.pow(totalA2A4 - totalobs / 4.0, 2) / (totalobs / 4.0));
             double chiBb = (Math.pow(totalB - totalobs / 2, 2) / (totalobs / 2)) + (Math.pow(totalb - totalobs / 2, 2) / (totalobs / 2));
             Map<String, Double> chiValues = new HashMap<>();
             Map<String, String> agree = new HashMap<>();
@@ -1215,14 +1215,14 @@ public class CTTwoLociImp implements CTTwoLoci{
             agree.put("chiBb", (chiBb > 3.84 ? "No" : "Yes"));
 
             if (chiA1A2A3A4 < 7.82 && chiBb < 3.84) {
-                double expectedIndA1A3B = totalobs / 8,
-                        expectedIndA1A3b = totalobs / 8,
-                        expectedIndA1A4B = totalobs / 8,
-                        expectedIndA1A4b = totalobs / 8,
-                        expectedIndA2A3B = totalobs / 8,
-                        expectedIndA2A3b = totalobs / 8,
-                        expectedIndA2A4B = totalobs / 8,
-                        expectedIndA2A4b = totalobs / 8;
+                double expectedIndA1A3B = totalobs / 8.0,
+                        expectedIndA1A3b = totalobs / 8.0,
+                        expectedIndA1A4B = totalobs / 8.0,
+                        expectedIndA1A4b = totalobs / 8.0,
+                        expectedIndA2A3B = totalobs / 8.0,
+                        expectedIndA2A3b = totalobs / 8.0,
+                        expectedIndA2A4B = totalobs / 8.0,
+                        expectedIndA2A4b = totalobs / 8.0;
 
                 expValues.put("expectedIndA1A3B", expectedIndA1A3B);
                 expValues.put("expectedIndA1A3b", expectedIndA1A3b);

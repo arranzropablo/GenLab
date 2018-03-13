@@ -14,15 +14,15 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsAB<=5000 && obsaB<=5000 && obsAb<=5000 && obsab<=5000){
             double total = obsAB+obsaB+obsAb+obsab;
-            double obsA = obsAB+obsAb;
-            double obsa = obsaB+obsab;
-            double obsB = obsAB+obsaB;
-            double obsb = obsAb+obsab;
+            int obsA = obsAB+obsAb;
+            int obsa = obsaB+obsab;
+            int obsB = obsAB+obsaB;
+            int obsb = obsAb+obsab;
             double expA = total * 3 / 4.0;
             double expa = total /4.0;
             double expB = total * 3/4.0;
@@ -70,10 +70,10 @@ public class CTEpistasiaImp implements CTEpistasia{
             expectedValues.put("expAb" , expAb);
             expectedValues.put("expaB" , expaB);
             expectedValues.put("expab" , expab);
-            expectedValues.put("expConAB" , expConAB);
-            expectedValues.put("expConAb" , expConAb);
-            expectedValues.put("expConaB" , expConaB);
-            expectedValues.put("expConab" , expConab);
+            expectedValues.put("contAB" , expConAB);
+            expectedValues.put("contAb" , expConAb);
+            expectedValues.put("contaB" , expConaB);
+            expectedValues.put("contab" , expConab);
             resultValues.put("chiA" , chiA);
             resultValues.put("chiB" , chiB);
             resultValues.put("chiCon" , chiCon);
@@ -102,7 +102,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsAB<=5000 && obsAb<=5000 && obsaBab<=5000){
@@ -146,7 +146,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsaB<=5000 && obsab<=5000 && obsABAb<=5000){
@@ -190,7 +190,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsAB<=5000 && obsab<=5000 && obsAbaB<=5000){
@@ -235,7 +235,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsAB<=5000 && obsAaaBab<=5000){
@@ -277,7 +277,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsab<=5000 && obsABAbaB<=5000){
@@ -319,7 +319,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obsaB<=5000 && obsABAbab<=5000){
@@ -361,7 +361,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obs6<=5000 && obs3a<=5000 && obs3b<=5000 && obs4<=5000){
@@ -407,7 +407,7 @@ public class CTEpistasiaImp implements CTEpistasia{
        Map<String, String> agree = new HashMap<>();
 		Map<String, Double> resultValues = new HashMap<>();
 		Map<String, Double> expectedValues = new HashMap<>();
-		Map<String, Double> observedValues = new HashMap<>();
+		Map<String, Integer> observedValues = new HashMap<>();
 		Map<String, String> phases = new HashMap<>();
 		String result = "";
 		if(obs10<=5000 && obs3a<=5000 && obs3b<=5000){
