@@ -1,5 +1,7 @@
 package com.genlab.serverapplication.models;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,9 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FeedbackItem {
-	private int idTest;
-	private int idQ;
-	private int idA;
-
+public class FeedbackObjectView {
+	private String user;
+	private List<FeedbackItemView> item;
 }

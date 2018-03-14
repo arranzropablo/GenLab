@@ -17,44 +17,33 @@
 			<h1>Feedback results</h1>
 			<div th:each="feedback : ${feedback_list}">
 				<p class="userFeedback" th:text="${feedback.user}"></p>
-				<table id="RightTable" class="table col-6">
-					<thead class="thead-dark">
-						<tr>
-							<th colspan="3">Right</th>
-						</tr>
-						<tr>
-							<th>TestId</th>
-							<th>QuestionId</th>
-							<th>AnswerId</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="table-success" th:each="right : ${feedback.right}">
-							<td th:text="${right.idTest}"></td>
-							<td th:text="${right.idQ}"></td>
-							<td th:text="${right.idA}"></td>
-						</tr>
-					</tbody>
-				</table>
-				<table id="WrongTable" class="table col-6">
-					<thead class="thead-dark">
-						<tr>
-							<th colspan="3">Wrong</th>
-						</tr>
-						<tr>
-							<th>TestId</th>
-							<th>QuestionId</th>
-							<th>AnswerId</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="table-danger" th:each="wrong : ${feedback.wrong}">
-							<td th:text="${wrong.idTest}"></td>
-							<td th:text="${wrong.idQ}"></td>
-							<td th:text="${wrong.idA}"></td>
-						</tr>
-					</tbody>
-				</table>
+				<div th:each="item : ${feedback.item}">
+					<p th:text="${item.testName}"></p>
+					<table id="RightTable" class="table col-6">
+						<thead class="thead-dark">
+							<tr>
+								<th colspan="3">Right answers</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="table-success">
+								<td th:text="${item.numRightAnswers}"></td>
+							</tr>
+						</tbody>
+					</table>
+					<table id="WrongTable" class="table col-6">
+						<thead class="thead-dark">
+							<tr>
+								<th colspan="3">Wrong answers</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="table-danger">
+								<td th:text="${item.numWrongAnswers}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

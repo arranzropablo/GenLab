@@ -11,9 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class FeedbackItem {
-	private int idTest;
-	private int idQ;
-	private int idA;
+public class FeedbackItemView {
+	private String testName;
+	private int numRightAnswers;
+	private int numWrongAnswers;
 
 }

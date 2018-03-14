@@ -33,18 +33,6 @@ import com.genlab.serverapplication.services.theoryService.TheoryService;
 import com.genlab.serverapplication.services.userService.UserService;
 import com.google.gson.Gson;
 
-import org.json.JSONObject;
-import org.skyscreamer.jsonassert.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Controller
 @RequestMapping("/api/v1")
 @CrossOrigin
