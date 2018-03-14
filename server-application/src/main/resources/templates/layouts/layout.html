@@ -31,9 +31,15 @@
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li th:each="link : ${linkSectionProperties.links}" class="nav-item">
-	        <a class="nav-link" th:href="'/home' + ${link.link}" 
+	        <a class="nav-link" th:href="'/home' + ${link.link}"
 	        					th:text="${link.title}"
 	        					th:style="${(#httpServletRequest.getServletPath() == '/home' + link.link || '/' + session.currentSection.toString().toLowerCase() == link.link) ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}"></a>
+	      </li>
+	      <li>
+	      	<a class="nav-link" th:href="@{/setpriority}" 
+	      		th:style="${(#httpServletRequest.getServletPath() == '/setpriority') ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}">
+	      		Set priority
+	      	</a>
 	      </li>
 	     <!-- <li th:text="'Bienvenido ' +${username}"></li> -->
 	    </ul>
