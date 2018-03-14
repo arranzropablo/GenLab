@@ -1,6 +1,7 @@
 package com.genlab.serverapplication.services.userService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -47,6 +48,11 @@ public class UserServiceImpl implements UserService, UserDetailsService  {
 		}catch(Exception e) {
 			throw new UsernameNotFoundException("No such user: " + email);
 		}
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return (List<User>) userRepository.findAll();
 	}
 
 }

@@ -27,6 +27,8 @@ public class User implements Serializable{
 	private String password;
 	@Column(name="role")
 	private String roles;
+	@Column(name="feedback")
+	private String feedback;
 
 	private static final long serialVersionUID = -2021877520386437191L;
 	
