@@ -26,9 +26,11 @@
 			<div class="mainContentHome">
 				<h2>Set priority</h2>
 				<ul id="sortable">
-					<li th:each="link : ${linkSectionProperties.links}" class="ui-state-default" th:text="${link.title}"></li>
+					<li th:each="section : ${sectionlist}" class="ui-state-default" th:id="${section.id}" th:text="${section.text}"></li>
 				</ul>
+				<button type="button" class="btn btn-success" id="savePriority">Save Priority</button>
 			</div>
+			<script src="../static/js/priority.js" th:src="@{/js/priority.js}"></script>
 		</div>
 	</body>
 </html>

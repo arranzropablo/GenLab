@@ -10,7 +10,6 @@ $("#calcButton").on('click', function(event){
 	    obj[$(input).attr("id")] = $(input).val();
     });
 
-    let responseText;
      $.ajax({
         url: "/calculationtools/result?CTid=" + $("#CTid").val(),
         type: "POST",
@@ -22,6 +21,4 @@ $("#calcButton").on('click', function(event){
             document.close();
         }
     });
-
-
 });

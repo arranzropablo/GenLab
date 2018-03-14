@@ -21,10 +21,10 @@ import com.genlab.serverapplication.services.problemsService.ProblemsService;
 @Controller
 @RequestMapping("/problems")
 public class ProblemsController {
-	
+
 	@Autowired
 	private ProblemsService service;
-	
+
 	@GetMapping("")
 	public String getProblems(HttpServletRequest request, Model model, HttpSession session) {
 		List <Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
@@ -46,10 +46,10 @@ public class ProblemsController {
 		List<Problem> problem_list = service.getProblemsBySection(((SectionsMapping)session.getAttribute("currentSection")).getId());
 		model.addAttribute("problem_list", problem_list);
 		model.addAttribute("actual_problem", Problem.builder().id(-1).build());
-		
+
 		return "problems";
 	}
-	
+
 	@PostMapping("/save/{id}")
 	public String saveProblem(@RequestParam("problem-name") String nombre, @PathVariable("id") int id, @RequestParam("problem-content") String content, HttpServletRequest request, Model model, HttpSession session) {
 		Problem newProblem = Problem.builder().nombre(nombre).contenido(content).sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).build();
@@ -71,5 +71,4 @@ public class ProblemsController {
 		}
 
 	}
-
 }
