@@ -138,7 +138,7 @@ public class CTLinkageImp implements CTLinkage{
 								}
 								distance = rf * 100;
 								lodZ = Math.log((((Math.pow(1 - rf, (obsAB + obsab))) * (Math.pow(rf, (obsAb + obsaB)))
-										/ Math.pow(0.5, total))) / Math.log(10));
+										/ Math.pow(0.5, total)))) / Math.log(10);
 								result = "The loci A,a and B,b are linked";
 								resultValues.put("rf", rf);
 								resultValues.put("distance", distance);
