@@ -68,76 +68,82 @@ public class CalculationToolsController {
 	}
 
     @PostMapping("/result")
-    //TODO si se queda así para eso uso la api qe es exactamente lo mismo, lo ideal sería qe en este metodo sse metiera todo en el modelo y qe se devolviera la plantilla con todo en su sitio
+//TODO el switch debería meterlo en una función aparte
     public String getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values, Model model, HttpSession session, RedirectAttributes redirect){
-        CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();
+    		CTResult result = getCalcResult(CTid, values);
+        redirect.addFlashAttribute("result", result);
+        return "redirect:/calculationtools/" + CTid;
+    }
+    
+    public CTResult getCalcResult(String CTid, HashMap<String, Integer> values) {
+		CTResult result = CTResult.builder().feedbackMessage("Error").cleanInputs(true).build();
         switch(Integer.parseInt(String.valueOf(CTid.toCharArray()[0]))){
             case 0:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
                         result = twoLociService.testcross(values.get("AB"),
-                                values.get("Ab"),
-                                values.get("aB"),
-                                values.get("ab"));
+                                                    values.get("Ab"),
+                                                    values.get("aB"),
+                                                    values.get("ab"));
                         break;
                     case 1:
                         result = twoLociService.f2Dominance(values.get("AB"),
-                                values.get("Ab"),
-                                values.get("aB"),
-                                values.get("ab"));
+                                                    values.get("Ab"),
+                                                    values.get("aB"),
+                                                    values.get("ab"));
                         break;
                     case 2:
                         result = twoLociService.f2coDominance(values.get("A1A1B1B1"),
-                                values.get("A1A1B1B2"),
-                                values.get("A1A1B2B2"),
-                                values.get("A1A2B1B1"),
-                                values.get("A1A2B1B2"),
-                                values.get("A1A2B2B2"),
-                                values.get("A2A2B1B1"),
-                                values.get("A2A2B1B2"),
-                                values.get("A2A2B2B2"));
+                                                        values.get("A1A1B1B2"),
+                                                        values.get("A1A1B2B2"),
+                                                        values.get("A1A2B1B1"),
+                                                        values.get("A1A2B1B2"),
+                                                        values.get("A1A2B2B2"),
+                                                        values.get("A2A2B1B1"),
+                                                        values.get("A2A2B1B2"),
+                                                        values.get("A2A2B2B2"));
                         break;
                     case 3:
                         result = twoLociService.f2coDom2dom(values.get("A1A1B"),
-                                values.get("A1A2B"),
-                                values.get("A2A2B"),
-                                values.get("A1A1b"),
-                                values.get("A1A2b"),
-                                values.get("A2A2b"));
+                                                    values.get("A1A2B"),
+                                                    values.get("A2A2B"),
+                                                    values.get("A1A1b"),
+                                                    values.get("A1A2b"),
+                                                    values.get("A2A2b"));
                         break;
                     case 4:
                         result = twoLociService.f2coDom4dom(values.get("A1A3B"),
-                                values.get("A1A3b"),
-                                values.get("A1A4B"),
-                                values.get("A1A4b"),
-                                values.get("A2A3B"),
-                                values.get("A2A3b"),
-                                values.get("A2A4B"),
-                                values.get("A2A4b"));
+                                                    values.get("A1A3b"),
+                                                    values.get("A1A4B"),
+                                                    values.get("A1A4b"),
+                                                    values.get("A2A3B"),
+                                                    values.get("A2A3b"),
+                                                    values.get("A2A4B"),
+                                                    values.get("A2A4b"));
                         break;
                     case 5:
                         result = twoLociService.f2TestcrossDom(values.get("AB"),
-                                values.get("Ab"),
-                                values.get("aB"),
-                                values.get("ab"));
+                                                        values.get("Ab"),
+                                                        values.get("aB"),
+                                                        values.get("ab"));
                         break;
                     case 6:
                         result = twoLociService.f2Testcross2Dom(values.get("A1A1B"),
-                                values.get("A1A2B"),
-                                values.get("A2A2B"),
-                                values.get("A1A1b"),
-                                values.get("A1A2b"),
-                                values.get("A2A2b"));
+                                                        values.get("A1A2B"),
+                                                        values.get("A2A2B"),
+                                                        values.get("A1A1b"),
+                                                        values.get("A1A2b"),
+                                                        values.get("A2A2b"));
                         break;
                     case 7:
                         result = twoLociService.f2Testcross4Dom(values.get("A1A3B"),
-                                values.get("A1A3b"),
-                                values.get("A1A4B"),
-                                values.get("A1A4b"),
-                                values.get("A2A3B"),
-                                values.get("A2A3b"),
-                                values.get("A2A4B"),
-                                values.get("A2A4b"));
+                                                        values.get("A1A3b"),
+                                                        values.get("A1A4B"),
+                                                        values.get("A1A4b"),
+                                                        values.get("A2A3B"),
+                                                        values.get("A2A3b"),
+                                                        values.get("A2A4B"),
+                                                        values.get("A2A4b"));
                         break;
                 }
                 break;
@@ -145,88 +151,88 @@ public class CalculationToolsController {
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
                         result = oneLocusService.testcross(values.get("A"),
-                                values.get("a"));
+                                                    values.get("a"));
                         break;
                     case 1:
                         result = oneLocusService.f2Dominance(values.get("A"),
-                                values.get("a"));
+                                                    values.get("a"));
                         break;
                     case 2:
-                        result = oneLocusService.f2CoDominance(values.get("AA"),
-                                values.get("Aa"),
-                                values.get("aa"));
+                        result = oneLocusService.f2CoDominance(values.get("A1A1"),
+                                                        values.get("A1A2"),
+                                                        values.get("A2A2"));
                         break;
                     case 3:
                         result = oneLocusService.coDominance3Alleles(values.get("A1A1"),
-                                values.get("A1A2"),
-                                values.get("A1A3"),
-                                values.get("A2A3"));
+                                                            values.get("A1A2"),
+                                                            values.get("A1A3"),
+                                                            values.get("A2A3"));
                         break;
                     case 4:
                         result = oneLocusService.coDominance4Alleles(values.get("A1A3"),
-                                values.get("A1A4"),
-                                values.get("A2A3"),
-                                values.get("A2A4"));
+                                                            values.get("A1A4"),
+                                                            values.get("A2A3"),
+                                                            values.get("A2A4"));
                         break;
                     case 5:
                         result = oneLocusService.lethalGenes(values.get("AA"),
-                                values.get("Aa"));
+                                                    values.get("Aa"));
                         break;
                 }
                 break;
             case 2:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
-	                case 0:
-	                    result = linkageService.testcross2Loci(values.get("AB"),
-	                                                    values.get("Ab"),
-	                                                    values.get("aB"),
-	                                                    values.get("ab"));
-	                    break;
-	                case 1:
-	                    result = linkageService.f22LociDominance(values.get("AB"),
-	                                                    values.get("Ab"),
-	                                                    values.get("aB"),
-	                                                    values.get("ab"));
-	                    break;
-	                case 2:
-	                    result = linkageService.f22LociCodominance(values.get("A1A1B1B1"),
-	                                                        values.get("A1A1B1B2"),
-	                                                        values.get("A1A1B2B2"),
-	                                                        values.get("A1A2B1B1"),
-	                                                        values.get("A1A2B1B2"),
-	                                                        values.get("A1A2B2B2"),
-	                                                        values.get("A2A2B1B1"),
-	                                                        values.get("A2A2B1B2"),
-	                                                        values.get("A2A2B2B2"));
-	                    break;
-	                case 3:
-	                    result = linkageService.testcross3Loci(values.get("ABC"),
-	                                                    values.get("abc"),
-	                                                    values.get("ABc"),
-	                                                    values.get("abC"),
-	                                                    values.get("aBC"),
-	                                                    values.get("Abc"),
-	                                                    values.get("AbC"),
-	                                                    values.get("aBc"));
-	                    break;
-	                case 4:
-	                    result = linkageService.testcrossDM(values.get("r1"),
-	                                                values.get("tOs"));
-	                    break;
-	                case 5:
-	                    result = linkageService.dominanceDM(values.get("r1"),
-	                                                values.get("tOs"));
-	                    break;
-	                case 6:
-	                    result = linkageService.codominanceDM(values.get("r1"),
-	                                                    values.get("tOs"));
-	                    break;
-	                case 7:
-	                    result = linkageService.tresLociDM(values.get("r1"),
-	                                                    values.get("r2"),
-	                                                    values.get("cOc"),
-	                                                    values.get("tOs"));
-	                    break;
+                    case 0:
+                        result = linkageService.testcross2Loci(values.get("AB"),
+                                                        values.get("Ab"),
+                                                        values.get("aB"),
+                                                        values.get("ab"));
+                        break;
+                    case 1:
+                        result = linkageService.f22LociDominance(values.get("AB"),
+                                                        values.get("Ab"),
+                                                        values.get("aB"),
+                                                        values.get("ab"));
+                        break;
+                    case 2:
+                        result = linkageService.f22LociCodominance(values.get("A1A1B1B1"),
+                                                            values.get("A1A1B1B2"),
+                                                            values.get("A1A1B2B2"),
+                                                            values.get("A1A2B1B1"),
+                                                            values.get("A1A2B1B2"),
+                                                            values.get("A1A2B2B2"),
+                                                            values.get("A2A2B1B1"),
+                                                            values.get("A2A2B1B2"),
+                                                            values.get("A2A2B2B2"));
+                        break;
+                    case 3:
+                        result = linkageService.testcross3Loci(values.get("ABC"),
+                                                        values.get("abc"),
+                                                        values.get("ABc"),
+                                                        values.get("abC"),
+                                                        values.get("aBC"),
+                                                        values.get("Abc"),
+                                                        values.get("AbC"),
+                                                        values.get("aBc"));
+                        break;
+                    case 4:
+                        result = linkageService.testcrossDM(values.get("r1"),
+                                                    values.get("tOs"));
+                        break;
+                    case 5:
+                        result = linkageService.dominanceDM(values.get("r1"),
+                                                    values.get("tOs"));
+                        break;
+                    case 6:
+                        result = linkageService.codominanceDM(values.get("r1"),
+                                                        values.get("tOs"));
+                        break;
+                    case 7:
+                        result = linkageService.tresLociDM(values.get("r1"),
+                                                        values.get("r2"),
+                                                        values.get("cOc"),
+                                                        values.get("tOs"));
+                        break;
                 }
                 break;
             case 3:
@@ -281,25 +287,24 @@ public class CalculationToolsController {
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
                         result = polyhybridService.polyhybrid(values.get("n"),
-                                values.get("h"),
-                                values.get("d"),
-                                values.get("r"),
-                                values.get("D"),
-                                values.get("R"),
-                                values.get("T"));
+                                                        values.get("h"),
+                                                        values.get("d"),
+                                                        values.get("r"),
+                                                        values.get("D"),
+                                                        values.get("R"),
+                                                        values.get("T"));
                         break;
                     case 1:
                         result = polyhybridService.multiplealleles(values.get("locus1"),
-                                values.get("locus2"),
-                                values.get("locus3"),
-                                values.get("locus4"),
-                                values.get("locus5"));
+                                                            values.get("locus2"),
+                                                            values.get("locus3"),
+                                                            values.get("locus4"),
+                                                            values.get("locus5"));
                         break;
                 }
                 break;
         }
-        redirect.addFlashAttribute("result", result);
-        return "redirect:/calculationtools/" + CTid;
-    }
+        return result;
+	}
 
 }
