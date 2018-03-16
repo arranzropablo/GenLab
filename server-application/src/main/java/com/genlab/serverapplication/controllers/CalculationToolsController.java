@@ -1,5 +1,6 @@
 package com.genlab.serverapplication.controllers;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -68,9 +69,20 @@ public class CalculationToolsController {
 	}
 
     @PostMapping("/result")
-//TODO el switch debería meterlo en una función aparte
     public String getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values, Model model, HttpSession session, RedirectAttributes redirect){
     		CTResult result = getCalcResult(CTid, values);
+    		
+    		//Formateamos los esperados y los resultados para que tengan 2 decimales
+    		DecimalFormat df2 = new DecimalFormat(".##");
+    		
+    		result.getExpectedValues().keySet().stream().forEach(key ->{
+    			result.getExpectedValues().put(key, Double.parseDouble(df2.format(result.getExpectedValues().get(key))));
+    		});
+    		
+    		result.getResultValues().keySet().stream().forEach(key ->{
+    			result.getResultValues().put(key, Double.parseDouble(df2.format(result.getResultValues().get(key))));
+    		});
+    		
         redirect.addFlashAttribute("result", result);
         return "redirect:/calculationtools/" + CTid;
     }
@@ -304,6 +316,7 @@ public class CalculationToolsController {
                 }
                 break;
         }
+        
         return result;
 	}
 

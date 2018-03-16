@@ -100,10 +100,10 @@ public class CTLinkageImp implements CTLinkage{
 							agree.put("chiLink", (chiInd > 3.841 ? "No" : "Yes"));
 							if (chiInd < 7.82) { result = "The loci A,a and B,b are independent"; }
 						}
-						expConAB = (obsA * obsB) / total;
-						expConAb = (obsA * obsb) / total;
-						expConaB = (obsa * obsB) / total;
-						expConab = (obsa * obsb) / total;
+						expConAB = (obsA * obsB) / (double)total;
+						expConAb = (obsA * obsb) / (double)total;
+						expConaB = (obsa * obsB) / (double)total;
+						expConab = (obsa * obsb) / (double)total;
 						expectedValues.put("contAB", expConAB);
 						expectedValues.put("contAb", expConAb);
 						expectedValues.put("contaB", expConaB);
@@ -130,11 +130,11 @@ public class CTLinkageImp implements CTLinkage{
 								if ((chiCont >= 3.841) && (obsAB > obsAb)) {
 									phases.put("phaseA", "Coupling");
 									phases.put("phaseB", "AB/ab");
-									rf = (obsAb + obsaB) / total;
+									rf = (obsAb + obsaB) / (double)total;
 								} else {
 									phases.put("phaseA", "Repulsion");
 									phases.put("phaseB", "Ab/aB");
-									rf = (obsAB + obsab) / total;
+									rf = (obsAB + obsab) / (double)total;
 								}
 								distance = rf * 100;
 								lodZ = Math.log((((Math.pow(1 - rf, (obsAB + obsab))) * (Math.pow(rf, (obsAb + obsaB)))
@@ -149,10 +149,10 @@ public class CTLinkageImp implements CTLinkage{
 						}
 					}
 				} else {
-					expConAB = (obsA * obsB) / total;
-					expConAb = (obsA * obsb) / total;
-					expConaB = (obsa * obsB) / total;
-					expConab = (obsa * obsb) / total;
+					expConAB = (obsA * obsB) / (double)total;
+					expConAb = (obsA * obsb) / (double)total;
+					expConaB = (obsa * obsB) / (double)total;
+					expConab = (obsa * obsb) / (double)total;
 					expectedValues.put("contAB", expConAB);
 					expectedValues.put("contAb", expConAb);
 					expectedValues.put("contaB", expConaB);
@@ -180,11 +180,11 @@ public class CTLinkageImp implements CTLinkage{
 							if ((chiCont >= 3.841) && (obsAB > obsAb)) {
 								phases.put("phaseA", "Coupling");
 								phases.put("phaseB", "AB/ab");
-								rf = (obsAb + obsaB) / total;
+								rf = (obsAb + obsaB) / (double)total;
 							} else {
 								phases.put("phaseA", "Repulsion");
 								phases.put("phaseB", "Ab/aB");
-								rf = (obsAB + obsab) / total;
+								rf = (obsAB + obsab) / (double)total;
 							}
 							distance = rf * 100;
 							lodZ = Math.log((((Math.pow(1 - rf, (obsAB + obsab))) * (Math.pow(rf, (obsAb + obsaB)))
@@ -294,10 +294,10 @@ public class CTLinkageImp implements CTLinkage{
 						resultValues.put("chiLink", chiLink);
 						agree.put("chiLink", (chiInde > 3.841 ? "No" : "Yes"));
 
-						expConAB = (obsA * obsB) / total;
-						expConAb = (obsA * obsb) / total;
-						expConaB = (obsa * obsB) / total;
-						expConab = (obsa * obsb) / total;
+						expConAB = (obsA * obsB) / (double)total;
+						expConAb = (obsA * obsb) / (double)total;
+						expConaB = (obsa * obsB) / (double)total;
+						expConab = (obsa * obsb) / (double)total;
 						expectedValues.put("contAB", expConAB);
 						expectedValues.put("contAb", expConAb);
 						expectedValues.put("contaB", expConaB);
@@ -354,10 +354,10 @@ public class CTLinkageImp implements CTLinkage{
 						return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 					}
 				} else {
-					expConAB = (obsA * obsB) / total;
-					expConAb = (obsA * obsb) / total;
-					expConaB = (obsa * obsB) / total;
-					expConab = (obsa * obsb) / total;
+					expConAB = (obsA * obsB) / (double)total;
+					expConAb = (obsA * obsb) / (double)total;
+					expConaB = (obsa * obsB) / (double)total;
+					expConab = (obsa * obsb) / (double)total;
 					expectedValues.put("contAB", expConAB);
 					expectedValues.put("contAb", expConAb);
 					expectedValues.put("contaB", expConaB);
@@ -543,15 +543,15 @@ public class CTLinkageImp implements CTLinkage{
 					if (chiInde < 15.51) {
 						result = "The loci A₁A₂ and B₁B₂ are independent";
 					}
-					expConA1B1 = (obsA1 * obsB1) / total;
-					expConA1B2 = (obsA1 * obsB2) / total;
-					expConA1B1B2 = (obsA1 * obsB1B2) / total;
-					expConA2B1 = (obsA2 * obsB1) / total;
-					expConA2B2 = (obsA2 * obsB2) / total;
-					expConA2B1B2 = (obsA2 * obsB1B2) / total;
-					expConA1A2B1 = (obsA1A2 * obsB1) / total;
-					expConA1A2B2 = (obsA1A2 * obsB2) / total;
-					expConA1A2B1B2 = (obsA1A2 * obsB1B2) / total;
+					expConA1B1 = (obsA1 * obsB1) / (double)total;
+					expConA1B2 = (obsA1 * obsB2) / (double)total;
+					expConA1B1B2 = (obsA1 * obsB1B2) / (double)total;
+					expConA2B1 = (obsA2 * obsB1) / (double)total;
+					expConA2B2 = (obsA2 * obsB2) / (double)total;
+					expConA2B1B2 = (obsA2 * obsB1B2) / (double)total;
+					expConA1A2B1 = (obsA1A2 * obsB1) / (double)total;
+					expConA1A2B2 = (obsA1A2 * obsB2) / (double)total;
+					expConA1A2B1B2 = (obsA1A2 * obsB1B2) / (double)total;
 					resultValues.put("contA1B1", expConA1B1);
 					resultValues.put("contA1B1B2", expConA1B1B2);
 					resultValues.put("contA1B2", expConA1B2);
@@ -594,11 +594,11 @@ public class CTLinkageImp implements CTLinkage{
 						result = "The loci A₁A₂ and B₁B₂ are independent";
 					} else {
 						if (chiCont > 9.49 && obsA1A1B1B1 > obsA1A1B2B2 && obsA2A2B2B2 > obsA2A2B1B1) {
-							rf = ((2 * (obsA1A1B2B2 + obsA2A2B1B1)) + ((obsA1A1B1B1 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
+							rf = ((2 * (obsA1A1B2B2 + obsA2A2B1B1)) + ((obsA1A1B1B1 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / (double)total;
 							phases.put("phaseA", "Coupling");
 							phases.put("phaseB", "A₁B₁/A₂B₂");
 						} else {
-							rf = ((2 * (obsA1A1B1B1 + obsA2A2B2B2)) + ((obsA1A1B1B2 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
+							rf = ((2 * (obsA1A1B1B1 + obsA2A2B2B2)) + ((obsA1A1B1B2 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / (double)total;
 							phases.put("phaseA", "Repulsion");
 							phases.put("phaseB", "A₁B₂/A₂B₁");
 						}
@@ -611,15 +611,15 @@ public class CTLinkageImp implements CTLinkage{
 					return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 				}
 			} else {
-				expConA1B1 = (obsA1 * obsB1) / total;
-				expConA1B2 = (obsA1 * obsB2) / total;
-				expConA1B1B2 = (obsA1 * obsB1B2) / total;
-				expConA2B1 = (obsA2 * obsB1) / total;
-				expConA2B2 = (obsA2 * obsB2) / total;
-				expConA2B1B2 = (obsA2 * obsB1B2) / total;
-				expConA1A2B1 = (obsA1A2 * obsB1) / total;
-				expConA1A2B2 = (obsA1A2 * obsB2) / total;
-				expConA1A2B1B2 = (obsA1A2 * obsB1B2) / total;
+				expConA1B1 = (obsA1 * obsB1) / (double)total;
+				expConA1B2 = (obsA1 * obsB2) / (double)total;
+				expConA1B1B2 = (obsA1 * obsB1B2) / (double)total;
+				expConA2B1 = (obsA2 * obsB1) / (double)total;
+				expConA2B2 = (obsA2 * obsB2) / (double)total;
+				expConA2B1B2 = (obsA2 * obsB1B2) / (double)total;
+				expConA1A2B1 = (obsA1A2 * obsB1) / (double)total;
+				expConA1A2B2 = (obsA1A2 * obsB2) / (double)total;
+				expConA1A2B1B2 = (obsA1A2 * obsB1B2) / (double)total;
 				resultValues.put("contA1B1", expConA1B1);
 				resultValues.put("contA1B1B2", expConA1B1B2);
 				resultValues.put("contA1B2", expConA1B2);
@@ -662,11 +662,11 @@ public class CTLinkageImp implements CTLinkage{
 					result = "The loci A₁A₂ and B₁B₂ are independent";
 				} else {
 					if (chiCont > 9.49 && obsA1A1B1B1 > obsA1A1B2B2 && obsA2A2B2B2 > obsA2A2B1B1) {
-						rf = ((2 * (obsA1A1B2B2 + obsA2A2B1B1)) + ((obsA1A1B1B1 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
+						rf = ((2 * (obsA1A1B2B2 + obsA2A2B1B1)) + ((obsA1A1B1B1 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / (double)total;
 						phases.put("phaseA", "Coupling");
 						phases.put("phaseB", "A₁B₁/A₂B₂");
 					} else {
-						rf = ((2 * (obsA1A1B1B1 + obsA2A2B2B2)) + ((obsA1A1B1B2 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / total;
+						rf = ((2 * (obsA1A1B1B1 + obsA2A2B2B2)) + ((obsA1A1B1B2 + obsA2A2B1B2 + obsA1A2B1B1 + obsA1A2B2B2) / 2)) / (double)total;
 						phases.put("phaseA", "Repulsion");
 						phases.put("phaseB", "A₁B₂/A₂B₁");
 					}
@@ -790,18 +790,18 @@ public class CTLinkageImp implements CTLinkage{
 				expectedValues.put("expIndBc", expInBc);
 				expectedValues.put("expIndbc", expInbc);
 				expectedValues.put("expIndbC", expInbC);
-				expConAB = (obsA * obsB) / total;
-				expConAb = (obsA * obsb) / total;
-				expConaB = (obsa * obsB) / total;
-				expConab = (obsa * obsb) / total;
-				expConAC = (obsA * obsC) / total;
-				expConAc = (obsA * obsc) / total;
-				expConaC = (obsa * obsC) / total;
-				expConac = (obsa * obsc) / total;
-				expConBC = (obsB * obsC) / total;
-				expConBc = (obsB * obsc) / total;
-				expConbc = (obsb * obsc) / total;
-				expConbC = (obsb * obsC) / total;
+				expConAB = (obsA * obsB) / (double)total;
+				expConAb = (obsA * obsb) / (double)total;
+				expConaB = (obsa * obsB) / (double)total;
+				expConab = (obsa * obsb) / (double)total;
+				expConAC = (obsA * obsC) / (double)total;
+				expConAc = (obsA * obsc) / (double)total;
+				expConaC = (obsa * obsC) / (double)total;
+				expConac = (obsa * obsc) / (double)total;
+				expConBC = (obsB * obsC) / (double)total;
+				expConBc = (obsB * obsc) / (double)total;
+				expConbc = (obsb * obsc) / (double)total;
+				expConbC = (obsb * obsC) / (double)total;
 				expectedValues.put("contAB", expConAB);
 				expectedValues.put("contAb", expConAb);
 				expectedValues.put("contaB", expConaB);
@@ -858,37 +858,37 @@ public class CTLinkageImp implements CTLinkage{
 					return CTResult.builder().cleanInputs(true).feedbackMessage("An expected value is less than 5").build();
 				}
 				if (chiAB >= 3.841 && obsAB > obsAb) {
-					rfAB = (obsAb + obsaB) / total;
+					rfAB = (obsAb + obsaB) / (double)total;
 					distAB = rfAB * 100;
 					lodzAB = Math.log((((Math.pow(1 - rfAB, (obsAB + obsab))) * (Math.pow(rfAB, (obsAb + obsaB)))
 							/ Math.pow(0.5, total))) / Math.log(10));
 				}
 				if (chiAB >= 3.841 && obsAB < obsAb) {
-					rfAB = (obsAB + obsab) / total;
+					rfAB = (obsAB + obsab) / (double)total;
 					distAB = rfAB * 100;
 					lodzAB = Math.log((((Math.pow(1 - rfAB, (obsAb + obsaB))) * (Math.pow(rfAB, (obsAB + obsab)))
 							/ Math.pow(0.5, total))) / Math.log(10));
 				}
 				if (chiAC >= 3.841 && obsAC > obsAc) {
-					rfAC = (obsAc + obsaC) / total;
+					rfAC = (obsAc + obsaC) / (double)total;
 					distAC = rfAC * 100;
 					lodzAC = Math.log((((Math.pow(1 - rfAC, (obsAC + obsac))) * (Math.pow(rfAC, (obsAc + obsaC)))
 							/ Math.pow(0.5, total))) / Math.log(10));
 				}
 				if (chiAC >= 3.841 && obsAC < obsAc) {
-					rfAC = (obsAC + obsac) / total;
+					rfAC = (obsAC + obsac) / (double)total;
 					distAC = rfAC * 100;
 					lodzAC = Math.log((((Math.pow(1 - rfAC, (obsAc + obsaC))) * (Math.pow(rfAC, (obsAC + obsac)))
 							/ Math.pow(0.5, total))) / Math.log(10));
 				}
 				if (chiBC >= 3.841 && obsBC > obsBc) {
-					rfBC = (obsBc + obsbC) / total;
+					rfBC = (obsBc + obsbC) / (double)total;
 					distBC = rfBC * 100;
 					lodzBC = Math.log((((Math.pow(1 - rfBC, (obsBC + obsbc))) * (Math.pow(rfBC, (obsBc + obsbC)))
 							/ Math.pow(0.5, total))) / Math.log(10));
 				}
 				if (chiBC >= 3.841 && obsBC < obsBc) {
-					rfBC = (obsAb + obsaB) / total;
+					rfBC = (obsAb + obsaB) / (double)total;
 					distBC = rfBC * 100;
 					lodzBC = Math.log((((Math.pow(1 - rfBC, (obsBc + obsbC))) * (Math.pow(rfBC, (obsBC + obsbc)))
 							/ Math.pow(0.5, total))) / Math.log(10));
@@ -950,25 +950,25 @@ public class CTLinkageImp implements CTLinkage{
 					if (iMax == 0 || iMax == 1) {
 						phases.put("phaseA", "ACB");
 						phases.put("phaseB", "acb");
-						coincidence = ((obsABc + obsabC) / total) / (rfAC * rfBC);
+						coincidence = ((obsABc + obsabC) / (double)total) / (rfAC * rfBC);
 						resultValues.put("coincidence", coincidence);
 					} else {
 						if (iMax == 2 || iMax == 3) {
 							phases.put("phaseA", "Acb");
 							phases.put("phaseB", "aCB");
-							coincidence = ((obsAbC + obsaBc) / total) / (rfAC * rfBC);
+							coincidence = ((obsAbC + obsaBc) / (double)total) / (rfAC * rfBC);
 							resultValues.put("coincidence", coincidence);
 						} else {
 							if (iMax == 4 || iMax == 5) {
 								phases.put("phaseA", "AcB");
 								phases.put("phaseB", "aCb");
-								coincidence = ((obsABC + obsabc) / total) / (rfAC * rfBC);
+								coincidence = ((obsABC + obsabc) / (double)total) / (rfAC * rfBC);
 								resultValues.put("coincidence", coincidence);
 							} else {
 								if (iMax == 6 || iMax == 7) {
 									phases.put("phaseA", "ACb");
 									phases.put("phaseB", "acB");
-									coincidence = ((obsaBC + obsABc) / total) / (rfAC * rfBC);
+									coincidence = ((obsaBC + obsABc) / (double)total) / (rfAC * rfBC);
 									resultValues.put("coincidence", coincidence);
 								}
 							}
@@ -980,25 +980,25 @@ public class CTLinkageImp implements CTLinkage{
 						if (iMax == 0 || iMax == 1) {
 							phases.put("phaseA", "ABC");
 							phases.put("phaseB", "abc");
-							coincidence = ((obsAbC + obsaBc) / total) / (rfAB * rfBC);
+							coincidence = ((obsAbC + obsaBc) / (double)total) / (rfAB * rfBC);
 							resultValues.put("coincidence", coincidence);
 						} else {
 							if (iMax == 2 || iMax == 3) {
 								phases.put("phaseA", "Abc");
 								phases.put("phaseB", "aBC");
-								coincidence = ((obsABc + obsabC) / total) / (rfAB * rfBC);
+								coincidence = ((obsABc + obsabC) / (double)total) / (rfAB * rfBC);
 								resultValues.put("coincidence", coincidence);
 							} else {
 								if (iMax == 4 || iMax == 5) {
 									phases.put("phaseA", "ABc");
 									phases.put("phaseB", "abC");
-									coincidence = ((obsAbc + obsaBC) / total) / (rfAB * rfBC);
+									coincidence = ((obsAbc + obsaBC) / (double)total) / (rfAB * rfBC);
 									resultValues.put("coincidence", coincidence);
 								} else {
 									if (iMax == 6 || iMax == 7) {
 										phases.put("phaseA", "AbC");
 										phases.put("phaseB", "aBc");
-										coincidence = ((obsabc + obsABC) / total) / (rfAB * rfBC);
+										coincidence = ((obsabc + obsABC) / (double)total) / (rfAB * rfBC);
 										resultValues.put("coincidence", coincidence);
 									}
 								}
@@ -1010,25 +1010,25 @@ public class CTLinkageImp implements CTLinkage{
 							if (iMax == 0 || iMax == 1) {
 								phases.put("phaseA", "BAC");
 								phases.put("phaseB", "bac");
-								coincidence = ((obsaBC + obsAbc) / total) / (rfAB * rfAC);
+								coincidence = ((obsaBC + obsAbc) / (double)total) / (rfAB * rfAC);
 								resultValues.put("coincidence", coincidence);
 							} else {
 								if (iMax == 2 || iMax == 3) {
 									phases.put("phaseA", "bAc");
 									phases.put("phaseB", "BaC");
-									coincidence = ((obsABC + obsabc) / total) / (rfAB * rfAC);
+									coincidence = ((obsABC + obsabc) / (double)total) / (rfAB * rfAC);
 									resultValues.put("coincidence", coincidence);
 								} else {
 									if (iMax == 4 || iMax == 5) {
 										phases.put("phaseA", "BAc");
 										phases.put("phaseB", "baC");
-										coincidence = ((obsAbC + obsaBc) / total) / (rfAB * rfAC);
+										coincidence = ((obsAbC + obsaBc) / (double)total) / (rfAB * rfAC);
 										resultValues.put("coincidence", coincidence);
 									} else {
 										if (iMax == 6 || iMax == 7) {
 											phases.put("phaseA", "bAC");
 											phases.put("phaseB", "Bac");
-											coincidence = ((obsABc + obsabC) / total) / (rfAB * rfAC);
+											coincidence = ((obsABc + obsabC) / (double)total) / (rfAB * rfAC);
 											resultValues.put("coincidence", coincidence);
 										}
 									}

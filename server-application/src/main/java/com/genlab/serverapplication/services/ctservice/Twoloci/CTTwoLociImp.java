@@ -70,10 +70,10 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 7.81 ? "No" : "Yes"));
                     if (chiInd > 7.81) {
-                        double expectedContAB = totalA * totalB / totalobs,
-                                expectedContAb = totalA * totalb / totalobs,
-                                expectedContaB = totala * totalB / totalobs,
-                                expectedContab = totala * totalb / totalobs;
+                        double expectedContAB = totalA * totalB / (double)totalobs,
+                                expectedContAb = totalA * totalb / (double)totalobs,
+                                expectedContaB = totala * totalB / (double)totalobs,
+                                expectedContab = totala * totalb / (double)totalobs;
                         expValues.put("contAB", expectedContAB);
                         expValues.put("contAb", expectedContAb);
                         expValues.put("contaB", expectedContaB);
@@ -114,10 +114,10 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContAB = totalA * totalB / totalobs,
-                        expectedContAb = totalA * totalb / totalobs,
-                        expectedContaB = totala * totalB / totalobs,
-                        expectedContab = totala * totalb / totalobs;
+                double expectedContAB = totalA * totalB / (double)totalobs,
+                        expectedContAb = totalA * totalb / (double)totalobs,
+                        expectedContaB = totala * totalB / (double)totalobs,
+                        expectedContab = totala * totalb / (double)totalobs;
                 expValues.put("contAB", expectedContAB);
                 expValues.put("contAb", expectedContAb);
                 expValues.put("contaB", expectedContaB);
@@ -216,10 +216,10 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 7.81 ? "No" : "Yes"));
                     if (chiInd > 7.81) {
-                        double expectedContAB = totalA * totalB / totalobs,
-                                expectedContAb = totalA * totalb / totalobs,
-                                expectedContaB = totala * totalB / totalobs,
-                                expectedContab = totala * totalb / totalobs;
+                        double expectedContAB = totalA * totalB / (double)totalobs,
+                                expectedContAb = totalA * totalb / (double)totalobs,
+                                expectedContaB = totala * totalB / (double)totalobs,
+                                expectedContab = totala * totalb / (double)totalobs;
                         expValues.put("contAB", expectedContAB);
                         expValues.put("contAb", expectedContAb);
                         expValues.put("contaB", expectedContaB);
@@ -259,10 +259,10 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContAB = totalA * totalB / totalobs,
-                        expectedContAb = totalA * totalb / totalobs,
-                        expectedContaB = totala * totalB / totalobs,
-                        expectedContab = totala * totalb / totalobs;
+                double expectedContAB = totalA * totalB / (double)totalobs,
+                        expectedContAb = totalA * totalb / (double)totalobs,
+                        expectedContaB = totala * totalB / (double)totalobs,
+                        expectedContab = totala * totalb / (double)totalobs;
                 expValues.put("contAB", expectedContAB);
                 expValues.put("contAb", expectedContAb);
                 expValues.put("contaB", expectedContaB);
@@ -362,15 +362,15 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 11.07 ? "No" : "Yes"));
                     if (chiInd > 15.51) {
-                        double expectedContA1B1 = totalA1 * totalB1 / totalobs,
-                                expectedContA1B2 = totalA1 * totalB2 / totalobs,
-                                expectedContA1B1B2 = totalA1 * totalB1B2 / totalobs,
-                                expectedContA2B1 = totalA2 * totalB1 / totalobs,
-                                expectedContA2B2 = totalA2 * totalB2 / totalobs,
-                                expectedContA2B1B2 = totalA2 * totalB1B2 / totalobs,
-                                expectedContA1A2B1 = totalA1A2 * totalB1 / totalobs,
-                                expectedContA1A2B2 = totalA1A2 * totalB2 / totalobs,
-                                expectedContA1A2B1B2 = totalA1A2 * totalB1B2 / totalobs;
+                        double expectedContA1B1 = totalA1 * totalB1 / (double)totalobs,
+                                expectedContA1B2 = totalA1 * totalB2 / (double)totalobs,
+                                expectedContA1B1B2 = totalA1 * totalB1B2 / (double)totalobs,
+                                expectedContA2B1 = totalA2 * totalB1 / (double)totalobs,
+                                expectedContA2B2 = totalA2 * totalB2 / (double)totalobs,
+                                expectedContA2B1B2 = totalA2 * totalB1B2 / (double)totalobs,
+                                expectedContA1A2B1 = totalA1A2 * totalB1 / (double)totalobs,
+                                expectedContA1A2B2 = totalA1A2 * totalB2 / (double)totalobs,
+                                expectedContA1A2B1B2 = totalA1A2 * totalB1B2 / (double)totalobs;
 
                         expValues.put("contA1B1", expectedContA1B1);
                         expValues.put("contA1B2", expectedContA1B2);
@@ -438,15 +438,15 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContA1B1 = totalA1 * totalB1 / totalobs,
-                        expectedContA1B2 = totalA1 * totalB2 / totalobs,
-                        expectedContA1B1B2 = totalA1 * totalB1B2 / totalobs,
-                        expectedContA2B1 = totalA2 * totalB1 / totalobs,
-                        expectedContA2B2 = totalA2 * totalB2 / totalobs,
-                        expectedContA2B1B2 = totalA2 * totalB1B2 / totalobs,
-                        expectedContA1A2B1 = totalA1A2 * totalB1 / totalobs,
-                        expectedContA1A2B2 = totalA1A2 * totalB2 / totalobs,
-                        expectedContA1A2B1B2 = totalA1A2 * totalB1B2 / totalobs;
+                double expectedContA1B1 = totalA1 * totalB1 / (double)totalobs,
+                        expectedContA1B2 = totalA1 * totalB2 / (double)totalobs,
+                        expectedContA1B1B2 = totalA1 * totalB1B2 / (double)totalobs,
+                        expectedContA2B1 = totalA2 * totalB1 / (double)totalobs,
+                        expectedContA2B2 = totalA2 * totalB2 / (double)totalobs,
+                        expectedContA2B1B2 = totalA2 * totalB1B2 / (double)totalobs,
+                        expectedContA1A2B1 = totalA1A2 * totalB1 / (double)totalobs,
+                        expectedContA1A2B2 = totalA1A2 * totalB2 / (double)totalobs,
+                        expectedContA1A2B1B2 = totalA1A2 * totalB1B2 / (double)totalobs;
 
                 expValues.put("contA1B1", expectedContA1B1);
                 expValues.put("contA1B2", expectedContA1B2);
@@ -545,12 +545,12 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 9.49 ? "No" : "Yes"));
                     if (chiInd > 11.07) {
-                        double expectedContA1B = totalA1 * totalB / totalobs,
-                                expectedContA1b = totalA1 * totalb / totalobs,
-                                expectedContA2B = totalA2 * totalB / totalobs,
-                                expectedContA2b = totalA2 * totalb / totalobs,
-                                expectedContA1A2B = totalA1A2 * totalB / totalobs,
-                                expectedContA1A2b = totalA1A2 * totalb / totalobs;
+                        double expectedContA1B = totalA1 * totalB / (double)totalobs,
+                                expectedContA1b = totalA1 * totalb / (double)totalobs,
+                                expectedContA2B = totalA2 * totalB / (double)totalobs,
+                                expectedContA2b = totalA2 * totalb / (double)totalobs,
+                                expectedContA1A2B = totalA1A2 * totalB / (double)totalobs,
+                                expectedContA1A2b = totalA1A2 * totalb / (double)totalobs;
 
                         expValues.put("contA1B", expectedContA1B);
                         expValues.put("contA1b", expectedContA1b);
@@ -615,12 +615,12 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContA1B = totalA1 * totalB / totalobs,
-                        expectedContA1b = totalA1 * totalb / totalobs,
-                        expectedContA2B = totalA2 * totalB / totalobs,
-                        expectedContA2b = totalA2 * totalb / totalobs,
-                        expectedContA1A2B = totalA1A2 * totalB / totalobs,
-                        expectedContA1A2b = totalA1A2 * totalb / totalobs;
+                double expectedContA1B = totalA1 * totalB / (double)totalobs,
+                        expectedContA1b = totalA1 * totalb / (double)totalobs,
+                        expectedContA2B = totalA2 * totalB / (double)totalobs,
+                        expectedContA2b = totalA2 * totalb / (double)totalobs,
+                        expectedContA1A2B = totalA1A2 * totalB / (double)totalobs,
+                        expectedContA1A2b = totalA1A2 * totalb / (double)totalobs;
 
                 expValues.put("contA1B", expectedContA1B);
                 expValues.put("contA1b", expectedContA1b);
@@ -727,14 +727,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 14.07 ? "No" : "Yes"));
                     if (chiInd > 14.07) {
-                        double expectedContA1A3B = totalA1A3 * totalB / totalobs,
-                                expectedContA1A3b = totalA1A3 * totalb / totalobs,
-                                expectedContA1A4B = totalA1A4 * totalB / totalobs,
-                                expectedContA1A4b = totalA1A4 * totalb / totalobs,
-                                expectedContA2A3B = totalA2A3 * totalB / totalobs,
-                                expectedContA2A3b = totalA2A3 * totalb / totalobs,
-                                expectedContA2A4B = totalA2A4 * totalB / totalobs,
-                                expectedContA2A4b = totalA2A4 * totalb / totalobs;
+                        double expectedContA1A3B = totalA1A3 * totalB / (double)totalobs,
+                                expectedContA1A3b = totalA1A3 * totalb / (double)totalobs,
+                                expectedContA1A4B = totalA1A4 * totalB / (double)totalobs,
+                                expectedContA1A4b = totalA1A4 * totalb / (double)totalobs,
+                                expectedContA2A3B = totalA2A3 * totalB / (double)totalobs,
+                                expectedContA2A3b = totalA2A3 * totalb / (double)totalobs,
+                                expectedContA2A4B = totalA2A4 * totalB / (double)totalobs,
+                                expectedContA2A4b = totalA2A4 * totalb / (double)totalobs;
 
                         expValues.put("contA1A3B", expectedContA1A3B);
                         expValues.put("contA1A3b", expectedContA1A3b);
@@ -801,14 +801,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContA1A3B = totalA1A3 * totalB / totalobs,
-                        expectedContA1A3b = totalA1A3 * totalb / totalobs,
-                        expectedContA1A4B = totalA1A4 * totalB / totalobs,
-                        expectedContA1A4b = totalA1A4 * totalb / totalobs,
-                        expectedContA2A3B = totalA2A3 * totalB / totalobs,
-                        expectedContA2A3b = totalA2A3 * totalb / totalobs,
-                        expectedContA2A4B = totalA2A4 * totalB / totalobs,
-                        expectedContA2A4b = totalA2A4 * totalb / totalobs;
+                double expectedContA1A3B = totalA1A3 * totalB / (double)totalobs,
+                        expectedContA1A3b = totalA1A3 * totalb / (double)totalobs,
+                        expectedContA1A4B = totalA1A4 * totalB / (double)totalobs,
+                        expectedContA1A4b = totalA1A4 * totalb / (double)totalobs,
+                        expectedContA2A3B = totalA2A3 * totalB / (double)totalobs,
+                        expectedContA2A3b = totalA2A3 * totalb / (double)totalobs,
+                        expectedContA2A4B = totalA2A4 * totalB / (double)totalobs,
+                        expectedContA2A4b = totalA2A4 * totalb / (double)totalobs;
 
                 expValues.put("contA1A3B", expectedContA1A3B);
                 expValues.put("contA1A3b", expectedContA1A3b);
@@ -916,10 +916,10 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 7.81 ? "No" : "Yes"));
                     if (chiInd > 7.81) {
-                        double expectedContAB = totalA * totalB / totalobs,
-                                expectedContAb = totalA * totalb / totalobs,
-                                expectedContaB = totala * totalB / totalobs,
-                                expectedContab = totala * totalb / totalobs;
+                        double expectedContAB = totalA * totalB / (double)totalobs,
+                                expectedContAb = totalA * totalb / (double)totalobs,
+                                expectedContaB = totala * totalB / (double)totalobs,
+                                expectedContab = totala * totalb / (double)totalobs;
 
                         expValues.put("contAB", expectedContAB);
                         expValues.put("contAb", expectedContAb);
@@ -963,10 +963,10 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContAB = totalA * totalB / totalobs,
-                        expectedContAb = totalA * totalb / totalobs,
-                        expectedContaB = totala * totalB / totalobs,
-                        expectedContab = totala * totalb / totalobs;
+                double expectedContAB = totalA * totalB / (double)totalobs,
+                        expectedContAb = totalA * totalb / (double)totalobs,
+                        expectedContaB = totala * totalB / (double)totalobs,
+                        expectedContab = totala * totalb / (double)totalobs;
 
                 expValues.put("contAB", expectedContAB);
                 expValues.put("contAb", expectedContAb);
@@ -1061,12 +1061,12 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 9.49 ? "No" : "Yes"));
                     if (chiInd > 9.49) {
-                        double expectedContA1B = totalA1 * totalB / totalobs,
-                                expectedContA1b = totalA1 * totalb / totalobs,
-                                expectedContA2B = totalA2 * totalB / totalobs,
-                                expectedContA2b = totalA2 * totalb / totalobs,
-                                expectedContA1A2B = totalA1A2 * totalB / totalobs,
-                                expectedContA1A2b = totalA1A2 * totalb / totalobs;
+                        double expectedContA1B = totalA1 * totalB / (double)totalobs,
+                                expectedContA1b = totalA1 * totalb / (double)totalobs,
+                                expectedContA2B = totalA2 * totalB / (double)totalobs,
+                                expectedContA2b = totalA2 * totalb / (double)totalobs,
+                                expectedContA1A2B = totalA1A2 * totalB / (double)totalobs,
+                                expectedContA1A2b = totalA1A2 * totalb / (double)totalobs;
 
                         expValues.put("contA1B", expectedContA1B);
                         expValues.put("contA2B", expectedContA2B);
@@ -1129,12 +1129,12 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContA1B = totalA1 * totalB / totalobs,
-                        expectedContA1b = totalA1 * totalb / totalobs,
-                        expectedContA2B = totalA2 * totalB / totalobs,
-                        expectedContA2b = totalA2 * totalb / totalobs,
-                        expectedContA1A2B = totalA1A2 * totalB / totalobs,
-                        expectedContA1A2b = totalA1A2 * totalb / totalobs;
+                double expectedContA1B = totalA1 * totalB / (double)totalobs,
+                        expectedContA1b = totalA1 * totalb / (double)totalobs,
+                        expectedContA2B = totalA2 * totalB / (double)totalobs,
+                        expectedContA2b = totalA2 * totalb / (double)totalobs,
+                        expectedContA1A2B = totalA1A2 * totalB / (double)totalobs,
+                        expectedContA1A2b = totalA1A2 * totalb / (double)totalobs;
 
                 expValues.put("contA1B", expectedContA1B);
                 expValues.put("contA2B", expectedContA2B);
@@ -1240,14 +1240,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                     chiValues.put("chiInd", chiInd);
                     agree.put("chiInd", (chiInd > 14.07 ? "No" : "Yes"));
                     if (chiInd > 14.07) {
-                        double expectedContA1A3B = totalA1A3 * totalB / totalobs,
-                                expectedContA1A3b = totalA1A3 * totalb / totalobs,
-                                expectedContA1A4B = totalA1A4 * totalB / totalobs,
-                                expectedContA1A4b = totalA1A4 * totalb / totalobs,
-                                expectedContA2A3B = totalA2A3 * totalB / totalobs,
-                                expectedContA2A3b = totalA2A3 * totalb / totalobs,
-                                expectedContA2A4B = totalA2A4 * totalB / totalobs,
-                                expectedContA2A4b = totalA2A4 * totalb / totalobs;
+                        double expectedContA1A3B = totalA1A3 * totalB / (double)totalobs,
+                                expectedContA1A3b = totalA1A3 * totalb / (double)totalobs,
+                                expectedContA1A4B = totalA1A4 * totalB / (double)totalobs,
+                                expectedContA1A4b = totalA1A4 * totalb / (double)totalobs,
+                                expectedContA2A3B = totalA2A3 * totalB / (double)totalobs,
+                                expectedContA2A3b = totalA2A3 * totalb / (double)totalobs,
+                                expectedContA2A4B = totalA2A4 * totalB / (double)totalobs,
+                                expectedContA2A4b = totalA2A4 * totalb / (double)totalobs;
 
                         expValues.put("contA1A3B", expectedContA1A3B);
                         expValues.put("contA1A3b", expectedContA1A3b);
@@ -1312,14 +1312,14 @@ public class CTTwoLociImp implements CTTwoLoci{
                             .build();
                 }
             } else {
-                double expectedContA1A3B = totalA1A3 * totalB / totalobs,
-                        expectedContA1A3b = totalA1A3 * totalb / totalobs,
-                        expectedContA1A4B = totalA1A4 * totalB / totalobs,
-                        expectedContA1A4b = totalA1A4 * totalb / totalobs,
-                        expectedContA2A3B = totalA2A3 * totalB / totalobs,
-                        expectedContA2A3b = totalA2A3 * totalb / totalobs,
-                        expectedContA2A4B = totalA2A4 * totalB / totalobs,
-                        expectedContA2A4b = totalA2A4 * totalb / totalobs;
+                double expectedContA1A3B = totalA1A3 * totalB / (double)totalobs,
+                        expectedContA1A3b = totalA1A3 * totalb / (double)totalobs,
+                        expectedContA1A4B = totalA1A4 * totalB / (double)totalobs,
+                        expectedContA1A4b = totalA1A4 * totalb / (double)totalobs,
+                        expectedContA2A3B = totalA2A3 * totalB / (double)totalobs,
+                        expectedContA2A3b = totalA2A3 * totalb / (double)totalobs,
+                        expectedContA2A4B = totalA2A4 * totalB / (double)totalobs,
+                        expectedContA2A4b = totalA2A4 * totalb / (double)totalobs;
 
                 expValues.put("contA1A3B", expectedContA1A3B);
                 expValues.put("contA1A3b", expectedContA1A3b);

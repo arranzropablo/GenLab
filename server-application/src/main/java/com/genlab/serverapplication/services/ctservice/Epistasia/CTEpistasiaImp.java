@@ -31,10 +31,10 @@ public class CTEpistasiaImp implements CTEpistasia{
             double expAb = total * 3/16.0;
             double expaB = total * 3/16.0;
             double expab = total /16.0;
-            double expConAB = (obsA * obsB )/total;
-            double expConAb = (obsA * obsb )/total;
-            double expConaB = (obsa * obsB )/total;
-            double expConab = (obsa * obsb )/total;
+            double expConAB = (obsA * obsB )/(double)total;
+            double expConAb = (obsA * obsb )/(double)total;
+            double expConaB = (obsa * obsB )/(double)total;
+            double expConab = (obsa * obsb )/(double)total;
             double chiA = 0, chiB= 0, chiInd= 0, chiCon= 0;
             if(expAB>10 && expAb>10 && expaB>10 && expab>10 && expConAB>10 && expConAb>10 &&expConaB>10 && expConab>10){
                 chiA = ((Math.pow((obsA - expA),2))/expA) + ((Math.pow((obsa - expa),2))/expa);
