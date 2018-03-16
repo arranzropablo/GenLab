@@ -268,11 +268,11 @@ public class CalculationToolsController {
                     case 3:
                         result = epistasiaService.singleAdditive(values.get("AB"),
                                 values.get("ab"),
-                                values.get("ABaB"));
+                                values.get("AbaB"));
                         break;
                     case 4:
                         result = epistasiaService.doubleRecessive(values.get("AB"),
-                                values.get("AaaBab"));
+                                values.get("AbaBab"));
                         break;
                     case 5:
                         result = epistasiaService.doubleDominant(values.get("ab"),

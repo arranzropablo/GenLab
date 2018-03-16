@@ -324,8 +324,8 @@ public class CTEpistasiaImp implements CTEpistasia{
 		String result = "";
 		if(obsaB<=5000 && obsABAbab<=5000){
             double total = obsaB+obsABAbab;
-            double expaB = total * 13/16.0;
-            double expABAbab = total * 3/16.0;
+            double expaB = total * 3/16.0;
+            double expABAbab = total * 13/16.0;
             double chiInd= 0;
             if(expaB>10 && expABAbab>10){
                 chiInd = ((Math.pow((obsaB - expaB),2))/expaB)+((Math.pow((obsABAbab - expABAbab),2))/expABAbab);

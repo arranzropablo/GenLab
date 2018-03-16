@@ -12,8 +12,10 @@ public class CTLinkageImp implements CTLinkage{
 
 	private double getRffromQuadraticEquation(double a, double b, double c) {
 		double root1, root2;
-		root1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
-		root2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+		double insideroot = Math.pow(b, 2) + 4 * a * c;
+		
+		root1 = (-b + Math.sqrt(insideroot)) / (2 * a);
+		root2 = (-b - Math.sqrt(insideroot)) / (2 * a);
 		if (root1 > 0) {
 			return Math.sqrt(root1);
 		} else {
@@ -394,7 +396,7 @@ public class CTLinkageImp implements CTLinkage{
 							resultValues.put("distance", distance);
 							result = "The loci A,a and B,b are linked";
 						}
-						if (chiCont >= 3.841 && obsab > expConab) {
+						if (chiCont >= 3.841 && obsab < expConab) {
 							double rf = 0, distance;
 							phases.put("phaseA", "Repulsion");
 							phases.put("phaseB", "Ab/aB");
