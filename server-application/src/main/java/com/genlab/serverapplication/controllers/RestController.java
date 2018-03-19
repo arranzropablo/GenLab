@@ -99,7 +99,7 @@ public class RestController {
         return calcController.getCalcResult(CTid, values);
     }
 
-	@PostMapping("/feedback")
+	@GetMapping("/feedback")
 	public @ResponseBody boolean addFeedback(@RequestParam("usu") String usuario,
 			@RequestParam("feedback") String feedback) {
 		boolean dev = false;
