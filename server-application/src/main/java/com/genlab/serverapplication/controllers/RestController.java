@@ -19,11 +19,13 @@ import com.genlab.serverapplication.models.Book;
 import com.genlab.serverapplication.models.CTResult;
 import com.genlab.serverapplication.models.FeedbackObject;
 import com.genlab.serverapplication.models.Problem;
+import com.genlab.serverapplication.models.Sections;
 import com.genlab.serverapplication.models.Test;
 import com.genlab.serverapplication.models.Theory;
 import com.genlab.serverapplication.models.User;
 import com.genlab.serverapplication.services.bookService.BookService;
 import com.genlab.serverapplication.services.problemsService.ProblemsService;
+import com.genlab.serverapplication.services.sectionService.SectionService;
 import com.genlab.serverapplication.services.testsService.TestService;
 import com.genlab.serverapplication.services.theoryService.TheoryService;
 import com.genlab.serverapplication.services.userService.UserService;
@@ -51,6 +53,9 @@ public class RestController {
     
     @Autowired
     private CalculationToolsController calcController;
+    
+	@Autowired
+	public SectionService sectionService;
 
     @GetMapping("/problems")
     public @ResponseBody List<Problem> getAllProblems(@RequestParam("sectionid") int section){
@@ -110,7 +115,7 @@ public class RestController {
 			FeedbackObject clientFb = gson.fromJson(feedback, FeedbackObject.class);
 			String servFeed = u.getFeedback();
 			if( servFeed == null || servFeed.equals("")) {
-				servFeed = "{user: '', right: [], wrong: []}";
+				servFeed = "{user: '"+ usuario +"', right: [], wrong: []}";
 			}
 			FeedbackObject serverFb = gson.fromJson(servFeed, FeedbackObject.class);
 			serverFb.getRight().addAll(clientFb.getRight());
@@ -128,6 +133,11 @@ public class RestController {
 			userService.addUser(User.builder().email(email).roles("USER").password("").build());
 		}
 		return email;
+	}
+	
+	@GetMapping("/priority")
+	public @ResponseBody List<Sections> getPriority() {
+		return sectionService.getSectionsSortedByPriority();
 	}
 
 }
