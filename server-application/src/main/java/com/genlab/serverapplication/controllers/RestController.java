@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -119,6 +120,14 @@ public class RestController {
 			dev = true;
 		}
 		return dev;
+	}
+	
+	@PutMapping("/newUser")
+	public @ResponseBody String createUser(@RequestBody String email) {
+		if (!userService.exists(email)){
+			userService.addUser(User.builder().email(email).roles("USER").password("").build());
+		}
+		return email;
 	}
 
 }
