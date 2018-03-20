@@ -131,7 +131,7 @@ public class TestsController {
 			}
 		}
 
-		Test testToSave = Test.builder().sectionid(test.getSectionid()).titulo(test.getTitulo()).id(test.getId()).build();
+		Test testToSave = Test.builder().sectionid(((SectionsMapping)session.getAttribute("currentSection")).getId()).titulo(test.getTitulo()).id(test.getId()).build();
 		int savedTest = testService.saveTest(testToSave);
 		if(test.getQuestions() != null) {
 			for(TestQuestion question : test.getQuestions()) {
