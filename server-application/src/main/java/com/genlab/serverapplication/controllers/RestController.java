@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.genlab.serverapplication.models.Book;
 import com.genlab.serverapplication.models.CTResult;
+import com.genlab.serverapplication.models.FeedbackItem;
 import com.genlab.serverapplication.models.FeedbackObject;
 import com.genlab.serverapplication.models.Problem;
 import com.genlab.serverapplication.models.Sections;
@@ -121,7 +122,6 @@ public class RestController {
 			serverFb.getRight().addAll(clientFb.getRight());
 			serverFb.getWrong().addAll(clientFb.getWrong());
 			u.setFeedback(gson.toJson(serverFb));
-			userService.addUser(u);
 			dev = true;
 		}
 		return dev;
@@ -138,6 +138,25 @@ public class RestController {
 	@GetMapping("/priority")
 	public @ResponseBody List<Sections> getPriority() {
 		return sectionService.getSectionsSortedByPriority();
+	}
+	
+	@GetMapping("/sectioncompleted")
+	public @ResponseBody boolean isSectionCompleted(@RequestParam("user") String user, @RequestParam("sectionid") int sectionid) {
+		List<Integer> testsbysection = testService.getTestBySection(sectionid).stream().map(Test::getId).collect(Collectors.toList());
+		User u = userService.getUser(user);
+		if (u != null) {
+			Gson gson = new Gson();
+			FeedbackObject fo = gson.fromJson(u.getFeedback(), FeedbackObject.class);
+			List<Integer> solvedtests = fo.getRight().stream().map(FeedbackItem::getIdTest).collect(Collectors.toList());
+			solvedtests.addAll(fo.getWrong().stream().map(FeedbackItem::getIdTest).collect(Collectors.toList()));
+			List<Integer> uniquesolvedtests = solvedtests.stream().distinct().collect(Collectors.toList());
+			if(uniquesolvedtests.containsAll(testsbysection)) {
+				return true;
+			} else {
+				return false;
+			}
+		}		
+		return false;
 	}
 
 }
