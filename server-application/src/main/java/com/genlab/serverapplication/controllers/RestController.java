@@ -122,6 +122,7 @@ public class RestController {
 			serverFb.getRight().addAll(clientFb.getRight());
 			serverFb.getWrong().addAll(clientFb.getWrong());
 			u.setFeedback(gson.toJson(serverFb));
+			userService.addUser(u);
 			dev = true;
 		}
 		return dev;
