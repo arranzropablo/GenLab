@@ -1375,7 +1375,7 @@
 
 			<div class="row">
 				<label class="col-4">Lod score Z =</label>
-				<label class="col-4" th:text="${result?.resultValues?.get('lodZ')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('lodZ') != null ? result?.resultValues?.get('lodZ') : '-Infinity'}"></label>
 			</div>
 
 			<div class="row">
@@ -1930,14 +1930,14 @@
 			<!-- Enviar por ajax -->
 			<div class="row">
 				<label class="col-2"></label>
-				<label class="col-2" for="recombinationFrequency">Recombination frequency</label>
-				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2" for="r1">Recombination frequency</label>
+				<label class="col-2" for="tOs">Total offspring</label>
 				<label class="col-2">Total</label>
 			</div>
 			<div class="row">
 				<label class="col-2">Observed</label>
-				<input class="col-2" type="text" name="recombinationFrequency" id="recombinationFrequency"/>
-				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<input class="col-2" type="text" name="r1" id="r1"/>
+				<input class="col-2" type="text" name="tOs" id="tOs"/>
 				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
@@ -1993,14 +1993,14 @@
 			<!-- Enviar por ajax -->
 			<div class="row">
 				<label class="col-2"></label>
-				<label class="col-2" for="recombinationFrequency">Recombination frequency</label>
-				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2" for="r1">Recombination frequency</label>
+				<label class="col-2" for="tOs">Total offspring</label>
 				<label class="col-2">Total</label>
 			</div>
 			<div class="row">
 				<label class="col-2">Observed</label>
-				<input class="col-2" type="text" name="recombinationFrequency" id="recombinationFrequency"/>
-				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<input class="col-2" type="text" name="r1" id="r1"/>
+				<input class="col-2" type="text" name="tOs" id="tOs"/>
 				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
@@ -2056,14 +2056,14 @@
 			<!-- Enviar por ajax -->
 			<div class="row">
 				<label class="col-2"></label>
-				<label class="col-2" for="recombinationFrequency">Recombination frequency</label>
-				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2" for="r1">Recombination frequency</label>
+				<label class="col-2" for="tOs">Total offspring</label>
 				<label class="col-2">Total</label>
 			</div>
 			<div class="row">
 				<label class="col-2">Observed</label>
-				<input class="col-2" type="text" name="recombinationFrequency" id="recombinationFrequency"/>
-				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<input class="col-2" type="text" name="r1" id="r1"/>
+				<input class="col-2" type="text" name="tOs" id="tOs"/>
 				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
@@ -2076,26 +2076,26 @@
 			</div>
 			<div class="row">
 				<label class="col-4">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1B1')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1B1')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A1B1B1')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A1B1B1')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A2B1')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A2B1')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A2B1B1')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A2B1B1')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA2B1')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA2B1')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA2A2B1B1')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA2A2B1B1')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>2</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1B1B2')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1B1B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A1B1B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A1B1B2')}"></label>
 			</div>
 
 			<div class="row">
@@ -2106,26 +2106,26 @@
 
 			<div class="row">
 				<label class="col-4">A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA2B1B2')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA2B1B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA2A2B1B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA2A2B1B2')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">A<sub>1</sub>A<sub>1</sub>B<sub>2</sub>B<sub>2</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1B2')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A1B2B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A1B2B2')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">A<sub>1</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A2B2')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A2B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA1A2B2B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA1A2B2B2')}"></label>
 			</div>
 
 			<div class="row">
 				<label class="col-4">A<sub>2</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA2B2')}"></label>
-				<label class="col-4" th:text="${result?.resultValues?.get('couplingA2B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('repulsionA2A2B2B2')}"></label>
+				<label class="col-4" th:text="${result?.resultValues?.get('couplingA2A2B2B2')}"></label>
 			</div>
 			<hr/>
 
@@ -2149,18 +2149,18 @@
 			<!-- Enviar por ajax -->
 			<div class="row">
 				<label class="col-2"></label>
-				<label class="col-2" for="recombinationFrequencyr1">Recombination frequency r<sub>1</sub></label>
-				<label class="col-2" for="recombinationFrequencyr2">Recombination frequency r<sub>2</sub></label>
-				<label class="col-2" for="coefficientOfCoincidence">Coefficient of coincidence</label>
-				<label class="col-2" for="totalOffspring">Total offspring</label>
+				<label class="col-2" for="r1">Recombination frequency r<sub>1</sub></label>
+				<label class="col-2" for="r2">Recombination frequency r<sub>2</sub></label>
+				<label class="col-2" for="cOc">Coefficient of coincidence</label>
+				<label class="col-2" for="tOs">Total offspring</label>
 				<label class="col-2">Total</label>
 			</div>
 			<div class="row">
 				<label class="col-2">Observed</label>
-				<input class="col-2" type="text" name="recombinationFrequencyr1" id="recombinationFrequencyr1"/>
-				<input class="col-2" type="text" name="recombinationFrequencyr2" id="recombinationFrequencyr2"/>
-				<input class="col-2" type="text" name="coefficientOfCoincidence" id="coefficientOfCoincidence"/>
-				<input class="col-2" type="text" name="totalOffspring" id="totalOffspring"/>
+				<input class="col-2" type="text" name="r1" id="r1"/>
+				<input class="col-2" type="text" name="r2" id="r2"/>
+				<input class="col-2" type="text" name="cOc" id="cOc"/>
+				<input class="col-2" type="text" name="tOs" id="tOs"/>
 				<label class="col-2" th:text="${result?.observed?.get('total')}"></label>
 			</div>
 
@@ -2171,7 +2171,7 @@
 
 			<div class="row">
 				<label class="col-2">Recombination frequency r =</label>
-				<label class="col-2" th:text="${result?.resultValues?.get('rf')}"></label>
+				<label class="col-2" th:text="${result?.phase?.get('rf')}"></label>
 			</div>
 
 			<hr/>

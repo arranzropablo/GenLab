@@ -10,7 +10,7 @@ import com.genlab.serverapplication.models.CTResult;
 @Service
 public class CTPolyhybridimp implements CTPolyHybrid {
 
-	public CTResult polyhybrid(int n, int h, int d, int r, int D, int R, int T) {
+	public CTResult polyhybrid(double n, double h, double d, double r, double D, double R, double T) {
 		Map<String, Double> resultValues = new HashMap<>();
 		if(n > 20 || h > 20 || d > 20 || r > 20 || D > 20 || R > 20) {
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum number of loci allowed is 20").build();
@@ -83,7 +83,7 @@ public class CTPolyhybridimp implements CTPolyHybrid {
 		return CTResult.builder().resultValues(resultValues).cleanInputs(false).build();
 	}
 	
-	public CTResult multiplealleles	(int locus1, int locus2, int locus3, int locus4, int locus5) {
+	public CTResult multiplealleles	(double locus1, double locus2, double locus3, double locus4, double locus5) {
 		Map<String, Double> resultValues = new HashMap<>();
 		if(locus1 > 50 || locus2 > 50 || locus3 > 50 || locus4 > 50 || locus5 > 50) {
 			return CTResult.builder().cleanInputs(true).feedbackMessage("The maximum number of alleles allowed in a locus is 50").build();

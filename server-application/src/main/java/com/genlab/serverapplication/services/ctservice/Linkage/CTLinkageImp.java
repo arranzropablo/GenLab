@@ -1187,8 +1187,8 @@ public class CTLinkageImp implements CTLinkage{
 			vaBCn = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
 			vABcn = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
 			vabCn = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
-			vabcn = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
-			vABCn = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
+			vabcn = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
+			vABCn = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
 
 			interference = 1 - cOc;
 			rf = r1 + r2 - (r1 * r2 * cOc * 2);
@@ -1197,28 +1197,28 @@ public class CTLinkageImp implements CTLinkage{
 			vaBC2 = tOs * ((r1 * r2 * cOc) / 2.0);
 			vAbC2 = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
 			vabc2 = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
-			vABc2 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
+			vABc2 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
 			vaBc2 = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
 			vAbc2 = tOs * ((r1 * r2 * cOc) / 2.0);
-			vabC2 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
+			vabC2 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
 
 			vABC3 = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
-			vaBC3 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
-			vAbC3 = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
-			vabc3 = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
-			vABc3 = tOs * ((r1 * r2 * cOc) / 2.0);
-			vaBc3 = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
-			vAbc3 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
-			vabC3 = tOs * ((r1 * r2 * cOc) / 2.0);
+			vaBC3 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
+			vAbC3 = tOs * ((r2 - (r1 * r2 * cOc))) / 2.0;
+			vabc3 = tOs * ((r1 - (r1 * r2 * cOc))) / 2.0;
+			vABc3 = tOs * ((r1 * r2 * cOc)) / 2.0;
+			vaBc3 = tOs * ((r2 - (r1 * r2 * cOc))) / 2.0;
+			vAbc3 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
+			vabC3 = tOs * (r1 * r2 * cOc) / 2.0;
 
-			vABC4 = tOs * ((r1 * r2 * cOc) / 2.0);
-			vaBC4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
-			vAbC4 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
+			vABC4 = tOs * (r1 * r2 * cOc) / 2.0;
+			vaBC4 = tOs * ((r2 - (r1 * r2 * cOc))) / 2.0;
+			vAbC4 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
 			vabc4 = tOs * ((r1 * r2 * cOc) / 2.0);
 			vABc4 = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
-			vaBc4 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc)) / 2.0);
-			vAbc4 = tOs * ((r2 - (r1 * r2 * cOc)) / 2.0);
-			vabC4 = tOs * ((r1 - (r1 * r2 * cOc)) / 2.0);
+			vaBc4 = tOs * (1 - ((r2 - (r1 * r2 * cOc)) + (r1 - (r1 * r2 * cOc)) + (r1 * r2 * cOc))) / 2.0;
+			vAbc4 = tOs * ((r2 - (r1 * r2 * cOc))) / 2.0;
+			vabC4 = tOs * ((r1 - (r1 * r2 * cOc))) / 2.0;
 		} else {
 			return CTResult.builder().cleanInputs(true).feedbackMessage("r can´t be higher than 0,5. The max number accepted for total offspring is 5000").build();
 		}

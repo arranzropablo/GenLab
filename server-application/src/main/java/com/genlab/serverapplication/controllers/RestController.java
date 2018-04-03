@@ -102,7 +102,7 @@ public class RestController {
     }
 
     @PostMapping("/calctool")
-    public @ResponseBody CTResult getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Integer> values){
+    public @ResponseBody CTResult getResult(@RequestParam("CTid") String CTid, @RequestBody HashMap<String, Double> values){
         return calcController.getCalcResult(CTid, values);
     }
 
