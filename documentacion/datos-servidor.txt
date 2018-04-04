@@ -1,7 +1,0 @@
-Datos servidor
-
-•	Server: ingenias.fdi.ucm.es
-•	Host MV: genlab
-•	Puertos mapeados y abiertos al exterior: 60071 del host al 22 de la MV, 60072 al 443. No uséis el puerto 80 en la MV.
-•	Usuario Linux "mercurio" con contraseña "GenLabEstIci175+$?". No cambiéis la contraseña por si necesito acceder. Podéis crear más usuarios.
-•	Usuario MySQL "root" con contraseña "DatGent19$5%8"
