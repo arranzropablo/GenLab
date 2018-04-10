@@ -19,9 +19,16 @@
 	right: 10px;
 }
 
-.left-cell {
-	padding-left: 40%;
+.title-cell{
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 250px;
 }
+
+/*.left-cell {
+	padding-left: 40%;
+}*/
 
 .main-content-fragment {
 	display: flex;
