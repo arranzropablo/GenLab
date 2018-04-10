@@ -19,7 +19,7 @@
 					<h2>Theory list</h2>
 					<table>
 						<tr th:each="theory : ${theory_list}">
-							<td th:text="${theory.titulo}"></td>
+							<td class="title-cell" th:text="${theory.titulo}"></td>
 							<td class="left-cell"><a th:href="@{/theory/detail/}+${theory.id}" class="text-success fa fa-pencil"></a> </td>
 						</tr>
 						<tr>
