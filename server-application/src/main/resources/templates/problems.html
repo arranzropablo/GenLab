@@ -19,7 +19,7 @@
 					<h2>Problems list</h2>
 					<table>
 						<tr th:each="problem : ${problem_list}">
-							<td th:text="${problem.nombre}"></td>
+							<td class="title-cell" th:text="${problem.nombre}"></td>
 							<td class="left-cell"><a th:href="@{/problems/detail/}+${problem.id}" class="text-success fa fa-pencil"></a> </td>
 						</tr>
 						<tr>
