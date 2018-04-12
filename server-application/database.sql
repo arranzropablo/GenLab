@@ -147,3 +147,4 @@ INSERT INTO genlab.sections (id, nombre) VALUES (1, 'onelocus');
 INSERT INTO genlab.sections (id, nombre) VALUES (2, 'linkage');
 INSERT INTO genlab.sections (id, nombre) VALUES (3, 'epistasia');
 INSERT INTO genlab.sections (id, nombre) VALUES (4, 'polyhybrid');
+INSERT INTO genlab.users (email, password, role, feedback) VALUES ('ruben', '$2a$10$R8mTPv2.JJilxtv6h7/Jj.VqVRufigy4jIPQMX4cLSEACjXF8UOnG', 'ADMIN', null);
