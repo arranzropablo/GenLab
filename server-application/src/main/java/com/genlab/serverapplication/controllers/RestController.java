@@ -2,6 +2,7 @@ package com.genlab.serverapplication.controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +65,8 @@ public class RestController {
     }
 
     @GetMapping("/theory/titles")
-    public @ResponseBody List<String> getTheoryTitles(@RequestParam("sectionid") int section){
-        return theoryService.getTheoryBySection(section).stream().map(Theory::getTitulo).collect(Collectors.toList());
+    public @ResponseBody Map<Integer, String> getTheoryTitles(@RequestParam("sectionid") int section){
+        return theoryService.getTheoryBySection(section).stream().collect(Collectors.toMap(Theory::getId, Theory::getTitulo));
     }
 
     @GetMapping("/theory")
