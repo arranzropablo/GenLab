@@ -8,7 +8,7 @@ public enum SectionsMapping {
 	TWOLOCI("Two Independent Loci", 0),
 	ONELOCUS("One Locus", 1),
 	LINKAGE("Linkage", 2),
-	EPISTASIA("Epistasia", 3),
+	EPISTASIAS("Epistasias", 3),
 	POLYHYBRID("Polyhybrid", 4);
 	
 	private final String text;

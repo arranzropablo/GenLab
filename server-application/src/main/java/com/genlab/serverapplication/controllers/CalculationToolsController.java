@@ -22,11 +22,10 @@ import com.genlab.serverapplication.models.CTResult;
 import com.genlab.serverapplication.models.CalculationTool;
 import com.genlab.serverapplication.models.CalculationToolsMapping;
 import com.genlab.serverapplication.models.SectionsMapping;
-import com.genlab.serverapplication.services.ctservice.Epistasia.CTEpistasia;
+import com.genlab.serverapplication.services.ctservice.Epistasias.CTEpistasias;
 import com.genlab.serverapplication.services.ctservice.Linkage.CTLinkage;
 import com.genlab.serverapplication.services.ctservice.Onelocus.CTOneLocus;
 import com.genlab.serverapplication.services.ctservice.Polyhybrid.CTPolyHybrid;
-import com.genlab.serverapplication.services.ctservice.Polyhybrid.CTPolyhybridimp;
 import com.genlab.serverapplication.services.ctservice.Twoloci.CTTwoLoci;
 
 @Controller
@@ -46,7 +45,7 @@ public class CalculationToolsController {
     private CTPolyHybrid polyhybridService;
 
     @Autowired
-    private CTEpistasia epistasiaService;
+    private CTEpistasias epistasiasService;
 
 	@GetMapping("")
 	public String getCalculationTool(Model model, HttpSession session) {
@@ -259,46 +258,46 @@ public class CalculationToolsController {
             case 3:
                 switch (Integer.parseInt(String.valueOf(CTid.toCharArray()[1]))){
                     case 0:
-                        result = epistasiaService.whithoutModif(values.get("AB").intValue(),
+                        result = epistasiasService.whithoutModif(values.get("AB").intValue(),
                                 values.get("aB").intValue(),
                                 values.get("Ab").intValue(),
                                 values.get("ab").intValue());
                         break;
                     case 1:
-                        result = epistasiaService.singleRecessive(values.get("AB").intValue(),
+                        result = epistasiasService.singleRecessive(values.get("AB").intValue(),
                                 values.get("Ab").intValue(),
                                 values.get("aBab").intValue());
                         break;
                     case 2:
-                        result = epistasiaService.singleDominant(values.get("aB").intValue(),
+                        result = epistasiasService.singleDominant(values.get("aB").intValue(),
                                 values.get("ab").intValue(),
                                 values.get("ABAb").intValue());
                         break;
                     case 3:
-                        result = epistasiaService.singleAdditive(values.get("AB").intValue(),
+                        result = epistasiasService.singleAdditive(values.get("AB").intValue(),
                                 values.get("ab").intValue(),
                                 values.get("AbaB").intValue());
                         break;
                     case 4:
-                        result = epistasiaService.doubleRecessive(values.get("AB").intValue(),
+                        result = epistasiasService.doubleRecessive(values.get("AB").intValue(),
                                 values.get("AbaBab").intValue());
                         break;
                     case 5:
-                        result = epistasiaService.doubleDominant(values.get("ab").intValue(),
+                        result = epistasiasService.doubleDominant(values.get("ab").intValue(),
                                 values.get("ABAbaB").intValue());
                         break;
                     case 6:
-                        result = epistasiaService.doubleDominantRecessive(values.get("aB").intValue(),
+                        result = epistasiasService.doubleDominantRecessive(values.get("aB").intValue(),
                                 values.get("ABAbab").intValue());
                         break;
                     case 7:
-                        result = epistasiaService.segregation6334(values.get("6").intValue(),
+                        result = epistasiasService.segregation6334(values.get("6").intValue(),
                                 values.get("3a").intValue(),
                                 values.get("3b").intValue(),
                                 values.get("4").intValue());
                         break;
                     case 8:
-                        result = epistasiaService.segregation1033(values.get("10").intValue(),
+                        result = epistasiasService.segregation1033(values.get("10").intValue(),
                                 values.get("3a").intValue(),
                                 values.get("3b").intValue());
                         break;

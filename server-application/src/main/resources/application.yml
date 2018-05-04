@@ -1,7 +1,7 @@
 #perfiles:
 # -dev
 # -prod
-spring.profiles.active: dev
+spring.profiles.active: prod
     
 spring:
   thymeleaf:
@@ -19,15 +19,15 @@ genlab:
       link: /linkage
       title: Linkage
     links[3]:
-      link: /epistasia
-      title: Epistasia
+      link: /epistasias
+      title: Epistasias
     links[4]:
       link: /polyhybrid
       title: Polyhybrid
 
 ---
 
-#profile dev
+#profile prod
 
 spring.profiles: prod
 
@@ -39,7 +39,7 @@ spring.datasource.password: DatGent19$5%8
 spring.jpa.hibernate.ddl-auto: none
 
 ---
-#profile prod
+#profile dev
 
 spring.profiles: dev
 

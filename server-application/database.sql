@@ -145,6 +145,6 @@ engine=InnoDB
 INSERT INTO genlab.sections (id, nombre, priority) VALUES (0, 'twoloci', 1);
 INSERT INTO genlab.sections (id, nombre, priority) VALUES (1, 'onelocus', 2);
 INSERT INTO genlab.sections (id, nombre, priority) VALUES (2, 'linkage', 3);
-INSERT INTO genlab.sections (id, nombre, priority) VALUES (3, 'epistasia', 4);
+INSERT INTO genlab.sections (id, nombre, priority) VALUES (3, 'epistasias', 4);
 INSERT INTO genlab.sections (id, nombre, priority) VALUES (4, 'polyhybrid', 5);
 INSERT INTO genlab.users (email, password, role, feedback) VALUES ('ruben', '$2a$10$R8mTPv2.JJilxtv6h7/Jj.VqVRufigy4jIPQMX4cLSEACjXF8UOnG', 'ADMIN', null);
