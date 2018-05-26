@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Genlab</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/form-elements.css">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="resources/css/ctools.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="resources/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="resources/ico/apple-touch-icon-57-precomposed.png">
+
+</head>
+
+<body>
+
+    <div id="loginView">
+        <div class="top-content">
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>GenLab</strong></h1>
+                            <div class="description">
+                                <p>
+                                    Learn genetics in Biology at Universidad Complutense de Madrid
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3 id="login-message">Login to Genlab</h3>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <div class="login-form">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Username</label>
+                                        <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username" required>
+                                    </div>
+                                    <!--  <div class="form-group">
+                                        <label class="sr-only" for="form-password">Password</label>
+                                        <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password" required>
+                                    </div> -->
+                                    <div id="login-buttons" class="form-group">
+                                        <button id="btn-login" class="btn btn-success">Sign in!</button>
+                                        <!-- <button id="btn-register" class="btn btn-primary">Sign up!</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="homeNav">
+        <nav class="navbar bg-dark">
+            <div>
+                <p class="navbar-text header">
+                    <button type="button" class="btn btn-success" id="menuBtn"><img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-256.png"/ style="height: 20px;"></button>
+                    <span class="sectionTitle" id="application"></span>
+                </p>
+
+        </nav>
+        <div id="leftMenu">
+            <h3 id="titleLMenu">Sections</h3>
+            <hr></hr>
+            <ul id="applications" class="nav flex-column">
+                <li id="app1" class="nav-item not-active">One Locus</li>
+                <hr></hr>
+                <li id="app0" class="nav-item not-active">Two Loci</li>
+                <hr></hr>
+                <li id="app4" class="nav-item not-active">Polyhybrid</li>
+                <hr></hr>
+                <li id="app2" class="nav-item not-active">Linkage</li>
+                <hr></hr>
+                <li id="app3" class="nav-item not-active">Epistasias</li>
+                <hr></hr>
+            </ul>
+            <!--<p id="logout">Logout</p>-->
+        </div>
+        </div>
+        <div id="homeView">
+            <!-- Top content -->
+            <div class="top-content">
+                <div class="inner-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2 text">
+                                <div class="parts">
+                                    <ul id="app_sections" class="nav flex-column">
+                                        <li data-section="Theory" class="nav-item"><button class="partBtn btn btn-block z-depth-5" type="button">Theory</button></li>
+                                        <li data-section="Problems" class="nav-item"><button class="partBtn btn btn-block" type="button">Problems</button></li>
+                                        <li data-section="CTools" class="nav-item"><button class="partBtn btn btn-block" type="button">Calculation Tools</button></li>
+                                        <li data-section="Tests" class="nav-item"><button class="partBtn btn btn-block" type="button">Tests</button></li>
+                                        <li data-section="Books" class="nav-item"><button class="partBtn btn btn-block" type="button">Recommended Books</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="application_view">
+            <div id="sectionView">
+                <h1 id="sectionTitle"></h1>
+                <div id="sectionContent">
+                    <!--TESTS-->
+                    <div id="testsView">
+                        <div id="test-list">
+                            <!-- Top content -->
+                            <div class="top-content">
+                                <div class="inner-bg">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-8 col-sm-offset-2 text">
+                                                <div class="partsTest mobile-view">
+                                                    <ul class="tests-list nav flex-column mobile-view">
+                                                        <!--<li class="nav-item"><button class="partBtn btn btn-block" type="button">Test 1</button></li>
+                                                        <li class="nav-item"><button class="partBtn btn btn-block" type="button">Test 2</button></li>-->
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="testQuestions-list">
+                            <!--<div id="question_1" data-question="1" class="questionCont col-sm-6 col-sm-offset-3 form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h4 class="titleQuestion">1. Question Title</h4>
+                                    </div>
+                                </div>
+                                <div class="form-bottom">
+                
+                                    <div class="answers-list login-form mobile-view">
+                                        <div class="form-group answerCont" data-answer="1" id="answer_1_1" data-selected="False">1) Answer 1.1</div>
+                                        <div class="form-group answerCont" data-answer="2" id="answer_1_2" data-selected="False">2) Answer 1.2</div>
+                                        <div class="form-group answerCont" data-answer="3" id="answer_1_3" data-selected="False">3) Answer 1.3</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="question_2" data-question="2" class="questionCont col-sm-6 col-sm-offset-3 form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h4 class="titleQuestion">2. Question Title</h4>
+                                    </div>
+                                </div>
+                                <div class="form-bottom">
+                                    <div class="answers-list login-form mobile-view">
+                                        <div class="form-group answerCont" data-answer="1" id="answer_2_1" data-selected="False">1) Answer 2.1</div>
+                                        <div class="form-group answerCont" data-answer="2" id="answer_2_2" data-selected="False">2) Answer 2.2</div>
+                                        <div class="form-group answerCont" data-answer="3" id="answer_2_3" data-selected="False">3) Answer 2.3</div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <br>
+                        </div>
+                    </div>
+                    <!-- CTOOLS -->
+                    <div id="ctoolsView">
+                        <div id="one-locus-ctools">
+                            <div class="ctools-list">
+                                <div data-ctool="Testcross">Testcross Aa x aa</div>
+                                <div data-ctool="F2Dominance">F2 Dominance Aa x Aa</div>
+                                <div data-ctool="F2Codominance">F2 Codominance A1A2 x A1A2</div>
+                                <div data-ctool="Codominance3">Codominance 3 Alleles A1A2 x A1A3</div>
+                                <div data-ctool="Codominance4">Codominance 4 Alleles A1A2 x A3A4</div>
+                            </div>
+                        </div>
+                        <div id="two-independent-loci-ctools">
+                            <div class="ctools-list">
+                                <div data-ctool="Testcross">TestCross Dominance AaBb x aabb</div>
+                                <div data-ctool="F2Dominance">F2 Dominance AaBb x AaBb</div>
+                                <div data-ctool="F2Codominance">F2 Codominance A1A2B1B2 x A1A2B1B2</div>
+                                <div data-ctool="F2Codom2">F2 Codom(2)-Dom A1A2Bb x A1A2Bb</div>
+                                <div data-ctool="F2Codom4">F2 Codom(4)-Dom A1A2Bb x A3A4Bb</div>
+                                <div data-ctool="F2TestcrossDom">F2-TestCrossDom AaBb x Aabb</div>
+                                <div data-ctool="F2TestcrossDom2_1">F2-TestCross2-Dom A1A2Bb x A1A2bb</div>
+                                <div data-ctool="F2TestcrossDom2_2">F2-TestCross2-Dom A1A2Bb x A3A4bb</div>
+                            </div>
+                        </div>
+                        <div id="linkage-ctools">
+                            <h2 class="yellow">Two loci</h2>
+                            <div class="ctools-list">
+                                <div data-ctool="Testcross">TestCross AaBb x aabb</div>
+                                <div data-ctool="F2Dominance">F2 Dominance AaBb x AaBb</div>
+                                <div data-ctool="F2Codominance">F2 Codominance A1A2B1B2 x A1A2B1B2</div>
+                            </div>
+                            <h2 class="yellow">Three loci</h2>
+                            <div class="ctools-list">
+                                <div data-ctool="Testcross3Loci">TestCross AaBbCc x aabbcc</div>
+                            </div>
+                            <h2 class="yellow">Direct method</h2>
+                            <div class="ctools-list">
+                                <div data-ctool="TestcrossDM">TestCross AaBb x aabb</div>
+                                <div data-ctool="F2DominanceDM">F2 Dominance AaBb x AaBb</div>
+                                <div data-ctool="F2CodominanceDM">F2 Codominance A1A2B1B2 x A1A2B1B2</div>
+                                <div data-ctool="Testcross3LociDM">TestCross 3 Loci AaBbCc x aabbcc</div>
+                            </div>
+                        </div>
+                        <div id="polyhybrid-ctools">
+                            <div class="ctools-list">
+                                <div data-ctool="Polyhybrid">Polyhybrid AaBbCc...Nn</div>
+                                <div data-ctool="MultiplesAlleles">Multiples alleles A1,A2,A3...An</div>
+                            </div>
+                        </div>
+                        <div id="epistasias-ctools">
+                            <div class="ctools-list">
+                                <div data-ctool="WhithoutModification">Without modification 9:3:3:1</div>
+                                <div data-ctool="SingleRecesive">Single recesive 9:3:4</div>
+                                <div data-ctool="SingleDominant">Single dominant 12:3:1</div>
+                                <div data-ctool="Segregation961">Segregation 9:6:1</div>
+                                <div data-ctool="DoubleRecesive">Double recesive 9:7</div>
+                                <div data-ctool="DoubleDominant">Double dominant 15:1</div>
+                                <div data-ctool="DoubleDominantRecesive">Double dominant recesive 13:3</div>
+                                <div data-ctool="Segregation6334">Segregation 6:3:3:4</div>
+                                <div data-ctool="Segregation1033">Segregation 10:3:3</div>
+                            </div>
+                        </div>
+                        <div id="ctoolView" class="mobile-view"></div>
+                        <button class="back-btn-ctool btn btn-primary">Back</button>
+                    </div>
+                    <button class="back-btn-test btn btn-primary">Back</button>
+                    <!-- -->
+                    <!-- PROBLEMS -->
+                    <div id="problemsView">
+                        <div id="problems-list" class="mobile-view">
+                            <!--<div class="problem">
+                                <h2 class="problem-title">Problema 1</h2>
+                                <p>Tenemos estas especies de plantas que bla bla bla advdgdegerherhhhre herhrehherehehr heerhehehrhhe herhhhhe</p>
+                            </div>
+                            <div class="problem">
+                                <h2 class="problem-title">Problema 2</h2>
+                                <p>Tenemos estas especies de plantas que bla bla bla advdgdegerherhhhre herhrehherehehr heerhehehrhhe herhhhhe</p>
+                            </div>
+                            <div class="problem">
+                                <h2 class="problem-title">Problema 3</h2>
+                                <p>Tenemos estas especies de plantas que bla bla bla</p>
+                            </div>
+                            <div class="problem">
+                                <h2 class="problem-title">Problema 4</h2>
+                                <p>Tenemos estas especies de plantas que bla bla bla</p>
+                            </div>-->
+
+                        </div>
+                    </div>
+                    <!-- THEORY -->
+                    <div id="theoryView">
+                        <div id="theory-list" class="mobile-view">
+                            <!-- Top content -->
+                            <div class="top-content">
+                                <div class="inner-bg">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-8 col-sm-offset-2 text">
+                                                <div class="partsTest mobile-view">
+                                                    <ul class="theory-list nav flex-column mobile-view">
+                                                        <!--<li class="nav-item"><button class="partBtn btn btn-block" type="button">Test 1</button></li>
+                                                        <li class="nav-item"><button class="partBtn btn btn-block" type="button">Test 2</button></li>-->
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="viewTheory"></div>
+                            <button class="back-btn-theory btn btn-primary">Back</button>
+                        </div>
+                    </div>
+                    <!-- BOOKS -->
+                    <div id="booksView">
+                        <div id="books-list" class="mobile-view">
+                        </div>
+
+                    </div>
+                </div>
+                <button class="back-btn btn btn-primary">Back</button>
+            </div>
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="resources/js/jquery-1.11.1.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="resources/js/jquery.backstretch.min.js"></script>
+        <script src="resources/js/scripts.js"></script>
+        <script src="resources/js/home.js"></script>
+        <script src="resources/js/ctools.js"></script>
+
+</body>
+
+</html>

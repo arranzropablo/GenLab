@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-Testcross" class="mobile-view">
+        <h1 class="ctool-title">Testcross Dominance: AaBb x aabb</h1>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB</td>
+                    <td>aB</td>
+                    <td>Ab</td>
+                    <td>ab</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input id="Alleles-AB-Testcross-linkage" type="text" size="1" /></td>
+                    <td><input id="Alleles-aB-Testcross-linkage" type="text" size="1" /></td>
+                    <td><input id="Alleles-Ab-Testcross-linkage" type="text" size="1" /></td>
+                    <td><input id="Alleles-ab-Testcross-linkage" type="text" size="1" /></td>
+                    <td id="total-Testcross"></td>
+                </tr>
+                <tr>
+                    <td>Ind.</td>
+                    <td id="ExpectedInd-AB-Testcross"></td>
+                    <td id="ExpectedInd-aB-Testcross"></td>
+                    <td id="ExpectedInd-Ab-Testcross"></td>
+                    <td id="ExpectedInd-ab-Testcross"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Con.</td>
+                    <td id="ExpectedCont-AB-Testcross"></td>
+                    <td id="ExpectedCont-aB-Testcross"></td>
+                    <td id="ExpectedCont-Ab-Testcross"></td>
+                    <td id="ExpectedCont-ab-Testcross"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="Testcross-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+
+    <table class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> A,a (df=1) =</td>
+            <td id="value-Testcross-Aa"></td>
+            <td id="agree-Testcross-Aa"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> B,b (df=1) =</td>
+            <td id="value-Testcross-Bb"></td>
+            <td id="agree-Testcross-Bb"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Indep. (df=3) =</td>
+            <td id="value-Testcross-Indep"></td>
+            <td id="agree-Testcross-Indep"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Lin. (df=1) =</td>
+            <td id="value-Testcross-Lin"></td>
+            <td id="agree-Testcross-Lin"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Cont. (df=1) =</td>
+            <td id="value-Testcross-Cont"></td>
+            <td id="agree-Testcross-Cont"></td>
+        </tr>
+        <tr>
+            <td> Lod score Z =</td>
+            <td id="value-Testcross-LodSZ"></td>
+            <td id="agree-Testcross-LodSZ"></td>
+        </tr>
+        <tr>
+            <td> RF(r) =</td>
+            <td id="value-Testcross-RF"></td>
+            <td id="agree-Testcross-RF"></td>
+        </tr>
+        <tr>
+            <td> Distance(cM) =</td>
+            <td id="value-Testcross-Dist"></td>
+            <td id="agree-Testcross-Dist"></td>
+        </tr>
+        <tr>
+            <td> Phase =</td>
+            <td id="value-Testcross-Phase"></td>
+            <td id="agree-Testcross-Phase"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Segregation of Locus A,a</p>
+    <table id="expected-table-Aa" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A </td>
+            <td> a </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td id="value-A-Testcross"></td>
+            <td id="value-a-Testcross"></td>
+        </tr>
+        <tr>
+            <td>Expected</td>
+            <td id="Expected-A-Testcross"></td>
+            <td id="Expected-a-Testcross"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Segregation of Locus B,b</p>
+    <table id="expected-table-Bb" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td id="value-B-Testcross"></td>
+            <td id="value-b-Testcross"></td>
+        </tr>
+        <tr>
+            <td>Expected</td>
+            <td id="Expected-B-Testcross"></td>
+            <td id="Expected-b-Testcross"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Results</p>
+    <p id="Results-Testcross"></p>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

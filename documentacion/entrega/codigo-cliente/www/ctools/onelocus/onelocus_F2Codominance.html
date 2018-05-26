@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+
+    <div id="onelocus-F2Codominance" class="mobile-view">
+        <h1 class="ctool-title">F2 Codominance: A1A2 x A1A2</h1>
+        <div class="responsive-table">
+            <table class="onelocus-table">
+                <tr>
+                    <td>Types</td>
+                    <td>A1A1</td>
+                    <td>A1A2</td>
+                    <td>A2A2</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input class="clean" id="Alleles-A1A1-F2Codominance" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-A1A2-F2Codominance" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-A2A2-F2Codominance" type="text" size="1" /></td>
+                    <td class="clean" id="total-F2Codominance"></td>
+                </tr>
+                <tr>
+                    <td>Exp.</td>
+                    <td class="clean" id="Expected-A1A1-F2Codominance"></td>
+                    <td class="clean" id="Expected-A1A2-F2Codominance"></td>
+                    <td class="clean" id="Expected-A2A2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2Codominance-onelocus" class="btn btn-primary btn-calculate">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <table class="onelocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X^2 (df=2) = </td>
+            <td class="clean" id="value_Testcross"></td>
+            <td class="clean" id="agree_Testcross"></td>
+        </tr>
+    </table>
+    <a href="../index.html" class="back-btn btn btn-primary">Back</a>
+
+</body>

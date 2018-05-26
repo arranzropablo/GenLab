@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Edit book</title>
+	    <link rel="stylesheet" href="../static/css/books.css" th:href="@{/css/books.css}" type="text/css"/>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+				<a class="breadcrumb-item" th:href="@{/home}">Home</a>
+				<a class="breadcrumb-item" th:href="@{/recommendedbooks}">Recommended Books</a>
+				<span class="breadcrumb-item active" th:text="${book.name}">Book</span>
+			</nav>
+			<div class="container mainContentBooks">
+			
+				<form th:action="@{/recommendedbooks/save/} + ${book.id}" method="post" th:object="${book}">
+				  <div class="form-group">
+				    <label for="bookName">Name:</label>
+				    <input type="text" class="form-control" id="bookName" name="bookName" placeholder="Name of the book" th:field="*{name}" th:placeholder="${book.name}"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="bookAuthor">Author:</label>
+				    <input type="text" class="form-control" id="bookAuthor" name="bookAuthor" placeholder="Author of the book" th:field="*{author}" th:placeholder="${book.author}"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="bookEditorial">Editorial:</label>
+				    <input type="text" class="form-control" id="bookEditorial" name="bookEditorial" placeholder="Editorial of the book" th:field="*{editorial}" th:placeholder="${book.editorial}"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="bookIsbn">ISBN:</label>
+				    <input type="text" class="form-control" id="bookIsbn" name="bookIsbn" placeholder="ISBN of the book" th:field="*{isbn}" th:placeholder="${book.isbn}"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="bookLink">Link:</label>
+				    <input type="text" class="form-control" id="bookLink" name="bookLink" placeholder="Link of the book" th:field="*{link}" th:placeholder="${book.link}" aria-describedby="linkHelp"/>
+				    <small id="linkHelp" class="form-text text-muted">Don't include "http://" in your link.</small>
+				  </div>
+				  <button type="submit" name="bookSubmit" class="btn btn-primary">Save</button>
+				</form>
+
+			</div>
+		</div>
+	</body>
+</html>

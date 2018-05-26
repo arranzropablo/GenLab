@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Calculation Tools</title>
+	    <link rel="stylesheet" href="../static/css/calculationTools.css" th:href="@{/css/calculationTools.css}" type="text/css"/>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML' async="async"></script>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+			  <!-- Esto no deberá apuntar a home, sino a la seccion donde este.. pero no se ahora mismo donde irá eso -->
+			  <a class="breadcrumb-item" th:href="@{/home}">Home</a>
+			  <span class="breadcrumb-item active">Calculation Tools</span>
+			</nav>
+			<div class="main-container">
+				<div class="side-list">
+					<h2>Calculation Tools</h2>
+					<table>
+						<!-- Se recuperan las calculationTools para la sección que estemos -->
+						<tr th:each="calculationTool : ${calculationTools}">
+							<td>
+								<a class="CTButton" th:text="${calculationTool.name}" th:href="'/calculationtools/' + ${calculationTool.id}"></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!-- Aqui el main content -->
+				<div class="main-content-fragment" >
+					<div id="calcToolFrag" th:include="fragments/CTFragments::${calcToShow}">
+					</div>	 
+					<button type="button" class="btn btn-success" id="calcButton">Calculate</button>
+				</div>
+			</div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+            <script src="../static/js/CTAjax.js" th:src="@{/js/CTAjax.js}"></script>
+		</div>
+	</body>
+</html>

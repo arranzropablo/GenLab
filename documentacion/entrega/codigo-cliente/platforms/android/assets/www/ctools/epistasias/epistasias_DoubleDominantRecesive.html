@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div id="epistasias-DoubleDominantRecesive" class="mobile-view">
+        <h1 class="ctool-title">Double dominant-recessive. F2: AaBb x AaBb</h1>
+        <div class="responsive-table">
+            <table class="generic-ctools-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB + Ab + ab</td>
+                    <td>aB</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input class="clean" id="Alleles-ABAbab-DoubleDominantRecesive" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-aB-DoubleDominantRecesive" type="text" size="1" /></td>
+                    <td class="clean" id="total-DoubleDominantRecesive"></td>
+                </tr>
+                <tr>
+                    <td>Exp.</td>
+                    <td class="clean" id="Expected-ABAbab-DoubleDominantRecesive"></td>
+                    <td class="clean" id="Expected-aB-DoubleDominantRecesive"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="DoubleDominantRecesive-epistasias" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <table class="onelocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X^2 Ind. (df=1) = </td>
+            <td class="clean" id="value-DoubleDominantRecesive"></td>
+            <td class="clean" id="agree-DoubleDominantRecesive"></td>
+        </tr>
+    </table>
+    <p class="explanation">The same trait is controlled by two independent loci (A, a and B, b). The dominant allele (A) of the locus A,a suppress the expression of the alleles of locus B, b; and the recessive allele of the other locus (allele b) suppress the expression of
+        the alleles of locus A,a.
+    </p>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-Testcross3LociDM" class="mobile-view">
+        <h1 class="ctool-title">Three points</h1>
+        <p class="subtitle">AaBbCc x aabbcc</p>
+        <div class="imagenDM">
+
+        </div>
+        <!-- <img src="../../resources/img/testcross3LociDM.jpg" alt="Imagen que muestra el proceso para solucionar este CT" class="imagenDM"> -->
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>Recombination frequency r1</td>
+                    <td>
+                        <input id="Alleles-Testcross3LociDM-RecFreqR1" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Recombination frequency r2</td>
+                    <td>
+                        <input id="Alleles-Testcross3LociDM-RecFreqR2" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Coefficient of coincidence</td>
+                    <td>
+                        <input id="Alleles-Testcross3LociDM-CoC" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total offspring</td>
+                    <td>
+                        <input id="Alleles-Testcross3LociDM-ToS" type="text" size="1" />
+                    </td>
+                </tr>
+            </table>
+            <table class="linkage-table">
+                <tr>
+                    <td>Interference =</td>
+                    <td id="value-Testcross3LociDM-Interference"></td>
+                </tr>
+                <tr>
+                    <td>Recombination frequency r =</td>
+                    <td id="value-Testcross3LociDM-RecFreq"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="Testcross3LociDM-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="titleTab">Estimated offspring</p>
+    <table id="table-estimatedOffspring-Testcross3LociDM" class="linkage-table">
+        <tr>
+            <td></td>
+            <td> ABC/abc </td>
+            <td> ABc/abC</td>
+            <td> Abc/aBC </td>
+            <td> AbC/aBC</td>
+        </tr>
+        <tr>
+            <td>ABC</td>
+            <td id="estOspring-Testcross3LociDM-ABC_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-ABC_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-ABC_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-ABC_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>aBC</td>
+            <td id="estOspring-Testcross3LociDM-aBC_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-aBC_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-aBC_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-aBC_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>AbC</td>
+            <td id="estOspring-Testcross3LociDM-AbC_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-AbC_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-AbC_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-AbC_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>abC</td>
+            <td id="estOspring-Testcross3LociDM-abC_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-abC_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-abC_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-abC_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>ABc</td>
+            <td id="estOspring-Testcross3LociDM-ABc_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-ABc_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-ABc_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-ABc_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>aBc</td>
+            <td id="estOspring-Testcross3LociDM-aBc_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-aBc_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-aBc_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-aBc_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>AbC</td>
+            <td id="estOspring-Testcross3LociDM-AbC_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-AbC_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-AbC_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-AbC_AbC/aBC"></td>
+        </tr>
+        <tr>
+            <td>abC</td>
+            <td id="estOspring-Testcross3LociDM-abC_ABC/abc"></td>
+            <td id="estOspring-Testcross3LociDM-abC_ABc/abC"></td>
+            <td id="estOspring-Testcross3LociDM-abC_Abc/aBC"></td>
+            <td id="estOspring-Testcross3LociDM-abC_AbC/aBC"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

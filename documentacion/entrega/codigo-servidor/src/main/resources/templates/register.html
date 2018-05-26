@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+	    <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}" type="text/css"/>
+	    <title>Genlab</title>
+	    <link href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}" rel="icon" type="image/x-icon"/>
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="sub-header">
+				<img src="../static/img/logo.svg" th:src="@{/img/logo.svg}"/>
+				<h1>GenLab</h1>
+			</div>
+			<h3 class="program-message">Improve apps administration</h3>
+		</div>
+	    <div class="content">
+	        <h3 class="message">Sign Up</h3>
+	        <div class="section-form">
+	            <form action="/register" method="post" id="login-form">
+	                <table>
+	                    <tr>
+	                        <td><label for="email">User:</label></td>
+	                        <td><input type="text" name="email"/></td>
+	                    </tr>
+	                    <tr>
+	                        <td><label for="password">Password:</label></td>
+	                        <td><input type="password" name="password"/></td>
+	                    </tr>
+	                    <tr>
+	                        <td><label for="password">Repeat Password:</label></td>
+	                        <td><input type="password" name="repassword"/></td>
+	                    </tr>
+	                </table>
+	                <input class="submit" type="submit" value="Sign Up"/>
+	            </form>
+	        </div>
+	    </div>
+
+	</body>
+
+</html>

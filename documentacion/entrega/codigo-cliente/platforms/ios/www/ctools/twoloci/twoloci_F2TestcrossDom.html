@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="twolocus-F2TestcrossDominance" class="mobile-view">
+        <h1 class="ctool-title">F<sub>2</sub> Testcross Dominance: AaBb x Aabb</h1>
+        <h3 class="ctool-title">Testcross Dominance locus B (Bb x bb)</h3>
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB</td>
+                    <td>aB</td>
+                    <td>Ab</td>
+                    <td>ab</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input id="Alleles-AB-F2TestcrossDominance" type="text" size="1" /></td>
+                    <td><input id="Alleles-aB-F2TestcrossDominance" type="text" size="1" /></td>
+                    <td><input id="Alleles-Ab-F2TestcrossDominance" type="text" size="1" /></td>
+                    <td><input id="Alleles-ab-F2TestcrossDominance" type="text" size="1" /></td>
+                    <td id="total-F2TestcrossDominance"></td>
+                </tr>
+                <tr>
+                    <td>Ind.</td>
+                    <td id="ExpectedInd-AB-F2TestcrossDominance"></td>
+                    <td id="ExpectedInd-aB-F2TestcrossDominance"></td>
+                    <td id="ExpectedInd-Ab-F2TestcrossDominance"></td>
+                    <td id="ExpectedInd-ab-F2TestcrossDominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Con.</td>
+                    <td id="ExpectedCont-AB-F2TestcrossDominance"></td>
+                    <td id="ExpectedCont-aB-F2TestcrossDominance"></td>
+                    <td id="ExpectedCont-Ab-F2TestcrossDominance"></td>
+                    <td id="ExpectedCont-ab-F2TestcrossDominance"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2TestcrossDominance-twoloci" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="explanation">The expected segregation of the locus A,a is 3/4 A and 1/4 a (3:1)</p>
+    <p class="explanation">The expected segregation of the locus B,b is 1/2 B and 1/2 b (1:1)</p>
+    <table id="expected-table-Aa" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A </td>
+            <td> a </td>
+            <td> Total </td>
+        </tr>
+        <tr>
+            <td>A,a</td>
+            <td id="value-A-F2TestcrossDominance"></td>
+            <td id="value-A-F2TestcrossDominance"></td>
+            <td id="value-Total-F2TestcrossDominance"></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td id="Expected-A-F2TestcrossDominance"></td>
+            <td id="Expected-a-F2TestcrossDominance"></td>
+            <td></td>
+        </tr>
+    </table>
+    <table id="expected-table-Bb" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+            <td> ----- </td>
+        </tr>
+        <tr>
+            <td>B,b</td>
+            <td id="value-B-F2TestcrossDominance"></td>
+            <td id="value-b-F2TestcrossDominance"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td id="Expected-B-F2TestcrossDominance"></td>
+            <td id="Expected-b-F2TestcrossDominance"></td>
+            <td></td>
+        </tr>
+    </table>
+    <p class="explanation">The expected segregation if the locus A,a and locus B,b are independent is 3/8 AB, 3/8 Ab, 1/8 aB and 1/8 ab (3:3:1:1)</p>
+    <table class="twolocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> A,a</td>
+            <td id="value-F2TestcrossDominance-Aa"></td>
+            <td id="agree-F2TestcrossDominance-Aa"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> B,b</td>
+            <td id="value-F2TestcrossDominance-Bb"></td>
+            <td id="agree-F2TestcrossDominance-Bb"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Indep.</td>
+            <td id="value-F2TestcrossDominance-Indep"></td>
+            <td id="agree-F2TestcrossDominance-Indep"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Cont.</td>
+            <td id="value-F2TestcrossDominance-Cont"></td>
+            <td id="agree-F2TestcrossDominance-Cont"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+.onelocus-table,
+.generic-ctools-table,
+.linkage-table,
+.calculationTool-table {
+    align-self: center;
+    margin-top: 3vw;
+    width: 100%;
+}
+
+.responsive-table {
+    margin-left: 7%;
+    margin-right: 7%;
+    overflow-x: auto;
+    border: 1px solid rgb(0, 46, 0);
+}
+
+.ctool-title {
+    color: white;
+    font-size: medium;
+}
+
+.onelocus-table tr td,
+.twolocus-table tr td,
+.linkage-table tr td,
+.generic-ctools-table tr td {
+    align-items: center;
+    padding: 2vw;
+    color: white;
+}
+
+.calculate-buttons {
+    margin-top: 2vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+    /*.onelocus-table input,
+    .twolocus-table input,
+    .generic-ctools-table input {
+        width: 100%;
+    }*/
+    .responsive-table {
+        margin-left: 0;
+        margin-right: 0;
+        overflow-x: auto;
+        border: 1px solid rgb(0, 46, 0);
+    }
+}
+
+.calculation-tool tr td,
+.subtitle {
+    color: white;
+}
+
+.explanation {
+    color: darkkhaki;
+}
+
+.titleTab {
+    font-size: 6vw;
+    color: yellowgreen;
+    margin-top: 3vw;
+}
+
+.imagenDM {
+    margin: 0 auto;
+    width: 79%;
+    background-image: url(../../resources/img/testcross3LociDM.jpg);
+    min-height: 69vw;
+    background-repeat: no-repeat;
+}
+
+.ctool-sub-title {
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+    vertical-align: -webkit-baseline-middle;
+    margin-top: 2vw;
+}
+
+.ctool-alert {
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,49 @@
+#perfiles:
+# -dev
+# -prod
+spring.profiles.active: dev
+    
+spring:
+  thymeleaf:
+    cache: false
+
+genlab:
+  sections:
+    links[0]:
+      link: /twoloci
+      title: Two Loci
+    links[1]:
+      link: /onelocus
+      title: One Locus
+    links[2]:
+      link: /linkage
+      title: Linkage
+    links[3]:
+      link: /epistasias
+      title: Epistasias
+    links[4]:
+      link: /polyhybrid
+      title: Polyhybrid
+
+---
+
+#profile prod
+
+spring.profiles: prod
+
+server.port: 80
+
+spring.datasource.url: jdbc:mysql://localhost:3306/genlab
+spring.datasource.username: root
+spring.datasource.password: DatGent19$5%8
+spring.jpa.hibernate.ddl-auto: none
+
+---
+#profile dev
+
+spring.profiles: dev
+
+spring.datasource.url: jdbc:mysql://91.121.109.58:3306/genlab
+spring.datasource.username: usuariop1
+spring.datasource.password: accesop1
+spring.jpa.hibernate.ddl-auto: none

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="twolocus-F2Codom4" class="mobile-view">
+        <h1 class="ctool-title">F<sub>2</sub> Codominance locus A (A<sub>1</sub>A<sub>2</sub> x A<sub>3</sub>A<sub>4</sub>)</h1>
+        <p class="subtitle">F₂ Dominance locus B (Bb x Bb)</p>
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>Type</td>
+                    <td>Obs.</td>
+                    <td>Ind.</td>
+                    <td>Cont.</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>3</sub>B</td>
+                    <td>
+                        <input id="Alleles-A1A3B-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A1A3B-F2Codom4"></td>
+                    <td id="ExpectedCont-A1A3B-F2Codom4"></td>
+                    <td id="total-F2Codom4"></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>3</sub>b</td>
+                    <td>
+                        <input id="Alleles-A1A3b-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A1A3b-F2Codom4"></td>
+                    <td id="ExpectedCont-A1A3b-F2Codom4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>4</sub>B</td>
+                    <td>
+                        <input id="Alleles-A1A4B-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A1A4B-F2Codom4"></td>
+                    <td id="ExpectedCont-A1A4B-F2Codom4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>4</sub>b</td>
+                    <td>
+                        <input id="Alleles-A1A4b-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A1A4b-F2Codom4"></td>
+                    <td id="ExpectedCont-A1A4b-F2Codom4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>3</sub>B</td>
+                    <td>
+                        <input id="Alleles-A2A3B-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A2A3B-F2Codom4"></td>
+                    <td id="ExpectedCont-A2A3B-F2Codom4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>3</sub>b</td>
+                    <td>
+                        <input id="Alleles-A2A3b-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A2A3b-F2Codom4"></td>
+                    <td id="ExpectedCont-A2A3b-F2Codom4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>v</sub>B</td>
+                    <td>
+                        <input id="Alleles-A2A4B-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A2A4B-F2Codom4"></td>
+                    <td id="ExpectedCont-A2A4B-F2Codom4"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>4</sub>b</td>
+                    <td>
+                        <input id="Alleles-A2A4b-F2Codom4" type="text" size="1" />
+                    </td>
+                    <td id="ExpectedInd-A2A4b-F2Codom4"></td>
+                    <td id="ExpectedCont-A2A4b-F2Codom4"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2Codom4-twoloci" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="explanation">The expected segregation of the locus A is 1/4 A₁A₃, 1/4 A₁A₄, 1/4 A₂A₃ and 1/4 A₂A₄ (1:1:1:1)</p>
+    <p class="explanation">The expected segregation of the locus B,b is 3/4 B and 1/4 b (3:1)</p>
+    <table id="expected-table-A1A2" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A₁,A₃ </td>
+            <td> A₁,A₄ </td>
+            <td> A₂,A₃ </td>
+            <td> A₂,A₄ </td>
+            <td> Total </td>
+        </tr>
+        <tr>
+            <td> Locus A</td>
+            <td id="value-A1A3-F2Codom4"></td>
+            <td id="value-A1A4-F2Codom4"></td>
+            <td id="value-A2A3-F2Codom4"></td>
+            <td id="value-A2A4-F2Codom4"></td>
+            <td id="value-Total-F2Codom4"></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td id="Expected-A1A3-F2Codom4"></td>
+            <td id="Expected-A1A4-F2Codom4"></td>
+            <td id="Expected-A2A3-F2Codom4"></td>
+            <td id="Expected-A2A4-F2Codom4"></td>
+            <td></td>
+        </tr>
+    </table>
+    <table id="expected-table-Bb" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+            <td> ----- </td>
+        </tr>
+        <tr>
+            <td> B,b</td>
+            <td id="value-B-F2Codom4"></td>
+            <td id="value-b-F2Codom4"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td id="Expected-B-F2Codom4"></td>
+            <td id="Expected-b-F2Codom4"></td>
+            <td></td>
+        </tr>
+    </table>
+    <p class="explanation">The expected segregation of the locus A and locus B if they are independent is 3/16 A₁A₃B, 3/16 A₁A₄B, 3/16 A₂A₃B, 3/16 A₂A₄B, 1/16 A₁A₃b, 1/16 A₁A₄b, 1/16 A₂A₃b and 1/16 A₂A₄b (3:3:3:3:1:1:1:1)</p>
+    <table class="twolocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Locus A</td>
+            <td id="value-F2Codom4-LocusA"></td>
+            <td id="agree-F2Codom4-LocusA"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Locus B</td>
+            <td id="value-F2Codom4-LocusB"></td>
+            <td id="agree-F2Codom4-LocusB"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Indep.</td>
+            <td id="value-F2Codom4-Indep"></td>
+            <td id="agree-F2Codom4-Indep"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Cont.</td>
+            <td id="value-F2Codom4-Cont"></td>
+            <td id="agree-F2Codom4-Cont"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

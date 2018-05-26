@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+	<link href="../../static/img/favicon.ico" th:href="@{/img/favicon.ico}" rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}" type="text/css"/>
+    
+    <script src="https://use.fontawesome.com/980c03ad12.js"></script>	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<link href="../../static/img/favicon.ico" th:href="@{/img/favicon.ico}" rel="icon" type="image/x-icon"/>
+</head>
+<body>
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	
+	  <a class="navbar-brand" href="/">
+	    <img alt="Brand" src="../../static/img/logo.svg" th:src="@{/img/logo.svg}" width="30" height="30"/>
+	  </a>
+	  
+	  <a class="navbar-brand" href="/">Genlab</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li th:each="link : ${linkSectionProperties.links}" class="nav-item">
+	        <a class="nav-link" th:href="'/home' + ${link.link}"
+	        					th:text="${link.title}"
+	        					th:style="${(#httpServletRequest.getServletPath() == '/home' + link.link || '/' + session.currentSection.toString().toLowerCase() == link.link) ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}"></a>
+	      </li>
+	      <li>
+	      	<a class="nav-link" th:href="@{/setpriority}" 
+	      		th:style="${(#httpServletRequest.getServletPath() == '/setpriority') ? 'pointer-events:none; text-decoration:none; cursor: default; color:black;' : ''}">
+	      		Set priority
+	      	</a>
+	      </li>
+	     <!-- <li th:text="'Bienvenido ' +${username}"></li> -->
+	    </ul>
+		<form th:action="@{/logout}" method="post" id="logoutForm"><button id="logoutBtn" type="submit" class="btn btn-danger">Log Out</button></form>
+	  </div>
+	</nav>
+	
+	<div>
+		<div layout:fragment="content"></div>
+	</div>
+
+</body>
+</html>

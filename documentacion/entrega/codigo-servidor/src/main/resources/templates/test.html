@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<title th:text="${test.titulo}"></title>
+	    <link rel="stylesheet" href="../static/css/tests.css" th:href="@{/css/tests.css}" type="text/css"/>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+				<a class="breadcrumb-item" th:href="@{/home}">Home</a>
+				<a class="breadcrumb-item" th:href="@{/tests}">Tests</a>
+				<span class="breadcrumb-item active" th:text="${test.titulo}">New Test</span>
+			</nav>
+			<div class="container">
+				<div id="c_test">
+					<form action="#" th:action="@{/tests/save}" id="test-form" th:object="${test}" method="post">
+						<input id="id" th:field="*{id}" th:value="${test.id}" type="hidden"/>
+						<div class="testTitle">
+							<input th:field="*{titulo}" type="text" th:value="${test.titulo}"></input>
+						</div>
+						<hr></hr>
+						<div class="row" th:each="question,iterationStatus: ${test.questions}">
+							<div class="c_question">
+								<input id="id" th:field="*{questions[__${iterationStatus.index}__].id}" th:value="${question.id}" type="hidden"/>
+								<span class="q_num badge" th:text="${iterationStatus.count}"></span>
+								<textarea th:field="*{questions[__${iterationStatus.index}__].texto}" th:text="${question.texto}"></textarea>
+								<table class="table c_answers">
+									<tbody>
+										<tr class="bg-info" th:each="answer,status: ${question.answers}">
+											<input id="id" th:field="*{questions[__${iterationStatus.index}__].answers[__${status.index}__].id}" th:value="${answer.id}" type="hidden"/>
+											<td><textarea th:field="*{questions[__${iterationStatus.index}__].answers[__${status.index}__].texto}" th:text="${answer.texto}"></textarea></td>
+											<td th:if="${answer.correcta}">
+												<input th:field="*{questions[__${iterationStatus.index}__].answers[__${status.index}__].correcta}" type="checkbox" checked="checked"></input>
+											</td>
+											<td th:unless="${answer.correcta}">
+												<input th:field="*{questions[__${iterationStatus.index}__].answers[__${status.index}__].correcta}" type="checkbox"></input>
+											</td>
+											<td> 
+												<a data-function="answerDel" th:attr="data-pos=${status.index}, data-question-pos=${iterationStatus.index}" class="btn btn-default"> <span class="text-danger fa fa-times"></span> </a> 
+											</td>
+										</tr>
+										<tr>
+											<td colspan="3"> 
+												<button data-function="answerAdd" th:attr="data-pos=${iterationStatus.index}" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Add new answer </button>
+											</td>						
+										</tr>
+									</tbody>
+								</table>
+								<hr></hr>
+							</div>
+							<div class="c_del">
+								<a data-function="questionDel" th:attr="data-pos=${iterationStatus.index}" class="btn btn-default"><span class="fa fa-trash"></span></a>
+							</div>
+						</div>
+						<div class="row">
+							<button data-function="questionAdd" class="btn btn-primary"><span class="fa fa-plus-circle"></span> Add new question</button>
+						</div>
+						<button class="btn_save btn btn-block btn-lg btn-success" type="submit">Save</button>
+					</form>
+				</div>
+			</div>
+		    	<script src="../static/js/test.js" th:src="@{/js/test.js}"></script>
+		</div>
+	</body>
+</html>

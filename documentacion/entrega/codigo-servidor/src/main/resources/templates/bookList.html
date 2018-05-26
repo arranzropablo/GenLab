@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Recommended Books</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+				<a class="breadcrumb-item" th:href="@{/home}">Home</a>
+				<span class="breadcrumb-item active">Recommended books</span>
+			</nav>
+			<div class="container">
+				<h1>Recommended Books</h1>
+				<table id="testsTable" class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Name</th>
+							<th>Author</th>
+							<th>Editorial</th>
+							<th>ISBN</th>
+							<th>Link</th>
+							<th>Edit</th>
+							<th>Delete</th>	
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="book : ${books}">
+							<td th:text="${book.name}"></td>
+							<td th:text="${book.author}"></td>
+							<td th:text="${book.editorial}"></td>
+							<td th:text="${book.isbn}"></td>
+							<td><a th:text="${book.link}" th:href="'http://' + ${book.link}"></a></td>
+							<td> <a th:href="@{/recommendedbooks/edit/}+${book.id}" class="text-success fa fa-pencil"></a> </td>
+							<td> <a th:href="@{/recommendedbooks/delete/}+${book.id}" class="text-danger fa fa-times"></a> </td>
+						</tr>
+						<tr>
+							<td colspan="7"> <a th:href="@{/recommendedbooks/add}" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new book </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

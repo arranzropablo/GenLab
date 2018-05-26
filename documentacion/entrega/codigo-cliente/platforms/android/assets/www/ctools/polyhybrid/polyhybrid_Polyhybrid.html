@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML' async="async"></script>
+</head>
+
+<body class="calculation-tool">
+    <div id="polyhibrid-Polyhybrid" class="mobile-view">
+        <h1 class="ctool-title">Polyhybrid</h1>
+        <p class="subtitle">A₁A₂Bb x A₁A₂Bb</p>
+        <p class="subtitle">AABBCC...NN x aabbcc...nn</p>
+        <p class="subtitle">AaBbCc...Nn x AaBbCc...Nn</p>
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>n</td>
+                    <td><input class="clean" id="Data-n-polyhybrid" type="text" size="1" /></td>
+                    <td>T</td>
+                    <td><input class="clean" id="Data-T-polyhybrid" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>h</td>
+                    <td><input class="clean" id="Data-h-polyhybrid" type="text" size="1" /></td>
+                    <td>R</td>
+                    <td><input class="clean" id="Data-R-polyhybrid" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>d</td>
+                    <td><input class="clean" id="Data-r-polyhybrid" type="text" size="1" /></td>
+                    <td>D</td>
+                    <td><input class="clean" id="Data-D-polyhybrid" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>r</td>
+                    <td><input class="clean" id="Data-d-polyhybrid" type="text" size="1" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="calculate-buttons">
+            <button id="Polyhybrid-polyhybrid" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+
+        <p class="explanation">n = d + h + r; n = D + R</p>
+        <p class="explanation">n = total number of loci</p>
+        <p class="explanation">h = number of heterozygous loci</p>
+        <p class="explanation">d = number of homozygous loci</p>
+        <p class="explanation">r = number of homozygous recessive loci</p>
+        <p class="explanation">D = number of loci with dominant phenotype</p>
+        <p class="explanation">R = number of loci with recessive phenotype</p>
+        <p class="explanation">T = number of individuals obtained in the offspring of the polyhybrid</p>
+
+        <p class="ctool-sub-title">Results</p>
+
+        <table class="generic-ctools-table">
+            <tr>
+                <td>Different gametes = </td>
+                <td class="clean" id="DifferentGametes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Different genotypes = </td>
+                <td class="clean" id="DifferentGenotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Homozygous genotypes = </td>
+                <td class="clean" id="HomozygousGenotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Heterozygous genotypes = </td>
+                <td class="clean" id="HeterozygousGenotypes-polyhybrid"></td>
+            </tr>
+        </table>
+
+        <p class="ctool-sub-title">Genotypes</p>
+
+        <table class="generic-ctools-table">
+            <tr>
+                <td>$${n! \over d! \cdot h! \cdot r!} =$$ </td>
+                <td class="clean" id="Form1Genotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>$$(\frac{1}{4})^d \cdot (\frac{1}{2})^h \cdot (\frac{1}{4})^r =$$</td>
+                <td class="clean" id="Form2Genotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Frequency = </td>
+                <td class="clean" id="FrequencyGenotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Total =</td>
+                <td class="clean" id="TotalGenotypes-polyhybrid"></td>
+            </tr>
+        </table>
+
+        <p class="ctool-sub-title">Phenotypes</p>
+
+        <table class="generic-ctools-table">
+            <tr>
+                <td>$${n! \over D! \cdot R!} =$$</td>
+                <td class="clean" id="form1Phenotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>$$(\frac{3}{4})^D \cdot (\frac{1}{4})^R =$$</td>
+                <td class="clean" id="form2Phenotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Frequency = </td>
+                <td class="clean" id="FrequencyPhenotypes-polyhybrid"></td>
+            </tr>
+            <tr>
+                <td>Total =</td>
+                <td class="clean" id="TotalPhenotypes-polyhybrid"></td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

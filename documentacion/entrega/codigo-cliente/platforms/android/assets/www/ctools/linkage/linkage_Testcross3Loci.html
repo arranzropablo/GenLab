@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-Testcross3Loci" class="mobile-view">
+        <h1 class="ctool-title">Three points AaBbCc x aabbcc</h1>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>ABC</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-ABC" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>abc</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-abc" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>ABc</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-ABc" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>abC</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-abC" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>aBC</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-aBC" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Abc</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-Abc" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>AbC</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-AbC" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>aBc</td>
+                    <td>
+                        <input class="clean" id="Alleles-Testcross3Loci-aBc" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td class="clean" id="total-Testcross3Loci"> </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="Testcross3Loci-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+
+    <table class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Aa =</td>
+            <td class="clean" id="value-Testcross3Loci-Aa"></td>
+            <td class="clean" id="agree-Testcross3Loci-Aa"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Bb =</td>
+            <td class="clean" id="value-Testcross3Loci-Bb"></td>
+            <td class="clean" id="agree-Testcross3Loci-Bb"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Cc =</td>
+            <td class="clean" id="value-Testcross3Loci-Cc"></td>
+            <td class="clean" id="agree-Testcross3Loci-Cc"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Results</p>
+    <p id="Results-Testcross3Loci"></p>
+
+    <table id="expected-table-Values" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A,a - B,b </td>
+            <td> A,a - C,c </td>
+            <td> B,b - C,c </td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Cont.</td>
+            <td class="clean" id="value-Testcross3Loci-Cont-AaBb"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-AaCc"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-BbCc"></td>
+        </tr>
+        <tr>
+            <td>Lod Z</td>
+            <td class="clean" id="value-Testcross3Loci-LodZ-AaBb"></td>
+            <td class="clean" id="value-Testcross3Loci-LodZ-AaCc"></td>
+            <td class="clean" id="value-Testcross3Loci-LodZ-BbCc"></td>
+        </tr>
+        <tr>
+            <td>RF</td>
+            <td class="clean" id="value-Testcross3Loci-RF-AaBb"></td>
+            <td class="clean" id="value-Testcross3Loci-RF-AaCc"></td>
+            <td class="clean" id="value-Testcross3Loci-RF-BbCc"></td>
+        </tr>
+        <tr>
+            <td>Dist(cM)</td>
+            <td class="clean" id="value-Testcross3Loci-Dist-AaBb"></td>
+            <td class="clean" id="value-Testcross3Loci-Dist-AaCc"></td>
+            <td class="clean" id="value-Testcross3Loci-Dist-BbCc"></td>
+        </tr>
+    </table>
+
+    <table id="expected-table-Values2" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td>Centre</td>
+            <td class="clean" id="value-Testcross3Loci-Centre"></td>
+        </tr>
+        <tr>
+            <td>Phase</td>
+            <td class="clean" id="value-Testcross3Loci-Phase"></td>
+        </tr>
+        <tr>
+            <td>Coefficient of coincidence(c)</td>
+            <td class="clean" id="value-Testcross3Loci-Coc"></td>
+        </tr>
+        <tr>
+            <td>Interference (1-c)</td>
+            <td class="clean" id="value-Testcross3Loci-Interference"></td>
+        </tr>
+    </table>
+
+    <p class="titleTab">Segregation of each Locus</p>
+    <table id="expected-table-Aa" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A </td>
+            <td> a </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-Testcross3Loci-A"></td>
+            <td class="clean" id="value-Testcross3Loci-a"></td>
+        </tr>
+    </table>
+    <table id="expected-table-Bb" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-Testcross3Loci-B"></td>
+            <td class="clean" id="value-Testcross3Loci-b"></td>
+        </tr>
+    </table>
+    <table id="expected-table-Cc" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> C </td>
+            <td> c </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-Testcross3Loci-C"></td>
+            <td class="clean" id="value-Testcross3Loci-c"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Dominant Recessive</p>
+    <table id="expected-table-DR" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td>Expected</td>
+            <td class="clean" id="value-DR1-Testcross3Loci"></td>
+            <td class="clean" id="value-DR2-Testcross3Loci"></td>
+        </tr>
+    </table>
+
+    <p class="titleTab">Segregation of two Loci</p>
+    <table id="expected-table-AB" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> AB </td>
+            <td> Ab </td>
+            <td> aB </td>
+            <td> ab </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-Testcross3Loci-Obs-AB"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-Ab"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-aB"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-ab"></td>
+        </tr>
+        <tr>
+            <td>Exp. Ind.</td>
+            <td class="clean" id="value-Testcross3Loci-Ind-AB"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-Ab"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-aB"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-ab"></td>
+        </tr>
+        <tr>
+            <td>Exp. Con.</td>
+            <td class="clean" id="value-Testcross3Loci-Cont-AB"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-Ab"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-aB"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-ab"></td>
+        </tr>
+    </table>
+    <table id="expected-table-AC" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> AC </td>
+            <td> Ac </td>
+            <td> aC </td>
+            <td> ac </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-Testcross3Loci-Obs-AC"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-Ac"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-aC"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-ac"></td>
+        </tr>
+        <tr>
+            <td>Exp. Ind.</td>
+            <td class="clean" id="value-Testcross3Loci-Ind-AC"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-Ac"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-aC"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-ac"></td>
+        </tr>
+        <tr>
+            <td>Exp. Con.</td>
+            <td class="clean" id="value-Testcross3Loci-Cont-AC"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-Ac"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-aC"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-ac"></td>
+        </tr>
+    </table>
+    <table id="expected-table-BC" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> BC </td>
+            <td> Bc </td>
+            <td> bC </td>
+            <td> bc </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-Testcross3Loci-Obs-BC"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-Bc"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-bC"></td>
+            <td class="clean" id="value-Testcross3Loci-Obs-bc"></td>
+        </tr>
+        <tr>
+            <td>Exp. Ind.</td>
+            <td class="clean" id="value-Testcross3Loci-Ind-BC"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-Bc"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-bC"></td>
+            <td class="clean" id="value-Testcross3Loci-Ind-bc"></td>
+        </tr>
+        <tr>
+            <td>Exp. Con.</td>
+            <td class="clean" id="value-Testcross3Loci-Cont-BC"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-Bc"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-bC"></td>
+            <td class="clean" id="value-Testcross3Loci-Cont-bc"></td>
+        </tr>
+    </table>
+
+
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

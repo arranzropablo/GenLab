@@ -1,0 +1,141 @@
+$("#pruebaI").load('ctools/ert.html'); (Cargar html en un div con id pruebaI)
+
+.\chrome --allow-file-access-from-files rutaIndex (esto en terminal para probar las vistas de otros html)
+
+ERRORES DE LAS CTOOLS
+
+ONE LOCUS
+
+ID 10
+Funciona bien pero el servidor en los expected siempre devuelve valores enteros cuando a veces tiene decimales. Ademas, el valor de chi se ve un poco afectado por esto
+Pongo tambien la peticion que funciona perfectamente (para que lo puedas comparar con el id 12)
+
+$("#ctoolView").on("click", "#testcross-onelocus", (evt) => {
+    let alleles_A = Number($("#Alleles-A-Testcross").val());
+    let alleles_a = Number($("#Alleles-a-Testcross").val());
+    if (isNaN(alleles_A) || isNaN(alleles_a)) {
+        alert("Expected values must be numbers");
+    } else {
+        $.ajax({
+            type: "POST",
+            //url: "http://ingenias.fdi.ucm.es:60070/api/v1/calctool?CTid=10",
+            url: "http://raspberrypablo.ddns.net:8080/api/v1/calctool?CTid=10",
+            beforeSend: function(request) {
+                request.setRequestHeader("Access-Control-Allow-Origin", "*");
+            },
+            contentType: "application/json",
+            data: JSON.stringify({
+                "A": alleles_A,
+                "a": alleles_a
+            }),
+            success: function(data, textStatus, jqXHR) {
+                console.log(data);
+                if (!data.cleanInputs) {
+                    $("#total-Testcross").text(alleles_A + alleles_a);
+
+                    $("#Expected-A-Testcross").text(data.expectedValues.expA.toFixed(1));
+                    $("#Expected-a-Testcross").text(data.expectedValues.expa.toFixed(1));
+
+                    $("#value-Testcross").text(data.resultValues.chi.toFixed(2));
+                    $("#agree-Testcross").text(data.agree.chi);
+                    if (data.result) {
+                        $("#result-message-Testcross").text(data.result);
+                    }
+                    if (data.feedbackMessage) {
+                        alert(data.feedbackMessage);
+                    }
+                } else {
+                    alert(data.feedbackMessage);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("Se ha producido un error: " + errorThrown);
+            }
+        });
+    }
+});
+
+
+ID 11
+Hace la peticion pero ponga los valores que ponga, siempre devuelve cleanInputs=true y feedbackMessage "An expected value is less than 5"
+
+ID 12
+El servidor devuelve error 500, y está exactamente igual que la de id 10, 11 y 13, pero esta no funciona. Te pongo lo que tengo puesto
+
+$("#ctoolView").on("click", "#F2Codominance-onelocus", (evt) => {
+    let alleles_A1A1 = Number($("#Alleles-A1A1-F2Codominance").val());
+    let alleles_A1A2 = Number($("#Alleles-A1A2-F2Codominance").val());
+    let alleles_A2A2 = Number($("#Alleles-A2A2-F2Codominance").val());
+
+    alert(alleles_A1A1 + " " + alleles_A1A2 + " " + alleles_A2A2);
+    $.ajax({
+        type: "POST",
+        //url: "http://ingenias.fdi.ucm.es:60070/api/v1/calctool?CTid=12",
+        url: "http://raspberrypablo.ddns.net:8080/api/v1/calctool?CTid=12",
+        beforeSend: function(request) {
+            request.setRequestHeader("Access-Control-Allow-Origin", "*");
+        },
+        contentType: "application/json",
+        data: JSON.stringify({ 
+            "A1A1": alleles_A1A1, 
+            "A1A2": alleles_A1A2, 
+            "A2A2": alleles_A2A2 
+        }),
+        success: function(data, textStatus, jqXHR) {
+            console.log(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Se ha producido un error: " + errorThrown);
+        }
+    });
+});
+
+ID 13
+Funciona bien pero pasa lo mismo que en el id 10, te pongo la peticion para compararla con el anterior, ya que esta si que va
+
+$("#ctoolView").on("click", "#Codominance3-onelocus", (evt) => {
+    let alleles_A1A1 = Number($("#Alleles-A1A1-Codominance3").val());
+    let alleles_A1A3 = Number($("#Alleles-A1A3-Codominance3").val());
+    let alleles_A1A2 = Number($("#Alleles-A1A2-Codominance3").val());
+    let alleles_A2A3 = Number($("#Alleles-A2A3-Codominance3").val());
+
+    alert(alleles_A1A1 + " " + alleles_A1A3 + " " + alleles_A1A2 + " " + alleles_A2A3);
+    $.ajax({
+        type: "POST",
+        //url: "http://ingenias.fdi.ucm.es:60070/api/v1/calctool?CTid=13",
+        url: "http://raspberrypablo.ddns.net:8080/api/v1/calctool?CTid=13",
+        beforeSend: function(request) {
+            request.setRequestHeader("Access-Control-Allow-Origin", "*");
+        },
+        contentType: "application/json",
+        data: JSON.stringify({ 
+            "A1A1": alleles_A1A1, 
+            "A1A3": alleles_A1A3, 
+            "A1A2": alleles_A1A2, 
+            "A2A3": alleles_A2A3 
+        }),
+        success: function(data, textStatus, jqXHR) {
+            console.log(data);
+            if(!data.cleanInputs) {
+                $("#total-Codominance3").text(alleles_A1A1 + alleles_A1A3 + alleles_A1A2 + alleles_A2A3);
+
+                $("#Expected-A1A1-Codominance3").text(data.expectedValues.expectedA1A1.toFixed(1));
+                $("#Expected-A1A3-Codominance3").text(data.expectedValues.expectedA1A3.toFixed(1));
+                $("#Expected-A1A2-Codominance3").text(data.expectedValues.expectedA1A2.toFixed(1));
+                $("#Expected-A2A3-Codominance3").text(data.expectedValues.expectedA2A3.toFixed(1));
+
+                $("#value-Codominance3").text(data.resultValues.chi.toFixed(2));
+                $("#agree-Codominance3").text(data.agree.chi);
+                if (data.result) {
+                    $("#result-message-Codominance3").text(data.result);
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Se ha producido un error: " + errorThrown);
+        }
+    });
+});
+
+ID 14
+Funciona bien pero pasa lo mismo que en id 13 y 10

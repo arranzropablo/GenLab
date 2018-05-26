@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<title>Tests</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<nav class="breadcrumb">
+				<a class="breadcrumb-item" th:href="@{/home}">Home</a>
+				<span class="breadcrumb-item active">Tests</span>
+			</nav>
+			<div class="container">
+				<h1>Tests</h1>
+				<table id="testsTable" class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Name</th>
+							<th>No. Questions</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="test : ${tests}">
+							<td th:text="${test.titulo}"></td>
+							<td th:text="${test.questions.size()}"></td>
+							<td> <a th:href="@{/tests/detail/}+${test.id}" class="text-success fa fa-pencil"></a> </td>
+							<td> <a th:href="@{/tests/delete/}+${test.id}" class="text-danger fa fa-times"></a> </td>
+						</tr>
+						<tr>
+							<td colspan="5"> <a th:href="@{/tests/new}" class="btn" role="button"><span class="fa fa-plus-circle"></span> Add new Test </a></td>						
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="twolocus-F2TestcrossDom2_2" class="mobile-view">
+        <h1 class="ctool-title">F<sub>2</sub> Codominance locus A (A<sub>1</sub>A<sub>2</sub> x A<sub>3</sub>A<sub>4</sub>)</h1>
+        <p class="subtitle">Testcross Dominance locus B (Bb x bb)</p>
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>Type</td>
+                    <td>Obs.</td>
+                    <td>Ind.</td>
+                    <td>Cont.</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>3</sub>B</td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A3B-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A3B-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A1A3B-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="total-F2TestcrossDom2_2"></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>3</sub>b</td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A3b-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A3b-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A1A3b-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>4</sub>B</td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A4B-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A4B-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A1A4B-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>4</sub>b</td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A4b-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A4b-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A1A4b-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>3</sub>B</td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A3B-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A3B-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A2A3B-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>3</sub>b</td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A3b-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A3b-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A2A3b-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>4</sub>B</td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A4B-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A4B-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A2A4B-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>4</sub>b</td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A4b-F2TestcrossDom2_2" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A4b-F2TestcrossDom2_2"></td>
+                    <td class="clean" id="ExpectedCont-A2A4b-F2TestcrossDom2_2"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2TestcrossDom2_2-twoloci" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="explanation">The expected segregation of the locus A is 1/4 A₁A₃, 1/4 A₁A₄, 1/4 A₂A₃ and 1/4 A₂A₄ (1:1:1:1)</p>
+    <p class="explanation">The expected segregation of the locus B,b is 1/2 B and 1/2 b (1:1)</p>
+    <table id="expected-table-A1A2" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A₁,A₃ </td>
+            <td> A₁,A₄ </td>
+            <td> A₂,A₃ </td>
+            <td> A₂,A₄ </td>
+            <td> Total </td>
+        </tr>
+        <tr>
+            <td> Locus A</td>
+            <td class="clean" id="value-A1A3-F2TestcrossDom2_2"></td>
+            <td class="clean" id="value-A1A4-F2TestcrossDom2_2"></td>
+            <td class="clean" id="value-A2A3-F2TestcrossDom2_2"></td>
+            <td class="clean" id="value-A2A4-F2TestcrossDom2_2"></td>
+            <td class="clean" id="value-Total-F2TestcrossDom2_2"></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td class="clean" id="Expected-A1A3-F2TestcrossDom2_2"></td>
+            <td class="clean" id="Expected-A1A4-F2TestcrossDom2_2"></td>
+            <td class="clean" id="Expected-A2A3-F2TestcrossDom2_2"></td>
+            <td class="clean" id="Expected-A2A4-F2TestcrossDom2_2"></td>
+            <td></td>
+        </tr>
+    </table>
+    <table id="expected-table-Bb" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+            <td> ----- </td>
+        </tr>
+        <tr>
+            <td> B,b</td>
+            <td class="clean" id="value-B-F2TestcrossDom2_2"></td>
+            <td class="clean" id="value-b-F2TestcrossDom2_2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td class="clean" id="Expected-B-F2TestcrossDom2_2"></td>
+            <td class="clean" id="Expected-b-F2TestcrossDom2_2"></td>
+            <td></td>
+        </tr>
+    </table>
+    <p class="explanation">The expected segregation if the locus A and locus B,b are independent is 1/8 A₁A₃B, 1/8 A₁A₄B, A₂A₃B, 1/8 A₂A₄B, 1/8 A₁A₃b, 1/8 A₁A₄b, 1/8 A₂A₃b and 1/8 A₂A₄b (1:1:1:1:1:1:1:1)</p>
+    <table class="twolocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Locus A</td>
+            <td class="clean" id="value-F2TestcrossDom2_2-LocusA"></td>
+            <td class="clean" id="agree-F2TestcrossDom2_2-LocusA"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Locus B</td>
+            <td class="clean" id="value-F2TestcrossDom2_2-LocusB"></td>
+            <td class="clean" id="agree-F2TestcrossDom2_2-LocusB"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Indep.</td>
+            <td class="clean" id="value-F2TestcrossDom2_2-Indep"></td>
+            <td class="clean" id="agree-F2TestcrossDom2_2-Indep"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Cont.</td>
+            <td class="clean" id="value-F2TestcrossDom2_2-Cont"></td>
+            <td class="clean" id="agree-F2TestcrossDom2_2-Cont"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

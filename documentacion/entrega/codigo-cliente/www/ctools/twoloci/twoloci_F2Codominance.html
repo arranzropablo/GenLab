@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="twolocus-F2Codominance" class="mobile-view">
+        <h1 class="ctool-title">F
+            <sub>2</sub> Codominance: A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub> x A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></h1>
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>Type</td>
+                    <td>Obs.</td>
+                    <td>Ind.</td>
+                    <td>Cont.</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>1</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A1B1B1-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A1B1B1-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A1A1B1B1-F2Codominance"></td>
+                    <td class="clean" id="total-F2Codominance"></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>1</sub>B<sub>1</sub>B<sub>2</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A1B1B2-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A1B1B2-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A1A1B1B2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>1</sub>B<sub>2</sub>B<sub>2</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A1B2B2-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A1B2B2-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A1A1B2B2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A2B1B1-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A2B1B1-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A1A2B1B1-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A2B1B2-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A2B1B2-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A1A2B1B2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>1</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A1A2B2B2-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A1A2B2B2-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A1A2B2B2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>1</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A2B1B1-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A2B1B1-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A2A2B1B1-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>2</sub>B<sub>1</sub>B<sub>2</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A2B1B2-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A2B1B2-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A2A2B1B2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>A<sub>2</sub>A<sub>2</sub>B<sub>2</sub>B<sub>2</sub></td>
+                    <td>
+                        <input class="clean" id="Alleles-A2A2B2B2-F2Codominance" type="text" size="1" />
+                    </td>
+                    <td class="clean" id="ExpectedInd-A2A2B2B2-F2Codominance"></td>
+                    <td class="clean" id="ExpectedCont-A2A2B2B2-F2Codominance"></td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2Codominance-twoloci" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="explanation">The expected segregation of the locus A is 1/4 A₁A₁, 1/2 A₁A₂ and 1/4 A₂A₂ (1:2:1)</p>
+    <p class="explanation">The expected segregation of the locus B is 1/4 B₁B₁, 1/2 B₁B₂ and 1/4 B₂B₂ (1:2:1)</p>
+    <table id="expected-table-A1A2" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A₁,A₁ </td>
+            <td> A₁,A₂ </td>
+            <td> A₂,A₂ </td>
+            <td> Total </td>
+        </tr>
+        <tr>
+            <td> A₁,A₂</td>
+            <td class="clean" id="value-A1A1-F2Codominance"></td>
+            <td class="clean" id="value-A1A2-F2Codominance"></td>
+            <td class="clean" id="value-A2A2-F2Codominance"></td>
+            <td class="clean" id="value-Total-F2Codominance"></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td class="clean" id="Expected-A1A1-F2Codominance"></td>
+            <td class="clean" id="Expected-A1A2-F2Codominance"></td>
+            <td class="clean" id="Expected-A2A2-F2Codominance"></td>
+            <td></td>
+        </tr>
+    </table>
+    <table id="expected-table-B1B2" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B₁,B₁ </td>
+            <td> B₁,B₂ </td>
+            <td> B₂,B₂ </td>
+            <td> ----- </td>
+        </tr>
+        <tr>
+            <td> B₁,B₂</td>
+            <td class="clean" id="value-B1B1-F2Codominance"></td>
+            <td class="clean" id="value-B1B2-F2Codominance"></td>
+            <td class="clean" id="value-B2B2-F2Codominance"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td class="clean" id="Expected-B1B1-F2Codominance"></td>
+            <td class="clean" id="Expected-B1B2-F2Codominance"></td>
+            <td class="clean" id="Expected-B2B2-F2Codominance"></td>
+            <td></td>
+        </tr>
+    </table>
+    <p class="explanation">The expected segregation of the locus A and the locus B if they are independent is 1/16 A₁A₁B₁B₁, 2/16 A₁A₁B₁B₂, 1/16 A₁A₁B₂B₂, 2/16 A₁A₂B₁B₁, 4/16 A₁A₂B₁B₂, 2/16 A₁A₂B₂B₂, 1/16 A₂A₂B₁B₁, 2/16 A₂A₂B₁B₂ and 1/16 A₂A₂B₂B₂ (1:2:1:2:4:2:1:2:1)</p>
+    <table class="twolocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> A₁A₂</td>
+            <td class="clean" id="value-F2Codominance-A1A2"></td>
+            <td class="clean" id="agree-F2Codominance-A1A2"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> B₁B₂</td>
+            <td class="clean" id="value-F2Codominance-B1B2"></td>
+            <td class="clean" id="agree-F2Codominance-B1B2"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Indep.</td>
+            <td class="clean" id="value-F2Codominance-Indep"></td>
+            <td class="clean" id="agree-F2Codominance-Indep"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Cont.</td>
+            <td class="clean" id="value-F2Codominance-Cont"></td>
+            <td class="clean" id="agree-F2Codominance-Cont"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

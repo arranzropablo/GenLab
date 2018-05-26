@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="twolocus-F2Dominance" class="mobile-view">
+        <h1 class="ctool-title">F<sub>2</sub> Dominance: AaBb x AaBb</h1>
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB</td>
+                    <td>aB</td>
+                    <td>Ab</td>
+                    <td>ab</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input id="Alleles-AB-F2Dominance" type="text" size="1" /></td>
+                    <td><input id="Alleles-aB-F2Dominance" type="text" size="1" /></td>
+                    <td><input id="Alleles-Ab-F2Dominance" type="text" size="1" /></td>
+                    <td><input id="Alleles-ab-F2Dominance" type="text" size="1" /></td>
+                    <td id="total-F2Dominance"></td>
+                </tr>
+                <tr>
+                    <td>Ind.</td>
+                    <td id="ExpectedInd-AB-F2Dominance"></td>
+                    <td id="ExpectedInd-aB-F2Dominance"></td>
+                    <td id="ExpectedInd-Ab-F2Dominance"></td>
+                    <td id="ExpectedInd-ab-F2Dominance"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Con.</td>
+                    <td id="ExpectedCont-AB-F2Dominance"></td>
+                    <td id="ExpectedCont-aB-F2Dominance"></td>
+                    <td id="ExpectedCont-Ab-F2Dominance"></td>
+                    <td id="ExpectedCont-ab-F2Dominance"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2Dominance-twoloci" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="explanation">The expected segregation of the locus A,a is 3/4 A and 1/4 a (3:1)</p>
+    <p class="explanation">The expected segregation of the locus B,b is 3/4 B and 1/4 b (3:1)</p>
+    <table id="expected-table-Aa" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A </td>
+            <td> a </td>
+            <td> Total </td>
+        </tr>
+        <tr>
+            <td>A,a</td>
+            <td id="value-A-F2Dominance"></td>
+            <td id="value-A-F2Dominance"></td>
+            <td id="value-Total-F2Dominance"></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td id="Expected-A-F2Dominance"></td>
+            <td id="Expected-a-F2Dominance"></td>
+            <td></td>
+        </tr>
+    </table>
+    <table id="expected-table-Bb" class="twolocus-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+            <td> ----- </td>
+        </tr>
+        <tr>
+            <td>B,b</td>
+            <td id="value-B-F2Dominance"></td>
+            <td id="value-b-F2Dominance"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Exp.</td>
+            <td id="Expected-B-F2Dominance"></td>
+            <td id="Expected-b-F2Dominance"></td>
+            <td></td>
+        </tr>
+    </table>
+    <p class="explanation">The expected segregation if the locus A,a and locus B,b are independent is 9/16 AB, 3/16 Ab, 3/16 aB and 1/16 ab (9:3:1:1)</p>
+    <table class="twolocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> A,a</td>
+            <td id="value-F2Dominance-Aa"></td>
+            <td id="agree-F2Dominance-Aa"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> B,b</td>
+            <td id="value-F2Dominance-Bb"></td>
+            <td id="agree-F2Dominance-Bb"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Indep.</td>
+            <td id="value-F2Dominance-Indep"></td>
+            <td id="agree-F2Dominance-Indep"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Cont.</td>
+            <td id="value-F2Dominance-Cont"></td>
+            <td id="agree-F2Dominance-Cont"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-F2CodominanceDM" class="mobile-view">
+        <h1 class="ctool-title">F<sub>2</sub> Codominance</h1>
+        <p class="subtitle">A₁A₂B₁B₂ x A₁A₂B₁B₂</p>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>Recombination frequency</td>
+                    <td>
+                        <input class="clean" id="Alleles-F2CodominanceDM-RecFreq" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total offspring</td>
+                    <td>
+                        <input class="clean" id="Alleles-F2CodominanceDM-ToS" type="text" size="1" />
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2CodominanceDM-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="titleTab">Estimated offspring</p>
+    <table id="table-estimatedOffspring-F2CodominanceDM" class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Repulsion </td>
+            <td> Coupling </td>
+        </tr>
+        <tr>
+            <td>A₁A₁B₁B₁</td>
+            <td class="clean" id="rep-F2CodominanceDM-A1A1B1B1"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A1A1B1B1"></td>
+        </tr>
+        <tr>
+            <td>A₁A₂B₁B₁</td>
+            <td class="clean" id="rep-F2CodominanceDM-A1A2B1B1"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A1A2B1B1"></td>
+        </tr>
+        <tr>
+            <td>A₂A₂B₁B₁</td>
+            <td class="clean" id="rep-F2CodominanceDM-A2A2B1B1"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A2A2B1B1"></td>
+        </tr>
+        <tr>
+            <td>A₁A₁B₁B₂</td>
+            <td class="clean" id="rep-F2CodominanceDM-A1A1B1B2"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A1A1B1B2"></td>
+        </tr>
+        <tr>
+            <td>A₁A₂B₁B₂</td>
+            <td class="clean" id="rep-F2CodominanceDM-A1A2B1B2"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A1A2B1B2"></td>
+        </tr>
+        <tr>
+            <td>A₂A₂B₁B₂</td>
+            <td class="clean" id="rep-F2CodominanceDM-A2A2B1B2"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A2A2B1B2"></td>
+        </tr>
+        <tr>
+            <td>A₁A₁B₂B₂</td>
+            <td class="clean" id="rep-F2CodominanceDM-A1A1B2B2"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A1A1B2B2"></td>
+        </tr>
+        <tr>
+            <td>A₁A₂B₂B₂</td>
+            <td class="clean" id="rep-F2CodominanceDM-A1A2B2B2"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A1A2B2B2"></td>
+        </tr>
+        <tr>
+            <td>A₂A₂B₂B₂</td>
+            <td class="clean" id="rep-F2CodominanceDM-A2A2B2B2"></td>
+            <td class="clean" id="coupling-F2CodominanceDM-A2A2B2B2"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

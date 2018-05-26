@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="polyhibrid-MultiplesAlleles" class="mobile-view">
+        <h1 class="ctool-title">Multiples Alleles</h1>
+
+        <p class="explanation">An individual of a diploid species has two alleles in the same locus. When these two alleles are identical the individual is an homozygote and when the two alleles are different the individual is an homozygote. Different individuals of the population
+            can have different alleles in the same locus</p>
+        <p class="ctool-alert explanation">The maximum number of alleles allowed per locus is 50</p>
+
+        <div class="responsive-table">
+            <table class="twolocus-table">
+                <tr>
+                    <td>Locus 1 = </td>
+                    <td><input class="clean" id="locus1-multiplesAlleles" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>Locus 2 = </td>
+                    <td><input class="clean" id="locus2-multiplesAlleles" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>Locus 3 = </td>
+                    <td><input class="clean" id="locus3-multiplesAlleles" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>Locus 4 = </td>
+                    <td><input class="clean" id="locus4-multiplesAlleles" type="text" size="1" /></td>
+                </tr>
+                <tr>
+                    <td>Locus 5 = </td>
+                    <td><input class="clean" id="locus5-multiplesAlleles" type="text" size="1" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="calculate-buttons">
+            <button id="multiplesAlleles-polyhybrid" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+
+        <p class="ctool-sub-title">Results</p>
+
+        <p class="explanation">NG = Number of different genotypes</p>
+        <p class="explanation">HM = Number of different homozygous genotypes</p>
+        <p class="explanation">HT = Number of different heterozygous genotypes</p>
+
+        <table class="generic-ctools-table">
+            <tr>
+                <td></td>
+                <td>NG</td>
+                <td>HM</td>
+                <td>HT</td>
+            </tr>
+            <tr>
+                <td>Locus 1 =</td>
+                <td class="clean" id="locus1-NG-multiplesAlleles"></td>
+                <td class="clean" id="locus1-HM-multiplesAlleles"></td>
+                <td class="clean" id="locus1-HT-multiplesAlleles"></td>
+            </tr>
+            <tr>
+                <td>Locus 2 =</td>
+                <td class="clean" id="locus2-NG-multiplesAlleles"></td>
+                <td class="clean" id="locus2-HM-multiplesAlleles"></td>
+                <td class="clean" id="locus2-HT-multiplesAlleles"></td>
+            </tr>
+            <tr>
+                <td>Locus 3 =</td>
+                <td class="clean" id="locus3-NG-multiplesAlleles"></td>
+                <td class="clean" id="locus3-HM-multiplesAlleles"></td>
+                <td class="clean" id="locus3-HT-multiplesAlleles"></td>
+            </tr>
+            <tr>
+                <td>Locus 4 =</td>
+                <td class="clean" id="locus4-NG-multiplesAlleles"></td>
+                <td class="clean" id="locus4-HM-multiplesAlleles"></td>
+                <td class="clean" id="locus4-HT-multiplesAlleles"></td>
+            </tr>
+            <tr>
+                <td>Locus 5 =</td>
+                <td class="clean" id="locus5-NG-multiplesAlleles"></td>
+                <td class="clean" id="locus5-HM-multiplesAlleles"></td>
+                <td class="clean" id="locus5-HT-multiplesAlleles"></td>
+            </tr>
+        </table>
+
+        <p class="explanation">The number of different genotypes taht could be observed with these five loci if we suppose that they assort independently is:</p>
+
+        <p class="ctool-sub-title">Genotypes = <span id="genotypes-multiplesAlleles"></span></p>
+    </div>
+
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-F2Codominance" class="mobile-view">
+        <h1 class="ctool-title">F
+            <sub>2</sub>Codominance: A₁A₂B₁B₂ x A₁A₂B₁B₂</h1>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>A₁A₁B₁B₁</td>
+                    <td>
+                        <input id="Alleles-A1A1B1B1-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₁A₂B₁B₁</td>
+                    <td>
+                        <input id="Alleles-A1A2B1B1-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₂A₂B₁B₁</td>
+                    <td>
+                        <input id="Alleles-A2A2B1B1-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₁A₁B₁B₂</td>
+                    <td>
+                        <input id="Alleles-A1A1B1B2-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₁A₂B₁B₂</td>
+                    <td>
+                        <input id="Alleles-A1A2B1B2-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₂A₂B₁B₂</td>
+                    <td>
+                        <input id="Alleles-A2A2B1B2-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₁A₁B₂B₂</td>
+                    <td>
+                        <input id="Alleles-A1A1B2B2-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₁A₂B₂B₂</td>
+                    <td>
+                        <input id="Alleles-A1A2B2B2-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>A₂A₂B₂B₂</td>
+                    <td>
+                        <input id="Alleles-A2A2B2B2-F2Codominance-linkage" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td id="total-F2Codominance"> </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2Codominance-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+
+    <table class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> A₁A₂ (df=1) =</td>
+            <td id="value-F2Codominance-Aa"></td>
+            <td id="agree-F2Codominance-Aa"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> B₁B₂ (df=1) =</td>
+            <td id="value-F2Codominance-Bb"></td>
+            <td id="agree-F2Codominance-Bb"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Indep. (df=3) =</td>
+            <td id="value-F2Codominance-Indep"></td>
+            <td id="agree-F2Codominance-Indep"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Lin. (df=1) =</td>
+            <td id="value-F2Codominance-Lin"></td>
+            <td id="agree-F2Codominance-Lin"></td>
+        </tr>
+        <tr>
+            <td>X
+                <sup>2</sup> Cont. (df=1) =</td>
+            <td id="value-F2Codominance-Cont"></td>
+            <td id="agree-F2Codominance-Cont"></td>
+        </tr>
+        <tr>
+            <td> RF(r) =</td>
+            <td id="value-F2Codominance-RF"></td>
+            <td id="agree-F2Codominance-RF"></td>
+        </tr>
+        <tr>
+            <td> Distance(cM) =</td>
+            <td id="value-F2Codominance-Dist"></td>
+            <td id="agree-F2Codominance-Dist"></td>
+        </tr>
+        <tr>
+            <td> Phase =</td>
+            <td id="value-F2Codominance-Phase"></td>
+            <td id="agree-F2Codominance-Phase"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Segregation of Locus A₁A₂</p>
+    <table id="expected-table-A1A2" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A₁A₁ </td>
+            <td> A₁A₂ </td>
+            <td> A₂A₂ </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td id="value-A1A1-F2Codominance"></td>
+            <td id="value-A1A2-F2Codominance"></td>
+            <td id="value-A2A2-F2Codominance"></td>
+        </tr>
+        <tr>
+            <td>Expected</td>
+            <td id="Expected-A1A1-F2Codominance"></td>
+            <td id="Expected-A1A2-F2Codominance"></td>
+            <td id="Expected-A2A2-F2Codominance"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Segregation of Locus B₁B₂</p>
+    <table id="expected-table-B1B2" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B₁B₁ </td>
+            <td> B₁B₂ </td>
+            <td> B₂B₂ </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td id="value-B1B1-F2Codominance"></td>
+            <td id="value-B1B2-F2Codominance"></td>
+            <td id="value-B2B2-F2Codominance"></td>
+        </tr>
+        <tr>
+            <td>Expected</td>
+            <td id="Expected-B1B1-F2Codominance"></td>
+            <td id="Expected-B1B2-F2Codominance"></td>
+            <td id="Expected-B2B2-F2Codominance"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Results</p>
+    <p id="Results-F2Codominance"></p>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

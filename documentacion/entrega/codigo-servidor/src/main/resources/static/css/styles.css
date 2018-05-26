@@ -1,0 +1,45 @@
+.breadcrumb{
+	background-color:rgba(0, 0, 0, 0); /*a is for alpha, which makes it transparent*/
+}
+
+.main-container {
+	display: flex;
+	justify-content:space-around;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.side-list {
+	margin-left:5%;
+	flex-grow: 1;
+}
+
+#logoutForm{
+	position: absolute;
+	right: 10px;
+}
+
+.title-cell{
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 250px;
+}
+
+/*.left-cell {
+	padding-left: 40%;
+}*/
+
+.main-content-fragment {
+	display: flex;
+	justify-content:center;
+    flex-direction: column;
+    flex-grow: 2;
+    margin-right: 10%;
+    padding-top: 4px;
+}
+
+.editor-elements {
+	padding-top: 1.5px;
+	padding-bottom: 1.5px;
+}

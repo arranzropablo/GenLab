@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div id="epistasias-SingleDominant" class="mobile-view">
+        <h1 class="ctool-title">Single dominant of 12:3:1. F2: AaBb x AaBb</h1>
+        <div class="responsive-table">
+            <table class="generic-ctools-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB + Ab</td>
+                    <td>aB</td>
+                    <td>ab</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input class="clean" id="Alleles-ABAb-SingleDominant" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-aB-SingleDominant" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-ab-SingleDominant" type="text" size="1" /></td>
+                    <td class="clean" id="total-SingleDominant"></td>
+                </tr>
+                <tr>
+                    <td>Exp.</td>
+                    <td class="clean" id="Expected-ABAb-SingleDominant"></td>
+                    <td class="clean" id="Expected-aB-SingleDominant"></td>
+                    <td class="clean" id="Expected-ab-SingleDominant"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="SingleDominant-epistasias" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <table class="onelocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X^2 Ind. (df=2) = </td>
+            <td class="clean" id="value-SingleDominant"></td>
+            <td class="clean" id="agree-SingleDominant"></td>
+        </tr>
+    </table>
+    <p class="explanation">The same trait is controlled by two independent loci (A, a and B, b). The dominant allele (A) of the locus A, a suppress the expression of the alleles of locus B,b.
+    </p>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

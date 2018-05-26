@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body>
+    <div id="epistasias-DoubleDominant" class="mobile-view">
+        <h1 class="ctool-title">Double dominant 15:1. F2: AaBb x AaBb</h1>
+        <div class="responsive-table">
+            <table class="generic-ctools-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB + Ab + aB</td>
+                    <td>ab</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input id="Alleles-ABAbaB-DoubleDominant" type="text" size="1" /></td>
+                    <td><input id="Alleles-ab-DoubleDominant" type="text" size="1" /></td>
+                    <td id="total-DoubleDominant"></td>
+                </tr>
+                <tr>
+                    <td>Exp.</td>
+                    <td id="Expected-ABAbaB-DoubleDominant"></td>
+                    <td id="Expected-ab-DoubleDominant"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="DoubleDominant-epistasias" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <table class="onelocus-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X^2 Ind. (df=1) = </td>
+            <td id="value-DoubleDominant"></td>
+            <td id="agree-DoubleDominant"></td>
+        </tr>
+    </table>
+    <p class="explanation">The same trait is controlled by two independent loci (A, a and B, b). Duplicate genes: the dominant alleles of each locus (A and B) are equivalent and they have similar or identical function. Only is necessary the presence of one dominant allele (A
+        or B) to present the phenotype.
+    </p>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-F2DominanceDM" class="mobile-view">
+        <h1 class="ctool-title">Testcross: AaBb x AaBb</h1>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>Recombination frequency</td>
+                    <td>
+                        <input class="clean" id="Alleles-F2DominanceDM-RecFreq" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total offspring</td>
+                    <td>
+                        <input class="clean" id="Alleles-F2DominanceDM-ToS" type="text" size="1" />
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="F2DominanceDM-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="titleTab">Estimated offspring</p>
+    <table id="table-estimatedOffspring-F2DominanceDM" class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Repulsion Ab/aB </td>
+            <td> Coupling AB/ab</td>
+        </tr>
+        <tr>
+            <td>AB</td>
+            <td class="clean" id="rep-F2DominanceDM-AB"></td>
+            <td class="clean" id="coupling-F2DominanceDM-AB"></td>
+        </tr>
+        <tr>
+            <td>Ab</td>
+            <td class="clean" id="rep-F2DominanceDM-Ab"></td>
+            <td class="clean" id="coupling-F2DominanceDM-Ab"></td>
+        </tr>
+        <tr>
+            <td>aB</td>
+            <td class="clean" id="rep-F2DominanceDM-aB"></td>
+            <td class="clean" id="coupling-F2DominanceDM-aB"></td>
+        </tr>
+        <tr>
+            <td>ab</td>
+            <td class="clean" id="rep-F2DominanceDM-ab"></td>
+            <td class="clean" id="coupling-F2DominanceDM-ab"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

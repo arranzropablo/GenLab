@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-TestcrossDM" class="mobile-view">
+        <h1 class="ctool-title">Testcross: AaBb x aabb</h1>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>Recombination frequency</td>
+                    <td>
+                        <input class="clean" id="Alleles-TestcrossDM-RecFreq" type="text" size="1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Total offspring</td>
+                    <td>
+                        <input class="clean" id="Alleles-TestcrossDM-ToS" type="text" size="1" />
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="TestcrossDM-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+    <p class="titleTab">Estimated offspring</p>
+    <table id="table-estimatedOffspring-TestcrossDM" class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Repulsion Ab/aB </td>
+            <td> Coupling AB/ab</td>
+        </tr>
+        <tr>
+            <td>AB</td>
+            <td class="clean" id="rep-TestcrossDM-AB"></td>
+            <td class="clean" id="coupling-TestcrossDM-AB"></td>
+        </tr>
+        <tr>
+            <td>Ab</td>
+            <td class="clean" id="rep-TestcrossDM-Ab"></td>
+            <td class="clean" id="coupling-TestcrossDM-Ab"></td>
+        </tr>
+        <tr>
+            <td>aB</td>
+            <td class="clean" id="rep-TestcrossDM-aB"></td>
+            <td class="clean" id="coupling-TestcrossDM-aB"></td>
+        </tr>
+        <tr>
+            <td>ab</td>
+            <td class="clean" id="rep-TestcrossDM-ab"></td>
+            <td class="clean" id="coupling-TestcrossDM-ab"></td>
+        </tr>
+    </table>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>

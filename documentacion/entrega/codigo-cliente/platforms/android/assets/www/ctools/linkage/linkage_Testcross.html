@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="calculation-tool">
+    <div id="linkage-Testcross" class="mobile-view">
+        <h1 class="ctool-title">Testcross Dominance: AaBb x aabb</h1>
+        <div class="responsive-table">
+            <table class="linkage-table">
+                <tr>
+                    <td>Types</td>
+                    <td>AB</td>
+                    <td>aB</td>
+                    <td>Ab</td>
+                    <td>ab</td>
+                    <td>Total</td>
+                </tr>
+                <tr>
+                    <td>Obs.</td>
+                    <td><input class="clean" id="Alleles-AB-Testcross-linkage" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-aB-Testcross-linkage" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-Ab-Testcross-linkage" type="text" size="1" /></td>
+                    <td><input class="clean" id="Alleles-ab-Testcross-linkage" type="text" size="1" /></td>
+                    <td class="clean" id="total-Testcross-linkage"></td>
+                </tr>
+                <tr>
+                    <td>Ind.</td>
+                    <td class="clean" id="ExpectedInd-AB-Testcross-linkage"></td>
+                    <td class="clean" id="ExpectedInd-aB-Testcross-linkage"></td>
+                    <td class="clean" id="ExpectedInd-Ab-Testcross-linkage"></td>
+                    <td class="clean" id="ExpectedInd-ab-Testcross-linkage"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Con.</td>
+                    <td class="clean" id="ExpectedCont-AB-Testcross-linkage"></td>
+                    <td class="clean" id="ExpectedCont-aB-Testcross-linkage"></td>
+                    <td class="clean" id="ExpectedCont-Ab-Testcross-linkage"></td>
+                    <td class="clean" id="ExpectedCont-ab-Testcross-linkage"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="calculate-buttons">
+            <button id="Testcross-linkage" class="btn-calculate btn btn-primary">Calculate</button>
+            <button class="btn btn-primary btn-clean">Clean</button>
+        </div>
+    </div>
+
+    <table class="linkage-table">
+        <tr>
+            <td></td>
+            <td> Value </td>
+            <td> Agree?</td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> A,a (df=1) =</td>
+            <td class="clean" id="value-Testcross-Aa"></td>
+            <td class="clean" id="agree-Testcross-Aa"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> B,b (df=1) =</td>
+            <td class="clean" id="value-Testcross-Bb"></td>
+            <td class="clean" id="agree-Testcross-Bb"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Indep. (df=3) =</td>
+            <td class="clean" id="value-Testcross-Indep"></td>
+            <td class="clean" id="agree-Testcross-Indep"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Lin. (df=1) =</td>
+            <td class="clean" id="value-Testcross-Lin"></td>
+            <td class="clean" id="agree-Testcross-Lin"></td>
+        </tr>
+        <tr>
+            <td>X<sup>2</sup> Cont. (df=1) =</td>
+            <td class="clean" id="value-Testcross-Cont"></td>
+            <td class="clean" id="agree-Testcross-Cont"></td>
+        </tr>
+        <tr>
+            <td> Lod score Z =</td>
+            <td class="clean" id="value-Testcross-LodSZ"></td>
+            <td class="clean" id="agree-Testcross-LodSZ"></td>
+        </tr>
+        <tr>
+            <td> RF(r) =</td>
+            <td class="clean" id="value-Testcross-RF"></td>
+            <td class="clean" id="agree-Testcross-RF"></td>
+        </tr>
+        <tr>
+            <td> Distance(cM) =</td>
+            <td class="clean" id="value-Testcross-Dist"></td>
+            <td class="clean" id="agree-Testcross-Dist"></td>
+        </tr>
+        <tr>
+            <td> Phase =</td>
+            <td class="clean" id="value-Testcross-Phase"></td>
+            <td class="clean" id="agree-Testcross-Phase"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Segregation of Locus A,a</p>
+    <table id="expected-table-Aa" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> A </td>
+            <td> a </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-A-Testcross-linkage"></td>
+            <td class="clean" id="value-a-Testcross-linkage"></td>
+        </tr>
+        <tr>
+            <td>Expected</td>
+            <td class="clean" id="Expected-A-Testcross-linkage"></td>
+            <td class="clean" id="Expected-a-Testcross-linkage"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Segregation of Locus B,b</p>
+    <table id="expected-table-Bb" class="linkage-table-expected calculation-tool calculationTool-table">
+        <tr>
+            <td></td>
+            <td> B </td>
+            <td> b </td>
+        </tr>
+        <tr>
+            <td>Observed</td>
+            <td class="clean" id="value-B-Testcross-linkage"></td>
+            <td class="clean" id="value-b-Testcross-linkage"></td>
+        </tr>
+        <tr>
+            <td>Expected</td>
+            <td class="clean" id="Expected-B-Testcross-linkage"></td>
+            <td class="clean" id="Expected-b-Testcross-linkage"></td>
+        </tr>
+    </table>
+    <p class="titleTab">Results</p>
+    <p class="clean" id="result-message-Testcross-linkage"></p>
+    <!--<button class="back-btn btn btn-primary">Back</button>-->
+
+
+</body>
+
+</html>
